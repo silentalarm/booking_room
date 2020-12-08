@@ -2,14 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Available</title>
+    <title>Table</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/scripts.js"></script>
 </head>
 <body>
 
 <!--navigation bar [start]-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-light shadow">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -27,6 +32,18 @@
                 <a class="nav-link" href="#">Архив 2</a>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -35,33 +52,82 @@
 
 <div class="container">
     <br>
-    <h2 class="text-center">Table page</h2>
+    <h3 class="text-center">
+        <div id="clock"><span class="time"></span></div>
+    </h3>
     <br>
 
 
-    <table class="table table-bordered shadow table-hover table-sm text-center">
-        <thead class="thead-dark">
+    <!--    <table class="table table-bordered shadow table-hover table-sm text-center  min-vw-50 vw-50 text-nowrap text">-->
+    <table class="table  shadow table-sm text-center text-nowrap text">
+        <thead class="thead-dark tr_size">
         <tr>
-            <th scope="col">Время</th>
-            <th scope="col">Никнейм</th>
-            <th scope="col">Клуб</th>
-            <th scope="col">Статус</th>
+            <th scope="col" class="align-items-center"><!--<input type="checkbox"></th>-->
+            <th scope="col" class="w-auto font-weight-normal text-uppercase">Время</th>
+            <th scope="col" class="w-auto font-weight-normal text-uppercase">Никнейм</th>
+            <th scope="col" class="w-auto font-weight-normal text-uppercase">Клуб</th>
+            <th scope="col" class="w-auto font-weight-normal text-uppercase">Кол-во человек</th>
         </tr>
         </thead>
-        <tbody>
-        <!--data from backend [start]-->
-        {{range .TableData}}
-            <tr>
-                <th scope="col">{{ .Time }}</th>
-                <th scope="col">{{ .NickName }}</th>
-                <th scope="col">{{ .ClubName }}</th>
-                <th scope="col">{{ .Status }}</th>
+        <tbody class="font-weight-normal">
+        <form action="/saveToDB" method="POST">
+            <!--data from backend [start]-->
+            {{range .TableData}}
+            <tr class="tr_size" id="line{{ .LineID }}">
+                <!--Время перенести выше. Сравнивать с записью из базы (если нет, то цвет белый или красный)-->
+                <!--NickName  начало формы-->
+
+                {{if eq .NickName "" }}
+                <td scope="col" class="h-td align-items-center align-middle"><input type="checkbox"
+                                                                                    class="custom-checkbox check_box__status">
+                </td>
+                <td scope="col" class="h-td w-auto font-weight-normal align-middle">{{ .Time }}</td>
+                <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
+                                                                                           class='inp text-center'
+                                                                                           class='nickName_val'
+                                                                                           name='nickname{{ .LineID }}'
+                                                                                           maxlength='20'></td>
+                {{else}}
+                <td scope="col" class="h-td align-items-center bg-booked align-middle"></td>
+                <td scope="col" class="h-td w-auto font-weight-normal bg-booked" align-middle>{{ .Time }}</td>
+                <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .NickName }}</td>
+                {{end}}
+
+                <!--ClubName-->
+                {{if eq .ClubName "" }}
+                <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
+                                                                                           class='inp text-center'
+                                                                                           class='clubName_val'
+                                                                                           name='clubName{{ .LineID }}'
+                                                                                           maxlength='20'></td>
+                {{else}}
+                <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .ClubName }}</td>
+                {{end}}
+
+                <!--PeopleNumber-->
+                {{if lt .PeopleNumber 1 }}
+                <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input class='inp num text-center'
+                                                                                           class='quantity_val'
+                                                                                           name='peopleNumber{{ .LineID }}'
+                                                                                           type='text' min='0' max='20'
+                                                                                           size="2" maxlength="2"
+                                                                                           onkeypress='return validateNumber(event)'>
+                </td>
+                {{else}}
+                <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .PeopleNumber }}</td>
+                {{end}}
+
             </tr>
-        {{end}}
-        <!--data from backend [end]-->
+            {{end}}
+            <!--data from backend [end]-->
+            <input type="submit" id="btn" value="Зарезервировать"/>
+        </form>
         </tbody>
     </table>
 
 </div>
+<script>
+    $('.table').checkboxTable();
+</script>
 </body>
 </html>
