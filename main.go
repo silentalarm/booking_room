@@ -81,10 +81,10 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	type TableLines struct {
-		ID				int
-		NickName		int
-		ClubName     	string
-		PeopleNumber 	int
+		ID           int
+		NickName     int
+		ClubName     string
+		PeopleNumber int
 	}
 	// Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
 	if err := r.ParseForm(); err != nil {
@@ -94,8 +94,15 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 
 	//nickName := make(23, 'string')
 	//fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
-	a := r.ParseForm
-	fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", a)
+	r.ParseForm()
+	for _, v := range r.Form {
+		//fmt.Printf("value: %s\n", v)
+		fmt.Printf("value: %s\n", v[0])
+		//fmt.Printf("value: %s\n", v[1])
+		break
+	}
+	//fmt.Println("nickName1", r.Form["nickName1"])
+	//fmt.Println(r.PostFormValue("nickName1")) //response is empty
 
 	//nickName := r.FormValue("nickName")
 	//clubName := r.FormValue("clubName")
