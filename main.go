@@ -1,9 +1,11 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 type ViewData struct {
@@ -76,51 +78,40 @@ func about(w http.ResponseWriter, r *http.Request) {
 }
 
 func saveToDB(w http.ResponseWriter, r *http.Request) {
+
 	if r.URL.Path != "/saveToDB" {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
 	}
-	type TableLines struct {
-		ID           int
-		NickName     int
-		ClubName     string
-		PeopleNumber int
-	}
-	// Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
-	if err := r.ParseForm(); err != nil {
+	err := r.ParseForm()
+	if err != nil {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
 		return
 	}
 
-	//nickName := make(23, 'string')
-	//fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
-	r.ParseForm()
-	for _, v := range r.Form {
-		//fmt.Printf("value: %s\n", v)
-		fmt.Printf("value: %s\n", v[0])
-		//fmt.Printf("value: %s\n", v[1])
-		break
+	db := openDB("sqlite3", "reserves.db")
+	insertFromLines(db, r, "15.12.20", []int{5, 3})
+	http.Redirect(w, r, "/", http.StatusFound)
+}
+
+func insertFromLines(db *sql.DB, r *http.Request, date string, lines []int) {
+	for _, i := range lines {
+		fmt.Print(i)
+		strNickName := fmt.Sprintf("nickName%d", i)
+		strClubName := fmt.Sprintf("clubName%d", i)
+		strPeopleNumber := fmt.Sprintf("peopleNumber%d", i)
+
+		nickName := r.FormValue(strNickName)
+		clubName := r.FormValue(strClubName)
+		peopleNumber := r.FormValue(strPeopleNumber)
+
+		intPeopleNumber, _ := strconv.Atoi(peopleNumber)
+
+		empty := reserveIsExist(db, date, i)
+		if empty == false {
+			insertReserve(db, nickName, clubName, intPeopleNumber, i, date)
+		}
 	}
-	//fmt.Println("nickName1", r.Form["nickName1"])
-	//fmt.Println(r.PostFormValue("nickName1")) //response is empty
-
-	//nickName := r.FormValue("nickName")
-	//clubName := r.FormValue("clubName")
-	//peopleNumber := r.FormValue("peopleNumber")
-	////fmt.Fprintf(w, "nickName = %s\n", nickName)
-	////fmt.Fprintf(w, "clubName = %s\n", clubName)
-	////fmt.Fprintf(w, "peopleNumber = %s\n", peopleNumber)
-	////a, b := nickName[0];
-	//for k, v := range nickName {
-	//	fmt.Printf("key: %d, value: %d\n", k, v)
-	//}
-	//for k, v := range clubName {
-	//	fmt.Printf("key: %d, value: %d\n", k, v)
-	//}
-	//for k, v := range peopleNumber {
-	//	fmt.Printf("key: %d, value: %d\n", k, v)
-	//}
-
 }
 
 func main() {
