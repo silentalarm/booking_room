@@ -75,6 +75,47 @@ func about(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "static/calendar.html")
 }
 
+func saveToDB(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/saveToDB" {
+		http.Error(w, "404 not found.", http.StatusNotFound)
+		return
+	}
+	type TableLines struct {
+		ID				int
+		NickName		int
+		ClubName     	string
+		PeopleNumber 	int
+	}
+	// Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
+	if err := r.ParseForm(); err != nil {
+		fmt.Fprintf(w, "ParseForm() err: %v", err)
+		return
+	}
+
+	//nickName := make(23, 'string')
+	//fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
+	a := r.ParseForm
+	fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", a)
+
+	//nickName := r.FormValue("nickName")
+	//clubName := r.FormValue("clubName")
+	//peopleNumber := r.FormValue("peopleNumber")
+	////fmt.Fprintf(w, "nickName = %s\n", nickName)
+	////fmt.Fprintf(w, "clubName = %s\n", clubName)
+	////fmt.Fprintf(w, "peopleNumber = %s\n", peopleNumber)
+	////a, b := nickName[0];
+	//for k, v := range nickName {
+	//	fmt.Printf("key: %d, value: %d\n", k, v)
+	//}
+	//for k, v := range clubName {
+	//	fmt.Printf("key: %d, value: %d\n", k, v)
+	//}
+	//for k, v := range peopleNumber {
+	//	fmt.Printf("key: %d, value: %d\n", k, v)
+	//}
+
+}
+
 func main() {
 	fs := http.FileServer(http.Dir("css"))
 	http.Handle("/css/", http.StripPrefix("/css/", fs))
@@ -101,15 +142,7 @@ func main() {
 	http.HandleFunc("/callback", authCallbackHandler)
 	http.HandleFunc("/profile", profileUser)
 	http.HandleFunc("/logout", userLogout)
-
-	http.HandleFunc("/saveToDB", func(w http.ResponseWriter, r *http.Request) {
-
-		nickName := r.FormValue("nickName10")
-		clubName := r.FormValue("clubName10")
-		PeopleNumber := r.FormValue("peopleNumber10")
-
-		fmt.Fprintf(w, "имя: %s название клуба: %s количество людей: %s", nickName, clubName, PeopleNumber)
-	})
+	http.HandleFunc("/saveToDB", saveToDB)
 
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":8185", nil)
