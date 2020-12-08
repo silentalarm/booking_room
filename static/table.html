@@ -85,7 +85,7 @@
                 <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
                                                                                            class='inp text-center'
                                                                                            class='nickName_val'
-                                                                                           name="nickName{{ .LineID }}"
+                                                                                           name='nickname{{ .Time }}'
                                                                                            maxlength='20'></td>
                 {{else}}
                 <td scope="col" class="h-td align-items-center bg-booked align-middle"></td>
@@ -98,7 +98,7 @@
                 <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
                                                                                            class='inp text-center'
                                                                                            class='clubName_val'
-                                                                                           name="clubName{{ .LineID }}"
+                                                                                           name='clubName{{ .Time }}'
                                                                                            maxlength='20'></td>
                 {{else}}
                 <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .ClubName }}</td>
@@ -108,7 +108,7 @@
                 {{if lt .PeopleNumber 1 }}
                 <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input class='inp num text-center'
                                                                                            class='quantity_val'
-                                                                                           name="peopleNumber{{ .LineID }}"
+                                                                                           name='peopleNumber{{ .Time }}'
                                                                                            type='text' min='0' max='20'
                                                                                            size="2" maxlength="2"
                                                                                            onkeypress='return validateNumber(event)'>
