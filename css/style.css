@@ -6,13 +6,21 @@
     color: #929292;
     text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
 }
-
+table tr:hover{
+    background-color: #eaeaea;
+    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
+    -webkit-transition: .20s ease-out;
+    -moz-transition: .20s ease-out;
+    -o-transition: .20s ease-out;
+    transition: .20s ease-out;
+    /*cursor: pointer;*/
+}
 .bg-booked {
     /*background-color: #37ab5f;*/
     /*background-color: #f3f3f3;*/
-    background-color: #737373;
-    color: #d9d9d9;
-    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
+    background-color: #c64747;
+    color: #ffffff;
+    /*box-shadow: inset 4px 5px 12px rgba(0, 0, 0, 0.07);*/
 }
 
 .tr_size {
@@ -38,7 +46,21 @@
     transition: .18s ease-out;
     width: 100%;
 }
-
+.inpDisabled {
+    background: #eeeeee;
+    color: #bfbfbf;
+    border-radius: 4px;
+    border: 1px solid #d1d1d1;
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.07);
+    line-height: 1.45;
+    outline: none;
+    padding: 0.25em 1.45em 0.35em;
+    -webkit-transition: .18s ease-out;
+    -moz-transition: .18s ease-out;
+    -o-transition: .18s ease-out;
+    transition: .18s ease-out;
+    width: 100%;
+}
 .inp:hover {
     box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
@@ -57,10 +79,44 @@
     height: 32px;
 }
 
-
-
 #clock {
     font-family: 'Orbitron', sans-serif;
-    font-size: 70px;
-    min-height: 85px;
+    font-size: 50px;
+    font-weight: bold;
+    min-height: 60px;
+}
+
+/*
+tr:nth-child(even){
+    display: block;
+    border-top: 2px solid red;
+    background-color: #CC9999;
+
+}
+tr:nth-child(odd){
+    display: block;
+    border-top: 2px solid blue;
+}
+
+table.table thead tr{
+    border-collapse: collapse;
+    border: 1px solid #5a5a5a;
+}
+table.table tbody tr{
+    border-collapse: collapse;
+    border: 1px solid #5a5a5a;
+}table.table td{
+    border: 0;
+}*/
+
+
+.datepicker {
+    font-size: 0.875em;
+    width: auto;
+}
+/* solution 2: the original datepicker use 20px so replace with the following:*/
+
+.datepicker td, .datepicker th {
+    width: 1.8em;
+    height: 1.8em;
 }

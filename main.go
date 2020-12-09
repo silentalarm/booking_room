@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type ViewData struct {
@@ -88,9 +89,10 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
 		return
 	}
-
+	today := time.Now().Format("02.01.2006") //шаблон
+	fmt.Printf("%v\n", today)
 	db := openDB("sqlite3", "reserves.db")
-	insertFromLines(db, r, "15.12.20", []int{5, 3})
+	insertFromLines(db, r, today, []int{5, 3}) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
@@ -143,7 +145,7 @@ func main() {
 	http.HandleFunc("/saveToDB", saveToDB)
 
 	fmt.Println("Server is listening...")
-	http.ListenAndServe(":8185", nil)
+	http.ListenAndServe(":8186", nil)
 
 }
 

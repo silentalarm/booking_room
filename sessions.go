@@ -32,7 +32,7 @@ func profileUser(w http.ResponseWriter, r *http.Request) {
 func userLogin(w http.ResponseWriter, r *http.Request, user *User) {
 	session, _ := store.Get(r, "auth-session")
 	session.Values["authenticated"] = true
-	session.Values["LineID"] = user.ID
+	session.Values["id"] = user.ID
 	session.Values["name"] = user.Name
 	session.Values["campus"] = user.Campus
 	session.Options.MaxAge = 60 * 15 //15 minutes life cookie
@@ -47,7 +47,7 @@ func userLogout(w http.ResponseWriter, r *http.Request) {
 	}
 
 	session.Values["authenticated"] = false
-	session.Values["LineID"] = ""
+	session.Values["id"] = ""
 	session.Values["name"] = ""
 	session.Values["campus"] = ""
 	session.Options.MaxAge = -1

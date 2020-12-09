@@ -29,37 +29,60 @@ function validateNumber(event) {
     return true;
 }
 
+//для даты и времени (все что меньше 10 показывалось без 0 вначале)
+function setZero(someVar) {
+    if (someVar < 10)
+        return (someVar = "0" + someVar);
+    else
+        return (someVar);
+}
 
-
-
-$(document).ready(function(){
+$(document).ready(function () {
     //проверка на ввод в поле "Количество человек"
     $('[class^=num]').keypress(validateNumber);
 
     //liveTime
-    setInterval(function() {
+    setInterval(function () {
         // Just move your date creation inside the interval function
         var today = new Date();
-        var date = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
+        var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
         var dateTime = date + " " + time; // Add the time to the date string
 
         document.getElementById('clock').innerHTML = dateTime;
     }, 1000);
 
 
+//datePicker
+   // $('#datepicker .input-group.date').datepicker({
+   //     format: "dd.mm.yyyy",
+   //     language: "ru",
+   //     daysOfWeekHighlighted: "0,6",
+   //     todayHighlight: true
+   // });
+//
+      $('#datepicker').datepicker({
+          format: "dd.mm.yyyy",
+          language: "ru",
+          weekStart: 1,
+          daysOfWeekHighlighted: "0,6",
+          todayHighlight: true,
+          //autoclose: true,
+      });
+      $('#datepicker').datepicker("setDate", new Date());
+
 
 ////проверка на checkbox
-  //  const checkbox = document.querySelector('.check_box__status');
-  //  const button = document.querySelector('#btn');
+    //  const checkbox = document.querySelector('.check_box__status');
+    //  const button = document.querySelector('#btn');
 //
-  //  checkbox.addEventListener('change', () => {
-  //      if ( checkbox.checked ) {
-  //          button.removeAttribute('disabled');
-  //      } else {
-  //          button.setAttribute('disabled', 'true');
-  //      }
-  //  });
+    //  checkbox.addEventListener('change', () => {
+    //      if ( checkbox.checked ) {
+    //          button.removeAttribute('disabled');
+    //      } else {
+    //          button.setAttribute('disabled', 'true');
+    //      }
+    //  });
 //
 
 })
