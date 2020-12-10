@@ -54,9 +54,11 @@ func tableInit() ViewData {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
+	today := time.Now().Format("02.01.2006")
 	//http.ServeFile(w, r, "static/table.html")
 	db := openDB("sqlite3", "reserves.db")
-	timeRes, _ := getDateReserves(db, "15.12.20")
+
+	timeRes, _ := getDateReserves(db, today)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 	tmpl.Execute(w, data)
@@ -79,7 +81,6 @@ func about(w http.ResponseWriter, r *http.Request) {
 }
 
 func saveToDB(w http.ResponseWriter, r *http.Request) {
-
 	if r.URL.Path != "/saveToDB" {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
@@ -89,24 +90,23 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
 		return
 	}
-	today := time.Now().Format("02.01.2006") //шаблон
-	fmt.Printf("%v\n", today)
+	linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
-	insertFromLines(db, r, today, []int{5, 3}) //дату изменил (надо сделать чтобы смена даты была из HTML)
+	insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func insertFromLines(db *sql.DB, r *http.Request, date string, lines []int) {
+func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines []int) {
+	user, _ := getUser(w, r)
+
 	for _, i := range lines {
-		fmt.Print(i)
-		strNickName := fmt.Sprintf("nickName%d", i)
 		strClubName := fmt.Sprintf("clubName%d", i)
 		strPeopleNumber := fmt.Sprintf("peopleNumber%d", i)
 
-		nickName := r.FormValue(strNickName)
+		nickName := user.Name
 		clubName := r.FormValue(strClubName)
 		peopleNumber := r.FormValue(strPeopleNumber)
-
+		date := r.FormValue("date")
 		intPeopleNumber, _ := strconv.Atoi(peopleNumber)
 
 		empty := reserveIsExist(db, date, i)
@@ -116,21 +116,33 @@ func insertFromLines(db *sql.DB, r *http.Request, date string, lines []int) {
 	}
 }
 
+func getCheckboxLines(r *http.Request) []int {
+	checkboxLines := []int{}
+	for i := range [24]int{} {
+		strCheckbox := fmt.Sprintf("checkBox%d", i)
+
+		clubName := r.FormValue(strCheckbox)
+
+		if clubName == "on" {
+			checkboxLines = append(checkboxLines, i)
+		}
+	}
+	return checkboxLines
+}
+
 func main() {
-	fs := http.FileServer(http.Dir("css"))
-	http.Handle("/css/", http.StripPrefix("/css/", fs))
-	fs2 := http.FileServer(http.Dir("js"))
-	http.Handle("/js/", http.StripPrefix("/js/", fs2))
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
 	db := openDB("sqlite3", "reserves.db")
 	//timeRes, _ := getDateReserves(db, "15.12.20")
 	//for _, p := range timeRes {
 	//	fmt.Println(p.ID, p.NickName, p.ClubName, p.PeopleNumber, p.ReserveTime, p.ReserveDate)
 	//}
+	//today := time.Now().Format("02.02.20")
 	date_ := "15.12.20"
 	time_ := 10
 	empty := reserveIsExist(db, date_, time_)
-	//	fmt.Printf("%b", empty)
 	if empty == false {
 		insertReserve(db, "neya", "top", 1, time_, date_)
 	}
@@ -145,12 +157,12 @@ func main() {
 	http.HandleFunc("/saveToDB", saveToDB)
 
 	fmt.Println("Server is listening...")
-	http.ListenAndServe(":8186", nil)
+	http.ListenAndServe(":8185", nil)
 
 }
 
 //func main()  {
 //	router := mux.NewRouter()
 //	router.PathPrefix("/").Handler(http.FileServer(rice.MustFindBox("website").HTTPBox()))
-//	http.ListenAndServe(":8081", router)
+//	http.ListenAndServe(":8082", router)
 //}

@@ -1,25 +1,17 @@
-//Highlighting rows
+// $.fn.datepicker.noConflict();
+// $.fn.datepicker.languages['ru-RU'] = {
+//     format: 'dd.mm.YYYY',
+//     days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+//     daysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+//     daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+//     months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+//     monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+//     weekStart: 1,
+//     startView: 0,
+//     yearFirst: false,
+//     yearSuffix: ''
+// };
 
-(function ($) {
-    $.fn.checkboxTable = function () {
-        target = this;
-
-        //click on checkbox.
-        $(target).on('click', 'tbody :checkbox', function () {
-            var parents = $(this).parents('table');
-            if ($(this).is(':checked')) {
-                $(this).parents('tr').addClass('bg-select');
-                //$(this).parents('tr').find('input').addClass('bg-green text-light');
-            } else {
-                $(this).parents('tr').removeClass('bg-select');
-                $(this).parents('tr').find('input').removeClass('bg-green text-light');
-                if ($(parents).find('tbody :checkbox:checked').length == 0) {
-                    $(parents).find('thead :checkbox').prop('checked', false);
-                }
-            }
-        });
-    };
-})(jQuery);
 
 //защита от ввода букв в поле для количества человек
 function validateNumber(event) {
@@ -29,6 +21,7 @@ function validateNumber(event) {
     return true;
 }
 
+
 //для даты и времени (все что меньше 10 показывалось без 0 вначале)
 function setZero(someVar) {
     if (someVar < 10)
@@ -37,52 +30,203 @@ function setZero(someVar) {
         return (someVar);
 }
 
+//
+//Highlighting rows
+//(function ($) {
+//    $.fn.checkboxTable = function () {
+//        target = this;
+//        //click on checkbox.
+//        $(target).on('click', 'tbody :checkbox', function () {
+//            var parents = $(this).parents('table');
+//            if ($(this).is(':checked')) {
+//                $(this).parents('tr').addClass('bg-select');
+//            } else {
+//                $(this).parents('tr').removeClass('bg-select');
+//                if ($(parents).find('tbody :checkbox:checked').length == 0) {
+//                    $(this).closest('tr').find("input[type=text], text").val("");
+//                    $(this).closest('tr').find("input[type=text], text").first().val("Disabled");
+//                }
+//            }
+//        });
+//    };
+//})(jQuery);
+
+//
+
+function isMoreThenZero(num) {
+    if (num > '0' && num.length > 0)
+        return true
+    else
+        return false
+}
+
+function checkBoxHandler() {
+    let index = 0;
+    for (let i = 0; i < 24; i++) {
+        if ($(`#checkBox${i}`).prop('checked') && $(`#clubName${i}`).val().trim().length > 0 && isMoreThenZero($(`#peopleNumber${i}`).val().trim())) {
+            $('#btn_reservation').prop('disabled', false);
+            index = i;
+            break
+        } else {
+            index = 0;
+            $('#btn_reservation').prop('disabled', true);
+        }
+    }
+
+    //$(".triggerkkk").on("click", function() {
+    //    $("#secondSelect").val($("#firstSelect").val());
+    //})
+
+    //for (let i = 0; i < 24; i++) {
+    //    if ($(`#checkBox${i}`).prop('checked')) {
+    //        $(`#clubName${i}`).val($(`#clubName${index}`).val())
+    //        $(`#peopleNumber${i}`).val($(`#peopleNumber${index}`).val())
+    //    }
+    //}
+
+}
+
+//очистка inputs если чекбокс убран
+jQuery(function ($) {
+    $(document).on('change', '.check_box__status', function () {
+        //момент отжатия чекбокса
+        if (!this.checked) {
+            console.log("Изменение")
+            $(this).closest('tr').find("input[type=text], text").val("");
+            $(this).closest('tr').find("input[type=text], text").first().val("Disabled");
+            $(this).parents('tr').removeClass('bg-select');
+        }
+        //момент нажатия на чекбокс
+        if (this.checked) {
+            $(this).parents('tr').addClass('bg-select');
+            //ClubName
+            let index = 0;
+            for (let i = 0; i < 24; i++) {
+                if ($(`#checkBox${i}`).prop('checked')) {
+                    if ($(`#clubName${i}`).val() != '') {
+                        index = i;
+                        console.log(index)
+                    }
+                }
+            }
+            for (let i = 0; i < 24; i++) {
+                if ($(`#checkBox${i}`).prop('checked')) {
+                    if ($(`#clubName${i}`).val() == '') {
+                        $(`#clubName${i}`).val($(`#clubName${index}`).val())
+                    }
+                }
+            }
+            //Qantity
+            index = 0;
+            for (let i = 0; i < 24; i++) {
+                if ($(`#checkBox${i}`).prop('checked')) {
+                    if ($(`#peopleNumber${i}`).val() != '') {
+                        index = i;
+                        console.log(index)
+                    }
+                }
+            }
+            for (let i = 0; i < 24; i++) {
+                if ($(`#checkBox${i}`).prop('checked')) {
+                    if ($(`#peopleNumber${i}`).val() == '') {
+                        $(`#peopleNumber${i}`).val($(`#peopleNumber${index}`).val())
+                    }
+                }
+            }
+        }
+    })
+});
+
+
+//$( function() {
+//    $( "#datepicker" ).datepicker();
+//} );
+var today = new Date();
+var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear()
+
+$('[data-toggle="datepicker"]').datepicker({
+    format: 'dd.mm.yyyy',
+    weekStart: 1,
+    startDate: date,
+    autoPick: true,
+    autoShow: true,
+    //inline: true,
+    //container: '.datepicker-inline',
+    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+    days: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+    daysShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+});
+
+
 $(document).ready(function () {
-    //проверка на ввод в поле "Количество человек"
-    $('[class^=num]').keypress(validateNumber);
 
-    //liveTime
-    setInterval(function () {
-        // Just move your date creation inside the interval function
-        var today = new Date();
-        var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
-        var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
-        var dateTime = date + " " + time; // Add the time to the date string
-
-        document.getElementById('clock').innerHTML = dateTime;
-    }, 1000);
+$().datepicker({
+    language: 'ru-RU'
+});
 
 
-//datePicker
-   // $('#datepicker .input-group.date').datepicker({
-   //     format: "dd.mm.yyyy",
-   //     language: "ru",
-   //     daysOfWeekHighlighted: "0,6",
-   //     todayHighlight: true
-   // });
+/* Локализация datepicker */
+//$.datepicker.regional['ru'] = {
+//    closeText: 'Закрыть',
+//    prevText: 'Предыдущий',
+//    nextText: 'Следующий',
+//    currentText: 'Сегодня',
+//    monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+//    monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+//    dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+//    dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+//    dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+//    weekHeader: 'Не',
+//    dateFormat: 'dd.mm.yy',
+//    firstDay: 1,
+//    isRTL: false,
+//    showMonthAfterYear: false,
+//    yearSuffix: ''
+//};
+//$.datepicker.setDefaults($.datepicker.regional['ru']);
+
+//('#my-element').datepicker([options])
+//$.fn.datepicker.noConflict();
+
+
+//$(function(){
+//    $("#datepicker").datepicker({
+//        onSelect: function(date){
+//            $('#datepicker_value').val(date)
+//        }
+//    });
+//    $("#datepicker").datepicker("setDate", $('#datepicker_value').val());
 //
-      $('#datepicker').datepicker({
-          format: "dd.mm.yyyy",
-          language: "ru",
-          weekStart: 1,
-          daysOfWeekHighlighted: "0,6",
-          todayHighlight: true,
-          //autoclose: true,
-      });
-      $('#datepicker').datepicker("setDate", new Date());
+//});
 
 
-////проверка на checkbox
-    //  const checkbox = document.querySelector('.check_box__status');
-    //  const button = document.querySelector('#btn');
-//
-    //  checkbox.addEventListener('change', () => {
-    //      if ( checkbox.checked ) {
-    //          button.removeAttribute('disabled');
-    //      } else {
-    //          button.setAttribute('disabled', 'true');
-    //      }
-    //  });
-//
+////liveTime
+setInterval(function () {
+    // Just move your date creation inside the interval function
+    var today = new Date();
+    var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
+    var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
+    var dateTime = date + " " + time; // Add the time to the date string
+
+    document.getElementById('clock').innerHTML = dateTime;
+}, 1000);
+
+
+////проверка на ввод в поле "Количество человек"
+//$('.table').checkboxTable();
+//$('[class^=num]').keypress(validateNumber);
+
+
+//$('#datepicker').datepicker({
+//    format: "dd.mm.yyyy",
+//    language: "ru",
+//    weekStart: 1,
+//    daysOfWeekHighlighted: "0,6",
+//    todayHighlight: true,
+//    //autoclose: true,
+//});
+//$('#datepicker').datepicker("setDate", new Date());
 
 })

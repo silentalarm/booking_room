@@ -2,19 +2,19 @@
     /*background-color: #37ab5f;*/
     /*background-color: #f3f3f3;*/
     /*background-color: #dee2e6;*/
-    background-color: #eaeaea;
-    color: #929292;
+    background-color: #d6d6d6;
+    color: #000000;
     text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
 }
-table tr:hover{
-    background-color: #eaeaea;
-    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
-    -webkit-transition: .20s ease-out;
-    -moz-transition: .20s ease-out;
-    -o-transition: .20s ease-out;
-    transition: .20s ease-out;
-    /*cursor: pointer;*/
-}
+/*table tr:hover{*/
+/*    background-color: #eaeaea;*/
+/*    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);*/
+/*    -webkit-transition: .20s ease-out;*/
+/*    -moz-transition: .20s ease-out;*/
+/*    -o-transition: .20s ease-out;*/
+/*    transition: .20s ease-out;*/
+/*    !*cursor: pointer;*!*/
+/*}*/
 .bg-booked {
     /*background-color: #37ab5f;*/
     /*background-color: #f3f3f3;*/
@@ -80,10 +80,10 @@ table tr:hover{
 }
 
 #clock {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 50px;
+    /*font-family: 'Orbitron', sans-serif;*/
+    /*font-size: 20px;*/
     font-weight: bold;
-    min-height: 60px;
+    /*min-height: 60px;*/
 }
 
 /*
@@ -110,13 +110,31 @@ table.table tbody tr{
 }*/
 
 
-.datepicker {
-    font-size: 0.875em;
-    width: auto;
-}
-/* solution 2: the original datepicker use 20px so replace with the following:*/
+/*.datepicker {*/
+/*    font-size: 0.875em;*/
+/*    width: auto;*/
+/*}*/
+/*!* solution 2: the original datepicker use 20px so replace with the following:*!*/
 
-.datepicker td, .datepicker th {
-    width: 1.8em;
-    height: 1.8em;
+/*.datepicker td, .datepicker th {*/
+/*    width: 1.8em;*/
+/*    height: 1.8em;*/
+/*}*/
+#datepicker {
+    width: 250px;
+    margin: 0 auto;
+}
+#btn_reservation{
+
+}
+.right-div{
+    min-width:350px;
+    padding: 0;
+    text-align: center;
+}
+body{
+    text-align: center;
+}
+.datepicker-inline{
+    width: 250px;
 }

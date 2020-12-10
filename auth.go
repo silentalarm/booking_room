@@ -13,7 +13,7 @@ import (
 )
 
 type Message struct {
-	ID     int    `json:"LineID"`
+	ID     int    `json:"id"`
 	Name   string `json:"login"`
 	Campus []CampusData
 }
@@ -22,7 +22,7 @@ type CampusData struct {
 	CampusName string `json:"name"`
 }
 
-type User struct {
+type AuthUser struct {
 	ID     string
 	Name   string
 	Campus string
@@ -99,14 +99,14 @@ func authUserInfo(state string, code string) ([]byte, error) {
 	return contents, nil
 }
 
-func getUserFromCallback(bytes []byte) (*User, error) {
+func getUserFromCallback(bytes []byte) (*AuthUser, error) {
 	var message Message
 	err := json.Unmarshal(bytes, &message)
 	if err != nil {
 		return nil, fmt.Errorf("failed on convert from JSON: %s", err.Error())
 	}
 
-	user := User{
+	user := AuthUser{
 		ID:     strconv.Itoa(message.ID),
 		Name:   message.Name,
 		Campus: message.Campus[0].CampusName,
