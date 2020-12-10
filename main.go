@@ -146,7 +146,7 @@ func main() {
 	if empty == false {
 		insertReserve(db, "neya", "top", 1, time_, date_)
 	}
-
+	deleteOldReserves(db, "15.12.2020")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
 

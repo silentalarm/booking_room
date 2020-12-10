@@ -75,3 +75,10 @@ func reserveIsExist(db *sql.DB, date string, time int) bool {
 	}
 	return false
 }
+
+func deleteOldReserves(db *sql.DB, date string) {
+	_, err := db.Exec("delete from floor_3 where reserv_date < '" + date + "'")
+	if err != nil {
+		panic(err)
+	}
+}
