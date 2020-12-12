@@ -108,7 +108,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 
 	linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
-	defer &db.Close()
+	defer db.Close()
 
 	insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
@@ -139,7 +139,6 @@ func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines [
 		}
 	}
 }
-
 
 func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 	session, err := store.Get(r, "auth-session")
