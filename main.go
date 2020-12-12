@@ -134,7 +134,7 @@ func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines [
 		intPeopleNumber, _ := strconv.Atoi(peopleNumber)
 
 		empty := reserveIsExist(db, "floor_2", date, i)
-		if empty == false {
+		if empty == false && clubName != "" && intPeopleNumber >= 1 {
 			insertReserve(db, "floor_2", nickName, clubName, intPeopleNumber, i, date)
 		}
 	}
