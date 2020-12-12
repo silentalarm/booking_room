@@ -92,9 +92,23 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
 		return
 	}
+
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	user := getUser(session)
+
+	if user.Authenticated == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
-	defer db.Close()
+	defer &db.Close()
 
 	insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
@@ -126,6 +140,29 @@ func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines [
 	}
 }
 
+
+func deleteFromMe(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	user := getUser(session)
+
+	if user.Authenticated == false {
+		fmt.Printf("user: %s auth: %t", user.Name, user.Authenticated)
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	db := openDB("sqlite3", "reserves.db")
+	defer db.Close()
+
+	tryDeleteRowByOwner(db, "floor_2", "12.12.2020", user.Name, "2")
+	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
+}
+
 func getCheckboxLines(r *http.Request) []int {
 	checkboxLines := []int{}
 	for i := range [24]int{} {
@@ -145,26 +182,13 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
 	db := openDB("sqlite3", "reserves.db")
-	// FIX ME delete old reserves
+	today := time.Now().Format("02.02.2007")
 	dbTables := []string{
 		"floor_3",
 		"floor_2",
 	}
-	deleteOldReserves(db, dbTables, "15.12.2020")
+	deleteOldReserves(db, dbTables, today)
 
-	//timeRes, _ := getDateReserves(db, "15.12.20")
-	//for _, p := range timeRes {
-	//	fmt.Println(p.ID, p.NickName, p.ClubName, p.PeopleNumber, p.ReserveTime, p.ReserveDate)
-	//}
-	//today := time.Now().Format("02.02.20")
-	date_ := "15.12.2020"
-	//time_ := 10
-	//empty := reserveIsExist(db, "floor_3", date_, time_)
-	//if empty == false {
-	//	insertReserve(db, "floor_3", "neya", "top", 1, time_, date_)
-	//}
-	db.Exec("delete from * where reserv_date < '" + date_ + "'")
-	//deleteOldReserves(db, "floor_3", "15.12.2020")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
 
@@ -173,6 +197,7 @@ func main() {
 	http.HandleFunc("/profile", profileUser)
 	http.HandleFunc("/logout", userLogout)
 	http.HandleFunc("/saveToDB", saveToDB)
+	http.HandleFunc("/delete", deleteFromMe)
 
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":8185", nil)

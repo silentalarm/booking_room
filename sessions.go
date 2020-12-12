@@ -97,3 +97,15 @@ func getUser(session *sessions.Session) *User {
 	}
 	return &user
 }
+
+//FIX ME
+func isAuthenticated(w http.ResponseWriter, r *http.Request) (bool, error) {
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return false, err
+	}
+	user := getUser(session)
+
+	return user.Authenticated, nil
+}

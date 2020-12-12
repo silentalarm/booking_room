@@ -20,26 +20,24 @@ func openDB(db_name string, db_path string) *sql.DB {
 	if err != nil {
 		panic(err)
 	}
-	//defer db.Close()
 	return db
 }
 
 func insertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) {
-	result, err := db.Exec(
-		"insert into "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
+	_, err := db.Exec(
+		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
 		nickname, clubname, people_number, reserv_time, reserv_date)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(result.LastInsertId())
 }
 
 func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
-	rows, err := db.Query("select * from " + table)
+	rows, err := db.Query("SELECT * FROM " + table)
 	if err != nil {
 		return nil, err
 	}
-	//defer rows.Close()
+
 	return rows, nil
 }
 
@@ -78,9 +76,16 @@ func reserveIsExist(db *sql.DB, table, date string, time int) bool {
 
 func deleteOldReserves(db *sql.DB, table []string, date string) {
 	for _, target := range table {
-		_, err := db.Exec("delete from " + target + " where reserv_date < '" + date + "'")
+		_, err := db.Exec("DELETE FROM " + target + " WHERE reserv_date < '" + date + "'")
 		if err != nil {
 			panic(err)
 		}
+	}
+}
+
+func tryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
+	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
+	if err != nil {
+		panic(err)
 	}
 }
