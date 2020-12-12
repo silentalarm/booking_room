@@ -57,11 +57,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	today := time.Now().Format("02.01.2006")
 	//http.ServeFile(w, r, "static/table.html")
 	db := openDB("sqlite3", "reserves.db")
+	defer db.Close()
 
-	timeRes, _ := getDateReserves(db, today)
+	timeRes, _ := getDateReserves(db, "floor_2", today)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 	tmpl.Execute(w, data)
+
 }
 
 func rebuildTable(rows []ReserveRow) *ViewData {
@@ -92,12 +94,20 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 	}
 	linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
+	defer db.Close()
+
 	insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
 func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines []int) {
-	user, _ := getUser(w, r)
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	user := getUser(session)
 
 	for _, i := range lines {
 		strClubName := fmt.Sprintf("clubName%d", i)
@@ -109,9 +119,9 @@ func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines [
 		date := r.FormValue("date")
 		intPeopleNumber, _ := strconv.Atoi(peopleNumber)
 
-		empty := reserveIsExist(db, date, i)
+		empty := reserveIsExist(db, "floor_2", date, i)
 		if empty == false {
-			insertReserve(db, nickName, clubName, intPeopleNumber, i, date)
+			insertReserve(db, "floor_2", nickName, clubName, intPeopleNumber, i, date)
 		}
 	}
 }
@@ -135,18 +145,26 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
 	db := openDB("sqlite3", "reserves.db")
+	// FIX ME delete old reserves
+	dbTables := []string{
+		"floor_3",
+		"floor_2",
+	}
+	deleteOldReserves(db, dbTables, "15.12.2020")
+
 	//timeRes, _ := getDateReserves(db, "15.12.20")
 	//for _, p := range timeRes {
 	//	fmt.Println(p.ID, p.NickName, p.ClubName, p.PeopleNumber, p.ReserveTime, p.ReserveDate)
 	//}
 	//today := time.Now().Format("02.02.20")
-	date_ := "15.12.20"
-	time_ := 10
-	empty := reserveIsExist(db, date_, time_)
-	if empty == false {
-		insertReserve(db, "neya", "top", 1, time_, date_)
-	}
-	deleteOldReserves(db, "15.12.2020")
+	date_ := "15.12.2020"
+	//time_ := 10
+	//empty := reserveIsExist(db, "floor_3", date_, time_)
+	//if empty == false {
+	//	insertReserve(db, "floor_3", "neya", "top", 1, time_, date_)
+	//}
+	db.Exec("delete from * where reserv_date < '" + date_ + "'")
+	//deleteOldReserves(db, "floor_3", "15.12.2020")
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
 

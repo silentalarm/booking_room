@@ -31,8 +31,8 @@ type AuthUser struct {
 var (
 	AuthConfig       *oauth2.Config
 	oauthStateString = Hex(16)
-	CodeVerifier, _  = cv.CreateCodeVerifier()
-	codeChallenge    = CodeVerifier.CodeChallengeS256()
+	codeVerifier, _  = cv.CreateCodeVerifier()
+	codeChallenge    = codeVerifier.CodeChallengeS256()
 )
 
 func init() {
@@ -74,7 +74,7 @@ func authUserInfo(state string, code string) ([]byte, error) {
 		return nil, fmt.Errorf("invalid oauth state")
 	}
 
-	token, err := AuthConfig.Exchange(oauth2.NoContext, code, oauth2.SetAuthURLParam("code_verifier", CodeVerifier.String()))
+	token, err := AuthConfig.Exchange(oauth2.NoContext, code, oauth2.SetAuthURLParam("code_verifier", codeVerifier.String()))
 	if err != nil {
 		return nil, fmt.Errorf("code exchange failed: %s", err.Error())
 	}
