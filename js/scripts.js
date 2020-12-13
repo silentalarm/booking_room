@@ -201,7 +201,6 @@ $().datepicker({
 //
 //});
 
-
 ////liveTime
 setInterval(function () {
     // Just move your date creation inside the interval function
