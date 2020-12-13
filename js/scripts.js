@@ -172,6 +172,7 @@ $(document).on('mousedown', '.tr_size', function () {
             $(this).addClass('bg-select');
         });
     }
+
 });
 $('.tr_size').mouseup(function () {
     $('.tr_size').off('mouseenter mouseleave');
@@ -181,21 +182,36 @@ $('.tr_size').mouseup(function () {
 var opt = {
     autoOpen: false,
     modal: true,
-    width: 550,
-    height:650,
-    title: 'Details',
+    width: 350,
+    height: 400,
+    title: 'Заполнение',
     resizable: false,
-    _title: "123"
+    collision: 'flip',
+    show: {
+        effect: "drop",
+        direction: "down",
+        duration: 400
+    },
+    hide: {
+        effect: "drop",
+        direction: "down",
+        duration: 400
+    },
 };
 
-$('.tr_size').mouseup(function () {
+$('.tr_size').mouseup(function (e) {
     var theDialog = $("#dialog").dialog(opt);
-    theDialog.dialog("open");
+    if (lineSet.size >= 1) {
+        theDialog.dialog("option", "position", {my: "left top", at: "center", of: e});
+        theDialog.dialog("open");
+    }
 });
+
 $(document).on('mousedown', '.tr_size', function () {
     var theDialog = $("#dialog").dialog(opt);
     theDialog.dialog("close");
 });
+
 
 //if($(this).hasClass('test1')){
 //    alert('У этого блока есть класс test1');
