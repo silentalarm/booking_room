@@ -1,30 +1,47 @@
 .bg-select {
-    /*background-color: #37ab5f;*/
-    /*background-color: #f3f3f3;*/
-    /*background-color: #dee2e6;*/
-    background-color: #d6d6d6;
-    color: #000000;
-    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);
+    background-color: rgb(3, 155, 229);
+    color: #ffffff;
+    border-color: rgb(3, 155, 229) !important;
 }
-/*table tr:hover{*/
-/*    background-color: #eaeaea;*/
-/*    text-shadow: 0px 0px 0px rgba(150, 150, 150, 1);*/
-/*    -webkit-transition: .20s ease-out;*/
-/*    -moz-transition: .20s ease-out;*/
-/*    -o-transition: .20s ease-out;*/
-/*    transition: .20s ease-out;*/
-/*    !*cursor: pointer;*!*/
+/*.table-bordered td:not(:first-child){*/
+/*    border-style: hidden;*/
+/* }*/
+.table-bordered tr:nth-child(n + 2) {
+    /*border-style: hidden;*/
+    border-block-start-style: hidden;
+}
+tr[class ~= "bg-select"] td:first-child{
+    border-right-color: rgb(3, 155, 229);
+}
+/*#someDiv > input { все после первого элемента*/
+/*    margin-top: 20px;*/
+/*}*/
+/*#someDiv > input:first-child{*/
+/*    margin-top: 0px;*/
 /*}*/
 .bg-booked {
-    /*background-color: #37ab5f;*/
-    /*background-color: #f3f3f3;*/
-    background-color: #c64747;
+    background-color: rgb(3, 155, 229);
     color: #ffffff;
     /*box-shadow: inset 4px 5px 12px rgba(0, 0, 0, 0.07);*/
 }
 
+tr.active:hover,
+tr.active:focus{
+    color: #62921d;
+}
+
 .tr_size {
+    cursor: pointer;
     line-height: 33px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+}
+tbody tr:hover{
+     cursor: pointer;
 }
 
 .inp {
@@ -45,6 +62,12 @@
     -o-transition: .18s ease-out;
     transition: .18s ease-out;
     width: 100%;
+}
+.tr_size td{
+    -webkit-transition: .18s ease-out;
+    -moz-transition: .18s ease-out;
+    -o-transition: .18s ease-out;
+    transition: .18s ease-out;
 }
 .inpDisabled {
     background: #eeeeee;
@@ -127,14 +150,23 @@ table.table tbody tr{
 #btn_reservation{
 
 }
-.right-div{
-    min-width:350px;
-    padding: 0;
-    text-align: center;
-}
+
 body{
-    text-align: center;
 }
 .datepicker-inline{
     width: 250px;
+}
+td {
+    width: auto;
+    padding-left: 10px;
+    font-size: 12px;
+}
+td.min {
+    width: 1%;
+    white-space: nowrap;
+    color: #c3c6c8;
+    font-size: 12px;
+    text-align: right;
+    padding-left: 10px;
+    padding-right: 10px;
 }

@@ -4,18 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Table</title>
-    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <link rel="stylesheet" href="../css/datepicker.min.css" type="text/css">
-    <!--    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">-->
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+<!--    <link rel="stylesheet" href="/css/datepicker.min.css" type="text/css">-->
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.theme.css" type="text/css">
     <!--    <link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" type="text/css">-->
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
 
 <!--navigation bar [start]-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-light shadow">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -38,6 +40,11 @@
                 <a class="nav-link" href="/profile">Profile</a>
                 </a>
             </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/delete">DeleteFromMe</a>
+                </a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 text-light">
             <div id="clock"><span class="time text-light"></span></div>
@@ -46,123 +53,62 @@
 </nav>
 <!--navigation bar [end]-->
 
+
 <div class="container-fluid">
     <br>
 
     <form action="/saveToDB" method="POST">
 
         <div class="row  d-flex justify-content-center">
-            <div class="col-md-9 push-md-3 left-div ">
+            <div class="col-md-3  border-dark border"><!--LEFT-->
+                <input class="btn btn-light pt-2 pb-2 pr-3 pl-3 border-dark shadow rounded-0" type="submit"
+                       id="btn_reservation" value="Зарезервировать" disabled/>
 
-                <table class="table  shadow table-sm text-center text-nowrap text">
-                    <thead class="thead-dark tr_size">
-                    <tr>
-                        <th scope="col" class="align-items-center"><!--<input type="checkbox"></th>-->
-                        <th scope="col" class="w-auto font-weight-normal text-uppercase">Время</th>
-                        <th scope="col" class="w-auto font-weight-normal text-uppercase">Никнейм</th>
-                        <th scope="col" class="w-auto font-weight-normal text-uppercase">Клуб</th>
-                        <th scope="col" class="w-auto font-weight-normal text-uppercase">Кол-во человек</th>
-                    </tr>
-                    </thead>
-                    <tbody class="font-weight-normal">
+<br>
+<br>
+                <h3 id="buutonId">Open dialog</h3>
+                <textarea cols="0" rows="0" id="modalId" style="display:none">Some hidden text display none</textarea>
+
+
+            </div>
+            <div class="col-md-9"> <!--RIGHT-->
+                <table class="table rounded border-top border-left border-right border-bottom shadow table-sm text-nowrap">
+
+                    <tbody class="font-weight-normal table-bordered">
                     <!--data from backend [start]-->
                     {{range .TableData}}
-                    <tr class="tr_size" id="line{{ .LineID }}">
+
                         <!--Время перенести выше. Сравнивать с записью из базы (если нет, то цвет белый или красный)-->
                         <!--NickName  начало формы-->
-
                         {{if eq .NickName "" }}
-                        <td scope="col" class="h-td align-items-center align-middle"><input type="checkbox"
-                                                                                            class="custom-checkbox check_box__status"
-                                                                                            name="checkBox{{ .LineID }}"
-                                                                                            id="checkBox{{ .LineID }}"
-                                                                                            on
-                                                                                            onclick="checkBoxHandler()">
-                        </td>
-                        <td scope=" col" class="h-td w-auto font-weight-normal align-middle">{{ .Time }}
-                        </td>
-                        <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
-                                                                                                   class='inpDisabled text-center'
-                                                                                                   class='nickName_val'
-                                                                                                   name="nickName{{ .LineID }}"
-                                                                                                   id="nickName{{ .LineID }}"
-                                                                                                   maxlength='20'
-                                                                                                   disabled
-                                                                                                   value="Disabled"
-                                                                                                   autocomplete="off"
-                                                                                                   onkeyup="checkBoxHandler()">
-                        </td>
-                        {{else}}
-                        <td scope="col" class="h-td align-items-center bg-booked align-middle"></td>
-                        <td scope="col" class="h-td w-auto font-weight-normal bg-booked" align-middle>{{ .Time }}</td>
-                        <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .NickName }}</td>
-                        {{end}}
-
-                        <!--ClubName-->
-                        {{if eq .ClubName "" }}
-                        <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input type='text'
-                                                                                                   class='inp text-center'
-                                                                                                   class='clubName_val'
-                                                                                                   name="clubName{{ .LineID }}"
-                                                                                                   id="clubName{{ .LineID }}"
-                                                                                                   maxlength='20'
-                                                                                                   autocomplete="off"
-                                                                                                   oninput="checkBoxHandler()">
-                        </td>
-                        {{else}}
-                        <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .ClubName }}</td>
-                        {{end}}
-
-                        <!--PeopleNumber-->
-                        {{if lt .PeopleNumber 1 }}
-                        <td scope="col" class="h-td w-auto font-weight-normal align-middle"><input
-                                class='inp num text-center'
-                                class='quantity_val'
-                                name="peopleNumber{{ .LineID }}"
-                                id="peopleNumber{{ .LineID }}"
-                                type='text' min='1' max='20'
-                                size="2" maxlength="2"
-                                autocomplete="off"
-                                onkeypress='return validateNumber(event)'
-                                oninput="checkBoxHandler()">
-                        </td>
-                        {{else}}
-                        <td scope="col" class="h-td font-weight-normal bg-booked align-middle">{{ .PeopleNumber }}</td>
-                        {{end}}
-
+                    <tr class="tr_size" id="line{{ .LineID }}">
+                        <td scope="col" class="h-td font-weight-normal align-middle min">{{ .Time }}</td>
+                        <td scope="col" class="h-td font-weight-normal pl-3 ">123</td>
                     </tr>
-                    {{end}}
-                    <!--data from backend [end]-->
-
-                    <!--                <div class="col">-->
-                    <!--                    <input data-date-format="dd/mm/yyyy" id="datepicker" name="date">-->
-                    <!--                </div>-->
+                        {{else}}
+                    <tr class="tr_size bg-booked">
+                        <td scope="col" class="h-td font-weight-normal min border-right-0 tdl">{{ .Time }}</td>
+                        <td scope="col" class="h-td font-weight-normal pl-3 border-left-0 tdr">Зарезервировал(а) <b>{{ .NickName }}</b> для клуба <b>{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</td>
+                    </tr>
+                        {{end}}
+                    {{ end }}
 
                     </tbody>
                 </table>
-
-            </div>
-            <div class="col-md-3 pull-md-9 right-div">
-                <!--            <div id="datepicker"></div>-->
-                <!--            <input type="hidden" id="datepicker_value" value="10.12.2020">-->
-<!--                <div class="datepicker-here"></div>-->
-                <div class="datepicker-inline border rounded shadow mr-3">
-                    <input id="leftBound" data-date-format="yyyy.mm.dd" data-toggle="datepicker" class="form-control border-0" type="input"  name="date" value="" />
-                </div>
-                    <input class="btn btn-lg btn-success pt-2 pb-2 pr-3 pl-3 border shadow  mt-2" type="submit" id="btn_reservation" value="Зарезервировать" disabled/>
             </div>
         </div>
 
     </form>
 </div>
-<script src="../js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <!--<script src="../js/bootstrap-datepicker.min.js"></script>-->
 <!--<script src="../js/bootstrap-datepicker.ru.min.js"></script>-->
-<script src="../js/bootstrap.min.js"></script>
-<!--<script src="../js/jquery-ui.min.js"></script>-->
-<script src="../js/datepicker.min.js"></script>
-<script src="../js/datepicker.ru-RU.js"></script>
-<script src="../js/scripts.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<!--<script src="/js/datepicker.min.js"></script>-->
+<!--<script src="/js/datepicker.ru-RU.js"></script>-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>
