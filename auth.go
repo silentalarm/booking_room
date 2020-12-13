@@ -31,13 +31,13 @@ type AuthUser struct {
 var (
 	AuthConfig       *oauth2.Config
 	oauthStateString = Hex(16)
-	CodeVerifier, _  = cv.CreateCodeVerifier()
-	codeChallenge    = CodeVerifier.CodeChallengeS256()
+	codeVerifier, _  = cv.CreateCodeVerifier()
+	codeChallenge    = codeVerifier.CodeChallengeS256()
 )
 
 func init() {
 	AuthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:8185/callback",
+		RedirectURL:  "http://10.21.22.65:8185/callback",
 		ClientID:     "c7a7c50ad67f03a72f23c77545b25ac48d616bc1e5daef046d956ed55acf95fd",
 		ClientSecret: "157505de170d0b275ab4e10041d4dba1f4f90e21bd1ab5567fc9694b1f040716",
 		Scopes:       []string{"public"},
@@ -74,7 +74,7 @@ func authUserInfo(state string, code string) ([]byte, error) {
 		return nil, fmt.Errorf("invalid oauth state")
 	}
 
-	token, err := AuthConfig.Exchange(oauth2.NoContext, code, oauth2.SetAuthURLParam("code_verifier", CodeVerifier.String()))
+	token, err := AuthConfig.Exchange(oauth2.NoContext, code, oauth2.SetAuthURLParam("code_verifier", codeVerifier.String()))
 	if err != nil {
 		return nil, fmt.Errorf("code exchange failed: %s", err.Error())
 	}

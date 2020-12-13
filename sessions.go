@@ -25,24 +25,42 @@ var (
 )
 
 func profileUser(w http.ResponseWriter, r *http.Request) {
-	user, err := getUser(w, r)
-	if err != nil || !user.Authenticated {
-		http.Error(w, "User not found", http.StatusForbidden)
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Printf("id: %s name: %s campus: %s auth: %t",
+
+	user := getUser(session)
+
+	if user.Authenticated == false {
+		fmt.Printf("user: %s auth: %t", user.Name, user.Authenticated)
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	fmt.Fprintf(w, "id: %s name: %s campus: %s auth: %t",
 		user.ID, user.Name, user.Campus, user.Authenticated)
-	//fmt.Printf("%s", name)
-	return
 }
 
 func userLogin(w http.ResponseWriter, r *http.Request, user *AuthUser) {
-	session, _ := store.Get(r, "auth-session")
+	session, err := store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	session.Values["id"] = user.ID
 	session.Values["name"] = user.Name
 	session.Values["campus"] = user.Campus
+	session.Values["authenticated"] = true
 	session.Options.MaxAge = 60 * 15 //15 minutes life cookie
-	session.Save(r, w)
+
+	err = session.Save(r, w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func userLogout(w http.ResponseWriter, r *http.Request) {
@@ -55,6 +73,7 @@ func userLogout(w http.ResponseWriter, r *http.Request) {
 	session.Values["id"] = ""
 	session.Values["name"] = ""
 	session.Values["campus"] = ""
+	session.Values["authenticated"] = false
 	session.Options.MaxAge = -1
 
 	err = session.Save(r, w)
@@ -65,16 +84,28 @@ func userLogout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func getUser(w http.ResponseWriter, r *http.Request) (*User, error) {
+func getUser(session *sessions.Session) *User {
+	if _, ok := session.Values["authenticated"].(bool); !ok {
+		user := User{Authenticated: false}
+		return &user
+	}
+	user := User{
+		ID:            session.Values["id"].(string),
+		Name:          session.Values["name"].(string),
+		Campus:        session.Values["campus"].(string),
+		Authenticated: session.Values["authenticated"].(bool),
+	}
+	return &user
+}
+
+//FIX ME
+func isAuthenticated(w http.ResponseWriter, r *http.Request) (bool, error) {
 	session, err := store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return nil, nil
+		return false, err
 	}
-	user := User{}
-	user.ID = session.Values["id"].(string)
-	user.Name = session.Values["name"].(string)
-	user.Campus = session.Values["campus"].(string)
+	user := getUser(session)
 
-	return &user, nil
+	return user.Authenticated, nil
 }
