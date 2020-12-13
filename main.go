@@ -106,38 +106,53 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	linesToAdd := getCheckboxLines(r)
+	//linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
+	succ, unSucc := insertFromLines(
+		user,
+		db,
+		"floor_3",
+		"lol",
+		"10",
+		[]string{
+			"12.12.2020",
+			"13.12.2020",
+			"14.12.2020",
+		},
+		[]int{
+			12,
+			13,
+			14,
+		})
+	fmt.Print(succ, unSucc)
+	//insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func insertFromLines(w http.ResponseWriter, r *http.Request, db *sql.DB, lines []int) {
-	session, err := store.Get(r, "auth-session")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	user := getUser(session)
-
-	for _, i := range lines {
-		strClubName := fmt.Sprintf("clubName%d", i)
-		strPeopleNumber := fmt.Sprintf("peopleNumber%d", i)
-
-		nickName := user.Name
-		clubName := r.FormValue(strClubName)
-		peopleNumber := r.FormValue(strPeopleNumber)
-		date := r.FormValue("date")
-		intPeopleNumber, _ := strconv.Atoi(peopleNumber)
-
-		empty := reserveIsExist(db, "floor_2", date, i)
-		if empty == false && clubName != "" && intPeopleNumber >= 1 {
-			insertReserve(db, "floor_2", nickName, clubName, intPeopleNumber, i, date)
+func insertFromLines(user *User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
+	successfullyAdded := make(map[string][]string)
+	unSuccessfullyAdded := make(map[string][]string)
+	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
+	fmt.Print("sa")
+	for _, date_ := range date {
+		successfullyHours := []string{}
+		unSuccessfullyHours := []string{}
+		for _, i := range lines {
+			empty := reserveIsExist(db, table, date_, i)
+			strHour := strconv.Itoa(i)
+			if empty == false {
+				insertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
+				successfullyHours = append(successfullyHours, strHour)
+			} else {
+				unSuccessfullyHours = append(unSuccessfullyHours, strHour)
+			}
 		}
+		successfullyAdded[date_] = successfullyHours
+		unSuccessfullyAdded[date_] = unSuccessfullyHours
 	}
+	return successfullyAdded, unSuccessfullyAdded
 }
 
 func deleteFromMe(w http.ResponseWriter, r *http.Request) {
@@ -180,13 +195,13 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
-	db := openDB("sqlite3", "reserves.db")
-	today := time.Now().Format("02.02.2007")
-	dbTables := []string{
-		"floor_3",
-		"floor_2",
-	}
-	deleteOldReserves(db, dbTables, today)
+	//db := openDB("sqlite3", "reserves.db")
+	//today := time.Now().Format("02.02.2007")
+	//dbTables := []string{
+	//	"floor_3",
+	//	"floor_2",
+	//}
+	//deleteOldReserves(db, dbTables, today)
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)

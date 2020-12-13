@@ -23,13 +23,15 @@ func openDB(db_name string, db_path string) *sql.DB {
 	return db
 }
 
-func insertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) {
+func insertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) error {
 	_, err := db.Exec(
 		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
 		nickname, clubname, people_number, reserv_time, reserv_date)
 	if err != nil {
 		panic(err)
+		return err
 	}
+	return nil
 }
 
 func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
@@ -64,7 +66,7 @@ func getDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow,
 }
 
 func reserveIsExist(db *sql.DB, table, date string, time int) bool {
-	timeRes, _ := getDateReserves(db, date, table)
+	timeRes, _ := getDateReserves(db, table, date)
 
 	for _, value := range timeRes {
 		if value.ReserveTime == time {
