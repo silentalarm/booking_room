@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Table</title>
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-<!--    <link rel="stylesheet" href="/css/datepicker.min.css" type="text/css">-->
+    <!--    <link rel="stylesheet" href="/css/datepicker.min.css" type="text/css">-->
     <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
     <link rel="stylesheet" href="/css/jquery-ui.theme.css" type="text/css">
     <!--    <link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" type="text/css">-->
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
-<body>
+<body class="body">
 
 <!--navigation bar [start]-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
@@ -29,21 +29,16 @@
                 <a class="nav-link" href="/calendar">Calendar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-                </a>
+                <a class="nav-link" id="login" href="/login">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="logout">
                 <a class="nav-link" href="/logout">Logout</a>
-                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>
-                </a>
-            </li>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/delete">DeleteFromMe</a>
-                </a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 text-light">
@@ -57,48 +52,63 @@
 <div class="container-fluid">
     <br>
 
-    <form action="/saveToDB" method="POST">
+    <div class="row  d-flex justify-content-center">
 
-        <div class="row  d-flex justify-content-center">
-            <div class="col-md-3  border-dark border"><!--LEFT-->
-                <input class="btn btn-light pt-2 pb-2 pr-3 pl-3 border-dark shadow rounded-0" type="submit"
-                       id="btn_reservation" value="Зарезервировать" disabled/>
-
-<br>
-<br>
-                <h3 id="buutonId">Open dialog</h3>
-                <textarea cols="0" rows="0" id="modalId" style="display:none">Some hidden text display none</textarea>
-
-
-            </div>
-            <div class="col-md-9"> <!--RIGHT-->
-                <table class="table rounded border-top border-left border-right border-bottom shadow table-sm text-nowrap">
-
-                    <tbody class="font-weight-normal table-bordered">
-                    <!--data from backend [start]-->
-                    {{range .TableData}}
-
-                        <!--Время перенести выше. Сравнивать с записью из базы (если нет, то цвет белый или красный)-->
-                        <!--NickName  начало формы-->
-                        {{if eq .NickName "" }}
-                    <tr class="tr_size" id="line{{ .LineID }}">
-                        <td scope="col" class="h-td font-weight-normal align-middle min">{{ .Time }}</td>
-                        <td scope="col" class="h-td font-weight-normal pl-3 ">123</td>
-                    </tr>
-                        {{else}}
-                    <tr class="tr_size bg-booked">
-                        <td scope="col" class="h-td font-weight-normal min border-right-0 tdl">{{ .Time }}</td>
-                        <td scope="col" class="h-td font-weight-normal pl-3 border-left-0 tdr">Зарезервировал(а) <b>{{ .NickName }}</b> для клуба <b>{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</td>
-                    </tr>
-                        {{end}}
-                    {{ end }}
-
-                    </tbody>
-                </table>
+        <div class="col-md-3  border-dark border"><!--LEFT-->
+   <form action="/saveToDB" method="POST">
+       <br>
+       <p>
+       <input class='inpDisabled text-center' class='nickName_val' maxlength='20' disabled value={{ .var2.Name }} autocomplete="off">
+       <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
+       </p>
+       <p>
+       <input
+              class='inp text-center'
+              class='clubName_val'
+              maxlength='20'
+              autocomplete="off">
+       </p>
+       <p>
+       <input
+               class='inp num text-center'
+               class='quantity_val'
+               min='1' max='20'
+               size="2" maxlength="2"
+               autocomplete="off">
+   </p>
+        <input class="btn btn-light pt-2 pb-2 pr-3 pl-3 border-dark shadow rounded-0" type="submit" id="btn_reservation" value="Зарезервировать" disabled/>
+    </form>
+            <div id="dialog" title="Basic dialog">
+                <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
             </div>
         </div>
 
-    </form>
+        <div class="col-md-9"> <!--RIGHT-->
+            <table class="table rounded border-top border-left border-right border-bottom shadow table-sm text-nowrap">
+
+                <tbody class="font-weight-normal table-bordered">
+                <!--data from backend [start]-->
+                {{ range .var1.TableData }}
+                {{ if eq .NickName "" }}
+                <tr class="tr_size" id="line{{ .LineID }}">
+                    <td scope="col" class="h-td font-weight-normal min">{{ .Time }}</td>
+                    <td scope="col" class="h-td font-weight-normal pl-3 "></td>
+                </tr>
+                {{ else }}
+                <tr class="tr_size bg-booked">
+                    <td scope="col" class="h-td font-weight-normal min border-right-0 tdl">{{ .Time }}</td>
+                    <td scope="col" class="h-td font-weight-normal pl-3 border-left-0 tdr">Зарезервировал(а) <b>{{ .NickName }}</b> для клуба <b>{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.
+                    </td>
+                </tr>
+                {{ end }}
+                {{ end }}
+                <!--data from backend [end]-->
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

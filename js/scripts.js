@@ -154,7 +154,7 @@ $(document).on('click', '.tr_size', function () {
         lineSet.add($(this).index());
         $(this).addClass('bg-select');
     }
-    console.log(lineSet)
+    //console.log(lineSet)
 });
 
 // мультивыделение
@@ -177,6 +177,25 @@ $('.tr_size').mouseup(function () {
     $('.tr_size').off('mouseenter mouseleave');
 });
 
+
+var opt = {
+    autoOpen: false,
+    modal: true,
+    width: 550,
+    height:650,
+    title: 'Details',
+    resizable: false,
+    _title: "123"
+};
+
+$('.tr_size').mouseup(function () {
+    var theDialog = $("#dialog").dialog(opt);
+    theDialog.dialog("open");
+});
+$(document).on('mousedown', '.tr_size', function () {
+    var theDialog = $("#dialog").dialog(opt);
+    theDialog.dialog("close");
+});
 
 //if($(this).hasClass('test1')){
 //    alert('У этого блока есть класс test1');
@@ -225,16 +244,20 @@ var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.
 //    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
 //});
 
-$(document).ready(function() {
-    $('#buutonId').on('click', function() {
-        $('#modalId').modal('open');
-    });
-});
 
 $(document).ready(function () {
 
-
-
+    //login logout
+    let status = $('#statusAuth').val()
+    console.log(status)
+    if (status == "false")
+    {
+        $('#logout').attr("hidden", true)
+        $('#login').attr("hidden", false)
+    }else{
+        $('#login').attr("hidden", true)
+        $('#logout').attr("hidden", false)
+    }
 
     /* Локализация datepicker */
 //$.datepicker.regional['ru'] = {

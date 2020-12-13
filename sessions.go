@@ -86,7 +86,7 @@ func userLogout(w http.ResponseWriter, r *http.Request) {
 
 func getUser(session *sessions.Session) *User {
 	if _, ok := session.Values["authenticated"].(bool); !ok {
-		user := User{Authenticated: false}
+		user := User{Name: "неавторизован", Authenticated: false}
 		return &user
 	}
 	user := User{
