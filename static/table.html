@@ -1,159 +1,114 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Dialog - Modal form</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <style>
-        label, input { display:block; }
-        input.text { margin-bottom:12px; width:95%; padding: .4em; }
-        fieldset { padding:0; border:0; margin-top:25px; }
-        h1 { font-size: 1.2em; margin: .6em 0; }
-        div#users-contain { width: 350px; margin: 20px 0; }
-        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-        div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-        .ui-dialog .ui-state-error { padding: .3em; }
-        .validateTips { border: 1px solid transparent; padding: 0.3em; }
-    </style>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            var dialog, form,
-
-                    // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-                    emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-                    name = $( "#name" ),
-                    email = $( "#email" ),
-                    password = $( "#password" ),
-                    allFields = $( [] ).add( name ).add( email ).add( password ),
-                    tips = $( ".validateTips" );
-
-            function updateTips( t ) {
-                tips
-                        .text( t )
-                        .addClass( "ui-state-highlight" );
-                setTimeout(function() {
-                    tips.removeClass( "ui-state-highlight", 1500 );
-                }, 500 );
-            }
-
-            function checkLength( o, n, min, max ) {
-                if ( o.val().length > max || o.val().length < min ) {
-                    o.addClass( "ui-state-error" );
-                    updateTips( "Length of " + n + " must be between " +
-                            min + " and " + max + "." );
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function checkRegexp( o, regexp, n ) {
-                if ( !( regexp.test( o.val() ) ) ) {
-                    o.addClass( "ui-state-error" );
-                    updateTips( n );
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function addUser() {
-                var valid = true;
-                allFields.removeClass( "ui-state-error" );
-
-                valid = valid && checkLength( name, "username", 3, 16 );
-                valid = valid && checkLength( email, "email", 6, 80 );
-                valid = valid && checkLength( password, "password", 5, 16 );
-
-                valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-                valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-                valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
-
-                if ( valid ) {
-                    $( "#users tbody" ).append( "<tr>" +
-                            "<td>" + name.val() + "</td>" +
-                            "<td>" + email.val() + "</td>" +
-                            "<td>" + password.val() + "</td>" +
-                            "</tr>" );
-                    dialog.dialog( "close" );
-                }
-                return valid;
-            }
-
-            dialog = $( "#dialog-form" ).dialog({
-                autoOpen: false,
-                height: 400,
-                width: 350,
-                modal: true,
-                buttons: {
-                    "Create an account": addUser,
-                    Cancel: function() {
-                        dialog.dialog( "close" );
-                    }
-                },
-                close: function() {
-                    form[ 0 ].reset();
-                    allFields.removeClass( "ui-state-error" );
-                }
-            });
-
-            form = dialog.find( "form" ).on( "submit", function( event ) {
-                event.preventDefault();
-                addUser();
-            });
-
-            $( "#create-user" ).button().on( "click", function() {
-                dialog.dialog( "open" );
-            });
-        } );
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Table</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+<!--    <link rel="stylesheet" href="/css/datepicker.min.css" type="text/css">-->
+    <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.theme.css" type="text/css">
+    <!--    <link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" type="text/css">-->
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
 
-<div id="dialog-form" title="Create new user">
-    <p class="validateTips">All form fields are required.</p>
+<!--navigation bar [start]-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Table<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/calendar">Calendar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/delete">DeleteFromMe</a>
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 text-light">
+            <div id="clock"><span class="time text-light"></span></div>
+        </form>
+    </div>
+</nav>
+<!--navigation bar [end]-->
 
-    <form>
-        <fieldset>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
 
-            <!-- Allow form submission with keyboard without duplicating the dialog button -->
-            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-        </fieldset>
+<div class="container-fluid">
+    <br>
+
+    <form action="/saveToDB" method="POST">
+
+        <div class="row  d-flex justify-content-center">
+            <div class="col-md-3  border-dark border"><!--LEFT-->
+                <input class="btn btn-light pt-2 pb-2 pr-3 pl-3 border-dark shadow rounded-0" type="submit"
+                       id="btn_reservation" value="Зарезервировать" disabled/>
+
+<br>
+<br>
+                <h3 id="buutonId">Open dialog</h3>
+                <textarea cols="0" rows="0" id="modalId" style="display:none">Some hidden text display none</textarea>
+
+
+            </div>
+            <div class="col-md-9"> <!--RIGHT-->
+                <table class="table rounded border-top border-left border-right border-bottom shadow table-sm text-nowrap">
+
+                    <tbody class="font-weight-normal table-bordered">
+                    <!--data from backend [start]-->
+                    {{range .TableData}}
+
+                        <!--Время перенести выше. Сравнивать с записью из базы (если нет, то цвет белый или красный)-->
+                        <!--NickName  начало формы-->
+                        {{if eq .NickName "" }}
+                    <tr class="tr_size" id="line{{ .LineID }}">
+                        <td scope="col" class="h-td font-weight-normal align-middle min">{{ .Time }}</td>
+                        <td scope="col" class="h-td font-weight-normal pl-3 ">123</td>
+                    </tr>
+                        {{else}}
+                    <tr class="tr_size bg-booked">
+                        <td scope="col" class="h-td font-weight-normal min border-right-0 tdl">{{ .Time }}</td>
+                        <td scope="col" class="h-td font-weight-normal pl-3 border-left-0 tdr">Зарезервировал(а) <b>{{ .NickName }}</b> для клуба <b>{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</td>
+                    </tr>
+                        {{end}}
+                    {{ end }}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<!--<script src="../js/bootstrap-datepicker.min.js"></script>-->
+<!--<script src="../js/bootstrap-datepicker.ru.min.js"></script>-->
+<script src="/js/bootstrap.min.js"></script>
 
-
-<div id="users-contain" class="ui-widget">
-    <h1>Existing Users:</h1>
-    <table id="users" class="ui-widget ui-widget-content">
-        <thead>
-        <tr class="ui-widget-header ">
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>john.doe@example.com</td>
-            <td>johndoe1</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<button id="create-user">Create new user</button>
-
-
+<!--<script src="/js/datepicker.min.js"></script>-->
+<!--<script src="/js/datepicker.ru-RU.js"></script>-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>
