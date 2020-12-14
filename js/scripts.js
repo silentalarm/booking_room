@@ -1,27 +1,3 @@
-// $.fn.datepicker.noConflict();
-// $.fn.datepicker.languages['ru-RU'] = {
-//     format: 'dd.mm.YYYY',
-//     days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-//     daysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-//     daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-//     months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-//     monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
-//     weekStart: 1,
-//     startView: 0,
-//     yearFirst: false,
-//     yearSuffix: ''
-// };
-
-
-//защита от ввода букв в поле для количества человек
-// function validateNumber(event) {
-//     var ASCIICode = (event.which) ? event.which : event.keyCode
-//     if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-//         return false;
-//     return true;
-// }
-
-
 //для даты и времени (все что меньше 10 показывалось без 0 вначале)
 function setZero(someVar) {
     if (someVar < 10)
@@ -30,29 +6,7 @@ function setZero(someVar) {
         return (someVar);
 }
 
-//
-//Highlighting rows
-//(function ($) {
-//    $.fn.checkboxTable = function () {
-//        target = this;
-//        //click on checkbox.
-//        $(target).on('click', 'tbody :checkbox', function () {
-//            var parents = $(this).parents('table');
-//            if ($(this).is(':checked')) {
-//                $(this).parents('tr').addClass('bg-select');
-//            } else {
-//                $(this).parents('tr').removeClass('bg-select');
-//                if ($(parents).find('tbody :checkbox:checked').length == 0) {
-//                    $(this).closest('tr').find("input[type=text], text").val("");
-//                    $(this).closest('tr').find("input[type=text], text").first().val("Disabled");
-//                }
-//            }
-//        });
-//    };
-//})(jQuery);
-
-//
-
+// проверка на наличие чисел больше 0
 function isMoreThenZero(num) {
     if (num > '0' && num.length > 0)
         return true
@@ -60,87 +14,20 @@ function isMoreThenZero(num) {
         return false
 }
 
+// переделать поля на заполненность формы
 function checkBoxHandler() {
-    let index = 0;
-    for (let i = 0; i < 24; i++) {
-        if ($(`#checkBox${i}`).prop('checked') && $(`#clubName${i}`).val().trim().length > 0 && isMoreThenZero($(`#peopleNumber${i}`).val().trim())) {
-            $('#btn_reservation').prop('disabled', false);
-            index = i;
-            break
-        } else {
-            index = 0;
-            $('#btn_reservation').prop('disabled', true);
-        }
+    console.log($('#nickName').val().trim().length > 0)
+    console.log($('#clubName').val().trim().length > 0)
+    console.log(lineSet.size)
+    console.log($('#date').val().trim().length > 0)
+    console.log($('#peopleNumber').val().trim().length > 0)
+
+    if ($('#nickName').val().trim().length > 0 && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
+        $('#btn_reservation').prop('disabled', false);
+    } else {
+        $('#btn_reservation').prop('disabled', true);
     }
-
-    //$(".triggerkkk").on("click", function() {
-    //    $("#secondSelect").val($("#firstSelect").val());
-    //})
-
-    //for (let i = 0; i < 24; i++) {
-    //    if ($(`#checkBox${i}`).prop('checked')) {
-    //        $(`#clubName${i}`).val($(`#clubName${index}`).val())
-    //        $(`#peopleNumber${i}`).val($(`#peopleNumber${index}`).val())
-    //    }
-    //}
-
 }
-
-//очистка inputs если чекбокс убран
-// jQuery(function ($) {
-//     $(document).on('change', '.check_box__status', function () {
-//         //момент отжатия чекбокса
-//         if (!this.checked) {
-//             // console.log("Изменение")
-//             $(this).closest('tr').find("input[type=text], text").val("");
-//             $(this).closest('tr').find("input[type=text], text").first().val("Disabled");
-//             $(this).parents('tr').removeClass('bg-select');
-//         }
-//         //момент нажатия на чекбокс
-//         if (this.checked) {
-//             $(this).parents('tr').addClass('bg-select');
-//             //ClubName
-//             let index = 0;
-//             for (let i = 0; i < 24; i++) {
-//                 if ($(`#checkBox${i}`).prop('checked')) {
-//                     if ($(`#clubName${i}`).val() != '') {
-//                         index = i;
-//                         // console.log(index)
-//                     }
-//                 }
-//             }
-//             for (let i = 0; i < 24; i++) {
-//                 if ($(`#checkBox${i}`).prop('checked')) {
-//                     if ($(`#clubName${i}`).val() == '') {
-//                         $(`#clubName${i}`).val($(`#clubName${index}`).val())
-//                     }
-//                 }
-//             }
-//             //Qantity
-//             index = 0;
-//             for (let i = 0; i < 24; i++) {
-//                 if ($(`#checkBox${i}`).prop('checked')) {
-//                     if ($(`#peopleNumber${i}`).val() != '') {
-//                         index = i;
-//                         // console.log(index)
-//                     }
-//                 }
-//             }
-//             for (let i = 0; i < 24; i++) {
-//                 if ($(`#checkBox${i}`).prop('checked')) {
-//                     if ($(`#peopleNumber${i}`).val() == '') {
-//                         $(`#peopleNumber${i}`).val($(`#peopleNumber${index}`).val())
-//                     }
-//                 }
-//             }
-//         }
-//     })
-// });
-
-// $('.cell').mousedown(function() {
-//     $('#numa').text(parseInt($(this).parent('.row').index()));
-//     a = parseInt($(this).parent('.row').index());
-// });
 
 // одиночное выделеление
 let lineSet = new Set();
@@ -150,11 +37,16 @@ $(document).on('click', '.tr_size', function () {
         lineSet.delete($(this).index());
         $(this).removeClass('bg-select');
     } else {
+        if ($(this).hasClass('bg-booked')) {
+            return // не учитываем забронированные
+        }
         $('.tr').text($(this).index());
         lineSet.add($(this).index());
         $(this).addClass('bg-select');
     }
-    //console.log(lineSet)
+    // пишем в input lines наши одиночно выделенные строки (то есть часы)
+    $('#lines').val(Array.from(lineSet))
+    checkBoxHandler();
 });
 
 // мультивыделение
@@ -167,15 +59,28 @@ $(document).on('mousedown', '.tr_size', function () {
         });
     } else {
         $('.tr_size').hover(function () {
+            if ($(this).hasClass('bg-booked')) {
+                return // не учитываем забронированные
+            }
             $('.tr').text($(this).index());
             lineSet.add($(this).index());
             $(this).addClass('bg-select');
         });
     }
-
 });
+
 $('.tr_size').mouseup(function () {
+    // пишем в input lines наши мультивыделенные строки (то есть часы)
+    checkBoxHandler();
+    $('#lines').val(Array.from(lineSet));
     $('.tr_size').off('mouseenter mouseleave');
+});
+
+$(".tr_size").on("mousedown", function (e) {
+    e.preventDefault();
+    $(this).addClass("pointer");
+}).on("mouseup", function () {
+    $(this).removeClass("pointer");
 });
 
 
@@ -212,36 +117,6 @@ $(document).on('mousedown', '.tr_size', function () {
     theDialog.dialog("close");
 });
 
-
-//if($(this).hasClass('test1')){
-//    alert('У этого блока есть класс test1');
-//}else{
-//    alert('У этого блока нет класса test1');
-//}
-
-//if($(this).prop("checked") == true){
-//    console.log("Checkbox is checked.");
-//}
-//else if($(this).prop("checked") == false){
-//    console.log("Checkbox is unchecked.");
-//}
-
-//$(this).closest('tr').find("input[type=text], text").val("");
-//$(this).closest('tr').find("input[type=text], text").first().val("Disabled");
-//$(this).parents('tr').removeClass('bg-select');
-//
-// function changeBgColor(){
-//     console.log("внешний клик")
-//     var tr = document.getElementsByClassName('tr_size')
-//     $('tr').click( function() {
-//         console.log("внутренний клик")
-//         $(this).addClass('bg-select')
-//     } );
-//}
-
-//$( function() {
-//    $( "#datepicker" ).datepicker();
-//} );
 var today = new Date();
 var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear()
 
@@ -260,17 +135,17 @@ var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.
 //    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
 //});
 
-
 $(document).ready(function () {
+// tooltip
+    $('[data-toggle="tooltip"]').tooltip();
 
     //login logout
     let status = $('#statusAuth').val()
-    console.log(status)
-    if (status == "false")
-    {
+    console.log("Authentication is " + status)
+    if (status == "false") {
         $('#logout').attr("hidden", true)
         $('#login').attr("hidden", false)
-    }else{
+    } else {
         $('#login').attr("hidden", true)
         $('#logout').attr("hidden", false)
     }
@@ -311,20 +186,26 @@ $(document).ready(function () {
 
 
 ////liveTime
+//     setInterval(function () {
+//         // Just move your date creation inside the interval function
+//         var today = new Date();
+//         var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
+//         var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
+//         var dateTime = date + " " + time; // Add the time to the date string
+//
+//         document.getElementById('clock').innerHTML = dateTime;
+//     }, 1000);
+
+    // пишем в input дату
     setInterval(function () {
         // Just move your date creation inside the interval function
         var today = new Date();
         var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
-        var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
-        var dateTime = date + " " + time; // Add the time to the date string
+        //var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
+        var dateTime = date; // Add the time to the date string
 
-        document.getElementById('clock').innerHTML = dateTime;
+        $('#date').val(dateTime);
     }, 1000);
-
-
-////проверка на ввод в поле "Количество человек"
-//$('.table').checkboxTable();
-//$('[class^=num]').keypress(validateNumber);
 
 
 //$('#datepicker').datepicker({

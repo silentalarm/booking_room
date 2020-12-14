@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Table</title>
+    <title>Резерв комнтат</title>
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <!--    <link rel="stylesheet" href="/css/datepicker.min.css" type="text/css">-->
     <link rel="stylesheet" href="/css/jquery-ui.css" type="text/css">
     <link rel="stylesheet" href="/css/jquery-ui.theme.css" type="text/css">
+    <link rel="stylesheet" href="/css/awesome.css" type="text/css">
     <!--    <link rel="stylesheet" href="../css/bootstrap-datepicker.min.css" type="text/css">-->
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
@@ -15,89 +16,73 @@
 <body class="body">
 
 <!--navigation bar [start]-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+<!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Table<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary btn-nav mr-2" id="home" href="/"><i class="fas fa-home pr-1"></i>Резерв комнат</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/calendar">Calendar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="login" href="/login">Login</a>
+                <a class="nav-link btn btn-primary btn-nav mr-2" id="login" href="/login"><i class="fas fa-key pr-1"></i>Авторизация</a>
             </li>
             <li class="nav-item" id="logout">
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link btn btn-primary btn-nav mr-2" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/delete">DeleteFromMe</a>
+             <a class="nav-link btn btn-primary btn-nav mr-2" href="/delete"> <i class="far fa-trash-alt pr-1"></i>Удалить мои записи</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 text-light">
-            <div id="clock"><span class="time text-light"></span></div>
-        </form>
     </div>
 </nav>
 <!--navigation bar [end]-->
 
-
+<!--main container [start]-->
 <div class="container-fluid">
-    <br>
 
     <div class="row  d-flex justify-content-center">
-
-        <div class="col-md-3  border-dark border"><!--LEFT-->
-   <form action="/saveToDB" method="POST">
-       <br>
-       <p>
-       <input class='inpDisabled text-center' class='nickName_val' maxlength='20' disabled value={{ .var2.Name }} autocomplete="off">
+        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-1 my-3"><!--LEFT-->
+            <div class="wrapper1 p-2 rounded-0 border shadow h-100">
+   <form action="/saveToDB" method="POST" class="p-2">
        <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
-       </p>
        <p>
-       <input
-              class='inp text-center'
-              class='clubName_val'
-              maxlength='20'
-              autocomplete="off">
+           <small class="form-small-txt">Комната</small>
+           <select class='inp text-center' class='room_val input-group' maxlength='20' autocomplete="off" name="hero[]">
+                <option value="floor2">переговорная на 2 этаже</option>
+                <option value="floor3">переговорная на 3 этаже</option>
+           </select>
        </p>
-       <p>
-       <input
-               class='inp num text-center'
-               class='quantity_val'
-               min='1' max='20'
-               size="2" maxlength="2"
-               autocomplete="off">
-   </p>
-        <input class="btn btn-light pt-2 pb-2 pr-3 pl-3 border-dark shadow rounded-0" type="submit" id="btn_reservation" value="Зарезервировать" disabled/>
-    </form>
-            <div id="dialog" title="Basic dialog">
-                <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+       <p><small class="form-small-txt">Имя</small><input class='inpDisabled text-center' id='nickName' name="nickName" maxlength='20' disabled value={{ .var2.Name }} autocomplete="off" onchange="checkBoxHandler()"></p>
+       <p><small class="form-small-txt">Клуб</small><input class='inp text-center' id='clubName' name="clubName" maxlength='20' autocomplete="off" onkeyup="checkBoxHandler()"></p>
+       <p><small class="form-small-txt">Кол-во человек</small><input class='inp num text-center' id='peopleNumber' name="peopleNumber" min='1' max='20' size="2" maxlength="2" autocomplete="off" onkeyup="checkBoxHandler()"></p>
+       <p><small class="form-small-txt">Дата</small><input class='inpDisabled text-center' id='date' name="date" disabled autocomplete="off"></p>
+       <p><small class="form-small-txt">Массив индексов</small><input class='inpDisabled text-center' id='lines' name="lines[]" disabled autocomplete="off" onchange="checkBoxHandler()"></p>
+<div class="text-center">
+    <input class="btn btn-primary pt-2 pb-2 pr-3 pl-3 shadow"  type="submit" id="btn_reservation" value="Зарезервировать" disabled />
+</div>
+   </form>
+<!--            <div id="dialog" title="Basic dialog">-->
+<!--                <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>-->
+<!--            </div>-->
             </div>
         </div>
-
-        <div class="col-md-9"> <!--RIGHT-->
-            <table class="table rounded border-top border-left border-right border-bottom shadow table-sm text-nowrap">
-
+        <div class="col-lg-9 col-md-8 col-sm-7 col-xs-2 my-3"> <!--RIGHT-->
+            <table class="table rounded border  shadow table-sm h-100">
                 <tbody class="font-weight-normal table-bordered">
                 <!--data from backend [start]-->
                 {{ range .var1.TableData }}
                 {{ if eq .NickName "" }}
                 <tr class="tr_size" id="line{{ .LineID }}">
-                    <td scope="col" class="h-td font-weight-normal min">{{ .Time }}</td>
+                    <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="far fa-clock pl-1"></i></td>
                     <td scope="col" class="h-td font-weight-normal pl-3 "></td>
                 </tr>
                 {{ else }}
                 <tr class="tr_size bg-booked">
-                    <td scope="col" class="h-td font-weight-normal min border-right-0 tdl">{{ .Time }}</td>
-                    <td scope="col" class="h-td font-weight-normal pl-3 border-left-0 tdr">Зарезервировал(а) <b>{{ .NickName }}</b> для клуба <b>{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.
+                    <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
+                    <td scope="col" class="h-td font-weight-normal pl-3"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.
                     </td>
                 </tr>
                 {{ end }}
@@ -110,8 +95,9 @@
     </div>
 
 </div>
-<script src="/js/bootstrap.min.js"></script>
+<!--main container [end]-->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <!--<script src="../js/bootstrap-datepicker.min.js"></script>-->
