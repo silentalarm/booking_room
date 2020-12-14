@@ -31,7 +31,7 @@
 {{if ne .var2.Name "неавторизован"}}
 
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav userName" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .var2.Name }}</a>
+                <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .var2.Name }}</a>
             </li>
 {{end}}
             {{/*<li class="nav-item">*/}}
@@ -52,9 +52,9 @@
        <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
        <p>
            <small class="form-small-txt">Комната</small>
-           <select class='inp text-center' class='room_val input-group'name="hero" onchange="location = '/'">
-               <option value="floor2">переговорная на 2 этаже</option>
-               <option value="floor3">переговорная на 3 этаже</option>
+           <select class='inp text-center' id = 'room_select' class='input-group'name="hero">
+               <option value="floor_2">переговорная на 2 этаже</option>
+               <option value="floor_3">переговорная на 3 этаже</option>
            </select>
        </p>
        {{/*<p><small class="form-small-txt">Имя</small><input class='inpDisabled text-center' id='nickName' name="nickName" maxlength='20' disabled value={{ .var2.Name }} autocomplete="off"></p>*/}}

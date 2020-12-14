@@ -258,7 +258,7 @@ td.min {
 
 /*userName*/
 .userName, .userName:visited {
-    background-color: #e2695d !important;
+    background-color: #0288C7 !important;
     border-radius: 2px;
     color: #efefef;
     border-color: #0278AF !important;
@@ -269,14 +269,8 @@ td.min {
     padding-left: 15px;
     padding-right: 15px;
     font-size: 14px;
+    cursor: crosshair;
 }
-.userName:hover, .userName:active {
-    background-color: #ae5751 !important;
-    color: #ffffff;
-    border-color: #0173a8 !important;
-    -webkit-transition: .18s ease-out;
-    -moz-transition: .18s ease-out;
-    -o-transition: .18s ease-out;
-    transition: .18s ease-out;
-    font-size: 14px;
+.userName:hover {
+    cursor: crosshair;
 }

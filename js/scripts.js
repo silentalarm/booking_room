@@ -1,3 +1,6 @@
+var today = new Date();
+var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear()
+
 // одиночное выделеление
 var lineSet = new Set();
 
@@ -23,6 +26,17 @@ function isMoreThenZero(num) {
     else
         return false
 }
+
+$('#room_select').on('change', function () {
+    var floor = $(this).val();//этаж
+    var dat = date //today
+    if (floor) {
+        window.location = "?table="+floor + "&date=" + dat;
+    }
+    return false;
+
+});
+
 
 // переделать поля на заполненность формы
 function checkHandler() {
@@ -88,8 +102,7 @@ $(".tr_size").on("mousedown", function (e) {
 
 
 
-var today = new Date();
-var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear()
+
 
 //$('[data-toggle="datepicker"]').datepicker({
 //    format: 'dd.mm.yyyy',
