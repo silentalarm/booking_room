@@ -1,3 +1,13 @@
+// одиночное выделеление
+var lineSet = new Set();
+
+//защита от ввода букв в поле для количества человек
+function validateNumber(event) {
+    var ASCIICode = (event.which) ? event.which : event.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
 //для даты и времени (все что меньше 10 показывалось без 0 вначале)
 function setZero(someVar) {
     if (someVar < 10)
@@ -15,22 +25,15 @@ function isMoreThenZero(num) {
 }
 
 // переделать поля на заполненность формы
-function checkBoxHandler() {
-    console.log($('#nickName').val().trim().length > 0)
-    console.log($('#clubName').val().trim().length > 0)
-    console.log(lineSet.size)
-    console.log($('#date').val().trim().length > 0)
-    console.log($('#peopleNumber').val().trim().length > 0)
-
-    if ($('#nickName').val().trim().length > 0 && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
+function checkHandler() {
+    if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
         $('#btn_reservation').prop('disabled', false);
     } else {
         $('#btn_reservation').prop('disabled', true);
     }
 }
 
-// одиночное выделеление
-let lineSet = new Set();
+
 $(document).on('click', '.tr_size', function () {
     if ($(this).hasClass('bg-select')) {
         $('.tr').text($(this).index());
@@ -46,7 +49,7 @@ $(document).on('click', '.tr_size', function () {
     }
     // пишем в input lines наши одиночно выделенные строки (то есть часы)
     $('#lines').val(Array.from(lineSet))
-    checkBoxHandler();
+    checkHandler();
 });
 
 // мультивыделение
@@ -71,7 +74,7 @@ $(document).on('mousedown', '.tr_size', function () {
 
 $('.tr_size').mouseup(function () {
     // пишем в input lines наши мультивыделенные строки (то есть часы)
-    checkBoxHandler();
+    checkHandler();
     $('#lines').val(Array.from(lineSet));
     $('.tr_size').off('mouseenter mouseleave');
 });
@@ -84,38 +87,6 @@ $(".tr_size").on("mousedown", function (e) {
 });
 
 
-var opt = {
-    autoOpen: false,
-    modal: true,
-    width: 350,
-    height: 400,
-    title: 'Заполнение',
-    resizable: false,
-    collision: 'flip',
-    show: {
-        effect: "drop",
-        direction: "down",
-        duration: 400
-    },
-    hide: {
-        effect: "drop",
-        direction: "down",
-        duration: 400
-    },
-};
-
-$('.tr_size').mouseup(function (e) {
-    var theDialog = $("#dialog").dialog(opt);
-    if (lineSet.size >= 1) {
-        theDialog.dialog("option", "position", {my: "left top", at: "center", of: e});
-        theDialog.dialog("open");
-    }
-});
-
-$(document).on('mousedown', '.tr_size', function () {
-    var theDialog = $("#dialog").dialog(opt);
-    theDialog.dialog("close");
-});
 
 var today = new Date();
 var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear()
@@ -140,7 +111,7 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     //login logout
-    let status = $('#statusAuth').val()
+    var status = $('#statusAuth').val()
     console.log("Authentication is " + status)
     if (status == "false") {
         $('#logout').attr("hidden", true)

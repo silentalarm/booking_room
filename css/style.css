@@ -120,20 +120,6 @@ table.table tbody tr{
 }*/
 
 
-/*.datepicker {*/
-/*    font-size: 0.875em;*/
-/*    width: auto;*/
-/*}*/
-/*!* solution 2: the original datepicker use 20px so replace with the following:*!*/
-
-/*.datepicker td, .datepicker th {*/
-/*    width: 1.8em;*/
-/*    height: 1.8em;*/
-/*}*/
-#datepicker {
-    width: 250px;
-    margin: 0 auto;
-}
 #btn_reservation{
     font-size: 14px;
 }
@@ -195,13 +181,8 @@ table.table tbody tr{
 }
 
 
-body{
-}
-.datepicker-inline{
-    width: 250px;
-}
 td {
-    width: auto;
+    /*width: auto;*/
     padding-left: 10px;
     font-size: 12px;
 }
@@ -260,3 +241,42 @@ td.min {
     /*min-width: 330px;*/
 }
 
+.pl-1{
+    padding-left: 3px;
+}
+
+/*обрезаем текст при сужении*/
+@media (max-width: 900px) {
+    .overflow-ellipsis {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 400px;
+    }
+}
+
+/*userName*/
+.userName, .userName:visited {
+    background-color: #e2695d !important;
+    border-radius: 2px;
+    color: #efefef;
+    border-color: #0278AF !important;
+    -webkit-transition: .18s ease-out;
+    -moz-transition: .18s ease-out;
+    -o-transition: .18s ease-out;
+    transition: .18s ease-out;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+}
+.userName:hover, .userName:active {
+    background-color: #ae5751 !important;
+    color: #ffffff;
+    border-color: #0173a8 !important;
+    -webkit-transition: .18s ease-out;
+    -moz-transition: .18s ease-out;
+    -o-transition: .18s ease-out;
+    transition: .18s ease-out;
+    font-size: 14px;
+}
