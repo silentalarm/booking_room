@@ -148,9 +148,9 @@ table.table tbody tr{
     transition: .18s ease-out;
 }
 .btn-primary:hover, .btn-primary:active {
-    background-color: #017BB3 !important;
+    background-color: #017bb3 !important;
     color: #ffffff;
-    border-color: #017BB3 !important;
+    border-color: #0173a8 !important;
     -webkit-transition: .18s ease-out;
     -moz-transition: .18s ease-out;
     -o-transition: .18s ease-out;
@@ -159,10 +159,10 @@ table.table tbody tr{
 
 /*navigation*/
 .btn-nav, .btn-nav:visited {
-    background-color: rgb(2, 136, 199) !important;
+    background-color: #0288C7 !important;
     border-radius: 2px;
     color: #efefef;
-    border-color: rgb(2, 120, 175) !important;
+    border-color: #0278AF !important;
     -webkit-transition: .18s ease-out;
     -moz-transition: .18s ease-out;
     -o-transition: .18s ease-out;
@@ -174,7 +174,7 @@ table.table tbody tr{
 .btn-nav:hover, .btn-nav:active {
     background-color: #017bb3 !important;
     color: #ffffff;
-    background-color: #017bb3 !important;
+    border-color: #0173a8 !important;
     -webkit-transition: .18s ease-out;
     -moz-transition: .18s ease-out;
     -o-transition: .18s ease-out;
@@ -185,8 +185,7 @@ table.table tbody tr{
     color: #efefef;
     padding-left: 15px;
     padding-right: 15px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin: 2px 3px 2px 3px;
 }
 .navbar-nav .nav-item.active .nav-link,
 .navbar-nav .nav-item:hover .nav-link {
@@ -249,25 +248,15 @@ td.min {
     color: #959697;!important;
 }
 
-/*.navbar-nav .nav-item .nav-link {*/
-/*    color: #fcfcfc;*/
-/*    -webkit-transition: .25s ease-out;*/
-/*    -moz-transition: .25s ease-out;*/
-/*    -o-transition: .25s ease-out;*/
-/*    transition: .25s ease-out;*/
-/*    box-shadow: inset 1px 1px 3px rgba(0,0,0,1.8);*/
-/*    margin-right: 8px;*/
-/*    padding: 10px 12px 10px 12px;*/
-/*    border-radius: 2px;*/
-/*    background-color: #017bb3;*/
-/*}*/
-/*.navbar-nav .nav-item.active .nav-link,*/
-/*.navbar-nav .nav-item:hover .nav-link {*/
-/*    color: #ffffff;*/
-/*    -webkit-transition: .25s ease-out;*/
-/*    -moz-transition: .25s ease-out;*/
-/*    -o-transition: .25s ease-out;*/
-/*    transition: .25s ease-out;*/
-/*    box-shadow: inset 1px 1px 3px rgba(0,0,0,1.8);*/
-/*    background-color: #01608d;*/
-/*}*/
+.navbar-dark .navbar-toggler {
+    background-color: #0288C7 !important;
+    border: 1px solid #0278AF;!important;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-left: 3px;
+}
+.left-col-div2{
+    /*max-width: 400px;*/
+    /*min-width: 330px;*/
+}
+
