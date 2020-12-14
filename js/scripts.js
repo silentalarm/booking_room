@@ -110,16 +110,22 @@ $(".tr_size").on("mousedown", function (e) {
 //    startDate: date,
 //    autoPick: true,
 //    autoShow: true,
-//    //inline: true,
-//    //container: '.datepicker-inline',
+//    inline: true,
+//    container: '.datepicker-inline',
 //    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
 //    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
 //    days: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
 //    daysShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
 //    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
 //});
-
+//
 $(document).ready(function () {
+
+ // заполнение select
+ //$("select option[value=" + val + "]").attr('selected', 'true').text(text);
+
+ $('#room_select').val($('#selectedFloor').val())
+
 // tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -154,7 +160,7 @@ $(document).ready(function () {
 //};
 //$.datepicker.setDefaults($.datepicker.regional['ru']);
 
-//('#my-element').datepicker([options])
+//('#datepicker').datepicker([options])
 //$.fn.datepicker.noConflict();
 
 
@@ -191,8 +197,10 @@ $(document).ready(function () {
         $('#date').val(dateTime);
     }, 1000);
 
-
+//
 //$('#datepicker').datepicker({
+//inline: true,
+//container: '.datepicker-inline',
 //    format: "dd.mm.yyyy",
 //    language: "ru",
 //    weekStart: 1,
@@ -201,5 +209,31 @@ $(document).ready(function () {
 //    //autoclose: true,
 //});
 //$('#datepicker').datepicker("setDate", new Date());
+//
+   // $('#sandbox-container div').datepicker({
+   // });
+//
+   // $('#datepicker').datepicker({
+   //     weekStart: 1,
+   //     daysOfWeekHighlighted: "6,0",
+   //     autoclose: true,
+   //     todayHighlight: true,
+   // });
+   // $('#datepicker').datepicker("setDate", new Date());
+//
+
+    $('#dp').datepicker({
+        inline: true,
+        //container: '.datepicker-inline',
+        format: "dd.mm.yyyy",
+        language: "ru",
+        weekStart: 1,
+        //daysOfWeekHighlighted: "0,6",
+        todayHighlight: true,
+        //autoclose: true,
+    });
+
+    $('#datepicker').datepicker("setDate", new Date());
+    console.log($('#dp').datepicker.dateTime)
 
 })

@@ -6,6 +6,7 @@
     <title>Резерв комнтат</title>
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/css/awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body class="body">
@@ -49,11 +50,18 @@
         <div class="col-md-4 my-3 left-col"><!--LEFT-->
             <div class="wrapper1 p-2 rounded-0 border shadow h-100 left-col-div2">
    <form action="/saveToDB" method="POST" class="p-2">
+
+       <div id="dp"></div>
+       <input data-date-format="dd.mm.yyyy" id="datepicker" disabled>
+
+       <!--calendar end-->
        <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
+       <input type='' value="{{.var3}}" id="selectedFloor">
+       <input type='' value="{{.var4}}" id="selectedDate">
        <p>
            <small class="form-small-txt">Комната</small>
            <select class='inp text-center' id = 'room_select' class='input-group'name="hero">
-               <option value="floor_2">переговорная на 2 этаже</option>
+               <option value="floor_2" selected>переговорная на 2 этаже</option>
                <option value="floor_3">переговорная на 3 этаже</option>
            </select>
        </p>
@@ -100,6 +108,9 @@
 <!--main container [end]-->
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/bootstrap-datepicker.ru.min.js"></script>
+
 <script src="/js/scripts.js"></script>
 </body>
 </html>

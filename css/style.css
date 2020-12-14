@@ -274,3 +274,31 @@ td.min {
 .userName:hover {
     cursor: crosshair;
 }
+
+
+/*datepicker*/
+/*.datepicker {*/
+/*font-size: 0.875em;*/
+/*}*/
+
+/*.datepicker td, .datepicker th {*/
+    /*width: 3em;*/
+    /*height: 3em;*/
+/*}*/
+.datepicker,
+.table-condensed {
+    width: 320px;
+    height: 320px;
+    font-size: 14px;
+}
+.datepicker{
+    /*border:1px solid #0278AF;*/
+    /*padding:5px;!important;*/
+}
+.table-condensed td{
+    border:1px solid #0278AF;
+}
+/*.datepicker-inline {*/
+    /*width: 50%;*/
+
+/*}*/
