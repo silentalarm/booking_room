@@ -53,12 +53,12 @@
 
        <div id="dp" class=""></div>
        <div>
-           <input data-date-format="dd.mm.yyyy" id="showDate" disabled>
+           <input data-date-format="dd.mm.yyyy" id="showDate">
        </div>
        <!--calendar end-->
        <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
        <input type='' value="{{.var3}}" id="selectedFloor">
-       <input type='' value="{{.var4}}" id="selectedDate">
+       <input type='' value="{{.var4}}" id="selectedDate" name="showDate">
        <p>
            <small class="form-small-txt">Комната</small>
            <select class='inp text-center' id = 'room_select' class='input-group'name="hero">
@@ -70,7 +70,7 @@
        <p><small class="form-small-txt">Клуб</small><input class='inp text-center' id='clubName' name="clubName" maxlength='20' autocomplete="off" oninput="checkHandler()"></p>
        <p><small class="form-small-txt">Кол-во человек</small><input class='inp num text-center' id='peopleNumber' name="peopleNumber" min='1' max='20' size="2" maxlength="2" autocomplete="off" onkeypress="return validateNumber(event)" oninput="checkHandler()"></p>
        <p><small class="form-small-txt">Дата</small><input class='inpDisabled text-center' id='date' name="date" disabled autocomplete="off"></p>
-       <input class='inpDisabled text-center' id='lines' name="lines" type="hidden" disabled autocomplete="off"></p>
+       <input class='inpDisabled text-center' id='lines' name="lines" type="hidden" autocomplete="off"></p>
 <div class="text-center">
     <input class="btn btn-primary pt-2 pb-2 pr-3 pl-3 shadow"  type="submit" id="btn_reservation" value="Зарезервировать" disabled />
 </div>

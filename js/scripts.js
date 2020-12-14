@@ -62,7 +62,7 @@ $(document).on('click', '.tr_size', function () {
         $(this).addClass('bg-select');
     }
     // пишем в input lines наши одиночно выделенные строки (то есть часы)
-    $('#lines').val(Array.from(lineSet))
+    $('#lines').val(Array.from(lineSet));
     checkHandler();
 });
 

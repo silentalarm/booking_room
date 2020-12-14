@@ -26,7 +26,6 @@ var tableWhiteList = []string{
 	"floor_3",
 }
 
-
 func tableInit() ViewData {
 	//http.ServeFile(w, r, "static/table.html")
 	data := ViewData{
@@ -65,17 +64,14 @@ func index(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
-
 	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
 	if tableIsExist == false {
 		tableName = "floor_2"
 	}
-
 	date := r.URL.Query().Get("date")
 	if date == "" {
 		date = time.Now().Format("02.01.2006")
 	}
-
 	timeRes, _ := getDateReserves(db, tableName, date)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
@@ -96,7 +92,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl.Execute(w, data_map)
 }
-
 
 func tableIsCorrect(table string, whiteList []string) bool {
 	for _, val := range whiteList {
@@ -150,20 +145,10 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	tableName := r.URL.Query().Get("table")
-	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
-	if tableIsExist == false {
-		http.Redirect(w, r, "/", http.StatusFound)
-	}
-
-	date := r.URL.Query().Get("date")
-	if date == "" {
-		date = time.Now().Format("02.01.2006")
-	}
-
-	r.ParseForm()
 	lines := r.FormValue("lines")
 	clubName := r.FormValue("clubName")
+	tableName := r.FormValue("hero")
+	date := r.FormValue("showDate")
 	peopleNumber := r.FormValue("peopleNumber")
 	splitedLines := strings.Split(lines, ",")
 	convertLines := convertArray(splitedLines)
@@ -188,7 +173,6 @@ func tryInsertLines(user *User, db *sql.DB, table string, clubName string, peopl
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
-	fmt.Print("sa")
 	for _, date_ := range date {
 		successfullyLines := []string{}
 		unSuccessfullyLines := []string{}
