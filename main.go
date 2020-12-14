@@ -21,6 +21,12 @@ type TData struct {
 	PeopleNumber int
 }
 
+var tableWhiteList = []string{
+	"floor_2",
+	"floor_3",
+}
+
+
 func tableInit() ViewData {
 	//http.ServeFile(w, r, "static/table.html")
 	data := ViewData{
@@ -55,14 +61,22 @@ func tableInit() ViewData {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	today := time.Now().Format("02.01.2006")
-	//http.ServeFile(w, r, "static/table.html")
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	r.ParseForm()
-	tableName := r.FormValue("hero")
-	timeRes, _ := getDateReserves(db, tableName, today)
+	tableName := r.URL.Query().Get("table")
+
+	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
+	if tableIsExist == false {
+		tableName = "floor_2"
+	}
+
+	date := r.URL.Query().Get("date")
+	if date == "" {
+		date = time.Now().Format("02.01.2006")
+	}
+
+	timeRes, _ := getDateReserves(db, tableName, date)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 
@@ -77,10 +91,20 @@ func index(w http.ResponseWriter, r *http.Request) {
 	data_map := map[string]interface{}{
 		"var1": data,
 		"var2": user,
+		"var3": tableName,
+		"var4": date,
 	}
-
 	tmpl.Execute(w, data_map)
+}
 
+
+func tableIsCorrect(table string, whiteList []string) bool {
+	for _, val := range whiteList {
+		if table == val {
+			return true
+		}
+	}
+	return false
 }
 
 func rebuildTable(rows []ReserveRow) *ViewData {
@@ -126,9 +150,19 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
+	tableName := r.URL.Query().Get("table")
+	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
+	if tableIsExist == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+	}
+
+	date := r.URL.Query().Get("date")
+	if date == "" {
+		date = time.Now().Format("02.01.2006")
+	}
+
 	r.ParseForm()
 	lines := r.FormValue("lines")
-	tableName := r.FormValue("hero")
 	clubName := r.FormValue("clubName")
 	peopleNumber := r.FormValue("peopleNumber")
 	splitedLines := strings.Split(lines, ",")
