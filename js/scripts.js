@@ -223,17 +223,21 @@ $(document).ready(function () {
 //
 
     $('#dp').datepicker({
-        inline: true,
-        //container: '.datepicker-inline',
         format: "dd.mm.yyyy",
+        //todayBtn: "linked",
         language: "ru",
         weekStart: 1,
-        //daysOfWeekHighlighted: "0,6",
+        daysOfWeekHighlighted: "0,6",
         todayHighlight: true,
         //autoclose: true,
-    });
+    }).on('changeDate', showTestDate);
+    //$('#datepicker').datepicker("setDate", new Date());
 
-    $('#datepicker').datepicker("setDate", new Date());
-    console.log($('#dp').datepicker.dateTime)
+    function showTestDate(){
+        var value = $('#dp').datepicker('getFormattedDate');
+        $("#showDate").val(value);
 
+        var floor = $('#room_select').val();//этаж
+        window.location = "?table="+floor + "&date=" + value;
+    }
 })

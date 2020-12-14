@@ -175,9 +175,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		clubName,
 		peopleNumber,
 		[]string{
-			"12.12.2020",
-			"13.12.2020",
-			"14.12.2020",
+			date,
 		},
 		convertLines,
 	)

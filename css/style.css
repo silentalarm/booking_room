@@ -287,13 +287,13 @@ td.min {
 /*}*/
 .datepicker,
 .table-condensed {
-    width: 320px;
-    height: 320px;
+    width: 260px;
+    height: 260px;
     font-size: 14px;
 }
-.datepicker{
-    /*border:1px solid #0278AF;*/
-    /*padding:5px;!important;*/
+.table-condensed {
+    border:1px solid #0278AF;
+    padding:15px;!important;
 }
 .table-condensed td{
     border:1px solid #0278AF;
