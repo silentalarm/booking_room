@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -59,7 +60,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	timeRes, _ := getDateReserves(db, "floor_2", today)
+	r.ParseForm()
+	tableName := r.FormValue("hero")
+	timeRes, _ := getDateReserves(db, tableName, today)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 
@@ -120,51 +123,55 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//linesToAdd := getCheckboxLines(r)
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	succ, unSucc := insertFromLines(
+	r.ParseForm()
+	lines := r.FormValue("lines")
+	tableName := r.FormValue("hero")
+	clubName := r.FormValue("clubName")
+	peopleNumber := r.FormValue("peopleNumber")
+	splitedLines := strings.Split(lines, ",")
+	convertLines := convertArray(splitedLines)
+
+	succ, unSucc := tryInsertLines(
 		user,
 		db,
-		"floor_3",
-		"lol",
-		"10",
+		tableName,
+		clubName,
+		peopleNumber,
 		[]string{
 			"12.12.2020",
 			"13.12.2020",
 			"14.12.2020",
 		},
-		[]int{
-			12,
-			13,
-			14,
-		})
+		convertLines,
+	)
 	fmt.Print(succ, unSucc)
 	//insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func insertFromLines(user *User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
+func tryInsertLines(user *User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
 	fmt.Print("sa")
 	for _, date_ := range date {
-		successfullyHours := []string{}
-		unSuccessfullyHours := []string{}
+		successfullyLines := []string{}
+		unSuccessfullyLines := []string{}
 		for _, i := range lines {
 			empty := reserveIsExist(db, table, date_, i)
 			strHour := strconv.Itoa(i)
 			if empty == false {
 				insertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
-				successfullyHours = append(successfullyHours, strHour)
+				successfullyLines = append(successfullyLines, strHour)
 			} else {
-				unSuccessfullyHours = append(unSuccessfullyHours, strHour)
+				unSuccessfullyLines = append(unSuccessfullyLines, strHour)
 			}
 		}
-		successfullyAdded[date_] = successfullyHours
-		unSuccessfullyAdded[date_] = unSuccessfullyHours
+		successfullyAdded[date_] = successfullyLines
+		unSuccessfullyAdded[date_] = unSuccessfullyLines
 	}
 	return successfullyAdded, unSuccessfullyAdded
 }
@@ -187,22 +194,16 @@ func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 	db := openDB("sqlite3", "reserves.db")
 	defer db.Close()
 
-	tryDeleteRowByOwner(db, "floor_2", "12.12.2020", user.Name, "2")
+	tryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")
 	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 
-func getCheckboxLines(r *http.Request) []int {
-	checkboxLines := []int{}
-	for i := range [24]int{} {
-		strCheckbox := fmt.Sprintf("checkBox%d", i)
-
-		clubName := r.FormValue(strCheckbox)
-
-		if clubName == "on" {
-			checkboxLines = append(checkboxLines, i)
-		}
+func convertArray(lines []string) []int {
+	convertedArray := make([]int, len(lines))
+	for i := range convertedArray {
+		convertedArray[i], _ = strconv.Atoi(lines[i])
 	}
-	return checkboxLines
+	return convertedArray
 }
 
 func main() {
