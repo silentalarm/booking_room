@@ -1,1 +1,1 @@
-web: goscrs
+web: scr
