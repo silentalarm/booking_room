@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -228,7 +229,6 @@ func main() {
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
 	//port := os.Getenv("PORT")
-	port := "5000sZ `"
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
@@ -240,7 +240,7 @@ func main() {
 	http.HandleFunc("/delete", deleteFromMe)
 
 	fmt.Println("Server is listening...")
-	http.ListenAndServe(":"+port, nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 
 }
 
