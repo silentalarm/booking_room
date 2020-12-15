@@ -1,7 +1,10 @@
 {
-	"ImportPath": "github.com/booking_room/scr",
+	"ImportPath": "github.com/booking_room",
 	"GoVersion": "go1.15",
 	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/gorilla/securecookie",
