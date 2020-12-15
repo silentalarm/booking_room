@@ -104,6 +104,7 @@ $(".tr_size").on("mousedown", function (e) {
 
 
 
+
 //$('[data-toggle="datepicker"]').datepicker({
 //    format: 'dd.mm.yyyy',
 //    weekStart: 1,
@@ -120,6 +121,26 @@ $(".tr_size").on("mousedown", function (e) {
 //});
 //
 $(document).ready(function () {
+
+    $('.notes').on('click',function (e){
+        alert("ok");
+        $.ajax({
+            type:'GET',
+            url :'localhost:8185/?table=floor_3&date=17.12.2020',
+            dataType: 'html',
+            success: function(data) {
+                console.log('success',data);
+                $('#interactive').html(data);
+
+            },
+            error: function(jqXHR,textStatus,errorThrown ){
+                alert('Exception:'+errorThrown );
+            }
+        });
+        e.preventDefault();
+    });
+
+
 
  // заполнение select
  //$("select option[value=" + val + "]").attr('selected', 'true').text(text);
@@ -229,15 +250,27 @@ $(document).ready(function () {
         weekStart: 1,
         daysOfWeekHighlighted: "0,6",
         todayHighlight: true,
+        //multidate: true,
+        // title:	"Выбор даты",
+        //zIndexOffset: 1,
         //autoclose: true,
+        assumeNearbyYear: true,
     }).on('changeDate', showTestDate);
     //$('#datepicker').datepicker("setDate", new Date());
 
     function showTestDate(){
         var value = $('#dp').datepicker('getFormattedDate');
         $("#showDate").val(value);
+        $('#dp').datepicker('select', $('#selectedDate').val());
+        //alert($('#selectedDate').val())
+
+
 
         var floor = $('#room_select').val();//этаж
         window.location = "?table="+floor + "&date=" + value;
+
     }
+
+$('.datepicker-switch').setAttribute('disabled', true);
+
 })

@@ -285,20 +285,86 @@ td.min {
     /*width: 3em;*/
     /*height: 3em;*/
 /*}*/
+
+
+
+
+
+.datepicker-title{
+    background-color: #0288C7;
+    border-radius: 0;!important;
+    color: white;
+    font-weight: normal;
+    padding-top: 10px;!important;
+    padding-bottom: 10px;!important;
+}
+/*title*/
+#dp > div > div.datepicker-days > table > thead > tr:nth-child(1) > th{
+    border-radius: 0px;
+}
+/*month changing*/
+#dp > div > div.datepicker-days > table > thead > tr:nth-child(2) > th{
+    background-color: #0288C7;
+    border: 1px solid #0278AF;
+    border-radius: 0;!important;
+    color: white;
+    font-weight: normal;!important;
+    padding-top: 10px;!important;
+    padding-bottom: 10px;!important;
+}
+/*days of week title*/
+#dp > div > div.datepicker-days > table > thead > tr:nth-child(3) > th {
+    font-weight: normal;!important;
+    font-size: 12px;
+    padding-top: 5px;!important;
+    padding-bottom: 5px;!important;
+}
+
 .datepicker,
 .table-condensed {
-    width: 260px;
-    height: 260px;
-    font-size: 14px;
+
 }
 .table-condensed {
     border:1px solid #0278AF;
-    padding:15px;!important;
+}
+#dp > div > div.datepicker-days > table > tbody{
+    border:1px solid #0278AF;!important;
 }
 .table-condensed td{
-    border:1px solid #0278AF;
+    /*border:1px solid #e62b32;*/
+    padding: 8px 11px;
 }
-/*.datepicker-inline {*/
-    /*width: 50%;*/
+/*today*/
+#dp > div > div.datepicker-days > table > tbody > tr:nth-child(3) > td.today.day{
+    border: none;
+    color: white;
+    border-radius: 2px;
+    padding: 0px;
+    background: #4d6ad0 none;
+}
+/*days*/
+#dp > div > div.datepicker-days > table > tbody > tr > td{
+    border: 0px solid #f6fdff;
+}
 
-/*}*/
+/*days hover*/
+#dp > div > div.datepicker-days > table > tbody > tr > td:hover{
+    border: none;
+    color: white;
+    border-radius: 2px;
+    background-color: #0288C7;
+}
+
+/*weekend hover*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.highlighted:hover{
+    border-radius: 2px;!important;
+    background-color: #0288C7;
+}
+/*weekend 6*/
+#dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(6){
+    background-color: #cde1f7;
+}
+/*weekend 7*/
+#dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(7){
+    background-color: #cde1f7;
+}
