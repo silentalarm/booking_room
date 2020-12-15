@@ -60,7 +60,7 @@ func tableInit() ViewData {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	db := openDB("sqlite3", "../reserves.db")
+	db := openDB("sqlite3", "db/reserves.db")
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
@@ -142,7 +142,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("sqlite3", "../reserves.db")
+	db := openDB("sqlite3", "db/reserves.db")
 	defer db.Close()
 
 	lines := r.FormValue("lines")
@@ -207,7 +207,7 @@ func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("sqlite3", "../reserves.db")
+	db := openDB("sqlite3", "db/reserves.db")
 	defer db.Close()
 
 	tryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")
@@ -227,17 +227,11 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
-	//db := openDB("sqlite3", "reserves.db")
-	//today := time.Now().Format("02.02.2007")
-	//dbTables := []string{
-	//	"floor_3",
-	//	"floor_2",
-	//}
-	//deleteOldReserves(db, dbTables, today)
+	//port := os.Getenv("PORT")
+	port := "5000"
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
-
 	http.HandleFunc("/login", authLogin)
 	http.HandleFunc("/callback", authCallbackHandler)
 	http.HandleFunc("/profile", profileUser)
@@ -246,7 +240,7 @@ func main() {
 	http.HandleFunc("/delete", deleteFromMe)
 
 	fmt.Println("Server is listening...")
-	http.ListenAndServe(":8185", nil)
+	http.ListenAndServe(":"+port, nil)
 
 }
 

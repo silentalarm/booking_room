@@ -19,18 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scr/auth.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/dbhandler.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/sessions.go" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="пофиксил запуск через хероку">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking21" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbhandler.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserves.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/reserves.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,12 +45,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="GO_FMT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db" />
+      <recent name="$PROJECT_DIR$/scr" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TodoView">
@@ -81,20 +80,38 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="пофиксил дату при обновлении страницы" />
-    <option name="LAST_COMMIT_MESSAGE" value="пофиксил дату при обновлении страницы" />
+    <MESSAGE value="пофиксил запуск через хероку" />
+    <option name="LAST_COMMIT_MESSAGE" value="пофиксил запуск через хероку" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608057789894">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="516" y="384" key="#GOROOT/0.0.1440.900@0.0.1440.900" timestamp="1608057789894" />
+    <state x="320" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608065979381">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1608065979381" />
     <state x="440" y="256" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608058362126">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="440" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1608058362126" />
+    <state width="229" height="457" key="HiddenNamespacesPopup" timestamp="1608065994290">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608065994290" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608065344475">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608065344475" />
+    <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608065885830">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1608065885830" />
   </component>
 </project>
