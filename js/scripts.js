@@ -242,6 +242,9 @@ $(document).ready(function () {
    // });
    // $('#datepicker').datepicker("setDate", new Date());
 //
+//
+
+    date1 = new Date(2011, 1, 28)
 
     $('#dp').datepicker({
         format: "dd.mm.yyyy",
@@ -255,7 +258,10 @@ $(document).ready(function () {
         //zIndexOffset: 1,
         //autoclose: true,
         assumeNearbyYear: true,
-    }).on('changeDate', showTestDate);
+        setDate: date1 ,
+    }).on('changeDate', showTestDate
+    ).datepicker("update", $('#selectedDate').val());
+
     //$('#datepicker').datepicker("setDate", new Date());
 
     function showTestDate(){
@@ -264,6 +270,8 @@ $(document).ready(function () {
         $('#dp').datepicker('select', $('#selectedDate').val());
         //alert($('#selectedDate').val())
 
+        //$('#dp').datepicker("update", date1);
+        //alert($('#selectedDate').val())
 
 
         var floor = $('#room_select').val();//этаж
