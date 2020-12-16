@@ -61,7 +61,7 @@ func tableInit() ViewData {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	db := openDB("sqlite3", "db/reserves.db")
+	db := openDB("postgres")
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
@@ -143,7 +143,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("sqlite3", "db/reserves.db")
+	db := openDB("postgres")
 	defer db.Close()
 
 	lines := r.FormValue("lines")
@@ -208,7 +208,7 @@ func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("sqlite3", "db/reserves.db")
+	db := openDB("postgres")
 	defer db.Close()
 
 	tryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")

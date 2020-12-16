@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
 )
 
 type ReserveRow struct {
@@ -15,8 +15,9 @@ type ReserveRow struct {
 	ReserveDate  string
 }
 
-func openDB(db_name string, db_path string) *sql.DB {
-	db, err := sql.Open(db_name, db_path)
+func openDB(db_name string) *sql.DB {
+	connStr := "user=vwemxptfpegfam password=2befa15ec5222f63f97015389b935cd3a4b9ab8bf9b478643b2fdec8e21ab4a5 dbname=deq58l9o8oe3et sslmode=disable"
+	db, err := sql.Open(db_name, connStr)
 	if err != nil {
 		panic(err)
 	}
