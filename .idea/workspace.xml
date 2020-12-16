@@ -21,10 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="govendor init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/vendor/github.com/scr/auth.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/vendor/github.com/scr/dbhandler.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/vendor/github.com/scr/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/vendor/github.com/scr/sessions.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,10 +105,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608065994290" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608150054107">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608151231840">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608150054107" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608151231840" />
     <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608065885830">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
