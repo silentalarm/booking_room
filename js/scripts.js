@@ -246,6 +246,9 @@ $(document).ready(function () {
 
     date1 = new Date(2011, 1, 28)
 
+    var startDate = new Date();
+    date.setDate(startDate.getDate()-1);
+
     $('#dp').datepicker({
         format: "dd.mm.yyyy",
         //todayBtn: "linked",
@@ -253,6 +256,7 @@ $(document).ready(function () {
         weekStart: 1,
         daysOfWeekHighlighted: "0,6",
         todayHighlight: true,
+        startDate: startDate,
         //multidate: true,
         // title:	"Выбор даты",
         //zIndexOffset: 1,
