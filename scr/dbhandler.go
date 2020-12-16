@@ -16,7 +16,7 @@ type ReserveRow struct {
 }
 
 const (
-	host     = "ec2-52-31-233-101.eu-west-1.compute.amazonaws.com\n"
+	host     = "ec2-52-31-233-101.eu-west-1.compute.amazonaws.com"
 	port     = 5432
 	user     = "vwemxptfpegfam"
 	password = "2befa15ec5222f63f97015389b935cd3a4b9ab8bf9b478643b2fdec8e21ab4a5"
