@@ -263,8 +263,7 @@ $(document).ready(function () {
         assumeNearbyYear: true,
         setDate: date1 ,
     }).on('changeDate', showTestDate
-    ).datepicker("update", $('#selectedDate').val()
-    ).datepicker({ startDate: startDate});
+    ).datepicker("update", $('#selectedDate').val())
 
     //$('#datepicker').datepicker("setDate", new Date());
 
