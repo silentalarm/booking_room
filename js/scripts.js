@@ -256,7 +256,6 @@ $(document).ready(function () {
         weekStart: 1,
         daysOfWeekHighlighted: "0,6",
         todayHighlight: true,
-        startDate: startDate,
         //multidate: true,
         // title:	"Выбор даты",
         //zIndexOffset: 1,
@@ -264,7 +263,8 @@ $(document).ready(function () {
         assumeNearbyYear: true,
         setDate: date1 ,
     }).on('changeDate', showTestDate
-    ).datepicker("update", $('#selectedDate').val());
+    ).datepicker("update", $('#selectedDate').val()
+    ).datepicker({ startDate: startDate});
 
     //$('#datepicker').datepicker("setDate", new Date());
 
