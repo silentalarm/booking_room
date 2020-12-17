@@ -1,4 +1,4 @@
-package main
+package authorization
 
 import (
 	"crypto/rand"
@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	cv "github.com/nirasan/go-oauth-pkce-code-verifier"
+	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"golang.org/x/oauth2"
 	"io/ioutil"
 	"net/http"
@@ -30,31 +31,17 @@ type AuthUser struct {
 
 var (
 	AuthConfig       *oauth2.Config
-	oauthStateString = Hex(16)
+	oauthStateString = bytesToHex(16)
 	codeVerifier, _  = cv.CreateCodeVerifier()
 	codeChallenge    = codeVerifier.CodeChallengeS256()
 )
 
-func init() {
-	AuthConfig = &oauth2.Config{
-		RedirectURL:  "https://booking21.herokuapp.com/callback",
-		ClientID:     "c7a7c50ad67f03a72f23c77545b25ac48d616bc1e5daef046d956ed55acf95fd",
-		ClientSecret: "157505de170d0b275ab4e10041d4dba1f4f90e21bd1ab5567fc9694b1f040716",
-		Scopes:       []string{"public"},
-		Endpoint: oauth2.Endpoint{
-			AuthURL:   "https://api.intra.42.fr/oauth/authorize",
-			TokenURL:  "https://api.intra.42.fr/oauth/token",
-			AuthStyle: oauth2.AuthStyleInHeader,
-		},
-	}
-}
-
-func authLogin(w http.ResponseWriter, r *http.Request) {
+func Login(w http.ResponseWriter, r *http.Request) {
 	url := AuthConfig.AuthCodeURL(oauthStateString, oauth2.SetAuthURLParam("code_challenge", codeChallenge), oauth2.SetAuthURLParam("code_challenge_method", "S256"))
 	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }
 
-func authCallbackHandler(w http.ResponseWriter, r *http.Request) {
+func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	content, err := authUserInfo(r.FormValue("state"), r.FormValue("code"))
 	if err != nil {
 		fmt.Println(err.Error())
@@ -62,7 +49,7 @@ func authCallbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	userInf, _ := getUserFromCallback(content)
-	userLogin(w, r, userInf)
+	ses.Init(w, r, userInf)
 
 	//fmt.Fprintf(w,"lol: %s", userInf)
 	//fmt.Fprintf(w, "Instr user info: %s", content)
@@ -115,7 +102,7 @@ func getUserFromCallback(bytes []byte) (*AuthUser, error) {
 	return &user, nil
 }
 
-func Bytes(n int) []byte {
+func generateBytes(n int) []byte {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
 	if err != nil {
@@ -124,6 +111,6 @@ func Bytes(n int) []byte {
 	return b
 }
 
-func Hex(n int) string {
-	return hex.EncodeToString(Bytes(n))
+func bytesToHex(n int) string {
+	return hex.EncodeToString(generateBytes(n))
 }

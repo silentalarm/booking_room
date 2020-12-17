@@ -3,7 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	auth "github.com/silentalarm/booking_room/scr/authorization"
 	dbh "github.com/silentalarm/booking_room/scr/databaseHandler"
+	ses "github.com/silentalarm/booking_room/scr/sessions"
+	"golang.org/x/oauth2"
 	"html/template"
 	"net/http"
 	"os"
@@ -78,13 +81,13 @@ func index(w http.ResponseWriter, r *http.Request) {
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 
-	session, err := store.Get(r, "auth-session")
+	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	user := getUser(session)
+	user := ses.GetUser(session)
 
 	data_map := map[string]interface{}{
 		"var1": data,
@@ -131,13 +134,13 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session, err := store.Get(r, "auth-session")
+	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	user := getUser(session)
+	user := ses.GetUser(session)
 
 	if user.Authenticated == false {
 		http.Redirect(w, r, "/", http.StatusFound)
@@ -171,7 +174,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func tryInsertLines(user *User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
+func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
@@ -195,13 +198,13 @@ func tryInsertLines(user *User, db *sql.DB, table string, clubName string, peopl
 }
 
 func deleteFromMe(w http.ResponseWriter, r *http.Request) {
-	session, err := store.Get(r, "auth-session")
+	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	user := getUser(session)
+	user := ses.GetUser(session)
 
 	if user.Authenticated == false {
 		fmt.Printf("user: %s auth: %t", user.Name, user.Authenticated)
@@ -224,6 +227,20 @@ func convertArray(lines []string) []int {
 	return convertedArray
 }
 
+func init() {
+	auth.AuthConfig = &oauth2.Config{
+		RedirectURL:  "https://booking21.herokuapp.com/callback",
+		ClientID:     "c7a7c50ad67f03a72f23c77545b25ac48d616bc1e5daef046d956ed55acf95fd",
+		ClientSecret: "157505de170d0b275ab4e10041d4dba1f4f90e21bd1ab5567fc9694b1f040716",
+		Scopes:       []string{"public"},
+		Endpoint: oauth2.Endpoint{
+			AuthURL:   "https://api.intra.42.fr/oauth/authorize",
+			TokenURL:  "https://api.intra.42.fr/oauth/token",
+			AuthStyle: oauth2.AuthStyleInHeader,
+		},
+	}
+}
+
 func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
@@ -233,10 +250,9 @@ func main() {
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
-	http.HandleFunc("/login", authLogin)
-	http.HandleFunc("/callback", authCallbackHandler)
-	http.HandleFunc("/profile", profileUser)
-	http.HandleFunc("/logout", userLogout)
+	http.HandleFunc("/login", auth.Login)
+	http.HandleFunc("/callback", auth.CallbackHandler)
+	http.HandleFunc("/logout", ses.Delete)
 	http.HandleFunc("/saveToDB", saveToDB)
 	http.HandleFunc("/delete", deleteFromMe)
 

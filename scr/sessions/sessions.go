@@ -1,9 +1,10 @@
-package main
+package sessions
 
 import (
 	"fmt"
 	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
+	auth "github.com/silentalarm/booking_room/scr/authorization"
 	"net/http"
 )
 
@@ -18,20 +19,20 @@ var (
 	authKeyOne       = securecookie.GenerateRandomKey(64)
 	encryptionKeyOne = securecookie.GenerateRandomKey(32)
 
-	store = sessions.NewCookieStore(
+	Store = sessions.NewCookieStore(
 		authKeyOne,
 		encryptionKeyOne,
 	)
 )
 
-func profileUser(w http.ResponseWriter, r *http.Request) {
-	session, err := store.Get(r, "auth-session")
+func ProfileUser(w http.ResponseWriter, r *http.Request) {
+	session, err := Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	user := getUser(session)
+	user := GetUser(session)
 
 	if user.Authenticated == false {
 		fmt.Printf("user: %s auth: %t", user.Name, user.Authenticated)
@@ -43,8 +44,8 @@ func profileUser(w http.ResponseWriter, r *http.Request) {
 		user.ID, user.Name, user.Campus, user.Authenticated)
 }
 
-func userLogin(w http.ResponseWriter, r *http.Request, user *AuthUser) {
-	session, err := store.Get(r, "auth-session")
+func Init(w http.ResponseWriter, r *http.Request, user *auth.AuthUser) {
+	session, err := Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -63,8 +64,8 @@ func userLogin(w http.ResponseWriter, r *http.Request, user *AuthUser) {
 	}
 }
 
-func userLogout(w http.ResponseWriter, r *http.Request) {
-	session, err := store.Get(r, "auth-session")
+func Delete(w http.ResponseWriter, r *http.Request) {
+	session, err := Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -84,7 +85,7 @@ func userLogout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-func getUser(session *sessions.Session) *User {
+func GetUser(session *sessions.Session) *User {
 	if _, ok := session.Values["authenticated"].(bool); !ok {
 		user := User{Name: "неавторизован", Authenticated: false}
 		return &user
@@ -99,13 +100,13 @@ func getUser(session *sessions.Session) *User {
 }
 
 //FIX ME
-func isAuthenticated(w http.ResponseWriter, r *http.Request) (bool, error) {
-	session, err := store.Get(r, "auth-session")
+func IsAuthenticated(w http.ResponseWriter, r *http.Request) (bool, error) {
+	session, err := Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return false, err
 	}
-	user := getUser(session)
+	user := GetUser(session)
 
 	return user.Authenticated, nil
 }
