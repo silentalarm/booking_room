@@ -1,9 +1,9 @@
 package main
 
 import (
-	dbh "./databaseHandler"
 	"database/sql"
 	"fmt"
+	dbh "github.com/silentalarm/booking_room/scr/databaseHandler"
 	"html/template"
 	"net/http"
 	"os"
