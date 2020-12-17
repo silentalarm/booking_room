@@ -404,11 +404,11 @@ td.min {
     background-color: white;
     color: #999;
 }
-/*заглушки для старых выходных*/
+/*заглушки для старых выходных */
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(6):hover{
     background-color: #cde1f7;!important;
 }
-/*заглушки для старых выходных*/
+/*заглушки для старых выходных */
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(7):hover{
     background-color: #cde1f7;!important;
 }
