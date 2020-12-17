@@ -23,12 +23,6 @@ type CampusData struct {
 	CampusName string `json:"name"`
 }
 
-type AuthUser struct {
-	ID     string
-	Name   string
-	Campus string
-}
-
 var (
 	AuthConfig       *oauth2.Config
 	oauthStateString = bytesToHex(16)
@@ -86,14 +80,14 @@ func authUserInfo(state string, code string) ([]byte, error) {
 	return contents, nil
 }
 
-func getUserFromCallback(bytes []byte) (*AuthUser, error) {
+func getUserFromCallback(bytes []byte) (*ses.AuthUser, error) {
 	var message Message
 	err := json.Unmarshal(bytes, &message)
 	if err != nil {
 		return nil, fmt.Errorf("failed on convert from JSON: %s", err.Error())
 	}
 
-	user := AuthUser{
+	user := ses.AuthUser{
 		ID:     strconv.Itoa(message.ID),
 		Name:   message.Name,
 		Campus: message.Campus[0].CampusName,

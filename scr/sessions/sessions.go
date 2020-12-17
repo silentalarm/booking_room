@@ -4,9 +4,14 @@ import (
 	"fmt"
 	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
-	auth "github.com/silentalarm/booking_room/scr/authorization"
 	"net/http"
 )
+
+type AuthUser struct {
+	ID     string
+	Name   string
+	Campus string
+}
 
 type User struct {
 	ID            string
@@ -44,7 +49,7 @@ func ProfileUser(w http.ResponseWriter, r *http.Request) {
 		user.ID, user.Name, user.Campus, user.Authenticated)
 }
 
-func Init(w http.ResponseWriter, r *http.Request, user *auth.AuthUser) {
+func Init(w http.ResponseWriter, r *http.Request, user *AuthUser) {
 	session, err := Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

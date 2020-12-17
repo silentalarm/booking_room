@@ -19,21 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс go mod">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="рефакторинг">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/authorization/authorization.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/sessions.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/sessions/sessions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/authorization/authorization.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/authorization/authorization.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/sessions/sessions.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/sessions/sessions.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>tog</find>
-    </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.5/libexec" />
   <component name="Git.Settings">
@@ -67,11 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scr/sessions" />
       <recent name="$PROJECT_DIR$/scr/authorization" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/scr/databaseHandler" />
+      <recent name="$PROJECT_DIR$/scr/sessions" />
       <recent name="$PROJECT_DIR$/scr" />
+      <recent name="$PROJECT_DIR$/scr/authorization/sessions" />
+      <recent name="$PROJECT_DIR$/scr/authorization/authorization" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -110,7 +106,8 @@
     <MESSAGE value="рефакторинг пакетов" />
     <MESSAGE value="фикс импорта" />
     <MESSAGE value="фикс go mod" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс go mod" />
+    <MESSAGE value="рефакторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="рефакторинг" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -149,10 +146,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608158453381" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608228871758">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608230068442">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608228871758" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608230068442" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
