@@ -401,6 +401,7 @@ td.min {
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.day.highlighted:hover{
     background-color: #cde1f7;!important;
 }
+/*заглушка для неактивных выходных*/
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled:nth-child(6):hover{
     background-color: #cde1f7;!important;
 }
