@@ -261,6 +261,7 @@ $(document).ready(function () {
         forceParse: false,
         toggleActive: true,
         assumeNearbyYear: true,
+        startDate: "today",
         setDate: date1 ,
     }).on('changeDate', showTestDate).datepicker("update", $('#selectedDate').val());
 
