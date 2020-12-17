@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	dbh "github.com/booking_room/scr/databaseHandler"
 	"html/template"
 	"net/http"
 	"os"
@@ -61,7 +62,7 @@ func tableInit() ViewData {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	db := openDB("postgres")
+	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
@@ -73,7 +74,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	if date == "" {
 		date = time.Now().Format("02.01.2006")
 	}
-	timeRes, _ := getDateReserves(db, tableName, date)
+	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
 	data := rebuildTable(timeRes)
 	tmpl, _ := template.ParseFiles("static/table.html")
 
@@ -103,7 +104,7 @@ func tableIsCorrect(table string, whiteList []string) bool {
 	return false
 }
 
-func rebuildTable(rows []ReserveRow) *ViewData {
+func rebuildTable(rows []dbh.ReserveRow) *ViewData {
 	data := tableInit()
 
 	for _, row := range rows {
@@ -143,7 +144,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("postgres")
+	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
 	lines := r.FormValue("lines")
@@ -178,10 +179,10 @@ func tryInsertLines(user *User, db *sql.DB, table string, clubName string, peopl
 		successfullyLines := []string{}
 		unSuccessfullyLines := []string{}
 		for _, i := range lines {
-			empty := reserveIsExist(db, table, date_, i)
+			empty := dbh.ReserveIsExist(db, table, date_, i)
 			strHour := strconv.Itoa(i)
 			if empty == false {
-				insertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
+				dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
 				successfullyLines = append(successfullyLines, strHour)
 			} else {
 				unSuccessfullyLines = append(unSuccessfullyLines, strHour)
@@ -208,10 +209,10 @@ func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := openDB("postgres")
+	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	tryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")
+	dbh.TryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")
 	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 

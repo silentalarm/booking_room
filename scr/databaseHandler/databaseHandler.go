@@ -1,4 +1,4 @@
-package main
+package databaseHandler
 
 import (
 	"database/sql"
@@ -23,7 +23,7 @@ const (
 	dbname   = "deq58l9o8oe3et"
 )
 
-func openDB(db_name string) *sql.DB {
+func OpenDB(db_name string) *sql.DB {
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
@@ -34,7 +34,7 @@ func openDB(db_name string) *sql.DB {
 	return db
 }
 
-func insertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) error {
+func InsertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) error {
 	_, err := db.Exec(
 		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
 		nickname, clubname, people_number, reserv_time, reserv_date)
@@ -54,7 +54,7 @@ func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
 	return rows, nil
 }
 
-func getDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow, error) {
+func GetDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow, error) {
 	rows, err := getDBRows(db, table)
 	if err != nil {
 		return nil, err
@@ -76,8 +76,8 @@ func getDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow,
 	return timeReserves, nil
 }
 
-func reserveIsExist(db *sql.DB, table, date string, time int) bool {
-	timeRes, _ := getDateReserves(db, table, date)
+func ReserveIsExist(db *sql.DB, table, date string, time int) bool {
+	timeRes, _ := GetDateReserves(db, table, date)
 
 	for _, value := range timeRes {
 		if value.ReserveTime == time {
@@ -87,7 +87,7 @@ func reserveIsExist(db *sql.DB, table, date string, time int) bool {
 	return false
 }
 
-func deleteOldReserves(db *sql.DB, table []string, date string) {
+func DeleteOldReserves(db *sql.DB, table []string, date string) {
 	for _, target := range table {
 		_, err := db.Exec("DELETE FROM " + target + " WHERE reserv_date < '" + date + "'")
 		if err != nil {
@@ -96,7 +96,7 @@ func deleteOldReserves(db *sql.DB, table []string, date string) {
 	}
 }
 
-func tryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
+func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
 	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
 	if err != nil {
 		panic(err)
