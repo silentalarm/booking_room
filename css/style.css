@@ -295,8 +295,8 @@ td.min {
     border-radius: 0;!important;
     color: white;
     font-weight: normal;
-    padding-top: 10px;!important;
-    padding-bottom: 10px;!important;
+    padding-top: 9px;!important;
+    padding-bottom: 9px;!important;
 }
 /*title*/
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(1) > th{
@@ -305,12 +305,12 @@ td.min {
 /*month changing*/
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(2) > th{
     background-color: #0288C7;
-    border: 1px solid #0278AF;
+    /*border: 1px solid #0278AF;*/
     border-radius: 0;!important;
     color: white;
     font-weight: normal;!important;
-    padding-top: 10px;!important;
-    padding-bottom: 10px;!important;
+    padding-top: 9px;!important;
+    padding-bottom: 9px;!important;
 }
 /*days of week title*/
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(3) > th {
@@ -320,44 +320,64 @@ td.min {
     padding-bottom: 5px;!important;
 }
 
-.datepicker,
-.table-condensed {
+/*main border*/
+#dp > div > div.datepicker-days > table{
+    outline: #0278AF solid 1px;
+    /*border:0px solid #0278AF;*/
+}
 
+/*загрушки при исчезновении << >>*/
+#dp > div > div.datepicker-days > table{
+    background-color: #0288C7;
 }
-.table-condensed {
-    border:1px solid #0278AF;
+
+#dp > div > div.datepicker-days > table > thead > tr:nth-child(3) > th{
+    background-color: white;!important;
+    border-radius: 0px;!important;
 }
+
+/*цвета таблицы с днями*/
 #dp > div > div.datepicker-days > table > tbody{
-    border:1px solid #0278AF;!important;
+    background-color: white;!important;
 }
+
 .table-condensed td{
     /*border:1px solid #e62b32;*/
     padding: 8px 11px;
 }
 /*today*/
-#dp > div > div.datepicker-days > table > tbody > tr:nth-child(3) > td.today.day{
+#dp > div > div.datepicker-days > table > tbody > tr > td.today.day{
     border: none;
     color: white;
-    border-radius: 2px;
+    border-radius: 0px;
     padding: 0px;
-    background: #4d6ad0 none;
+    background: #00a827 none;
 }
 /*days*/
 #dp > div > div.datepicker-days > table > tbody > tr > td{
-    border: 0px solid #f6fdff;
+    /*border: none;*/
+    border-right: 1px solid silver;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+    border-radius: 0px;
+    background-color: white;
+    /*пустоты между квадратами TEST*/
 }
 
 /*days hover*/
 #dp > div > div.datepicker-days > table > tbody > tr > td:hover{
-    border: none;
+    /*border: none;*/
+    border-right: 1px solid silver;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
     color: white;
-    border-radius: 2px;
+    border-radius: 0px;
     background-color: #0288C7;
 }
 
 /*weekend hover*/
 #dp > div > div.datepicker-days > table > tbody > tr > td.highlighted:hover{
-    border-radius: 2px;!important;
+    border-radius: 0px;!important;
     background-color: #0288C7;
 }
 /*weekend 6*/
@@ -367,4 +387,23 @@ td.min {
 /*weekend 7*/
 #dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(7){
     background-color: #cde1f7;
+}
+/*active day*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.active.day {
+    border-radius: 0px;!important;
+    background: #0288C7 none;
+}
+/*убираем выделение для вчерашних и не разрешенных дней*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled.day:hover {
+    background-color: unset;
+    color: #999 !important;
+}
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled.day.highlighted:hover{
+    background-color: #cde1f7;!important;
+}
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled:nth-child(6):hover{
+    background-color: #cde1f7;!important;
+}
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled:nth-child(7):hover{
+    background-color: #cde1f7;!important;
 }

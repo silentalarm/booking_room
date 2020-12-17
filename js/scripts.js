@@ -249,19 +249,20 @@ $(document).ready(function () {
 
     $('#dp').datepicker({
         format: "dd.mm.yyyy",
-        //todayBtn: "linked",
+        startDate: "today",
+        endDate: "+30d",
+        maxViewMode: 0,
         language: "ru",
         weekStart: 1,
         daysOfWeekHighlighted: "0,6",
         todayHighlight: true,
-        //multidate: true,
-        // title:	"Выбор даты",
-        //zIndexOffset: 1,
-        //autoclose: true,
+        multidate: false,
+        keyboardNavigation: false,
+        forceParse: false,
+        toggleActive: true,
         assumeNearbyYear: true,
         setDate: date1 ,
-    }).on('changeDate', showTestDate
-    ).datepicker("update", $('#selectedDate').val());
+    }).on('changeDate', showTestDate).datepicker("update", $('#selectedDate').val());
 
     //$('#datepicker').datepicker("setDate", new Date());
 
