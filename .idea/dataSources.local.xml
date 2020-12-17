@@ -2,32 +2,19 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="reserves.db [2]" uuid="fb2a570b-f022-429b-858e-524f92de6054">
-      <database-info product="SQLite" version="3.31.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.31.1" dbms="SQLITE" exact-version="3.31.1" exact-driver-version="3.31">
+      <database-info product="SQLite" version="3.31.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.31.1" family="SQLITE" exact-version="3.31.1">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
-      <auth-provider>no-auth</auth-provider>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" negative="1" />
-        </introspection-scope>
-      </schema-mapping>
     </data-source>
     <data-source name="deq58l9o8oe3et@ec2-52-31-233-101.eu-west-1.compute.amazonaws.com" uuid="bc676159-dd1f-4a16-95ea-9118cb4ab8a1">
-      <database-info product="PostgreSQL" version="12.5 (Ubuntu 12.5-1.pgdg16.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="12.5" exact-driver-version="42.2">
+      <database-info product="PostgreSQL" version="12.5 (Ubuntu 12.5-1.pgdg16.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" family="POSTGRES" exact-version="12.5.5">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>vwemxptfpegfam</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="database" qname="@">
-            <node kind="schema" qname="@" />
-          </node>
-        </introspection-scope>
-      </schema-mapping>
     </data-source>
   </component>
 </project>

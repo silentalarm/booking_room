@@ -259,10 +259,9 @@ $(document).ready(function () {
         multidate: false,
         keyboardNavigation: false,
         forceParse: false,
-        toggleActive: true,
+        //toggleActive: true,
         assumeNearbyYear: true,
         startDate: "today",
-        endDate: "+30d", //сейчас на месяц можно выбрать, а так можно и меньше поставить
         setDate: date1 ,
     }).on('changeDate', showTestDate).datepicker("update", $('#selectedDate').val());
 

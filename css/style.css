@@ -340,7 +340,7 @@ td.min {
 }
 /*today*/
 #dp > div > div.datepicker-days > table > tbody > tr > td.today.day{
-    border: none;
+    /*border: none;*/
     color: white;
     border-radius: 0px;
     padding: 0px;
@@ -383,4 +383,32 @@ td.min {
 #dp > div > div.datepicker-days > table > tbody > tr > td.active.day {
     border-radius: 0px;!important;
     background: #0288C7 none;
+}
+/*календарь целиком*/
+#dp > div > div.datepicker-days > table {
+    background-color: #0288C7;
+}
+/*названия дней недели*/
+#dp > div > div.datepicker-days > table > thead > tr > th{
+    background-color: white;
+    border-radius: 0px;
+}
+/*td дни календаря*/
+#dp > div > div.datepicker-days > table > tbody > tr > td{
+    background-color: white;
+    border-radius: 0px;
+}
+
+/*неактивные дни*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled.day:hover{
+    background-color: white;
+    color: #999;
+}
+/*заглушки для старых выходных*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(6):hover{
+    background-color: #cde1f7;!important;
+}
+/*заглушки для старых выходных*/
+#dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(7):hover{
+    background-color: #cde1f7;!important;
 }
