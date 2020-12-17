@@ -1,1 +1,1 @@
-web: scrg
+web: scr
