@@ -181,6 +181,12 @@ func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, p
 	for _, date_ := range date {
 		successfullyLines := []string{}
 		unSuccessfullyLines := []string{}
+
+		dateIsCorrect := checkDate(date_)
+		if dateIsCorrect == false {
+			continue
+		}
+
 		for _, i := range lines {
 			empty := dbh.ReserveIsExist(db, table, date_, i)
 			strHour := strconv.Itoa(i)
@@ -205,8 +211,7 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	date := r.URL.Query().Get("date")
-	dateIsCorrect := checkDate(date)
-	if dateIsCorrect == false {
+	if date == "" {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
