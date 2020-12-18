@@ -205,7 +205,8 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	date := r.URL.Query().Get("date")
-	if date == "" {
+	dateIsCorrect := checkDate(date)
+	if dateIsCorrect == false {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -228,7 +229,6 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	user := ses.GetUser(session)
-
 	if user.Authenticated == false {
 		fmt.Printf("user: %s auth: %t", user.Name, user.Authenticated)
 		http.Redirect(w, r, "/", http.StatusFound)
@@ -239,7 +239,7 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
-	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
+	http.Redirect(w, r, "/?table="+tableName+"&date="+date, http.StatusTemporaryRedirect)
 }
 
 func convertArray(lines []string) []int {
@@ -248,6 +248,21 @@ func convertArray(lines []string) []int {
 		convertedArray[i], _ = strconv.Atoi(lines[i])
 	}
 	return convertedArray
+}
+
+func checkDate(date string) bool {
+	today := time.Now()
+	targetDate, err := time.Parse("02.01.2006", date)
+	if err != nil {
+		panic(err.Error())
+		return false
+	}
+
+	days := targetDate.Sub(today).Hours() / 24
+	if days > 30 || days < -1 {
+		return false
+	}
+	return true
 }
 
 func init() {
