@@ -238,7 +238,7 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	dbh.TryDeleteRowByOwner(db, tableName, deltime, user.Name, deltime)
+	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
 	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 
