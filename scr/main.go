@@ -246,7 +246,7 @@ func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
-	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusTemporaryRedirect)
+	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 
 func convertArray(lines []string) []int {
