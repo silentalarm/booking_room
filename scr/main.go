@@ -9,6 +9,7 @@ import (
 	"golang.org/x/oauth2"
 	"html/template"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -245,8 +246,8 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
-	//port := os.Getenv("PORT")
-	port := "8185"
+	port := os.Getenv("PORT")
+	//port := "8185"
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
