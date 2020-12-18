@@ -173,7 +173,7 @@ func saveToDB(w http.ResponseWriter, r *http.Request) {
 	)
 	fmt.Print(succ, unSucc)
 	//insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
-	http.Redirect(w, r, "/", http.StatusFound)
+	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusTemporaryRedirect)
 }
 
 func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
