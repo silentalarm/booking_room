@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс табицы">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,10 +145,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608158453381" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608311705074">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608312187166">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608311705074" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608312187166" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
