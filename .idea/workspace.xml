@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс редиректа после сейва">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс переключения комнат">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +113,8 @@
     <MESSAGE value="Добавил проверку времене и корректную переодресацию после резерва" />
     <MESSAGE value="фикс ява скрипта" />
     <MESSAGE value="фикс редиректа после сейва" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс редиректа после сейва" />
+    <MESSAGE value="фикс переключения комнат" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс переключения комнат" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -152,10 +154,10 @@
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608316206353" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608330211836">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608330899180">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608330211836" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608330899180" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
