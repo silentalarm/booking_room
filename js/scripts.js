@@ -29,9 +29,10 @@ function isMoreThenZero(num) {
 
 $('#room_select').on('change', function () {
     var floor = $(this).val();//этаж
-    var dat = date //today
+    //var dat = date //today
+    var date = $('#dp').datepicker('getFormattedDate');
     if (floor) {
-        window.location = "?table="+floor + "&date=" + dat;
+        window.location = "?table="+floor + "&date=" + date;
     }
     return false;
 
