@@ -103,7 +103,14 @@ $(".tr_size").on("mousedown", function (e) {
 
 //удаление резерва
 $(document).on('click', '.unreserve', function () {
-    alert($((this).parentElement.parentElement).index());
+    var date = $('#dp').datepicker('getFormattedDate');
+    var floor = $('#room_select').val();
+    var time = $((this).parentElement.parentElement).index()
+    //$("#showDate").val(value);
+    //$('#dp').datepicker('select', $('#selectedDate').val());
+
+
+    window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
 });
 
 
@@ -270,7 +277,7 @@ $(document).ready(function () {
     //$('#datepicker').datepicker("setDate", new Date());
 
     function showTestDate(){
-        var value = $('#dp').datepicker('getFormattedDate');
+        var date = $('#dp').datepicker('getFormattedDate');
         $("#showDate").val(value);
         $('#dp').datepicker('select', $('#selectedDate').val());
         //alert($('#selectedDate').val())
@@ -280,7 +287,7 @@ $(document).ready(function () {
 
 
         var floor = $('#room_select').val();//этаж
-        window.location = "?table="+floor + "&date=" + value;
+        window.location = "?table="+floor + "&date=" + date;
 
     }
 

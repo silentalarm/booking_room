@@ -197,7 +197,30 @@ func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, p
 	return successfullyAdded, unSuccessfullyAdded
 }
 
-func deleteFromMe(w http.ResponseWriter, r *http.Request) {
+func deleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
+	tableName := r.URL.Query().Get("table")
+	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
+	if tableIsExist == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+	date := r.URL.Query().Get("date")
+	if date == "" {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	deltime := r.URL.Query().Get("deltime")
+	convetedDeltime, err := strconv.Atoi(deltime)
+	if err != nil {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+	if convetedDeltime < 0 || convetedDeltime > 23 {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -215,7 +238,7 @@ func deleteFromMe(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	dbh.TryDeleteRowByOwner(db, "floor_2", "14.12.2020", user.Name, "2")
+	dbh.TryDeleteRowByOwner(db, tableName, deltime, user.Name, deltime)
 	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 
@@ -255,7 +278,7 @@ func main() {
 	http.HandleFunc("/callback", auth.CallbackHandler)
 	http.HandleFunc("/logout", ses.Delete)
 	http.HandleFunc("/saveToDB", saveToDB)
-	http.HandleFunc("/delete", deleteFromMe)
+	http.HandleFunc("/delreserve", deleteReserveFromUser)
 
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":"+port, nil)
