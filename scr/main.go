@@ -69,6 +69,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
+	fmt.Printf(tableName)
 	tableIsExist := tableIsCorrect(tableName, tableWhiteList)
 	if tableIsExist == false {
 		tableName = "floor_2"
