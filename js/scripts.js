@@ -100,8 +100,10 @@ $(".tr_size").on("mousedown", function (e) {
     $(this).removeClass("pointer");
 });
 
+
+//удаление резерва
 $(document).on('click', '.unreserve', function () {
-    alert((this).parentElement.parentElement.id);
+    alert($((this).parentElement.parentElement).index());
 });
 
 
