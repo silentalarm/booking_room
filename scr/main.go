@@ -75,7 +75,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		tableName = "floor_2"
 	}
 	date := r.URL.Query().Get("date")
-	fmt.Printf(tableName)
+	fmt.Printf(date)
 	if date == "" {
 		date = time.Now().Format("02.01.2006")
 	}
