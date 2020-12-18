@@ -416,7 +416,7 @@ td.min {
 /* delete reserve  */
 
 .unreserve {
-    color: #0288C7;
+    color: #ffffff;
     font-weight: bold;!important;
     float: right;!important;
     font-size: 26px;!important;
@@ -426,5 +426,5 @@ td.min {
 }
 
 .unreserve:hover {
-    color: #0278AF;!important;
+    color: #0278af;!important;
 }
