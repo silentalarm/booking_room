@@ -101,7 +101,7 @@
                     <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
                     <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
                     {{ if eq .NickName $.var2.Name }}
-                        <span class="unreserve"  onclick="alert(this.parentElement.parentElement.id)">&times;</span>
+                        <span class="unreserve" >&times;</span>
                     {{ end }}
                     </td>
                 </tr>
