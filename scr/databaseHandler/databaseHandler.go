@@ -17,7 +17,7 @@ type ReserveRow struct {
 }
 
 func OpenDB(db_name string) *sql.DB {
-	db, err := sql.Open(db_name, os.Getenv("DATABASE_URL"))
+	db, err := sql.Open(db_name, os.Getenv("HEROKU_POSTGRESQL_MAROON_URL"))
 	if err != nil {
 		panic(err)
 	}
