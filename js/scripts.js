@@ -278,7 +278,7 @@ $(document).ready(function () {
 
     function showTestDate(){
         var date = $('#dp').datepicker('getFormattedDate');
-        $("#showDate").val(value);
+        $("#showDate").val(date);
         $('#dp').datepicker('select', $('#selectedDate').val());
         //alert($('#selectedDate').val())
 
