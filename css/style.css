@@ -412,3 +412,19 @@ td.min {
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(7):hover{
     background-color: #cde1f7;!important;
 }
+
+/* delete reserve  */
+
+.unreserve {
+    color: #0288C7;
+    font-weight: bold;!important;
+    float: right;!important;
+    font-size: 26px;!important;
+    cursor: not-allowed;!important;
+    transition: 0.3s;!important;
+    display:inline-block;!important;
+}
+
+.unreserve:hover {
+    color: #0278AF;!important;
+}

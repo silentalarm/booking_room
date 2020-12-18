@@ -9,7 +9,6 @@ import (
 	"golang.org/x/oauth2"
 	"html/template"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -247,6 +246,7 @@ func main() {
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
 	//port := os.Getenv("PORT")
+	port := "8185"
 
 	http.HandleFunc("/", index)
 	http.HandleFunc("/calendar", about)
@@ -257,7 +257,7 @@ func main() {
 	http.HandleFunc("/delete", deleteFromMe)
 
 	fmt.Println("Server is listening...")
-	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	http.ListenAndServe(":"+port, nil)
 
 }
 
