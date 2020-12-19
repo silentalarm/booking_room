@@ -40,6 +40,5 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	clubAbout := r.FormValue("clubAbout")
 	date := time.Now().Format("02.01.2006")
 	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date)
-	tmpl.Execute(w, struct{ Success bool }{true})
 	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
 }
