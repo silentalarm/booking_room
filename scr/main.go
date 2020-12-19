@@ -8,6 +8,7 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"golang.org/x/oauth2"
 	"net/http"
+	"os"
 )
 
 func init() {
@@ -31,8 +32,8 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
-	//port := os.Getenv("PORT")
-	port := "8185"
+	port := os.Getenv("PORT")
+	//port := "8185"
 
 	http.HandleFunc("/", pg.Index)
 	http.HandleFunc("/login", auth.Login)
