@@ -26,7 +26,7 @@ func init() {
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("/static/clubRegistration"))
+	fs := http.FileServer(http.Dir("static/clubRegistration.html"))
 
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
