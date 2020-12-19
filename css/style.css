@@ -420,13 +420,13 @@ td.min {
     font-weight: bold;!important;
     float: right;!important;
     font-size: 26px;!important;
-    cursor: not-allowed;!important;
+    cursor: pointer;!important;
     transition: 0.3s;!important;
     display:inline-block;!important;
 }
 
 .unreserve:hover {
-    color: #0278af;!important;
+    color: #ff0000;!important;
 }
 
 .container {
