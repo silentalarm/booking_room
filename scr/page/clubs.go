@@ -15,7 +15,6 @@ func RegistrationPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func InsertNewClub(w http.ResponseWriter, r *http.Request) {
-
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -31,10 +30,16 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
+	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
+	if r.Method != http.MethodPost {
+		tmpl.Execute(w, nil)
+		return
+	}
 
 	clubName := r.FormValue("clubName")
 	clubAbout := r.FormValue("clubAbout")
 	date := time.Now().Format("02.01.2006")
 	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date)
+	tmpl.Execute(w, struct{ Success bool }{true})
 	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
 }

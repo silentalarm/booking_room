@@ -39,8 +39,8 @@ func main() {
 	http.HandleFunc("/logout", ses.Delete)
 	http.HandleFunc("/savereserve", bk.SaveReserve)
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
-	http.HandleFunc("/clubregistration", pg.RegistrationPage)
-	http.HandleFunc("/saveclub", pg.InsertNewClub)
+	http.HandleFunc("/clubregistration", pg.InsertNewClub)
+	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":"+port, nil)
