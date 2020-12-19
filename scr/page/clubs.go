@@ -4,9 +4,15 @@ import (
 	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
+	"html/template"
 	"net/http"
 	"time"
 )
+
+func RegistrationPage(w http.ResponseWriter, r *http.Request) {
+	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
+	tmpl.Execute(w, "")
+}
 
 func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
