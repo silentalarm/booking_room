@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Coalition registration</title>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../css/awesome.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css.map" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+</head>
+<body class="body">
+
+    <!--navigation bar [start]-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow overflow-hidden">
+        <!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary btn-nav" id="login" href="/login"><i class="fas fa-key pr-1"></i>Авторизация</a>
+                </li>
+                <li class="nav-item" id="logout">
+                    <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
+                </li>
+                <!-- тут не забудь ник в шапке как в  table-->
+           </ul>
+       </div>
+    </nav>
+
+    <div class="container">
+        <div class="row shadow">
+            <div class="col-md-12 py-1 bg-primary text-white text-center">
+                <div class=" ">
+                    <div class="card-body">
+                        <!-- <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">-->
+                        <h2 class="py-1">Регистрация нового клуба</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 py-5 border">
+                <h4 class="pb-4">Пожалуйста, заполните ваши данные</h4>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input id="clubName" name="Название клуба" placeholder="Название клуба" class="form-control" type="text">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea id="clubAbout" name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row float-right">
+                        <button type="button" class="btn btn-primary btn-nav">Создать</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+   <!--main container [end]-->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/bootstrap-datepicker.ru.min.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html>

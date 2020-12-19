@@ -19,9 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="Сделал загрузку дб из настроек окружения">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="fix загрузку дб из настроек окружения">
+      <change afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scr/table/table.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/databaseHandler/databaseHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/databaseHandler/databaseHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +41,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -57,6 +67,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -115,7 +126,8 @@
     <MESSAGE value="фикс редиректа после сейва" />
     <MESSAGE value="фикс переключения комнат" />
     <MESSAGE value="Сделал загрузку дб из настроек окружения" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал загрузку дб из настроек окружения" />
+    <MESSAGE value="fix загрузку дб из настроек окружения" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix загрузку дб из настроек окружения" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -134,31 +146,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="440" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1608149874042" />
-    <state width="958" height="207" key="GridCell.Tab.0.bottom" timestamp="1608326669177">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608401615400">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="207" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608326669177" />
-    <state width="958" height="207" key="GridCell.Tab.0.center" timestamp="1608326669174">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608401615400" />
+    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608401615399">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="207" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608326669174" />
-    <state width="958" height="207" key="GridCell.Tab.0.left" timestamp="1608326669171">
+    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608401615399" />
+    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608401615398">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="207" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608326669171" />
-    <state width="958" height="207" key="GridCell.Tab.0.right" timestamp="1608326669175">
+    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608401615398" />
+    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608401615399">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="207" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608326669175" />
+    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608401615399" />
     <state width="229" height="457" key="HiddenNamespacesPopup" timestamp="1608316206353">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608316206353" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608332182291">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608332872346">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608332182291" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608332872346" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -167,10 +179,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="308" y="109" key="com.intellij.database.dbimport.ImportDialog/0.0.1440.900@0.0.1440.900" timestamp="1608161006808" />
-    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1608160999534">
+    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1608401231517">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1440.900@0.0.1440.900" timestamp="1608160999534" />
+    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1440.900@0.0.1440.900" timestamp="1608401231517" />
+    <state x="566" y="227" width="475" height="592" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1608401204888">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="566" y="227" width="475" height="592" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.900@0.0.1440.900" timestamp="1608401204888" />
+    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1608400441426">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/0.0.1440.900@0.0.1440.900" timestamp="1608400441426" />
     <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608227753321">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
