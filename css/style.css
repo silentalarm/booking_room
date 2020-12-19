@@ -108,14 +108,14 @@ tr:nth-child(odd){
     border-top: 2px solid blue;
 }
 
-table.table thead tr{
+page.page thead tr{
     border-collapse: collapse;
     border: 1px solid #5a5a5a;
 }
-table.table tbody tr{
+page.page tbody tr{
     border-collapse: collapse;
     border: 1px solid #5a5a5a;
-}table.table td{
+}page.page td{
     border: 0;
 }*/
 

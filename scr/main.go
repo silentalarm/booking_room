@@ -4,8 +4,8 @@ import (
 	"fmt"
 	auth "github.com/silentalarm/booking_room/scr/authorization"
 	bk "github.com/silentalarm/booking_room/scr/booking"
+	pg "github.com/silentalarm/booking_room/scr/page"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
-	tb "github.com/silentalarm/booking_room/scr/table"
 	"golang.org/x/oauth2"
 	"net/http"
 	"os"
@@ -26,6 +26,8 @@ func init() {
 }
 
 func main() {
+	fs := http.FileServer(http.Dir("/static/clubRegistration"))
+
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
@@ -33,12 +35,14 @@ func main() {
 	port := os.Getenv("PORT")
 	//port := "8185"
 
-	http.HandleFunc("/", tb.Index)
+	http.HandleFunc("/", pg.Index)
 	http.HandleFunc("/login", auth.Login)
 	http.HandleFunc("/callback", auth.CallbackHandler)
 	http.HandleFunc("/logout", ses.Delete)
-	http.HandleFunc("/saveToDB", bk.SaveToDB)
+	http.HandleFunc("/savereserve", bk.SaveReserve)
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
+	http.Handle("/clubregistration", fs)
+	http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")
 	http.ListenAndServe(":"+port, nil)

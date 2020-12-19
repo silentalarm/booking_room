@@ -1,4 +1,4 @@
-package databaseHandler
+package database
 
 import (
 	"database/sql"
@@ -33,15 +33,6 @@ func InsertReserve(db *sql.DB, table string, nickname string, clubname string, p
 		return err
 	}
 	return nil
-}
-
-func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
-	rows, err := db.Query("SELECT * FROM " + table)
-	if err != nil {
-		return nil, err
-	}
-
-	return rows, nil
 }
 
 func GetDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow, error) {
@@ -86,9 +77,27 @@ func DeleteOldReserves(db *sql.DB, table []string, date string) {
 	}
 }
 
+func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate string) {
+	_, err := db.Exec(
+		"INSERT INTO clubs (clubabout, nickowner, idowner, clubname, nickcreator, creationdate) values ($1, $2, $3, $4, $5, $6)",
+		clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
 	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
+	rows, err := db.Query("SELECT * FROM " + table)
+	if err != nil {
+		return nil, err
+	}
+
+	return rows, nil
 }

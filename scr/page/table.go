@@ -1,9 +1,9 @@
-package table
+package page
 
 import (
 	"fmt"
 	bk "github.com/silentalarm/booking_room/scr/booking"
-	dbh "github.com/silentalarm/booking_room/scr/databaseHandler"
+	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
@@ -26,7 +26,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	tableName := r.URL.Query().Get("table")
+	tableName := r.URL.Query().Get("page")
 	fmt.Printf(tableName)
 	tableIsExist := bk.TableIsCorrect(tableName)
 	if tableIsExist == false {
@@ -39,7 +39,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
 	data := rebuildTable(timeRes)
-	tmpl, _ := template.ParseFiles("static/table.html")
+	tmpl, _ := template.ParseFiles("static/page.html")
 
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
@@ -59,7 +59,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func tableInit() ViewData {
-	//http.ServeFile(w, r, "static/table.html")
+	//http.ServeFile(w, r, "static/page.html")
 	data := ViewData{
 		TableData: []TData{
 			{LineID: 0, Time: "00:00", NickName: "", ClubName: "", PeopleNumber: 0},
