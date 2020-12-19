@@ -32,7 +32,7 @@ $('#room_select').on('change', function () {
     //var dat = date //today
     var date = $('#dp').datepicker('getFormattedDate');
     if (floor) {
-        window.location = "?page="+floor + "&date=" + date;
+        window.location = "?table="+floor + "&date=" + date;
     }
     return false;
 
@@ -111,7 +111,7 @@ $(document).on('click', '.unreserve', function () {
     //$('#dp').datepicker('select', $('#selectedDate').val());
 
 
-    window.location = "/delreserve?page="+floor + "&date=" + date + "&deltime=" + time;
+    window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
 });
 
 
@@ -288,7 +288,7 @@ $(document).ready(function () {
 
 
         var floor = $('#room_select').val();//этаж
-        window.location = "?page="+floor + "&date=" + date;
+        window.location = "?table="+floor + "&date=" + date;
 
     }
 

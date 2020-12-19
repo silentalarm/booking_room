@@ -975,13 +975,13 @@
 						.text(DPGlobal.formatDate(d, titleFormat, this.o.language));
 			this.picker.find('tfoot .today')
 						.text(todaytxt)
-            .css('display', titleBtnVisible ? 'page-cell' : 'none');
+            .css('display', titleBtnVisible ? 'table-cell' : 'none');
 			this.picker.find('tfoot .clear')
 						.text(cleartxt)
-						.css('display', this.o.clearBtn === true ? 'page-cell' : 'none');
+						.css('display', this.o.clearBtn === true ? 'table-cell' : 'none');
 			this.picker.find('thead .datepicker-title')
 						.text(this.o.title)
-						.css('display', typeof this.o.title === 'string' && this.o.title !== '' ? 'page-cell' : 'none');
+						.css('display', typeof this.o.title === 'string' && this.o.title !== '' ? 'table-cell' : 'none');
 			this.updateNavArrows();
 			this.fillMonths();
 			var prevMonth = UTCDate(year, month, 0),
@@ -1958,39 +1958,39 @@
 	};
 	DPGlobal.template = '<div class="datepicker">'+
 							'<div class="datepicker-days">'+
-								'<page class="page-condensed">'+
+								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									'<tbody></tbody>'+
 									DPGlobal.footTemplate+
-								'</page>'+
+								'</table>'+
 							'</div>'+
 							'<div class="datepicker-months">'+
-								'<page class="page-condensed">'+
+								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
-								'</page>'+
+								'</table>'+
 							'</div>'+
 							'<div class="datepicker-years">'+
-								'<page class="page-condensed">'+
+								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
-								'</page>'+
+								'</table>'+
 							'</div>'+
 							'<div class="datepicker-decades">'+
-								'<page class="page-condensed">'+
+								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
-								'</page>'+
+								'</table>'+
 							'</div>'+
 							'<div class="datepicker-centuries">'+
-								'<page class="page-condensed">'+
+								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
-								'</page>'+
+								'</table>'+
 							'</div>'+
 						'</div>';
 

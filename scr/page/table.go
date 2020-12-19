@@ -26,7 +26,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	tableName := r.URL.Query().Get("page")
+	tableName := r.URL.Query().Get("table")
 	fmt.Printf(tableName)
 	tableIsExist := bk.TableIsCorrect(tableName)
 	if tableIsExist == false {
@@ -39,7 +39,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
 	data := rebuildTable(timeRes)
-	tmpl, _ := template.ParseFiles("static/page.html")
+	tmpl, _ := template.ParseFiles("static/table.html")
 
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {

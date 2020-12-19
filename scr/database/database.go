@@ -35,6 +35,15 @@ func InsertReserve(db *sql.DB, table string, nickname string, clubname string, p
 	return nil
 }
 
+func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
+	rows, err := db.Query("SELECT * FROM " + table)
+	if err != nil {
+		return nil, err
+	}
+
+	return rows, nil
+}
+
 func GetDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow, error) {
 	rows, err := getDBRows(db, table)
 	if err != nil {
@@ -91,13 +100,4 @@ func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string,
 	if err != nil {
 		panic(err)
 	}
-}
-
-func getDBRows(db *sql.DB, table string) (*sql.Rows, error) {
-	rows, err := db.Query("SELECT * FROM " + table)
-	if err != nil {
-		return nil, err
-	}
-
-	return rows, nil
 }

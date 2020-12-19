@@ -19,22 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="пофиксил цвет и наведение при удалении">
-      <change afterPath="$PROJECT_DIR$/scr/page/clubs.go" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="Добавил слушание сервером переключение таблицы">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/bootstrap-datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bootstrap-datepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/bootstrap-datepicker.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bootstrap-datepicker.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/databaseHandler/databaseHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/table/table.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/table.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/page/table.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/table.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +99,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="пофиксил запуск через хероку" />
     <MESSAGE value="govendor init" />
     <MESSAGE value="fix date picker" />
     <MESSAGE value="fix style" />
@@ -133,7 +123,8 @@
     <MESSAGE value="Рефакторинг, создал страницу для регестрации клубов" />
     <MESSAGE value="фикс гоумод" />
     <MESSAGE value="пофиксил цвет и наведение при удалении" />
-    <option name="LAST_COMMIT_MESSAGE" value="пофиксил цвет и наведение при удалении" />
+    <MESSAGE value="Добавил слушание сервером переключение таблицы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил слушание сервером переключение таблицы" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -152,31 +143,36 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="440" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1608149874042" />
-    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608401615400">
+    <state x="200" y="200" width="1240" height="700" key="DiffContextDialog" timestamp="1608412689865">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608401615400" />
-    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608401615399">
+    <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1608412689865" />
+    <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.25.1440.818@0.25.1440.818" timestamp="1608412379395" />
+    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608410653389">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608401615399" />
-    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608401615398">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608410653389" />
+    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608410653388">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608401615398" />
-    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608401615399">
+    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608410653388" />
+    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608410653387">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608401615399" />
+    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608410653387" />
+    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608410653388">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608410653388" />
     <state width="229" height="457" key="HiddenNamespacesPopup" timestamp="1608316206353">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608316206353" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608405548355">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608410715311">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608405548355" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608410715311" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

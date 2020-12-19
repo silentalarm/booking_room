@@ -17,10 +17,6 @@ var tableWhiteList = []string{
 }
 
 func SaveReserve(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/saveToDB" {
-		http.Error(w, "404 not found.", http.StatusNotFound)
-		return
-	}
 	err := r.ParseForm()
 	if err != nil {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
@@ -64,11 +60,11 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 	)
 	fmt.Print(succ, unSucc)
 	//insertFromLines(w, r, db, linesToAdd) //дату изменил (надо сделать чтобы смена даты была из HTML)
-	http.Redirect(w, r, "?page="+tableName+"&date="+date, http.StatusFound)
+	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 
 func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
-	tableName := r.URL.Query().Get("page")
+	tableName := r.URL.Query().Get("table")
 	tableIsExist := TableIsCorrect(tableName)
 	if tableIsExist == false {
 		http.Redirect(w, r, "/", http.StatusFound)
@@ -108,7 +104,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
-	http.Redirect(w, r, "?page="+tableName+"&date="+date, http.StatusFound)
+	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 
 func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {

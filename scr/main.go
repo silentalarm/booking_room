@@ -8,7 +8,6 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"golang.org/x/oauth2"
 	"net/http"
-	"os"
 )
 
 func init() {
@@ -26,14 +25,14 @@ func init() {
 }
 
 func main() {
-	fs := http.FileServer(http.Dir("/static/clubRegistration"))
+	//fs := http.FileServer(http.Dir("/static/clubRegistration"))
 
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/webfonts/", http.StripPrefix("/webfonts/", http.FileServer(http.Dir("webfonts"))))
 
-	port := os.Getenv("PORT")
-	//port := "8185"
+	//port := os.Getenv("PORT")
+	port := "8185"
 
 	http.HandleFunc("/", pg.Index)
 	http.HandleFunc("/login", auth.Login)
@@ -41,7 +40,7 @@ func main() {
 	http.HandleFunc("/logout", ses.Delete)
 	http.HandleFunc("/savereserve", bk.SaveReserve)
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
-	http.Handle("/clubregistration", fs)
+	//http.Handle("/clubregistration", fs)
 	http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")
