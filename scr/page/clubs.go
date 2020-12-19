@@ -15,6 +15,12 @@ func RegistrationPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func InsertNewClub(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		fmt.Fprintf(w, "ParseForm() err: %v", err)
+		return
+	}
+
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
