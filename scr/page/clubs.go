@@ -26,7 +26,7 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
+	fmt.Print(r.Form)
 	user := ses.GetUser(session)
 
 	if user.Authenticated == false {

@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="пофиксил открытие странцы с регистрацией">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="пофиксил метод пост со страниы регистрации">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/page/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/clubs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +61,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
@@ -96,7 +95,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Фикс даты" />
     <MESSAGE value="рефакторинг пакетов" />
     <MESSAGE value="фикс импорта" />
     <MESSAGE value="фикс go mod" />
@@ -121,7 +119,8 @@
     <MESSAGE value="пофиксил баг страницы" />
     <MESSAGE value="пофиксил порт" />
     <MESSAGE value="пофиксил открытие странцы с регистрацией" />
-    <option name="LAST_COMMIT_MESSAGE" value="пофиксил открытие странцы с регистрацией" />
+    <MESSAGE value="пофиксил метод пост со страниы регистрации" />
+    <option name="LAST_COMMIT_MESSAGE" value="пофиксил метод пост со страниы регистрации" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -166,10 +165,10 @@
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608316206353" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608413453762">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608414433293">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608413453762" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608414433293" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
