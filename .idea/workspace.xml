@@ -19,11 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="убрал кнопку авторизации на странице регистрации">
-      <change afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс иконки">
+      <change afterPath="$PROJECT_DIR$/css/bootstrap-colorpicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/bootstrap-colorpicker.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/bootstrap-colorpicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/bootstrap-colorpicker.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/bootstrap-colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/bootstrap-colorpicker.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/bootstrap-colorpicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/bootstrap-colorpicker.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/clubs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/page/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/clubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +88,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/css" />
+      <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/scr/page" />
       <recent name="$PROJECT_DIR$/scr/authorization" />
       <recent name="$PROJECT_DIR$/scr/sessions" />
-      <recent name="$PROJECT_DIR$/scr" />
-      <recent name="$PROJECT_DIR$/scr/authorization/sessions" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -98,7 +112,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="пробую добавить крестик" />
     <MESSAGE value="фикс порта" />
     <MESSAGE value="фикс табицы" />
     <MESSAGE value="Проверка удаления по крестику" />
@@ -123,7 +136,8 @@
     <MESSAGE value="фикс шапки" />
     <MESSAGE value="добавил ник при инициализации страницы регистрациии клуба" />
     <MESSAGE value="убрал кнопку авторизации на странице регистрации" />
-    <option name="LAST_COMMIT_MESSAGE" value="убрал кнопку авторизации на странице регистрации" />
+    <MESSAGE value="фикс иконки" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс иконки" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -147,31 +161,31 @@
     </state>
     <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1608412689865" />
     <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.25.1440.818@0.25.1440.818" timestamp="1608412379395" />
-    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608410653389">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608489089616">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608410653389" />
-    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608410653388">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608489089616" />
+    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608489089615">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608410653388" />
-    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608410653387">
+    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608489089615" />
+    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608489089614">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608410653387" />
-    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608410653388">
+    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608489089614" />
+    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608489089616">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608410653388" />
+    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608489089616" />
     <state width="229" height="457" key="HiddenNamespacesPopup" timestamp="1608462118287">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608462118287" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608457002785">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608463334134">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608457002785" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608463334134" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -188,10 +202,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="566" y="227" width="475" height="592" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.900@0.0.1440.900" timestamp="1608401204888" />
-    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1608400441426">
+    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1608485958053">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/0.0.1440.900@0.0.1440.900" timestamp="1608400441426" />
+    <state x="214" y="159" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/0.0.1440.900@0.0.1440.900" timestamp="1608485958053" />
     <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608456214839">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

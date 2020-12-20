@@ -111,7 +111,9 @@ $(document).on('click', '.unreserve', function () {
     window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
 });
 
-
+$(function () {
+    $('#cp2').colorpicker();
+});
 //$('[data-toggle="datepicker"]').datepicker({
 //    format: 'dd.mm.yyyy',
 //    weekStart: 1,

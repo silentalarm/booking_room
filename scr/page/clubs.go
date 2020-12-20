@@ -1,7 +1,6 @@
 package page
 
 import (
-	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -20,7 +19,6 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Print(r.Form)
 	user := ses.GetUser(session)
 
 	if user.Authenticated == false {
@@ -46,4 +44,31 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	date := time.Now().Format("02.01.2006")
 	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date)
 	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
+}
+
+func ClubsTable(w http.ResponseWriter, r *http.Request) {
+	session, err := ses.Store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	user := ses.GetUser(session)
+
+	if user.Authenticated == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	db := dbh.OpenDB("postgres")
+	defer db.Close()
+
+	clubs, _ := dbh.GetClubs(db)
+	tmpl, _ := template.ParseFiles("static/clubs.html")
+	if r.Method != http.MethodPost {
+		data_map := map[string]interface{}{
+			"clubs": clubs,
+		}
+		tmpl.Execute(w, data_map)
+		return
+	}
 }

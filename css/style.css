@@ -440,3 +440,14 @@ td.min {
     background-color: rgb(255, 255, 255) !important;
 }
 
+input[type="color"].custom {
+    padding: 0;
+    border: none;
+    height: 50px;
+    width: 50px;
+    vertical-align: middle;
+}
+
+.background-cp {
+    background-color: rgb(3, 155, 229) !important;
+}

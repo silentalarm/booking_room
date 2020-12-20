@@ -16,6 +16,16 @@ type ReserveRow struct {
 	ReserveDate  string
 }
 
+type Club struct {
+	About        string
+	NickOwner    string
+	IDOwner      string
+	ClubName     string
+	NickCreator  string
+	CreationDate string
+	Size         int
+}
+
 func OpenDB(db_name string) *sql.DB {
 	db, err := sql.Open(db_name, os.Getenv("HEROKU_POSTGRESQL_MAROON_URL"))
 	if err != nil {
@@ -100,4 +110,41 @@ func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string,
 	if err != nil {
 		panic(err)
 	}
+}
+
+func GetClubs(db *sql.DB) ([]Club, error) {
+	rows, err := getDBRows(db, "clubs")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	clubs := []Club{}
+
+	for rows.Next() {
+		Row := Club{}
+		err := rows.Scan(&Row.About, &Row.NickOwner, &Row.IDOwner, &Row.ClubName, &Row.NickCreator, &Row.CreationDate)
+		if err != nil {
+			panic(err)
+			continue
+		}
+		clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.Size = clubsSize
+		clubs = append(clubs, Row)
+	}
+	return clubs, nil
+}
+
+func getClubSize(db *sql.DB, clubName string) (int, error) {
+	rows, err := db.Query("SELECT * FROM clubs WHERE clubname='" + clubName + "'")
+	if err != nil {
+		return 0, err
+	}
+	defer rows.Close()
+
+	counter := 0
+	for rows.Next() {
+		counter++
+	}
+
+	return counter, nil
 }

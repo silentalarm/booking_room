@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/awesome.css" type="text/css">
     <link rel="stylesheet" href="../css/bootstrap-datepicker.css" type="text/css">
     <link rel="stylesheet" href="../css/bootstrap-datepicker.css.map" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-colorpicker.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
 
 </head>
@@ -43,16 +44,20 @@
                 <form method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <input name="clubName" placeholder="Название клуба" class="form-control" type="text">
+                            {{ .clubName }}
                         </div>
                         <div class="form-group col-md-12">
                             <textarea name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255"></textarea>
                         </div>
                     </div>
                     <div class="form-row float-right">
-                        <input type="submit" class="btn btn-primary btn-nav" value="Зарегестрировать">
+                        <input type="submit" class="btn btn-primary btn-nav" value="Сохранить">
                     </div>
                 </form>
+
+                <div class="col-md-12 py-1 float-right">
+                    <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
+                </div>
             </div>
 
             <div class="col-md-8 py-1 bg-primary text-white text-center">
@@ -63,12 +68,13 @@
                             <tbody class="font-weight-normal table-bordered">
                                 <tr class="row_club">
                                     <td scope="col" class="h-td font-weight-normal min">
-                                        <i class="far fa-clock pl-1"></i>
                                         {{ .memberName }}
                                     </td>
                                     <td scope="col" class="h-td font-weight-normal pl-3">
-                                        <i class="far fa-clock pl-1"></i>
                                         {{ .memberAccess }}
+                                    </td>
+                                    <td scope="col" class="h-td font-weight-normal pl-3">
+                                        {{ .memberJoinDate }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -82,6 +88,7 @@
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/bootstrap-colorpicker.js"></script>
     <script src="../js/bootstrap-datepicker.ru.min.js"></script>
     <script src="../js/scripts.js"></script>
 </body>
