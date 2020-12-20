@@ -126,10 +126,8 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 		if err != nil {
 			continue
 		}
-		clubsSize, _ := getClubSize(db, Row.ClubName)
-		fmt.Print(Row.ClubName)
-		fmt.Print(clubsSize)
-		Row.Size = clubsSize
+		//clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.Size = 0
 		clubs = append(clubs, Row)
 	}
 	return clubs, nil
