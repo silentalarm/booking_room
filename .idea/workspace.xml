@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="пофиксил слушание страниц сервером">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс списка клубов">
+      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scr/page/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/clubs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +96,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Проверка удаления по крестику" />
     <MESSAGE value="Добавил удаление по клику на крестик" />
     <MESSAGE value="Фикс удаления времени" />
     <MESSAGE value="Добавил проверку времене и корректную переодресацию после резерва" />
@@ -120,7 +120,8 @@
     <MESSAGE value="фикс иконки" />
     <MESSAGE value="Добавил страницу клубов" />
     <MESSAGE value="пофиксил слушание страниц сервером" />
-    <option name="LAST_COMMIT_MESSAGE" value="пофиксил слушание страниц сервером" />
+    <MESSAGE value="фикс списка клубов" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс списка клубов" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
@@ -165,10 +166,10 @@
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608462118287" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608490598757">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608490852826">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608490598757" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608490852826" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -193,9 +194,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="521" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1608456214839" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1608144997712">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1608491270071">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608144997712" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608491270071" />
   </component>
 </project>

@@ -124,10 +124,11 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 		Row := Club{}
 		err := rows.Scan(&Row.About, &Row.NickOwner, &Row.IDOwner, &Row.ClubName, &Row.NickCreator, &Row.CreationDate)
 		if err != nil {
-			panic(err)
 			continue
 		}
 		clubsSize, _ := getClubSize(db, Row.ClubName)
+		fmt.Print(Row.ClubName)
+		fmt.Print(clubsSize)
 		Row.Size = clubsSize
 		clubs = append(clubs, Row)
 	}
