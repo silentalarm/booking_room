@@ -62,13 +62,13 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	clubs, _ := dbh.GetClubs(db)
+	//lubs, _ := dbh.GetClubs(db)
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
-		data_map := map[string]interface{}{
-			"clubs": clubs,
-		}
-		tmpl.Execute(w, data_map)
+		//data_map := map[string]interface{}{
+		//	"clubs": clubs,
+		//}
+		tmpl.Execute(w, nil)
 		return
 	}
 }
