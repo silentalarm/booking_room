@@ -17,6 +17,7 @@ type ReserveRow struct {
 }
 
 type Club struct {
+	ID           int
 	About        string
 	NickOwner    string
 	IDOwner      string
@@ -122,12 +123,12 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 
 	for rows.Next() {
 		Row := Club{}
-		err := rows.Scan(&Row.About, &Row.NickOwner, &Row.IDOwner, &Row.ClubName, &Row.NickCreator, &Row.CreationDate)
+		err := rows.Scan(&Row.ID, &Row.About, &Row.NickOwner, &Row.IDOwner, &Row.ClubName, &Row.NickCreator, &Row.CreationDate)
 		if err != nil {
 			continue
 		}
-		//clubsSize, _ := getClubSize(db, Row.ClubName)
-		Row.Size = 0
+		clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.Size = clubsSize
 		clubs = append(clubs, Row)
 	}
 	return clubs, nil
