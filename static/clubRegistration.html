@@ -30,6 +30,11 @@
                 <li class="nav-item" id="logout">
                     <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
                 </li>
+                {{if ne .var2.Name "неавторизован"}}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .var2.Name }}</a>
+                    </li>
+                {{end}}
                 <!-- тут не забудь ник в шапке как в  table-->
            </ul>
        </div>
@@ -57,8 +62,7 @@
                         </div>
                     </div>
                     <div class="form-row float-right">
-                        <a class="btn btn-primary btn-nav" href="/saveclub">Создать</a>
-                        <input type="submit">
+                        <input type="submit" class="btn btn-primary btn-nav" value="Зарегестрировать">
                     </div>
                 </form>
             </div>
