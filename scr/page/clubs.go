@@ -71,10 +71,10 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
-		data_map := map[string]interface{}{
-			"clubs": clubs,
-		}
-		tmpl.Execute(w, data_map)
+		//data_map := map[string]interface{}{
+		//	"clubs": clubs,
+		//}
+		tmpl.Execute(w, clubs)
 		return
 	}
 }
