@@ -66,7 +66,7 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 	clubs, _ := dbh.GetClubs(db)
 
 	for _, key := range clubs {
-		fmt.Print(key.NickOwner)
+		fmt.Printf("nick name: %s ", key.NickOwner)
 	}
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
