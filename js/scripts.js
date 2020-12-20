@@ -107,9 +107,6 @@ $(document).on('click', '.unreserve', function () {
     var date = $('#dp').datepicker('getFormattedDate');
     var floor = $('#room_select').val();
     var time = $((this).parentElement.parentElement).index()
-    //$("#showDate").val(value);
-    //$('#dp').datepicker('select', $('#selectedDate').val());
-
 
     window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
 });

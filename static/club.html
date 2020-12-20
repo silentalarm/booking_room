@@ -30,23 +30,16 @@
                 <li class="nav-item">
                     <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .user.Name }}</a>
                 </li>
+
                 <!-- тут не забудь ник в шапке как в  table-->
-           </ul>
-       </div>
+            </ul>
+        </div>
     </nav>
 
-    <div class="container" style="max-width:600px;">
+    <div class="container" style="max-width:1200px;">
         <div class="row shadow">
-            <div class="col-md-12 py-1 bg-primary text-white text-center">
-                <div class=" ">
-                    <div class="card-body">
-                        <h2 class="py-1">Регистрация нового клуба</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 py-5 border">
-                <h4 class="pb-4">Пожалуйста, заполните ваши данные</h4>
+            <div class="col-md-4 py-5 border">
+                <h4 class="pb-4">Информация о клубе</h4>
                 <form method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -62,10 +55,30 @@
                 </form>
             </div>
 
-
+            <div class="col-md-8 py-1 bg-primary text-white text-center">
+                <div class=" ">
+                    <div class="card-body">
+                        <h2 class="py-1">Члены клуба</h2>
+                        <table class="table rounded border shadow table-sm h-100">
+                            <tbody class="font-weight-normal table-bordered">
+                                <tr class="row_club">
+                                    <td scope="col" class="h-td font-weight-normal min">
+                                        <i class="far fa-clock pl-1"></i>
+                                        {{ .memberName }}
+                                    </td>
+                                    <td scope="col" class="h-td font-weight-normal pl-3">
+                                        <i class="far fa-clock pl-1"></i>
+                                        {{ .memberAccess }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-   <!--main container [end]-->
+    <!--main container [end]-->
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>

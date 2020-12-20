@@ -428,10 +428,15 @@ td.min {
 .unreserve:hover {
     color: #ff0000;!important;
 }
-
+/*
 .container {
     max-width: 700px !important;
-}
+}*/
 .unresizable{
     resize: none !important;
 }
+
+.row_club {
+    background-color: rgb(255, 255, 255) !important;
+}
+
