@@ -50,10 +50,10 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	user := ses.GetUser(session)
 
 	data_map := map[string]interface{}{
-		"var1": data,
-		"var2": user,
-		"var3": tableName,
-		"var4": date,
+		"data":      data,
+		"user":      user,
+		"tableName": tableName,
+		"date":      date,
 	}
 	tmpl.Execute(w, data_map)
 }

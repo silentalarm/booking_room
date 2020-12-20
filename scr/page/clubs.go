@@ -30,9 +30,14 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
+
 	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
 	if r.Method != http.MethodPost {
-		tmpl.Execute(w, nil)
+		data_map := map[string]interface{}{
+			"user": user,
+		}
+		tmpl.Execute(w, data_map)
+		//tmpl.Execute(w, nil)
 		return
 	}
 

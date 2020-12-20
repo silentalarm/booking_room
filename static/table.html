@@ -30,19 +30,19 @@
             <li class="nav-item" id="logout">
                 <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
             </li>
-            {{if ne .var2.Name "неавторизован"}}
+            {{if ne .user.Name "неавторизован"}}
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#">
                     <i class="fas fa-user pr-1">
                     </i>
-                    {{ .var2.Name }}
+                    {{ .user.Name }}
                 </a>
             </li>
             <li class="nav-item" id="logout">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubregistration">
                     <i class="fas fa-door-open pr-1">
                     </i>
-                    Выход
+                    Регистраци нового клуба
                 </a>
             </li>
             {{end}}
@@ -68,10 +68,10 @@
            <input type = 'hidden' data-date-format="dd.mm.yyyy" id="showDate">
        </div>
        <!--calendar end-->
-       <input type='hidden' value="{{.var2.Authenticated}}" id="statusAuth">
-       <input type='hidden' value="{{.var3}}" id="selectedFloor">
+       <input type='hidden' value="{{.user.Authenticated}}" id="statusAuth">
+       <input type='hidden' value="{{.tableName}}" id="selectedFloor">
        <p></p><br>
-       <p><small class="form-small-txt">Выбрана дата</small><input type='' value="{{.var4}}" id="selectedDate" class="inp text-center" name="showDate"></p>
+       <p><small class="form-small-txt">Выбрана дата</small><input type='' value="{{.date}}" id="selectedDate" class="inp text-center" name="showDate"></p>
        <p>
            <small class="form-small-txt">Комната</small>
            <select class='inp text-center' id = 'room_select' class='input-group'name="hero">
@@ -79,7 +79,7 @@
                <option value="floor_3">переговорная на 3 этаже</option>
            </select>
        </p>
-       {{/*<p><small class="form-small-txt">Имя</small><input class='inpDisabled text-center' id='nickName' name="nickName" maxlength='20' disabled value={{ .var2.Name }} autocomplete="off"></p>*/}}
+       {{/*<p><small class="form-small-txt">Имя</small><input class='inpDisabled text-center' id='nickName' name="nickName" maxlength='20' disabled value={{ .user.Name }} autocomplete="off"></p>*/}}
        <p><small class="form-small-txt">Клуб</small><input class='inp text-center' id='clubName' name="clubName" maxlength='20' autocomplete="off" oninput="checkHandler()"></p>
        <p><small class="form-small-txt">Кол-во человек</small><input class='inp num text-center' id='peopleNumber' name="peopleNumber" min='1' max='20' size="2" maxlength="2" autocomplete="off" onkeypress="return validateNumber(event)" oninput="checkHandler()"></p>
        {{/*<p><small class="form-small-txt">Дата</small>*/}}<input type="hidden" class='inpDisabled text-center' id='date' name="date" autocomplete="off"></p>
@@ -99,7 +99,7 @@
             <table class="table rounded border  shadow table-sm h-100">
                 <tbody class="font-weight-normal table-bordered">
                 <!--data from backend [start]-->
-                {{ range .var1.TableData }}
+                {{ range .data.TableData }}
                 {{ if eq .NickName "" }}
                 <tr class="tr_size" id="line{{ .LineID }}">
                     <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="far fa-clock pl-1"></i></td>
@@ -110,7 +110,7 @@
                 <tr class="tr_size bg-booked" id="line{{ .LineID }}">
                     <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
                     <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
-                    {{ if eq .NickName $.var2.Name }}
+                    {{ if eq .NickName $.user.Name }}
                         <span class="unreserve" >&times;</span>
                     {{ end }}
                     </td>
