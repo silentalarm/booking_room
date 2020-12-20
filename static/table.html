@@ -30,12 +30,22 @@
             <li class="nav-item" id="logout">
                 <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
             </li>
-{{if ne .var2.Name "неавторизован"}}
-
+            {{if ne .var2.Name "неавторизован"}}
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .var2.Name }}</a>
+                <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#">
+                    <i class="fas fa-user pr-1">
+                    </i>
+                    {{ .var2.Name }}
+                </a>
             </li>
-{{end}}
+            <li class="nav-item" id="logout">
+                <a class="nav-link btn btn-primary btn-nav" href="/clubregistration">
+                    <i class="fas fa-door-open pr-1">
+                    </i>
+                    Выход
+                </a>
+            </li>
+            {{end}}
             {{/*<li class="nav-item">*/}}
              {{/*<a class="nav-link btn btn-primary btn-nav" href="/delete"><i class="fas fa-trash"></i></a>*/}}
             {{/*</li>*/}}
