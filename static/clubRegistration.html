@@ -27,7 +27,11 @@
                 <li class="nav-item" id="logout">
                     <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
                 </li>
-
+                {{if ne .user.Name "неавторизован"}}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .user.Name }}</a>
+                    </li>
+                {{end}}
 
                 <!-- тут не забудь ник в шапке как в  table-->
            </ul>
