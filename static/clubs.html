@@ -48,13 +48,13 @@
                         {{ range .clubs }}
                         <tr class="row_club">
                             <td scope="col" class="h-td font-weight-normal min">
-                                {{ $.ClubName }}
+                                {{ .ClubName }}
                             </td>
                             <td scope="col" class="h-td font-weight-normal pl-3">
-                               {{ $.NickOwner }}
+                               {{ .NickOwner }}
                             </td>
                             <td scope="col" class="h-td font-weight-normal pl-3">
-                                {{ $.Size }}
+                                {{ .Size }}
                             </td>
                         </tr>
                         {{ end }}
