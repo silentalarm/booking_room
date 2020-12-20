@@ -1,7 +1,6 @@
 package page
 
 import (
-	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -65,14 +64,12 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 
 	clubs, _ := dbh.GetClubs(db)
 
-	fmt.Print(clubs[0].NickOwner)
-
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
-		//data_map := map[string]interface{}{
-		//	"clubs": clubs,
-		//}
-		tmpl.Execute(w, nil)
+		data_map := map[string]interface{}{
+			"clubs": clubs,
+		}
+		tmpl.Execute(w, data_map)
 		return
 	}
 }
