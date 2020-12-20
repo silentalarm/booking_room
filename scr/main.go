@@ -40,6 +40,7 @@ func main() {
 	http.HandleFunc("/savereserve", bk.SaveReserve)
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
 	http.HandleFunc("/clubregistration", pg.InsertNewClub)
+	http.HandleFunc("/clubs", pg.ClubsTable)
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")
