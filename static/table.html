@@ -112,7 +112,7 @@
                     <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
                     {{ if eq .NickName $.user.Name }}
                         <!-- <span class="unreserve" >&times;</span> -->
-                        <i class="fas fa-trash unreserve"></i>
+                        <i class="fas fa-trash unreserve fa-sm"></i>
                     {{ end }}
                     </td>
                 </tr>
