@@ -39,31 +39,36 @@
 
 <div class="container" style="max-width:1200px;">
     <div class="row shadow">
+
         <div class="col-md-12 py-1 bg-primary text-white text-center">
             <div class=" ">
                 <div class="card-body">
                     <h2 class="py-1">Список клубов</h2>
                     <table class="table rounded border shadow table-sm h-100">
-                        <tbody class="font-weight-normal table-bordered">
-                        {{ range .clubs }}
-                        <tr class="row_club">
-                            <td scope="col" class="h-td font-weight-normal min">
-                                {{ .ClubName }}
-                            </td>
-                            <td scope="col" class="h-td font-weight-normal pl-3">
-                               {{ .NickOwner }}
-                            </td>
-                            <td scope="col" class="h-td font-weight-normal pl-3">
-                                {{ .Size }}
-                            </td>
-                        </tr>
-                        {{ end }}
-                        </tbody>
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+    <table class="table rounded border shadow table-sm h-100">
+        <tbody class="font-weight-normal table-bordered">
+        {{ range .clubs }}
+            <tr class="row_club">
+                <td scope="col" class="h-td font-weight-normal min">
+                    {{ .ClubName }}
+                </td>
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    {{ .NickOwner }}
+                </td>
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    {{ .Size }}
+                </td>
+            </tr>
+        {{ end }}
+        </tbody>
+    </table>
 </div>
 <!--main container [end]-->
 <script src="../js/jquery.js"></script>
