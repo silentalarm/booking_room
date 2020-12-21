@@ -17,6 +17,7 @@ type Message struct {
 	ID     int    `json:"id"`
 	Name   string `json:"login"`
 	Campus []CampusData
+	Staff  bool `json:"staff?"`
 }
 
 type CampusData struct {
@@ -91,6 +92,7 @@ func getUserFromCallback(bytes []byte) (*ses.AuthUser, error) {
 		ID:     strconv.Itoa(message.ID),
 		Name:   message.Name,
 		Campus: message.Campus[0].CampusName,
+		Staff:  message.Staff,
 	}
 
 	return &user, nil

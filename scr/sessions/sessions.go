@@ -11,12 +11,14 @@ type AuthUser struct {
 	ID     string
 	Name   string
 	Campus string
+	Staff  bool
 }
 
 type User struct {
 	ID            string
 	Name          string
 	Campus        string
+	Staff         bool
 	Authenticated bool
 }
 
@@ -59,6 +61,7 @@ func Init(w http.ResponseWriter, r *http.Request, user *AuthUser) {
 	session.Values["id"] = user.ID
 	session.Values["name"] = user.Name
 	session.Values["campus"] = user.Campus
+	session.Values["staff"] = user.Staff
 	session.Values["authenticated"] = true
 	session.Options.MaxAge = 60 * 15 //15 minutes life cookie
 
@@ -79,6 +82,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	session.Values["id"] = ""
 	session.Values["name"] = ""
 	session.Values["campus"] = ""
+	session.Values["staff"] = false
 	session.Values["authenticated"] = false
 	session.Options.MaxAge = -1
 
@@ -99,6 +103,7 @@ func GetUser(session *sessions.Session) *User {
 		ID:            session.Values["id"].(string),
 		Name:          session.Values["name"].(string),
 		Campus:        session.Values["campus"].(string),
+		Staff:         session.Values["staff"].(bool),
 		Authenticated: session.Values["authenticated"].(bool),
 	}
 	return &user
