@@ -51,9 +51,10 @@
     </div>
 
     <table class="table rounded border shadow table-sm h-100">
-        <form method="POST">
+
             <tbody class="font-weight-normal table-bordered">
             {{ range .clubs }}
+            <form method="POST">
                 <input type="text" value="{{.ClubName}}" name="clubName">
                 <tr class="row_club">
                     <td scope="col" class="h-td font-weight-normal min">
@@ -76,9 +77,10 @@
                         </div>
                     </td>
                 </tr>
+            </form>
             {{ end }}
             </tbody>
-        </form>
+
     </table>
 </div>
 <!--main container [end]-->
