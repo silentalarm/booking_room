@@ -452,15 +452,15 @@ input[type="color"].custom {
     background-color: rgb(3, 155, 229) !important;
 }
 
-.accordion-row {
+.row_club {
     cursor: pointer;
 }
 
-.accordion {
+.slider {
     display: none;
     width: 100%;
 }
 
-.accordion-content {
+.slider-content {
     display: none;
 }

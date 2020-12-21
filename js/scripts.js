@@ -114,17 +114,19 @@ $(document).on('click', '.unreserve', function () {
 //при нажатии показывает описание клуба
 $(".row_club").on("click",
     function() {
-        var accordionRow = $(this).next(".accordion");
+        var accordionRow = $(this).next(".slider");
         if (!accordionRow.is(":visible")) {
-            accordionRow.show().find(".accordion-content").slideDown();
+            accordionRow.show().find(".slider-content").slideDown();
         } else {
-            accordionRow.find(".accordion-content").slideUp(function() {
+            accordionRow.find(".slider-content").slideUp(function() {
                 if (!$(this).is(':visible')) {
                     accordionRow.hide();
                 }
             });
         }
-    });
+});
+
+
 
 
 $(function () {

@@ -51,32 +51,37 @@
     </div>
 
     <table class="table rounded border shadow table-sm h-100">
-        <tbody class="font-weight-normal table-bordered">
-        {{ range .clubs }}
-            <tr class="row_club">
-                <td scope="col" class="h-td font-weight-normal min">
-                    {{ .ClubName }}
-                </td>
-                <td scope="col" class="h-td font-weight-normal pl-3">
-                    {{ .NickOwner }}
-                </td>
-                <td scope="col" class="h-td font-weight-normal pl-3">
-                    {{ .Size }}
-                </td>
-            </tr>
-            <tr class="accordion">
-                <td colspan="3">
-                    <div class="accordion-content">
-                        tr1 accordion-content
-                    </div>
-                </td>
-            </tr>
-        {{ end }}
-        </tbody>
+        <form method="POST">
+            <tbody class="font-weight-normal table-bordered">
+            {{ range .clubs }}
+                <tr class="row_club">
+                    <td scope="col" class="h-td font-weight-normal min">
+                        {{ .ClubName }}
+                    </td>
+                    <td scope="col" class="h-td font-weight-normal pl-3">
+                        {{ .NickOwner }}
+                    </td>
+                    <td scope="col" class="h-td font-weight-normal pl-3">
+                        {{ .Size }}
+                    </td>
+                </tr>
+                <tr class="slider bg-primary text-white text-center">
+                    <td colspan="3">
+                        <div class="slider-content">
+                            {{ .About }}
+                        </div>
+                        <div class="form-row float-right py-1">
+                            <input type="submit" class="btn btn-primary btn-nav" value="Вступить">
+                        </div>
+                    </td>
+                </tr>
+            {{ end }}
+            </tbody>
+        </form>
     </table>
 </div>
 <!--main container [end]-->
-<script src="../js/jquery.js"></script>
+<script src="../js/jquery2.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-datepicker.js"></script>
 <script src="../js/bootstrap-colorpicker.js"></script>
