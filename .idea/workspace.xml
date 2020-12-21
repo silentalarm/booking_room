@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс добавления в клуб" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс добавления в клуб">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/page/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/page/clubs.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,44 +146,44 @@
     </state>
     <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1608492147359" />
     <state x="200" y="200" width="1240" height="700" key="DiffContextDialog/0.25.1440.818@0.25.1440.818" timestamp="1608412379395" />
-    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608569820605">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom" timestamp="1608574228868">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608569820605" />
-    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608569820604">
+    <state width="958" height="179" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608574228868" />
+    <state width="958" height="179" key="GridCell.Tab.0.center" timestamp="1608574228867">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608569820604" />
-    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608569820603">
+    <state width="958" height="179" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608574228867" />
+    <state width="958" height="179" key="GridCell.Tab.0.left" timestamp="1608574228856">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608569820603" />
-    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608569820604">
+    <state width="958" height="179" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608574228856" />
+    <state width="958" height="179" key="GridCell.Tab.0.right" timestamp="1608574228868">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608569820604" />
+    <state width="958" height="179" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608574228868" />
     <state width="229" height="457" key="HiddenNamespacesPopup" timestamp="1608462118287">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="229" height="457" key="HiddenNamespacesPopup/0.0.1440.900@0.0.1440.900" timestamp="1608462118287" />
     <state width="229" height="457" key="HiddenNamespacesPopup/0.25.1440.817@0.25.1440.817" timestamp="1608316165346" />
-    <state x="320" y="195" key="Vcs.Push.Dialog.v2" timestamp="1608572290548">
-      <screen x="0" y="25" width="1440" height="818" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1608572656192">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608562883467" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1608572656192" />
     <state x="320" y="195" key="Vcs.Push.Dialog.v2/0.25.1440.818@0.25.1440.818" timestamp="1608572290548" />
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1608158888845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="531" y="210" width="405" height="451" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1440.900@0.0.1440.900" timestamp="1608158888845" />
-    <state x="308" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1608161006808">
+    <state x="308" y="109" key="com.intellij.database.dbimport.ImportDialog" timestamp="1608574257343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="308" y="109" key="com.intellij.database.dbimport.ImportDialog/0.0.1440.900@0.0.1440.900" timestamp="1608161006808" />
-    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1608401231517">
+    <state x="308" y="109" key="com.intellij.database.dbimport.ImportDialog/0.0.1440.900@0.0.1440.900" timestamp="1608574257343" />
+    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1608574254898">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1440.900@0.0.1440.900" timestamp="1608401231517" />
+    <state x="458" y="259" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1440.900@0.0.1440.900" timestamp="1608574254898" />
     <state x="566" y="227" width="475" height="592" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1608401204888">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

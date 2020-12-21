@@ -30,6 +30,12 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
+	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+	if inClub == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
 	if r.Method != http.MethodPost {
 		data_map := map[string]interface{}{
@@ -80,6 +86,11 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 			"inclub": inClub,
 		}
 		tmpl.Execute(w, data_map)
+		return
+	}
+
+	if inClub == false {
+		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
 
