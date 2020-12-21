@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Резерв комнтат</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="/css/awesome.css" type="text/css">
-    <link rel="stylesheet" href="/css/bootstrap-datepicker.css" type="text/css">
-    <link rel="stylesheet" href="/css/bootstrap-datepicker.css.map" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="../css/awesome.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css.map" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <body class="body">
 
@@ -40,22 +40,22 @@
             {{  if eq $.inclub false }}
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubregistration">
-                    <i class="fas fa-door-open pr-1"></i>
+                    <i class="fas fa-plus-square pr-1"></i>
                     Регистраци нового клуба
                 </a>
             </li>
             {{ end }}
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubs">
-                    <i class="fas fa-door-open pr-1"></i>
+                    <i class="fas fa-scroll pr-1"></i>
                     Список клубов
                 </a>
             </li>
             {{ if eq $.user.Staff false }}
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubstoapproved">
-                    <i class="fas fa-door-open pr-1"></i>
-                    Список клубов
+                    <i class="fas fa-check-circle pr-1"></i>
+                    Модерация клубов
                 </a>
             </li>
             {{end}}
@@ -142,10 +142,10 @@
 
 </div>
 <!--main container [end]-->
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/bootstrap-datepicker.js"></script>
-<script src="/js/bootstrap-datepicker.ru.min.js"></script>
-<script src="/js/scripts.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/bootstrap-datepicker.ru.min.js"></script>
+<script src="../js/scripts.js"></script>
 </body>
 </html>
