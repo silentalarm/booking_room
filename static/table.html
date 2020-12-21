@@ -38,20 +38,26 @@
                 </a>
             </li>
             {{  if eq $.inclub false }}
-            <li class="nav-item" id="logout">
+            <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubregistration">
                     <i class="fas fa-door-open pr-1"></i>
                     Регистраци нового клуба
                 </a>
             </li>
             {{ end }}
-            <li class="nav-item" id="logout">
+            <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/clubs">
                     <i class="fas fa-door-open pr-1"></i>
                     Список клубов
                 </a>
             </li>
             {{end}}
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary btn-nav" href="/clubstoapproved">
+                    <i class="fas fa-door-open pr-1"></i>
+                    Список клубов
+                </a>
+            </li>
             {{/*<li class="nav-item">*/}}
              {{/*<a class="nav-link btn btn-primary btn-nav" href="/delete"><i class="fas fa-trash"></i></a>*/}}
             {{/*</li>*/}}

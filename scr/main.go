@@ -41,6 +41,7 @@ func main() {
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
 	http.HandleFunc("/clubregistration", pg.InsertNewClub)
 	http.HandleFunc("/clubs", pg.ClubsTable)
+	http.HandleFunc("/clubstoapproved", pg.ClubsToApprovedTable)
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")

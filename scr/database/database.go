@@ -24,6 +24,7 @@ type Club struct {
 	ClubName     string
 	NickCreator  string
 	CreationDate string
+	Approved     bool
 	Size         int
 }
 
@@ -113,7 +114,7 @@ func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string,
 	}
 }
 
-func GetClubs(db *sql.DB) ([]Club, error) {
+func GetClubs(db *sql.DB, approved bool) ([]Club, error) {
 	rows, err := getDBRows(db, "clubs")
 	if err != nil {
 		return nil, err
@@ -123,13 +124,23 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 
 	for rows.Next() {
 		Row := Club{}
-		err := rows.Scan(&Row.ID, &Row.About, &Row.NickOwner, &Row.IDOwner, &Row.ClubName, &Row.NickCreator, &Row.CreationDate)
+		err := rows.Scan(
+			&Row.ID,
+			&Row.About,
+			&Row.NickOwner,
+			&Row.IDOwner,
+			&Row.ClubName,
+			&Row.NickCreator,
+			&Row.CreationDate,
+			&Row.Approved)
 		if err != nil {
 			continue
 		}
 		clubsSize, _ := getClubSize(db, Row.ClubName)
 		Row.Size = clubsSize
-		clubs = append(clubs, Row)
+		if Row.Approved == approved {
+			clubs = append(clubs, Row)
+		}
 	}
 	return clubs, nil
 }
