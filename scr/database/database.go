@@ -180,3 +180,10 @@ func IsUserInClub(db *sql.DB, nickName, idIntra string) bool {
 	}
 	return true
 }
+
+func AppproveClub(db *sql.DB, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET approved=true WHERE clubname=$1", clubName)
+	if err != nil {
+		panic(err)
+	}
+}

@@ -1,7 +1,6 @@
 package page
 
 import (
-	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -71,11 +70,6 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	clubs, _ := dbh.GetClubs(db, true)
-
-	for _, key := range clubs {
-		fmt.Printf("nick name: %s ", key.ClubName)
-	}
-
 	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
@@ -108,7 +102,7 @@ func ClubsToApprovedTable(w http.ResponseWriter, r *http.Request) {
 	}
 	user := ses.GetUser(session)
 
-	if user.Authenticated == false {
+	if user.Authenticated == false { //user.Staff == false
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -118,30 +112,17 @@ func ClubsToApprovedTable(w http.ResponseWriter, r *http.Request) {
 
 	clubs, _ := dbh.GetClubs(db, false)
 
-	for _, key := range clubs {
-		fmt.Printf("nick name: %s ", key.ClubName)
-	}
-
-	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
-
 	tmpl, _ := template.ParseFiles("static/clubsToApproved.html")
 	if r.Method != http.MethodPost {
 		data_map := map[string]interface{}{
-			"user":   user,
-			"clubs":  clubs,
-			"inclub": inClub,
+			"user":  user,
+			"clubs": clubs,
 		}
 		tmpl.Execute(w, data_map)
 		return
 	}
 
-	if inClub == false {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
-
-	//clubName := r.FormValue("clubName")
-	//date := time.Now().Format("02.01.2006")
-	//dbh.UserJoinlub(db, user.Name, clubName, 0, date, user.ID)
-	//http.Redirect(w, r, "/", http.StatusFound)
+	clubName := r.FormValue("clubName")
+	dbh.AppproveClub(db, clubName)
+	http.Redirect(w, r, "/clubstoapproved", http.StatusFound)
 }

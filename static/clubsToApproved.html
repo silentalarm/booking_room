@@ -43,7 +43,7 @@
         <div class="col-md-12 py-1 bg-primary text-white text-center">
             <div class=" ">
                 <div class="card-body">
-                    <h2 class="py-1">Список клубов</h2>
+                    <h2 class="py-1">Список клубов для одобрения</h2>
                     <table class="table rounded border shadow table-sm h-100"></table>
                 </div>
             </div>
@@ -56,15 +56,23 @@
         {{ range .clubs }}
             <form method="POST">
                 <input type="hidden" value="{{.ClubName}}" name="clubName">
-                <tr class="row_club">
-                    <td scope="col" class="h-td font-weight-normal min">
+                <tr class="row_club text-center">
+                    <td scope="col" class="h-td font-weight-normal pl-3">
                         {{ .ClubName }}
                     </td>
                     <td scope="col" class="h-td font-weight-normal pl-3">
                         {{ .NickOwner }}
                     </td>
-                    <td scope="col" class="h-td font-weight-normal pl-3">
-                        {{ .Size }}
+                </tr>
+                <tr class="slider bg-primary text-white text-center">
+                    <td colspan="3">
+                        <div class="slider-content">
+                            {{ .About }}
+                        </div>
+                            <div class="form-row float-right py-1">
+                                <input type="submit" class="btn btn-primary btn-nav" value="Подтвердить">
+                                <input type="submit" class="btn btn-primary btn-nav" value="Отказать">
+                            </div>
                     </td>
                 </tr>
             </form>
