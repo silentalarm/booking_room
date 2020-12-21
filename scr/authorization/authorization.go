@@ -47,7 +47,7 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	ses.Init(w, r, userInf)
 
 	//fmt.Fprintf(w,"lol: %s", userInf)
-	fmt.Fprintf(w, "Instr user info: %s", content)
+	//fmt.Fprintf(w, "Instr user info: %s", content)
 	http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 }
 
