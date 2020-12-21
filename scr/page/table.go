@@ -49,11 +49,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	user := ses.GetUser(session)
 
+	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+
 	data_map := map[string]interface{}{
 		"data":      data,
 		"user":      user,
 		"tableName": tableName,
 		"date":      date,
+		"inclub":    inClub,
 	}
 	tmpl.Execute(w, data_map)
 }
