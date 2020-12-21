@@ -30,7 +30,7 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
-	if inClub == false {
+	if inClub == true {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
