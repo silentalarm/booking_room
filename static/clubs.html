@@ -54,6 +54,7 @@
         <form method="POST">
             <tbody class="font-weight-normal table-bordered">
             {{ range .clubs }}
+                <input type='hidden' value="{{.ClubName}}" id="clubName">
                 <tr class="row_club">
                     <td scope="col" class="h-td font-weight-normal min">
                         {{ .ClubName }}

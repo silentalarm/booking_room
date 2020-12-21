@@ -44,6 +44,7 @@ func InsertNewClub(w http.ResponseWriter, r *http.Request) {
 	clubAbout := r.FormValue("clubAbout")
 	date := time.Now().Format("02.01.2006")
 	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date)
+	dbh.UserJoinlub(db, user.Name, clubName, 3, date, user.ID)
 	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
 }
 
@@ -78,4 +79,9 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, data_map)
 		return
 	}
+
+	clubName := r.FormValue("clubName")
+	date := time.Now().Format("02.01.2006")
+	dbh.UserJoinlub(db, user.Name, clubName, 0, date, user.ID)
+	http.Redirect(w, r, "/", http.StatusFound)
 }

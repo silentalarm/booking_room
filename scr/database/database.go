@@ -134,6 +134,15 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 	return clubs, nil
 }
 
+func UserJoinlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
+	_, err := db.Exec(
+		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra) values ($1, $2, $3, $4, $5)",
+		nickName, clubName, memberAccess, joinDate, idIntra)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func getClubSize(db *sql.DB, clubName string) (int, error) {
 	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname='" + clubName + "'")
 	if err != nil {
