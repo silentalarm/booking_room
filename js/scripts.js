@@ -111,6 +111,22 @@ $(document).on('click', '.unreserve', function () {
     window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
 });
 
+//при нажатии показывает описание клуба
+$(".row_club").on("click",
+    function() {
+        var accordionRow = $(this).next(".accordion");
+        if (!accordionRow.is(":visible")) {
+            accordionRow.show().find(".accordion-content").slideDown();
+        } else {
+            accordionRow.find(".accordion-content").slideUp(function() {
+                if (!$(this).is(':visible')) {
+                    accordionRow.hide();
+                }
+            });
+        }
+    });
+
+
 $(function () {
     $('#cp2').colorpicker();
 });

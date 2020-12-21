@@ -44,9 +44,7 @@
             <div class=" ">
                 <div class="card-body">
                     <h2 class="py-1">Список клубов</h2>
-                    <table class="table rounded border shadow table-sm h-100">
-
-                    </table>
+                    <table class="table rounded border shadow table-sm h-100"></table>
                 </div>
             </div>
         </div>
@@ -64,6 +62,13 @@
                 </td>
                 <td scope="col" class="h-td font-weight-normal pl-3">
                     {{ .Size }}
+                </td>
+            </tr>
+            <tr class="accordion">
+                <td colspan="3">
+                    <div class="accordion-content">
+                        tr1 accordion-content
+                    </div>
                 </td>
             </tr>
         {{ end }}

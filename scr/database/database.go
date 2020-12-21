@@ -135,7 +135,7 @@ func GetClubs(db *sql.DB) ([]Club, error) {
 }
 
 func getClubSize(db *sql.DB, clubName string) (int, error) {
-	rows, err := db.Query("SELECT * FROM clubs WHERE clubname='" + clubName + "'")
+	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname='" + clubName + "'")
 	if err != nil {
 		return 0, err
 	}

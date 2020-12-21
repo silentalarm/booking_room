@@ -451,3 +451,16 @@ input[type="color"].custom {
 .background-cp {
     background-color: rgb(3, 155, 229) !important;
 }
+
+.accordion-row {
+    cursor: pointer;
+}
+
+.accordion {
+    display: none;
+    width: 100%;
+}
+
+.accordion-content {
+    display: none;
+}
