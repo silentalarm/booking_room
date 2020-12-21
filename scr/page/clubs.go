@@ -70,11 +70,14 @@ func ClubsTable(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("nick name: %s ", key.ClubName)
 	}
 
+	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
 		data_map := map[string]interface{}{
-			"user":  user,
-			"clubs": clubs,
+			"user":   user,
+			"clubs":  clubs,
+			"inclub": inClub,
 		}
 		tmpl.Execute(w, data_map)
 		return

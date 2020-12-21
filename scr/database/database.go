@@ -157,3 +157,15 @@ func getClubSize(db *sql.DB, clubName string) (int, error) {
 
 	return counter, nil
 }
+
+func IsUserInClub(db *sql.DB, nickName, idIntra string) bool {
+	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2",
+		nickName, idIntra).Scan(&nickName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
