@@ -41,8 +41,9 @@ func RegisterNewClub(w http.ResponseWriter, r *http.Request) {
 
 	clubName := r.FormValue("clubName")
 	clubAbout := r.FormValue("clubAbout")
+	slack := r.FormValue("slack")
 	date := time.Now().Format("02.01.2006")
-	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date)
+	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date, slack)
 	dbh.UserJoinlub(db, user.Name, clubName, 3, date, user.ID)
 	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
 }

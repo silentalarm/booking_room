@@ -98,10 +98,10 @@ func DeleteOldReserves(db *sql.DB, table []string, date string) {
 	}
 }
 
-func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate string) {
+func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate, slack string) {
 	_, err := db.Exec(
-		"INSERT INTO clubs (clubabout, nickowner, idowner, clubname, nickcreator, creationdate) values ($1, $2, $3, $4, $5, $6)",
-		clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate)
+		"INSERT INTO clubs (clubabout, nickowner, idowner, clubname, nickcreator, creationdate, slack) values ($1, $2, $3, $4, $5, $6, $7)",
+		clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate, slack)
 	if err != nil {
 		panic(err)
 	}
