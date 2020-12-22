@@ -25,7 +25,7 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	clubs, _ := dbh.GetClubs(db, false)
+	clubs, _ := dbh.GetClubsToApprove(db, false)
 
 	tmpl, _ := template.ParseFiles("static/clubsToApproved.html")
 	if r.Method != http.MethodPost {

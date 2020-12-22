@@ -158,6 +158,38 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 	return clubs, nil
 }
 
+func GetClubsToApprove(db *sql.DB, approved bool) ([]Club, error) {
+	rows, err := getDBRows(db, "clubs")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	clubs := []Club{}
+
+	for rows.Next() {
+		Row := Club{}
+		err := rows.Scan(
+			&Row.ID,
+			&Row.About,
+			&Row.NickOwner,
+			&Row.IDOwner,
+			&Row.ClubName,
+			&Row.NickCreator,
+			&Row.CreationDate,
+			&Row.Approved,
+			&Row.Slack)
+		if err != nil {
+			continue
+		}
+		clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.Size = clubsSize
+		if Row.Approved == approved {
+			clubs = append(clubs, Row)
+		}
+	}
+	return clubs, nil
+}
+
 func GetMyClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
 	rows, err := getDBRows(db, "clubs")
 	if err != nil {
