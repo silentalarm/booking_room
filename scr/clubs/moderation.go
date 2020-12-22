@@ -1,6 +1,7 @@
 package clubs
 
 import (
+	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -15,7 +16,7 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 	}
 	user := ses.GetUser(session)
 
-	if user.Authenticated == false { //user.Staff == false
+	if user.Authenticated == false { //  || user.Staff == false
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -35,6 +36,9 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	sumbitType := r.FormValue("sumbit")
+
+	fmt.Printf("%s", sumbitType)
 	clubName := r.FormValue("clubName")
 	dbh.AppproveClub(db, clubName)
 	http.Redirect(w, r, "/clubstoapproved", http.StatusFound)
