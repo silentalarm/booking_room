@@ -84,11 +84,13 @@
                     <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
                 </div>
                 {{ end }}
-                <div class="col-md-12 form-group">
-                    Дата создания: {{ .club.CreationDate }}
-                </div>
-                <div class="col-md-12 form-group">
-                    Ник создателя: {{ .club.NickCreator }}
+                <div class="form-row">
+                    <div class="col-md-12 form-group">
+                        Дата создания: {{ .club.CreationDate }}
+                    </div>
+                    <div class="col-md-12 form-group">
+                        Ник создателя: {{ .club.NickCreator }}
+                    </div>
                 </div>
             </div>
 
