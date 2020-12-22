@@ -252,7 +252,7 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
 	clubMember := IsUserInClub(db, clubName, nickName, idIntra)
 
-	if clubMember == false {
+	if clubMember == true {
 		return
 	}
 
