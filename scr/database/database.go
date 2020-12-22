@@ -188,21 +188,20 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 
 	club := Club{}
 
-	for row.Next() {
-		err = row.Scan(
-			&club.ID,
-			&club.About,
-			&club.NickOwner,
-			&club.IDOwner,
-			&club.ClubName,
-			&club.NickCreator,
-			&club.CreationDate,
-			&club.Approved,
-			&club.Slack)
+	err = row.Scan(
+		&club.ID,
+		&club.About,
+		&club.NickOwner,
+		&club.IDOwner,
+		&club.ClubName,
+		&club.NickCreator,
+		&club.CreationDate,
+		&club.Approved,
+		&club.Slack)
 
-		clubsSize, _ := getClubSize(db, club.ClubName)
-		club.Size = clubsSize
-	}
+	clubsSize, _ := getClubSize(db, club.ClubName)
+	club.Size = clubsSize
+
 	return &club, nil
 }
 
