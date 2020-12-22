@@ -304,12 +304,16 @@ func IsUserInClub(db *sql.DB, clubName, nickName, idIntra string) bool {
 }
 
 func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
-	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
-		nickName, idIntra, clubName).Scan(&nickName)
+	var access int
+	err := db.QueryRow("SELECT memberaccees FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
+		nickName, idIntra, clubName).Scan(&access)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
 		}
+		return false
+	}
+	if access != 3 {
 		return false
 	}
 	return true
