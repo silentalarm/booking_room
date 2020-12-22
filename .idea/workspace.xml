@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс перенаправления при авторизации">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/page/table.go" beforeDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс INTRA_REDIRECT_URL">
+      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,8 +96,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix загрузку дб из настроек окружения" />
-    <MESSAGE value="Рефакторинг, создал страницу для регестрации клубов" />
     <MESSAGE value="фикс гоумод" />
     <MESSAGE value="пофиксил цвет и наведение при удалении" />
     <MESSAGE value="Добавил слушание сервером переключение таблицы" />
@@ -123,7 +119,9 @@
     <MESSAGE value="фикс авторизации" />
     <MESSAGE value="фикс поддтверждения клубов" />
     <MESSAGE value="фикс перенаправления при авторизации" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс перенаправления при авторизации" />
+    <MESSAGE value="рафакторинг" />
+    <MESSAGE value="фикс INTRA_REDIRECT_URL" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс INTRA_REDIRECT_URL" />
   </component>
   <component name="WindowStateProjectService">
     <state x="516" y="384" key="#GOROOT" timestamp="1608221985118">
