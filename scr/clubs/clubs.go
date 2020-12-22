@@ -1,4 +1,4 @@
-package page
+package clubs
 
 import (
 	dbh "github.com/silentalarm/booking_room/scr/database"

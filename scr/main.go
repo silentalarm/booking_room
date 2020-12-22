@@ -4,7 +4,7 @@ import (
 	"fmt"
 	auth "github.com/silentalarm/booking_room/scr/authorization"
 	bk "github.com/silentalarm/booking_room/scr/booking"
-	pg "github.com/silentalarm/booking_room/scr/page"
+	pg "github.com/silentalarm/booking_room/scr/clubs"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"golang.org/x/oauth2"
 	"net/http"
@@ -33,7 +33,7 @@ func main() {
 	port := os.Getenv("PORT")
 	//port := "8185"
 
-	http.HandleFunc("/", pg.Index)
+	http.HandleFunc("/", bk.Index)
 	http.HandleFunc("/login", auth.Login)
 	http.HandleFunc("/callback", auth.CallbackHandler)
 	http.HandleFunc("/logout", ses.Delete)
