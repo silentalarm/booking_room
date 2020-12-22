@@ -109,8 +109,7 @@ func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCrea
 }
 
 func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
-	_, err := db.Exec("DELETE FROM $1 WHERE nickname=$2 AND reserv_date=$3 AND reserv_time=$4",
-		table, userName, date, time)
+	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
 	if err != nil {
 		panic(err)
 	}
