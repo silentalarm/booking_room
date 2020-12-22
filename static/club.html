@@ -57,7 +57,7 @@
                                       rows="5"
                                       class="form-control unresizable"
                                       maxlength="255">
-                                {{ .club.About }}
+                                {{ $.club.About }}
                             </textarea>
                             {{ else }}
                             <textarea name="clubAbout"
@@ -67,7 +67,7 @@
                                       class="form-control unresizable"
                                       maxlength="255"
                                       disabled>
-                                {{ .club.About }}
+                                {{ $.club.About }}
                             </textarea>
                             {{ end }}
                         </div>
