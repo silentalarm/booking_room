@@ -29,6 +29,15 @@ type Club struct {
 	Slack        string
 }
 
+type ClubMember struct {
+	ID       int
+	NickName string
+	ClubName string
+	Access   int
+	JoinDate string
+	IDIntra  string
+}
+
 func OpenDB(db_name string) *sql.DB {
 	db, err := sql.Open(db_name, os.Getenv("HEROKU_POSTGRESQL_MAROON_URL"))
 	if err != nil {
@@ -247,4 +256,32 @@ func AppproveClub(db *sql.DB, clubName string) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func GetClubMembers(db *sql.DB, clubName string) ([]ClubMember, error) {
+	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname=$1", clubName)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	members := []ClubMember{}
+
+	for rows.Next() {
+		Row := ClubMember{}
+		err := rows.Scan(
+			&Row.ID,
+			&Row.NickName,
+			&Row.ClubName,
+			&Row.Access,
+			&Row.JoinDate,
+			&Row.IDIntra)
+
+		if err != nil {
+			continue
+		}
+
+		members = append(members, Row)
+	}
+	return members, nil
 }
