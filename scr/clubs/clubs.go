@@ -24,7 +24,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	clubs, _ := dbh.GetClubs(db, true)
+	clubs, _ := dbh.GetClubs(db, true, user.Name, user.ID)
 	//member := dbh.IsUserInClub(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")

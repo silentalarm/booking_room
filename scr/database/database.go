@@ -27,6 +27,7 @@ type Club struct {
 	Approved     bool
 	Size         int
 	Slack        string
+	UserJoined   bool
 }
 
 type ClubMember struct {
@@ -124,7 +125,7 @@ func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string,
 	}
 }
 
-func GetClubs(db *sql.DB, approved bool) ([]Club, error) {
+func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, error) {
 	rows, err := getDBRows(db, "clubs")
 	if err != nil {
 		return nil, err
@@ -148,6 +149,7 @@ func GetClubs(db *sql.DB, approved bool) ([]Club, error) {
 			continue
 		}
 		clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.UserJoined = IsUserInClub(db, Row.ClubName, nickName, idIntra)
 		Row.Size = clubsSize
 		if Row.Approved == approved {
 			clubs = append(clubs, Row)
@@ -239,9 +241,21 @@ func getClubSize(db *sql.DB, clubName string) (int, error) {
 	return counter, nil
 }
 
-func IsUserInClub(db *sql.DB, nickName, idIntra string) bool {
+func IsUserClubMember(db *sql.DB, nickName, idIntra string) bool {
 	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2",
 		nickName, idIntra).Scan(&nickName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
+func IsUserInClub(db *sql.DB, clubName, nickName, idIntra string) bool {
+	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
+		nickName, idIntra, clubName).Scan(&nickName)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
