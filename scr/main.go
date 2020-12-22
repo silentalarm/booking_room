@@ -13,7 +13,7 @@ import (
 
 func init() {
 	auth.AuthConfig = &oauth2.Config{
-		RedirectURL:  os.Getenv("REDIRECT_URL"),
+		RedirectURL:  os.Getenv("INTRA_REDIRECT_URL"),
 		ClientID:     os.Getenv("INTRA_CLIENT_ID"),
 		ClientSecret: os.Getenv("INTRA_CLIENT_SECRET"),
 		Scopes:       []string{"public"},
