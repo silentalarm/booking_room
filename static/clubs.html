@@ -64,9 +64,6 @@
                         {{ .NickOwner }}
                     </td>
                     <td scope="col" class="h-td font-weight-normal pl-3">
-                        {{ .CreationDate }}
-                    </td>
-                    <td scope="col" class="h-td font-weight-normal pl-3">
                         {{ .Size }}
                     </td>
                 </tr>
@@ -74,7 +71,14 @@
                     <td colspan="3">
                         <div class="slider-content">
                             {{ .About }}
+                            <div class="col-md-6">
+                                Дата создания: {{ .CreationDate }}
+                            </div>
+                            <div class="col-md-6">
+                                Ник создания: {{ .NickCreator }}
+                            </div>
                         </div>
+
                         {{ if eq .UserJoined false }}
                         <div class="form-row float-right py-1">
                             <input type="submit" class="btn btn-primary btn-nav" value="Вступить">
