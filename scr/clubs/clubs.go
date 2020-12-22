@@ -25,20 +25,20 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	clubs, _ := dbh.GetClubs(db, true)
-	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+	member := dbh.IsUserInClub(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
 			"user":   user,
 			"clubs":  clubs,
-			"inclub": inClub,
+			"inclub": member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
 	}
 
-	if inClub == false {
+	if member == false {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
