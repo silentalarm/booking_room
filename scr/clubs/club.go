@@ -5,10 +5,21 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
-	"time"
 )
 
-func Clubs(w http.ResponseWriter, r *http.Request) {
+func Club(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		panic(err)
+		return
+	}
+
+	clubName := r.URL.Query().Get("clubname")
+	if clubName == "" {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -24,27 +35,16 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	clubs, _ := dbh.GetClubs(db, true)
-	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+	club, _ := dbh.GetClub(db, clubName, true)
 
-	tmpl, _ := template.ParseFiles("static/clubs.html")
+	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":   user,
-			"clubs":  clubs,
-			"inclub": inClub,
+			"user": user,
+			"club": club,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
 	}
 
-	if inClub == false {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
-
-	clubName := r.FormValue("clubName")
-	date := time.Now().Format("02.01.2006")
-	dbh.UserJoinlub(db, user.Name, clubName, 0, date, user.ID)
-	http.Redirect(w, r, "/", http.StatusFound)
 }

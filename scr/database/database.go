@@ -147,6 +147,63 @@ func GetClubs(db *sql.DB, approved bool) ([]Club, error) {
 	return clubs, nil
 }
 
+func GetMyClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
+	rows, err := getDBRows(db, "clubs")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	clubs := []Club{}
+
+	for rows.Next() {
+		Row := Club{}
+		err := rows.Scan(
+			&Row.ID,
+			&Row.About,
+			&Row.NickOwner,
+			&Row.IDOwner,
+			&Row.ClubName,
+			&Row.NickCreator,
+			&Row.CreationDate,
+			&Row.Approved,
+			&Row.Slack)
+		if err != nil {
+			continue
+		}
+		clubsSize, _ := getClubSize(db, Row.ClubName)
+		Row.Size = clubsSize
+		if Row.Approved == approved && Row.NickOwner == ownerName {
+			clubs = append(clubs, Row)
+		}
+	}
+	return clubs, nil
+}
+
+func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
+	row, err := db.Query("SELECT * FROM clubs WHERE clubname=$1 and approved=$2", clubName, approved)
+	if err != nil {
+		return nil, err
+	}
+	defer row.Close()
+
+	club := Club{}
+	err = row.Scan(
+		&club.ID,
+		&club.About,
+		&club.NickOwner,
+		&club.IDOwner,
+		&club.ClubName,
+		&club.NickCreator,
+		&club.CreationDate,
+		&club.Approved,
+		&club.Slack)
+
+	clubsSize, _ := getClubSize(db, club.ClubName)
+	club.Size = clubsSize
+
+	return &club, nil
+}
+
 func UserJoinlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
 	_, err := db.Exec(
 		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra) values ($1, $2, $3, $4, $5)",

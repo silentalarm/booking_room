@@ -44,10 +44,13 @@
                 <form method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            {{ .clubName }}
+                            {{ .club.ClubName }}
                         </div>
                         <div class="form-group col-md-12">
-                            <textarea name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255"></textarea>
+                            {{ .club.Slack }}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255" value="{{ .club.ClubName }}"></textarea>
                         </div>
                     </div>
                     <div class="form-row float-right">
@@ -69,13 +72,13 @@
                             <tbody class="font-weight-normal table-bordered">
                                 <tr class="row_club">
                                     <td scope="col" class="h-td font-weight-normal min">
-                                        {{ .memberName }}
+                                        <!-- {{ .memberName }} -->
                                     </td>
                                     <td scope="col" class="h-td font-weight-normal pl-3">
-                                        {{ .memberAccess }}
+                                        <!--{{ .memberAccess }}-->
                                     </td>
                                     <td scope="col" class="h-td font-weight-normal pl-3">
-                                        {{ .memberJoinDate }}
+                                        <!--{{ .memberJoinDate }}-->
                                     </td>
                                 </tr>
                             </tbody>

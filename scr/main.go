@@ -41,6 +41,7 @@ func main() {
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
 	http.HandleFunc("/clubregistration", cl.RegisterNewClub)
 	http.HandleFunc("/clubs", cl.Clubs)
+	http.HandleFunc("/club", cl.Club)
 	http.HandleFunc("/clubstoapproved", cl.Moderation)
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
