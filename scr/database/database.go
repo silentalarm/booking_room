@@ -271,14 +271,23 @@ func AppproveClub(db *sql.DB, clubName string) {
 }
 
 func ClubIsApproved(db *sql.DB, clubName string) bool {
-	approved, err := db.Query("SELECT approved FROM clubmembers WHERE approved=$1 and approved=true", clubName)
-	if err != nil || approved == nil {
+	rows, err := db.Query("SELECT approved FROM clubmembers WHERE approved=$1 and approved=true", clubName)
+	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
 		}
 		return false
 	}
-	return true
+	result := false
+
+	for rows.Next() {
+		err = rows.Scan(&result)
+
+		if err != nil {
+			continue
+		}
+	}
+	return result
 }
 
 func GetClubMembers(db *sql.DB, clubName string) ([]ClubMember, error) {
