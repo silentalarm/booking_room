@@ -215,7 +215,7 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 	return &club, nil
 }
 
-func UserJoinlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
+func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
 	_, err := db.Exec(
 		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra) values ($1, $2, $3, $4, $5)",
 		nickName, clubName, memberAccess, joinDate, idIntra)

@@ -45,6 +45,6 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 
 	clubName := r.FormValue("clubName")
 	date := time.Now().Format("02.01.2006")
-	dbh.UserJoinlub(db, user.Name, clubName, 0, date, user.ID)
+	dbh.UserJoinСlub(db, user.Name, clubName, 0, date, user.ID)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
