@@ -35,9 +35,9 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	isOwner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
+	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
 
-	if isOwner == false {
+	if owner == false {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -50,7 +50,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			"user":    user,
 			"club":    club,
 			"members": members,
-			"isowner": isOwner,
+			"owner":   owner,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

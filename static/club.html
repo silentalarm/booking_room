@@ -50,7 +50,7 @@
                             {{ .club.Slack }}
                         </div>
                         <div class="form-group col-md-12">
-                            {{ if eq .isowner true }}
+                            {{ if eq .owner true }}
                             <textarea name="clubAbout"
                                       placeholder="Опишите чем занимается клуб"
                                       cols="40"
@@ -59,7 +59,7 @@
                                       maxlength="255">
                                 {{ .club.About }}
                             </textarea>
-                            {{ if eq .isowner false }}
+                            {{ else }}
                             <textarea name="clubAbout"
                                       placeholder="Опишите чем занимается клуб"
                                       cols="40"
@@ -72,17 +72,17 @@
                             {{ end }}
                         </div>
                     </div>
-                    {{ if eq .isowner true }}
+                    {{ if eq .owner true }}
                     <div class="form-row float-right">
                         <input type="submit" class="btn btn-primary btn-nav" value="Сохранить">
                     </div>
-                    {{ ende }}
+                    {{ end }}
                 </form>
-                {{ if eq .isowner true }}
+                {{ if eq .owner true }}
                 <div class="col-md-12 py-1 float-right">
                     <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
                 </div>
-                {{ ende }}
+                {{ end }}
             </div>
 
             <div class="col-md-8 py-1 bg-primary text-white text-center">
