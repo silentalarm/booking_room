@@ -38,7 +38,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if member == false {
+	//if member == false { тут внимательнее возможно не фолс а тру
 	//	http.Redirect(w, r, "/", http.StatusFound)
 	//	return
 	//}
