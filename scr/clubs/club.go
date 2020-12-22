@@ -50,6 +50,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			"user":    user,
 			"club":    club,
 			"members": members,
+			"isowner": isOwner,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

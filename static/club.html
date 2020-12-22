@@ -50,17 +50,39 @@
                             {{ .club.Slack }}
                         </div>
                         <div class="form-group col-md-12">
-                            <textarea name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255">{{ .club.About }}</textarea>
+                            {{ if eq .isowner true }}
+                            <textarea name="clubAbout"
+                                      placeholder="Опишите чем занимается клуб"
+                                      cols="40"
+                                      rows="5"
+                                      class="form-control unresizable"
+                                      maxlength="255">
+                                {{ .club.About }}
+                            </textarea>
+                            {{ else }}
+                            <textarea name="clubAbout"
+                                      placeholder="Опишите чем занимается клуб"
+                                      cols="40"
+                                      rows="5"
+                                      class="form-control unresizable"
+                                      maxlength="255"
+                                      disabled>
+                                {{ .club.About }}
+                            </textarea>
+                            {{ end }}
                         </div>
                     </div>
+                    {{ if eq .isowner true }}
                     <div class="form-row float-right">
                         <input type="submit" class="btn btn-primary btn-nav" value="Сохранить">
                     </div>
+                    {{ ende }}
                 </form>
-
+                {{ if eq .isowner true }}
                 <div class="col-md-12 py-1 float-right">
                     <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
                 </div>
+                {{ ende }}
             </div>
 
             <div class="col-md-8 py-1 bg-primary text-white text-center">
