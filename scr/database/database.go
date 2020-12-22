@@ -26,6 +26,7 @@ type Club struct {
 	CreationDate string
 	Approved     bool
 	Size         int
+	Slack        string
 }
 
 func OpenDB(db_name string) *sql.DB {
@@ -108,7 +109,8 @@ func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCrea
 }
 
 func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
-	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
+	_, err := db.Exec("DELETE FROM $1 WHERE nickname=$2 AND reserv_date=$3 AND reserv_time=$4",
+		table, userName, date, time)
 	if err != nil {
 		panic(err)
 	}
@@ -132,7 +134,8 @@ func GetClubs(db *sql.DB, approved bool) ([]Club, error) {
 			&Row.ClubName,
 			&Row.NickCreator,
 			&Row.CreationDate,
-			&Row.Approved)
+			&Row.Approved,
+			&Row.Slack)
 		if err != nil {
 			continue
 		}
@@ -155,7 +158,7 @@ func UserJoinlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDa
 }
 
 func getClubSize(db *sql.DB, clubName string) (int, error) {
-	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname='" + clubName + "'")
+	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname=$1", clubName)
 	if err != nil {
 		return 0, err
 	}
