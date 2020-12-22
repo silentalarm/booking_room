@@ -4,7 +4,7 @@ import (
 	"fmt"
 	auth "github.com/silentalarm/booking_room/scr/authorization"
 	bk "github.com/silentalarm/booking_room/scr/booking"
-	pg "github.com/silentalarm/booking_room/scr/clubs"
+	cl "github.com/silentalarm/booking_room/scr/clubs"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"golang.org/x/oauth2"
 	"net/http"
@@ -39,9 +39,9 @@ func main() {
 	http.HandleFunc("/logout", ses.Delete)
 	http.HandleFunc("/savereserve", bk.SaveReserve)
 	http.HandleFunc("/delreserve", bk.DeleteReserveFromUser)
-	http.HandleFunc("/clubregistration", pg.InsertNewClub)
-	http.HandleFunc("/clubs", pg.ClubsTable)
-	http.HandleFunc("/clubstoapproved", pg.ClubsToApprovedTable)
+	http.HandleFunc("/clubregistration", cl.RegisterNewClub)
+	http.HandleFunc("/clubs", cl.Clubs)
+	http.HandleFunc("/clubstoapproved", cl.Moderation)
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
 	fmt.Println("Server is listening...")
