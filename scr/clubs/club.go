@@ -42,6 +42,12 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	//	return
 	//}
 
+	approved := dbh.ClubIsApproved(db, clubName)
+	if approved == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	club, _ := dbh.GetClub(db, clubName, true)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	tmpl, _ := template.ParseFiles("static/club.html")
