@@ -76,10 +76,10 @@
                                         {{ .NickName }}
                                     </td>
                                     <td scope="col" class="h-td font-weight-normal pl-3">
-                                        {{ if eq $.Access 3 }}
+                                        {{ if eq .Access 3 }}
                                             Владелец
                                         {{ end }}
-                                        {{ if eq $.Access 0 }}
+                                        {{ if eq .Access 0 }}
                                             Участник
                                         {{ end }}
                                     </td>
