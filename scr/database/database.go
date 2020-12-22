@@ -251,6 +251,18 @@ func IsUserInClub(db *sql.DB, nickName, idIntra string) bool {
 	return true
 }
 
+func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
+	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
+		nickName, idIntra, clubName).Scan(&nickName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
 func AppproveClub(db *sql.DB, clubName string) {
 	_, err := db.Exec("UPDATE clubs SET approved=true WHERE clubname=$1", clubName)
 	if err != nil {

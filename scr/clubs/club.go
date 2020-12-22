@@ -35,6 +35,13 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
+	isOwner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
+
+	if isOwner == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	club, _ := dbh.GetClub(db, clubName, true)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	tmpl, _ := template.ParseFiles("static/club.html")
