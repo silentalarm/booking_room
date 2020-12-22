@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     {{ if eq .owner true }}
-                    <div class="form-row float-right">
+                    <div class="form-row col-md-12 float-right">
                         <input type="submit" class="btn btn-primary btn-nav" value="Сохранить">
                     </div>
                     {{ end }}
@@ -84,10 +84,10 @@
                     <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
                 </div>
                 {{ end }}
-                <div class="col-md-12 form-group ">
+                <div class="col-md-12 form-group">
                     Дата создания: {{ .club.CreationDate }}
                 </div>
-                <div class="col-md-12 form-group ">
+                <div class="col-md-12 form-group">
                     Ник создателя: {{ .club.NickCreator }}
                 </div>
             </div>
