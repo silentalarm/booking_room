@@ -41,7 +41,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	//if member == false { тут внимательнее возможно не фолс а тру
 	//	http.Redirect(w, r, "/", http.StatusFound)
 	//	return
-	//}
+	//
 
 	clubName := r.FormValue("clubName")
 	date := time.Now().Format("02.01.2006")

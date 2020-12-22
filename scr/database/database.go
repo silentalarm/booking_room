@@ -250,6 +250,12 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 }
 
 func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
+	clubMember := IsUserInClub(db, clubName, nickName, idIntra)
+
+	if clubMember == false {
+		return
+	}
+
 	_, err := db.Exec(
 		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra) values ($1, $2, $3, $4, $5)",
 		nickName, clubName, memberAccess, joinDate, idIntra)
