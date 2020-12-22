@@ -58,14 +58,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
 
-	data_map := map[string]interface{}{
+	dataMap := map[string]interface{}{
 		"data":      data,
 		"user":      user,
 		"tableName": tableName,
 		"date":      date,
 		"inclub":    inClub,
 	}
-	tmpl.Execute(w, data_map)
+	_ = tmpl.Execute(w, dataMap)
 }
 
 func tableInit() ViewData {
@@ -117,7 +117,7 @@ func rebuildTable(rows []dbh.ReserveRow) *ViewData {
 func SaveReserve(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
-		fmt.Fprintf(w, "ParseForm() err: %v", err)
+		panic(err)
 		return
 	}
 
@@ -209,6 +209,7 @@ func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, p
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
+
 	for _, date_ := range date {
 		successfullyLines := []string{}
 		unSuccessfullyLines := []string{}
@@ -222,7 +223,7 @@ func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, p
 			empty := dbh.ReserveIsExist(db, table, date_, i)
 			strHour := strconv.Itoa(i)
 			if empty == false {
-				dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
+				_ = dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
 				successfullyLines = append(successfullyLines, strHour)
 			} else {
 				unSuccessfullyLines = append(unSuccessfullyLines, strHour)

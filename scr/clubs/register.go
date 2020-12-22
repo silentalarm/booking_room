@@ -32,10 +32,10 @@ func RegisterNewClub(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
 	if r.Method != http.MethodPost {
-		data_map := map[string]interface{}{
+		dataMap := map[string]interface{}{
 			"user": user,
 		}
-		_ = tmpl.Execute(w, data_map)
+		_ = tmpl.Execute(w, dataMap)
 		return
 	}
 

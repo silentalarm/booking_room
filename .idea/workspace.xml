@@ -19,15 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс INTRA_REDIRECT_URL">
-      <change afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/clubs/register.go" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="рефакторинг">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubsToApproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubsToApproved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/moderation.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/sessions/sessions.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/sessions/sessions.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс гоумод" />
     <MESSAGE value="пофиксил цвет и наведение при удалении" />
     <MESSAGE value="Добавил слушание сервером переключение таблицы" />
     <MESSAGE value="пофиксил баги" />
@@ -128,6 +125,7 @@
     <MESSAGE value="фикс перенаправления при авторизации" />
     <MESSAGE value="рафакторинг" />
     <MESSAGE value="фикс INTRA_REDIRECT_URL" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс INTRA_REDIRECT_URL" />
+    <MESSAGE value="рефакторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="рефакторинг" />
   </component>
 </project>

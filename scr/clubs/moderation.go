@@ -27,11 +27,11 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, _ := template.ParseFiles("static/clubsToApproved.html")
 	if r.Method != http.MethodPost {
-		data_map := map[string]interface{}{
+		dataMap := map[string]interface{}{
 			"user":  user,
 			"clubs": clubs,
 		}
-		_ = tmpl.Execute(w, data_map)
+		_ = tmpl.Execute(w, dataMap)
 		return
 	}
 

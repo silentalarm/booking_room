@@ -46,9 +46,6 @@ func ProfileUser(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
-
-	fmt.Fprintf(w, "id: %s name: %s campus: %s auth: %t",
-		user.ID, user.Name, user.Campus, user.Authenticated)
 }
 
 func Init(w http.ResponseWriter, r *http.Request, user *AuthUser) {
