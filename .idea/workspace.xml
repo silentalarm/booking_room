@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс не больших ошибок">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="тест типа метода пост">
       <change beforePath="$PROJECT_DIR$/scr/clubs/moderation.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +96,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил слушание сервером переключение таблицы" />
     <MESSAGE value="пофиксил баги" />
     <MESSAGE value="пофиксил баг страницы" />
     <MESSAGE value="пофиксил порт" />
@@ -121,6 +120,7 @@
     <MESSAGE value="фикс INTRA_REDIRECT_URL" />
     <MESSAGE value="рефакторинг" />
     <MESSAGE value="фикс не больших ошибок" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс не больших ошибок" />
+    <MESSAGE value="тест типа метода пост" />
+    <option name="LAST_COMMIT_MESSAGE" value="тест типа метода пост" />
   </component>
 </project>
