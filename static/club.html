@@ -57,9 +57,9 @@
                                       rows="5"
                                       class="form-control unresizable"
                                       maxlength="255">
-                                {{ $.club.About }}
+                                {{ .club.About }}
                             </textarea>
-                            {{ else }}
+                            {{ if eq .isowner false }}
                             <textarea name="clubAbout"
                                       placeholder="Опишите чем занимается клуб"
                                       cols="40"
@@ -67,7 +67,7 @@
                                       class="form-control unresizable"
                                       maxlength="255"
                                       disabled>
-                                {{ $.club.About }}
+                                {{ .club.About }}
                             </textarea>
                             {{ end }}
                         </div>
