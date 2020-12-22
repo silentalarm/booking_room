@@ -24,11 +24,11 @@ func RegisterNewClub(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB("postgres")
 	defer db.Close()
 
-	inClub := dbh.IsUserInClub(db, user.Name, user.ID)
-	if inClub == true {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
+	//inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+	//if inClub == true {
+	//	http.Redirect(w, r, "/", http.StatusFound)
+	//	return
+	//}
 
 	tmpl, _ := template.ParseFiles("static/clubRegistration.html")
 	if r.Method != http.MethodPost {
