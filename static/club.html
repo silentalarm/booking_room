@@ -68,20 +68,19 @@
                                       rows="5"
                                       class="form-control unresizable"
                                       maxlength="255"
-                                      disabled>{{ .club.About }}
-                            </textarea>
+                                      disabled>{{ .club.About }}</textarea>
                             {{ end }}
                         </div>
                     </div>
                     {{ if eq .owner true }}
                     <div class="form-row col-md-12 float-right">
-                        <input type="submit" class="btn btn-primary btn-nav" value="Сохранить">
+                        <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Сохранить">
                     </div>
                     {{ end }}
                 </form>
                 {{ if eq .owner true }}
                 <div class="col-md-12 py-1 float-right">
-                    <input type="submit" class="btn btn-primary btn-nav" value="Удалить клуб">
+                    <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
                 </div>
                 {{ end }}
                 <div class="form-row">

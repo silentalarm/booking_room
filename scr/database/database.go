@@ -370,8 +370,31 @@ func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
 	return true
 }
 
+func DeleteСlub(db *sql.DB, clubName string) {
+	_, err := db.Exec("DELETE FROM club WHERE clubname=$1", clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func DeleteClubByOwner(db *sql.DB, nickName, idIntra, clubName string) {
+	_, err := db.Exec("DELETE FROM club WHERE nickowner=$1 and idowner=$2 and clubname=$3",
+		nickName, idIntra, clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func AppproveClub(db *sql.DB, clubName string) {
 	_, err := db.Exec("UPDATE clubs SET approved=true WHERE clubname=$1", clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func SetAboutClub(db *sql.DB, newAbout, nickOwner, idOwner, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET clubabout=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
+		newAbout, nickOwner, idOwner, clubName)
 	if err != nil {
 		panic(err)
 	}
