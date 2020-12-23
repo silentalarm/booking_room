@@ -65,26 +65,15 @@
                 <td scope="col" class="h-td font-weight-normal pl-3">
                     {{ .Size }}
                 </td>
-            </tr>
-            <tr class="slider bg-primary text-white text-center">
-                <td colspan="3">
-                    <div class="slider-content">
-                        {{ .About }}
-                        <div class="col-md-12">
-                            Дата создания: {{ .CreationDate }}
-                        </div>
-                        <div class="col-md-12">
-                            Ник создания: {{ .NickCreator }}
-                        </div>
-                    </div>
-
-                    {{ if eq .Owner false }}
-                    <div class="form-row float-right py-1">
-                        <input type="submit" class="btn btn-primary btn-nav" value="Покинуть">
-                    </div>
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    <a class="nav-link btn btn-primary btn-nav" href="/club?clubname={{ .ClubName }}"><i class="fas fa-door-open pr-1"></i>перейти</a>
+                {{ if eq .Owner false }}
+                    <input type="submit" class="btn btn-primary btn-nav" value="Покинуть">
                     {{ end }}
                 </td>
+
             </tr>
+
         </form>
         {{ end }}
         </tbody>
