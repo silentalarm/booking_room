@@ -72,7 +72,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		clubAbout := r.FormValue("clubAbout")
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
-	case "setOnwer":
+	case "setOwner":
 		nickName := r.FormValue("nickName")
 		intraID := r.FormValue("intraID")
 
