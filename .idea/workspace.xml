@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="добавил возможность перейти на страницу клуба в списке клубов">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс моих клубов">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/myClubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/myClubs.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +98,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="пофиксил слушание страниц сервером" />
     <MESSAGE value="фикс списка клубов" />
     <MESSAGE value="слайдер в списке клубов" />
     <MESSAGE value="добавил вступление в клуб" />
@@ -122,6 +122,7 @@
     <MESSAGE value="добавил новую колонку в список клубов" />
     <MESSAGE value="добавил возможность покинуть клуб" />
     <MESSAGE value="добавил возможность перейти на страницу клуба в списке клубов" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавил возможность перейти на страницу клуба в списке клубов" />
+    <MESSAGE value="фикс моих клубов" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс моих клубов" />
   </component>
 </project>

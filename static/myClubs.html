@@ -56,18 +56,20 @@
         <form method="POST">
             <input type="hidden" value="{{.ClubName}}" name="clubName">
             <tr class="row_club text-center">
-                <td scope="col" class="h-td font-weight-normal pl-3" style="width:50%">
+                <td scope="col" class="h-td font-weight-normal pl-3" style="width:70%">
                     {{ .ClubName }}
                 </td>
                 <td scope="col" class="h-td font-weight-normal pl-3">
-                    <a class="btn btn-primary btn-nav" href="/club?clubname={{ .ClubName }}"><i class="fas fa-door-open pr-1"></i>перейти</a>
-                {{ if eq .Owner false }}
-                    <input type="submit" class="btn btn-primary btn-nav" value="Покинуть">
+                    {{ if eq .Owner false }}
+                    <button type="submit" class="btn font-weight-normal" value="Покинуть">
+                        <i class="fas fa-door-open large_icon"></i>
+                    </button>
                     {{ end }}
+                    <a href="/club?clubname={{ .ClubName }}">
+                        <i class="fas fas fa-arrow-right large_icon"></i>
+                    </a>
                 </td>
-
             </tr>
-
         </form>
         {{ end }}
         </tbody>
