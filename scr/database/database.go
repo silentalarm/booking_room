@@ -249,6 +249,39 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 	return &club, nil
 }
 
+func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, error) {
+	rows, err := db.Query("SELECT * FROM clubs WHERE approved=$1", approved)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	clubs := []Club{}
+
+	for rows.Next() {
+		Row := Club{}
+		err := rows.Scan(
+			&Row.ID,
+			&Row.About,
+			&Row.NickOwner,
+			&Row.IDOwner,
+			&Row.ClubName,
+			&Row.NickCreator,
+			&Row.CreationDate,
+			&Row.Approved,
+			&Row.Slack)
+		if err != nil {
+			continue
+		}
+		clubsSize, _ := getClubSize(db, Row.ClubName)
+		userJoined := IsUserInClub(db, Row.ClubName, nickName, idIntra)
+		Row.Size = clubsSize
+		if Row.Approved == approved && userJoined == true {
+			clubs = append(clubs, Row)
+		}
+	}
+	return clubs, nil
+}
+
 func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
 	clubMember := IsUserInClub(db, clubName, nickName, idIntra)
 

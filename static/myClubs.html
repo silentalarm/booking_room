@@ -43,7 +43,7 @@
         <div class="col-md-12 py-1 bg-primary text-white text-center">
             <div class=" ">
                 <div class="card-body">
-                    <h2 class="py-1">Список клубов</h2>
+                    <h2 class="py-1">Список моих клубов</h2>
                     <table class="table rounded border shadow table-sm h-100"></table>
                 </div>
             </div>
@@ -51,43 +51,43 @@
     </div>
 
     <table class="table rounded border shadow table-sm h-100">
-            <tbody class="font-weight-normal table-bordered">
-            {{ range .clubs }}
-            <form method="POST">
-                <input type="hidden" value="{{.ClubName}}" name="clubName">
-                <tr class="row_club text-center">
-                    <td scope="col" class="h-td font-weight-normal pl-3">
-                        {{ .ClubName }}
-                    </td>
-                    <td scope="col" class="h-td font-weight-normal pl-3">
-                        {{ .NickOwner }}
-                    </td>
-                    <td scope="col" class="h-td font-weight-normal pl-3">
-                        {{ .Size }}
-                    </td>
-                </tr>
-                <tr class="slider bg-primary text-white text-center">
-                    <td colspan="3">
-                        <div class="slider-content">
-                            {{ .About }}
-                            <div class="col-md-12">
-                                Дата создания: {{ .CreationDate }}
-                            </div>
-                            <div class="col-md-12">
-                                Ник создания: {{ .NickCreator }}
-                            </div>
+        <tbody class="font-weight-normal table-bordered">
+        {{ range .clubs }}
+        <form method="POST">
+            <input type="hidden" value="{{.ClubName}}" name="clubName">
+            <tr class="row_club text-center">
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    {{ .ClubName }}
+                </td>
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    {{ .NickOwner }}
+                </td>
+                <td scope="col" class="h-td font-weight-normal pl-3">
+                    {{ .Size }}
+                </td>
+            </tr>
+            <tr class="slider bg-primary text-white text-center">
+                <td colspan="3">
+                    <div class="slider-content">
+                        {{ .About }}
+                        <div class="col-md-12">
+                            Дата создания: {{ .CreationDate }}
                         </div>
+                        <div class="col-md-12">
+                            Ник создания: {{ .NickCreator }}
+                        </div>
+                    </div>
 
-                        {{ if eq .UserJoined false }}
-                        <div class="form-row float-right py-1">
-                            <input type="submit" class="btn btn-primary btn-nav" value="Вступить">
-                        </div>
-                        {{ end }}
-                    </td>
-                </tr>
-            </form>
-            {{ end }}
-            </tbody>
+                    {{ if eq .UserJoined false }}
+                    <div class="form-row float-right py-1">
+                        <input type="submit" class="btn btn-primary btn-nav" value="Вступить">
+                    </div>
+                    {{ end }}
+                </td>
+            </tr>
+        </form>
+        {{ end }}
+        </tbody>
 
     </table>
 </div>
