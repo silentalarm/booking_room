@@ -77,12 +77,14 @@
                         <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Сохранить">
                     </div>
                     {{ end }}
+
+                    {{ if eq .owner true }}
+                    <div class="col-md-12 py-1 float-right">
+                        <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
+                    </div>
+                    {{ end }}
                 </form>
-                {{ if eq .owner true }}
-                <div class="col-md-12 py-1 float-right">
-                    <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
-                </div>
-                {{ end }}
+
                 <div class="form-row">
                     <div class="col-md-12 form-group">
                         Дата создания: {{ .club.CreationDate }}
