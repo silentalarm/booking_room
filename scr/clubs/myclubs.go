@@ -30,12 +30,14 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	clubs, _ := dbh.GetUserClubs(db, true, user.Name, user.ID)
+	onConfirmationClubs, _ := dbh.GetUserClubs(db, false, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/myClubs.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":  user,
-			"clubs": clubs,
+			"user":    user,
+			"clubs":   clubs,
+			"onConCl": onConfirmationClubs,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
