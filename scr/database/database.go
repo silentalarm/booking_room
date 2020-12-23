@@ -27,7 +27,8 @@ type Club struct {
 	Approved     bool
 	Size         int
 	Slack        string
-	UserJoined   bool
+	Member       bool
+	Owner        bool
 }
 
 type ClubMember struct {
@@ -149,7 +150,7 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 			continue
 		}
 		clubsSize, _ := getClubSize(db, Row.ClubName)
-		Row.UserJoined = IsUserInClub(db, Row.ClubName, nickName, idIntra)
+		Row.Member = IsUserInClub(db, nickName, idIntra, Row.ClubName)
 		Row.Size = clubsSize
 		if Row.Approved == approved {
 			clubs = append(clubs, Row)
@@ -190,7 +191,7 @@ func GetClubsToApprove(db *sql.DB, approved bool) ([]Club, error) {
 	return clubs, nil
 }
 
-func GetMyClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
+func GetOwnerClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
 	rows, err := getDBRows(db, "clubs")
 	if err != nil {
 		return nil, err
@@ -272,8 +273,10 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 		if err != nil {
 			continue
 		}
+
 		clubsSize, _ := getClubSize(db, Row.ClubName)
-		userJoined := IsUserInClub(db, Row.ClubName, nickName, idIntra)
+		userJoined := IsUserInClub(db, nickName, idIntra, Row.ClubName)
+		Row.Owner = IsUserClubOwner(db, nickName, idIntra, Row.ClubName)
 		Row.Size = clubsSize
 		if Row.Approved == approved && userJoined == true {
 			clubs = append(clubs, Row)
@@ -283,7 +286,7 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 }
 
 func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
-	clubMember := IsUserInClub(db, clubName, nickName, idIntra)
+	clubMember := IsUserInClub(db, nickName, idIntra, clubName)
 
 	if clubMember == true {
 		return
@@ -292,6 +295,21 @@ func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, join
 	_, err := db.Exec(
 		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra) values ($1, $2, $3, $4, $5)",
 		nickName, clubName, memberAccess, joinDate, idIntra)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func UserLeaveСlub(db *sql.DB, nickName, idIntra, clubName string) {
+	clubMember := IsUserInClub(db, nickName, idIntra, clubName)
+
+	if clubMember == false {
+		return
+	}
+
+	_, err := db.Exec(
+		"DELETE FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
+		nickName, idIntra, clubName)
 	if err != nil {
 		panic(err)
 	}
@@ -324,7 +342,7 @@ func IsUserClubMember(db *sql.DB, nickName, idIntra string) bool {
 	return true
 }
 
-func IsUserInClub(db *sql.DB, clubName, nickName, idIntra string) bool {
+func IsUserInClub(db *sql.DB, nickName, idIntra, clubName string) bool {
 	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
 		nickName, idIntra, clubName).Scan(&nickName)
 	if err != nil {

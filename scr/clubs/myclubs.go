@@ -5,7 +5,6 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
-	"time"
 )
 
 func MyClubs(w http.ResponseWriter, r *http.Request) {
@@ -43,7 +42,6 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	clubName := r.FormValue("clubName")
-	date := time.Now().Format("02.01.2006")
-	dbh.UserJoinСlub(db, user.Name, clubName, 0, date, user.ID)
+	dbh.UserLeaveСlub(db, user.Name, user.ID, clubName)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
