@@ -59,9 +59,11 @@
                 </a>
             </li>
 
+            {{ if eq $.member true }}
             <li class="nav-item" id="myclubs">
                 <a class="nav-link btn btn-primary btn-nav" href="/myclubs"><i class="fas fa-door-open pr-1"></i>Мои клубы</a>
             </li>
+            {{end}}
             {{end}}
             {{end}}
 

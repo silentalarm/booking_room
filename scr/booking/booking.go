@@ -56,20 +56,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	user := ses.GetUser(session)
 
-	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
-	//if member == false { //тут внимательнее возможно не фолс а тру
-	//	http.Redirect(w, r, "/", http.StatusFound)
-	//	return
-	//}
-
-	//inClub := dbh.IsUserInClub(db, user.Name, user.ID)
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	dataMap := map[string]interface{}{
 		"data":      data,
 		"user":      user,
 		"tableName": tableName,
 		"date":      date,
-		//"member":    member,
+		"member":    member,
 	}
 	_ = tmpl.Execute(w, dataMap)
 }
