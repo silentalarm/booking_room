@@ -126,8 +126,9 @@
                                             <td scope="col" class="h-td font-weight-normal pl-3">
                                                 {{ .JoinDate }}
                                             </td>
+                                            {{ if ne $.user.Name .NickName}}
                                             <td scope="col" class="h-td font-weight-normal pl-3">
-                                                {{ if ne $.user.Name .NickName}}
+
                                                 {{ if eq $.owner true }}
                                                 {{ if eq .Access 2 }}
                                                 <button type="submit" class="btn font-weight-normal" name="sumbit" value="setOwner">
@@ -138,8 +139,8 @@
                                                     <i class="fas fa-user-slash large_icon"></i>
                                                 </button>
                                                 {{ end }}
-                                                {{ end }}
                                             </td>
+                                            {{ end }}
                                         </tr>
                                     </form>
                                     {{ end }}
