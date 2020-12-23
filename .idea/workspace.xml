@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс страницы клуба">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -133,16 +133,15 @@
                                                 <button type="submit" class="btn font-weight-normal" name="sumbit" value="setOwner">
                                                     <i class="fas fa-crown large_icon"></i>
                                                 </button>
-                                                {{ end }}
-                                                <button type="submit" class="btn font-weight-normal" name="sumbit" value="kick">
-                                                    <i class="fas fa-user-slash large_icon"></i>
-                                                </button>
-
+                                                {{ else }}
                                                 <button type="submit" class="btn font-weight-normal" name="sumbit" value="makeModer">
                                                     <i class="fas fa-user-check large_icon"></i>
                                                 </button>
                                                 {{ end }}
-
+                                                <button type="submit" class="btn font-weight-normal" name="sumbit" value="kick">
+                                                    <i class="fas fa-user-slash large_icon"></i>
+                                                </button>
+                                                {{ end }}
                                             </td>
                                             {{ end }}
                                         </tr>
