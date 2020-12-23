@@ -169,6 +169,10 @@ $(document).ready(function () {
 
 
 
+    $('#clubtable').DataTable( {
+        "order": [[ 1, "desc" ]]
+    } );
+
  // заполнение select
  //$("select option[value=" + val + "]").attr('selected', 'true').text(text);
 
