@@ -415,6 +415,13 @@ func SetAboutClub(db *sql.DB, newAbout, nickOwner, idOwner, clubName string) {
 	}
 }
 
+func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
+	_, err := db.Exec("UPDATE clubmembers SET memberaccess=$1 WHERE nickname=$2 and clubname=$3",
+		access, nickName, clubName)
+
+	return err
+}
+
 func GetClubMembers(db *sql.DB, clubName string) ([]ClubMember, error) {
 	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname=$1", clubName)
 	if err != nil {
