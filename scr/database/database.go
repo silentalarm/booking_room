@@ -371,14 +371,14 @@ func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
 }
 
 func DeleteСlub(db *sql.DB, clubName string) {
-	_, err := db.Exec("DELETE FROM club WHERE clubname=$1", clubName)
+	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1", clubName)
 	if err != nil {
 		panic(err)
 	}
 }
 
 func DeleteClubByOwner(db *sql.DB, nickName, idIntra, clubName string) {
-	_, err := db.Exec("DELETE FROM club WHERE nickowner=$1 and idowner=$2 and clubname=$3",
+	_, err := db.Exec("DELETE FROM clubs WHERE nickowner=$1 and idowner=$2 and clubname=$3",
 		nickName, idIntra, clubName)
 	if err != nil {
 		panic(err)
