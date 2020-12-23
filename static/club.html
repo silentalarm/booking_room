@@ -100,11 +100,11 @@
                     <div class="card-body">
                         <h2 class="py-1">Члены клуба</h2>
                         <form method="POST">
-                            <input type="hidden" value="{{ .NickName }}" name="nickName">
-                            <input type="hidden" value="{{ .ID }}" name="intraID">
                             <table class="table rounded border shadow table-sm h-100">
                                 <tbody class="font-weight-normal table-bordered">
                                 {{ range .members }}
+                                <input type="hidden" value="{{ .NickName }}" name="nickName">
+                                <input type="hidden" value="{{ .ID }}" name="intraID">
                                     <tr class="row_club">
                                         <td scope="col" class="h-td font-weight-normal pl-3">
                                             {{ .NickName }}
