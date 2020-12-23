@@ -43,5 +43,5 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 
 	clubName := r.FormValue("clubName")
 	dbh.UserLeaveСlub(db, user.Name, user.ID, clubName)
-	http.Redirect(w, r, "/", http.StatusFound)
+	http.Redirect(w, r, "/myclubs", http.StatusFound)
 }
