@@ -128,7 +128,7 @@
                                             </td>
                                             <td scope="col" class="h-td font-weight-normal pl-3">
                                                 {{ if eq $.owner true }}
-                                                {{ if eq $.user.NickName .NickName}}
+                                                {{ if eq .user.NickName .NickName}}
                                                 <button type="submit" class="btn font-weight-normal" name="sumbit" value="setOwner">
                                                     <i class="fas fa-user-slash large_icon"></i>
                                                 </button>
