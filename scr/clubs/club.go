@@ -64,6 +64,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	}
 
 	sumbit := r.FormValue("sumbit")
+	nickName := r.FormValue("nickName")
+	intraID := r.FormValue("intraID")
 
 	switch sumbit {
 	case "Удалить клуб":
@@ -73,14 +75,11 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
 	case "setOwner":
-		nickName := r.FormValue("nickName")
-		intraID := r.FormValue("intraID")
-
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
-
+		redirect = kick(db, nickName, intraID, clubName)
 	case "makeModer":
-
+		redirect = giveModerku(db, nickName, clubName)
 	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
@@ -103,8 +102,12 @@ func save(db *sql.DB, newAbout, nickName, idIntra, clubName string) string {
 	return redirect
 }
 
-func kick() {
+func kick(db *sql.DB, nickName, idIntra, clubName string) string {
+	redirect := "/club?clubname=" + clubName
 
+	dbh.UserLeaveСlub(db, nickName, idIntra, clubName)
+
+	return redirect
 }
 
 func giveModerku(db *sql.DB, nickName, clubName string) string {

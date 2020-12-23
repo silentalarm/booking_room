@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
-	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"os"
 )
 
@@ -387,13 +386,6 @@ func DeleteClubByOwner(db *sql.DB, nickName, idIntra, clubName string) {
 }
 
 func DeleteUsersFromClub(db *sql.DB, clubName string) {
-	_, err := db.Exec("DELETE FROM clubmembers WHERE clubname=$1", clubName)
-	if err != nil {
-		panic(err)
-	}
-}
-
-func DeleteUserFromClub(db *sql.DB, user ses.User, clubName string) {
 	_, err := db.Exec("DELETE FROM clubmembers WHERE clubname=$1", clubName)
 	if err != nil {
 		panic(err)
