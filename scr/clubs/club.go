@@ -75,7 +75,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "setOnwer":
 		nickName := r.FormValue("nickName")
 		intraID := r.FormValue("intraID")
-		panic(intraID)
+
 		redirect = setOwner(db, nickName, intraID, clubName)
 	case "Kick":
 
@@ -120,7 +120,7 @@ func setOwner(db *sql.DB, nickName, intraID, clubName string) string {
 
 	member := dbh.IsUserInClub(db, nickName, intraID, clubName)
 	if member == false {
-		redirect = "/"
+		redirect = "/" + intraID
 		return redirect
 	}
 
