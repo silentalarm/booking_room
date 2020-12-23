@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс страницы клуба" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс поля ввода" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +94,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="слайдер в списке клубов" />
     <MESSAGE value="добавил вступление в клуб" />
     <MESSAGE value="фикс добавления в клуб" />
     <MESSAGE value="Добавил страницу для поддтверждения клубов" />
@@ -119,6 +118,7 @@
     <MESSAGE value="фикс моих клубов" />
     <MESSAGE value="Добавил возможность менять лидера" />
     <MESSAGE value="фикс страницы клуба" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс страницы клуба" />
+    <MESSAGE value="фикс поля ввода" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс поля ввода" />
   </component>
 </project>

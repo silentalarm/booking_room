@@ -414,7 +414,7 @@ func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
 	return err
 }
 
-func SetClubOwner(db *sql.DB, clubName, newOwner string) error {
+func SetClubOwner(db *sql.DB, newOwner, clubName string) error {
 	_, err := db.Exec("UPDATE clubs SET nickowner=$1 WHERE clubname=$2",
 		newOwner, clubName)
 
