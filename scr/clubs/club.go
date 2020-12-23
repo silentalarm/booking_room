@@ -76,7 +76,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		nickName := r.FormValue("nickName")
 		intraID := r.FormValue("intraID")
 
-		redirect = setOwner(db, user.Name, nickName, intraID, clubName)
+		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "Kick":
 
 	case "makeModer":
@@ -126,6 +126,7 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 
 	_ = dbh.SetAccess(db, nickName, clubName, 3)
 	_ = dbh.SetAccess(db, nickOwner, clubName, 0)
+	dbh.SetClubOwner(db, nickName, clubName)
 
 	return redirect
 }
