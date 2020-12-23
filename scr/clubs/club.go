@@ -120,7 +120,7 @@ func setOwner(db *sql.DB, nickName, intraID, clubName string) string {
 
 	member := dbh.IsUserInClub(db, nickName, intraID, clubName)
 	if member == false {
-		redirect = "/" + intraID
+		redirect = "/lol?ss=" + intraID
 		return redirect
 	}
 
