@@ -80,6 +80,7 @@ func delete(db *sql.DB, nickName, idIntra, clubName string) string {
 	redirect := "/"
 
 	dbh.DeleteClubByOwner(db, nickName, idIntra, clubName)
+	dbh.DeleteUsersFromClub(db, clubName)
 
 	return redirect
 }

@@ -25,7 +25,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	clubs, _ := dbh.GetClubs(db, true, user.Name, user.ID)
-	//member := dbh.IsUserInClub(db, user.Name, user.ID)
+	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
@@ -38,10 +38,10 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if member == false { тут внимательнее возможно не фолс а тру
+	//if member == false { //тут внимательнее возможно не фолс а тру
 	//	http.Redirect(w, r, "/", http.StatusFound)
 	//	return
-	//
+	//}
 
 	clubName := r.FormValue("clubName")
 	date := time.Now().Format("02.01.2006")
