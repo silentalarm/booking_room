@@ -2,7 +2,6 @@ package clubs
 
 import (
 	"database/sql"
-	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -76,9 +75,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "setOnwer":
 		nickName := r.FormValue("nickName")
 		intraID := r.FormValue("intraID")
-		fmt.Println("setOwner:")
-		fmt.Println(nickName)
-		fmt.Println(intraID)
+		panic(intraID)
 		redirect = setOwner(db, nickName, intraID, clubName)
 	case "Kick":
 
