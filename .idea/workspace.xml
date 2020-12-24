@@ -19,9 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки">
-      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки на всех страницах">
+      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/moderation.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/myclubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/myclubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/register.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +100,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс перенаправления при авторизации" />
     <MESSAGE value="рафакторинг" />
     <MESSAGE value="фикс INTRA_REDIRECT_URL" />
     <MESSAGE value="фикс не больших ошибок" />
@@ -122,6 +124,7 @@
     <MESSAGE value="добавил шапку таблицам" />
     <MESSAGE value="фикс списка мемберов" />
     <MESSAGE value="фикс шапки" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс шапки" />
+    <MESSAGE value="фикс шапки на всех страницах" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс шапки на всех страницах" />
   </component>
 </project>

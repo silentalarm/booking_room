@@ -31,6 +31,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	clubs, _ := dbh.GetClubs(db, true, user.Name, user.ID)
 	sort.Sort(BySize(clubs))
 	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
@@ -38,9 +39,9 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("static/clubs.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":  user,
-			"clubs": clubs,
-			//"inclub": member,
+			"user":   user,
+			"clubs":  clubs,
+			"member": member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

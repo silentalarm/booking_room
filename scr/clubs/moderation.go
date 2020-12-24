@@ -25,13 +25,15 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	clubs, _ := dbh.GetClubsToApprove(db, false)
 
 	tmpl, _ := template.ParseFiles("static/clubsToApproved.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":  user,
-			"clubs": clubs,
+			"user":   user,
+			"clubs":  clubs,
+			"member": member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

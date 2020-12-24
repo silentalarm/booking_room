@@ -38,6 +38,7 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 			"user":    user,
 			"clubs":   clubs,
 			"onConCl": onConfirmationClubs,
+			"member":  member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

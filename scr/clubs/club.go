@@ -56,7 +56,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, redirect, http.StatusFound)
 		return
 	}
-
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	sort.Sort(ByAccess(members))
 	tmpl, _ := template.ParseFiles("static/club.html")
@@ -66,6 +66,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			"club":    club,
 			"members": members,
 			"owner":   owner,
+			"member":  member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
