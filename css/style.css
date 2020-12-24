@@ -490,3 +490,15 @@ button:focus{
 .dropdown-toggle::after {
     display:none;
 }
+
+.navbutton {
+    color: #ffffff;
+    padding: 0.75em;
+
+}
+
+.navbutton:hover{
+    color: #eeeeee;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}

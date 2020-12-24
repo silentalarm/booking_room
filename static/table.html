@@ -21,21 +21,21 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link btn-primary2" id="home" href="/"><i class="fas fa-home"></i></a>
+            <li class="nav-item navbutton">
+                <a class="navbutton btn-primary2" id="home" href="/"><i class="fas fa-home"></i></a>
             </li>
             {{if eq .user.Authenticated true }}
 
 
-            <li class="nav-item">
-                <a class="nav-link btn-primary2" href="/report">
+            <li class="nav-item navbutton">
+                <a class="navbutton btn-primary2" href="/report">
                     <i class="fas fa-flag pr-1"></i>
                     Репорт
                 </a>
             </li>
 
             <li class="btn-group">
-                <a class="btn-primary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <a class="navbutton btn-primary2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-list-alt pr-1"></i>
                     Клуб
                 </a>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             {{ else }}
-            <li class="btn-group">
+            <li class="btn-group navbutton">
                 <a class="dropdown-toggle btn-primary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <b>{{ .user.Name }}</b>
                 </a>
