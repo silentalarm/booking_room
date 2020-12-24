@@ -19,21 +19,12 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
             </li>
-            {{if eq .user.Authenticated false }}
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="login" href="/login">
-                    <i class="fas fa-key pr-1"></i>
-                    Авторизация
-                </a>
-            </li>
-            {{ end }}
-
             {{if eq .user.Authenticated true }}
-
             <li class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-list-alt pr-1"></i>
@@ -94,6 +85,18 @@
                 </div>
             </li>
             {{end}}
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            {{if eq .user.Authenticated false }}
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary btn-nav" id="login" href="/login">
+                    <i class="fas fa-key pr-1"></i>
+                    Авторизация
+                </a>
+            </li>
+            {{ end }}
+
         </ul>
     </div>
 </nav>
