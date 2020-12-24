@@ -48,7 +48,14 @@ func List(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	sumbit := r.FormValue("sumbit")
 	reportID := r.FormValue("reportID")
-	dbh.ReportReady(db, reportID)
+	switch sumbit {
+	case "ready":
+		dbh.ReportReady(db, reportID)
+	case "delete":
+		dbh.ReportDelete(db, reportID)
+	}
+
 	http.Redirect(w, r, "/report", http.StatusFound)
 }

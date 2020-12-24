@@ -54,3 +54,10 @@ func ReportReady(db *sql.DB, reportID string) {
 		panic(err)
 	}
 }
+
+func ReportDelete(db *sql.DB, reportID string) {
+	_, err := db.Exec("DELETE FROM report WHERE reportid=$1", reportID)
+	if err != nil {
+		panic(err)
+	}
+}
