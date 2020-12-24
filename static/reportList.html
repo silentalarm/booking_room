@@ -54,13 +54,14 @@
 
     <table class="table rounded border shadow table-sm h-100">
         <tbody class="font-weight-normal table-bordered">
-        {{ range .reports }}
-        <form method="POST">
-            <input type="hidden" value="{{ .ReportID }}" name="reportID">
             <tr class="row_club text-center">
                 <th>Report ID</th>
                 <th>Ник отправителя</th>
             </tr>
+        {{ range .reports }}
+        <form method="POST">
+            <input type="hidden" value="{{ .ReportID }}" name="reportID">
+
             <tr class="row_club text-center">
                 <td scope="col" class="h-td font-weight-normal pl-3">
                     {{ .ReportID }}
