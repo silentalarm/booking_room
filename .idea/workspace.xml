@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки на всех страницах">
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/moderation.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/myclubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/myclubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubsToApproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubsToApproved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/myClubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/myClubs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/reportList.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/reportRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
