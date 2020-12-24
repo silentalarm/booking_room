@@ -22,20 +22,20 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
+                <a class="nav-link btn-primary2" id="home" href="/"><i class="fas fa-home"></i></a>
             </li>
             {{if eq .user.Authenticated true }}
 
 
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" href="/report">
+                <a class="nav-link btn-primary2" href="/report">
                     <i class="fas fa-flag pr-1"></i>
                     Репорт
                 </a>
             </li>
 
             <li class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button type="button" class="btn-primary2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-list-alt pr-1"></i>
                     Клуб
                 </button>
@@ -79,16 +79,15 @@
         <ul class="navbar-nav ml-auto">
             {{if eq .user.Authenticated false }}
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="login" href="/login">
+                <button type="button" class="nav-link btn-primary2" id="login" href="/login">
                     <i class="fas fa-key pr-1"></i>
                     Авторизация
-                </a>
+                </button>
             </li>
             {{ else }}
             <li class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fas fa-user pr-1"></i>
-                    {{ .user.Name }}
+                <button type="button" class="dropdown-toggle btn-primary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <b>{{ .user.Name }}</b>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/logout">
