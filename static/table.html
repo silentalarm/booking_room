@@ -25,18 +25,7 @@
                 <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
             </li>
             {{if eq .user.Authenticated true }}
-            <li class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fas fa-user pr-1"></i>
-                    {{ .user.Name }}
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/logout">
-                        <i class="fas fa-door-open pr-1"></i>
-                        Выход
-                    </a>
-                </div>
-            </li>
+
 
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/report">
@@ -95,8 +84,20 @@
                     Авторизация
                 </a>
             </li>
+            {{ else }}
+            <li class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-user pr-1"></i>
+                    {{ .user.Name }}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fas fa-door-open pr-1"></i>
+                        Выход
+                    </a>
+                </div>
+            </li>
             {{ end }}
-
         </ul>
     </div>
 </nav>
