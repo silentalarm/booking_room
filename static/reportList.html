@@ -57,6 +57,9 @@
             <tr class="row_club text-center">
                 <th>Report ID</th>
                 <th>Ник отправителя</th>
+                {{ if eq .isadmin true }}
+                <th>Действия</th>
+                {{ end }}
             </tr>
         {{ range .reports }}
         <form method="POST">

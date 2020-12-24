@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="добавил шапку таблицам" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/reportList.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportList.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +97,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс авторизации" />
     <MESSAGE value="фикс поддтверждения клубов" />
     <MESSAGE value="фикс перенаправления при авторизации" />
     <MESSAGE value="рафакторинг" />
@@ -119,6 +121,7 @@
     <MESSAGE value="добавил баг репорт" />
     <MESSAGE value="фикс репорта" />
     <MESSAGE value="добавил шапку таблицам" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавил шапку таблицам" />
+    <MESSAGE value="фикс шапки" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс шапки" />
   </component>
 </project>
