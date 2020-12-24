@@ -30,10 +30,13 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
+
 	tmpl, _ := template.ParseFiles("static/reportRegistration.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user": user,
+			"user":   user,
+			"member": member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

@@ -32,6 +32,7 @@ func List(w http.ResponseWriter, r *http.Request) {
 
 	isAdmin := ses.IsAdmin(user.Name)
 	reports, _ := dbh.GetReportList(db)
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/reportList.html")
 	if r.Method != http.MethodPost {
@@ -39,6 +40,7 @@ func List(w http.ResponseWriter, r *http.Request) {
 			"user":    user,
 			"reports": reports,
 			"isadmin": isAdmin,
+			"member":  member,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
