@@ -20,7 +20,7 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)

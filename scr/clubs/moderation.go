@@ -22,7 +22,7 @@ func Moderation(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	clubs, _ := dbh.GetClubsToApprove(db, false)

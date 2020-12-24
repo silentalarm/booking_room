@@ -30,7 +30,7 @@ type TData struct {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	tableName := r.URL.Query().Get("table")
@@ -134,7 +134,7 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	lines := r.FormValue("lines")
@@ -198,7 +198,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)

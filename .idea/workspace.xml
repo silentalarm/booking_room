@@ -19,7 +19,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс поля ввода" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс поля ввода">
+      <change afterPath="$PROJECT_DIR$/scr/database/booking.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scr/report/registration.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/moderation.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/moderation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/myclubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/myclubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

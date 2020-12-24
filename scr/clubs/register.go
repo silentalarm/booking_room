@@ -21,7 +21,7 @@ func RegisterNewClub(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	//inClub := dbh.IsUserInClub(db, user.Name, user.ID)

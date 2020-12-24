@@ -34,7 +34,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := dbh.OpenDB("postgres")
+	db := dbh.OpenDB()
 	defer db.Close()
 
 	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
