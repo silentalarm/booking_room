@@ -512,13 +512,6 @@ button:focus{
 
 }
 
-.navsub-choice:hover{
-    color: #000000;
-
-    cursor: pointer !important;
-    text-decoration: none !important;
-}
-
 .dropdown-item.active, .dropdown-item:active {
     color: #ffffff !important;
     background-color: rgb(3, 155, 229) !important
