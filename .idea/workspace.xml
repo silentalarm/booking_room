@@ -19,23 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="рефакторинг">
-      <change afterPath="$PROJECT_DIR$/scr/database/report.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/report/list.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scr/sessions/admin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/reportList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/reportRegistration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/booking.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/report/registration.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/report/registration.go" afterDir="false" />
-    </list>
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="добавил баг репорт" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +94,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="добавил вступление в клуб" />
     <MESSAGE value="фикс добавления в клуб" />
     <MESSAGE value="Добавил страницу для поддтверждения клубов" />
     <MESSAGE value="фикс авторизации" />
@@ -135,6 +118,7 @@
     <MESSAGE value="фикс страницы клуба" />
     <MESSAGE value="фикс поля ввода" />
     <MESSAGE value="рефакторинг" />
-    <option name="LAST_COMMIT_MESSAGE" value="рефакторинг" />
+    <MESSAGE value="добавил баг репорт" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил баг репорт" />
   </component>
 </project>
