@@ -516,3 +516,7 @@ button:focus{
     color: #ffffff !important;
     background-color: rgb(3, 155, 229) !important
 }
+
+.navmin {
+    min-width: 550px;
+}

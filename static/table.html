@@ -13,7 +13,7 @@
 <body class="body">
 
 <!--navigation bar [start]-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow navmin">
 <!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -114,7 +114,7 @@
 
 
 <!--main container [start]-->
-<div class="container-fluid">
+<div class="container-fluid navmin">
 
     <div class="row d-flex">
         <div class="col-md-4 my-3 left-col"><!--LEFT-->
@@ -153,7 +153,7 @@
 <!--            </div>-->
             </div>
         </div>
-        <div class="col-md-8  my-3 right-col"> <!--RIGHT-->
+        <div class="col-md-8  my-3 right-col hidewarp"> <!--RIGHT-->
             <table class="table rounded border  shadow table-sm h-100">
                 <tbody class="font-weight-normal table-bordered">
                 <!--data from backend [start]-->
@@ -165,7 +165,7 @@
                     </td>
                 </tr>
                 {{ else }}
-                <tr class="tr_size bg-booked" id="line{{ .LineID }}">
+                <tr class="tr_size bg-booked " id="line{{ .LineID }}">
                     <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
                     <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
                     {{ if eq .NickName $.user.Name }}
