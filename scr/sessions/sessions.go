@@ -93,9 +93,10 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 
 func GetUser(session *sessions.Session) *User {
 	if _, ok := session.Values["authenticated"].(bool); !ok {
-		user := User{Name: "неавторизован", Authenticated: false}
+		user := User{Name: "", Authenticated: false}
 		return &user
 	}
+
 	user := User{
 		ID:            session.Values["id"].(string),
 		Name:          session.Values["name"].(string),

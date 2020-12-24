@@ -177,7 +177,7 @@ $(document).ready(function () {
 
 // tooltip
     $('[data-toggle="tooltip"]').tooltip();
-
+/*
     //login logout
     var status = $('#statusAuth').val()
     console.log("Authentication is " + status)
@@ -188,7 +188,7 @@ $(document).ready(function () {
         $('#login').attr("hidden", true)
         $('#logout').attr("hidden", false)
     }
-
+*/
     /* Локализация datepicker */
 //$.datepicker.regional['ru'] = {
 //    closeText: 'Закрыть',

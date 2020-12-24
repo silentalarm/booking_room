@@ -23,19 +23,28 @@
             <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
             </li>
+            {{if eq .user.Authenticated false }}
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="login" href="/login"><i class="fas fa-key pr-1"></i>Авторизация</a>
-            </li>
-
-            <li class="nav-item" id="logout">
-                <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
-            </li>
-            {{if ne .user.Name "неавторизован"}}
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#">
-                    <i class="fas fa-user pr-1"></i>
-                    {{ .user.Name }}
+                <a class="nav-link btn btn-primary btn-nav" id="login" href="/login">
+                    <i class="fas fa-key pr-1"></i>
+                    Авторизация
                 </a>
+            </li>
+            {{ end }}
+
+            {{if eq .user.Authenticated true }}
+
+            <li class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-list-alt pr-1"></i>
+                    {{ .user.Name }}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fas fa-door-open pr-1"></i>
+                        Выход
+                    </a>
+                </div>
             </li>
 
             <li class="nav-item">
