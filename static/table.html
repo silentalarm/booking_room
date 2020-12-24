@@ -35,10 +35,10 @@
             </li>
 
             <li class="btn-group">
-                <button type="button" class="btn-primary2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <a type="button" class="btn-primary2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-list-alt pr-1"></i>
                     Клуб
-                </button>
+                </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/clubs">
                         <i class="fas fa-list-alt pr-1"></i>
@@ -86,9 +86,9 @@
             </li>
             {{ else }}
             <li class="btn-group">
-                <button type="button" class="dropdown-toggle btn-primary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <a type="button" class="dropdown-toggle btn-primary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <b>{{ .user.Name }}</b>
-                </button>
+                </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/logout">
                         <i class="fas fa-door-open pr-1"></i>
