@@ -6,7 +6,14 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
+	"sort"
 )
+
+type ByAccess []dbh.ClubMember
+
+func (a ByAccess) Len() int           { return len(a) }
+func (a ByAccess) Less(i, j int) bool { return a[i].Access < a[j].Access }
+func (a ByAccess) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func Club(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
@@ -51,6 +58,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	}
 
 	members, _ := dbh.GetClubMembers(db, clubName)
+	sort.Sort(ByAccess(members))
 	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
