@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubsToApproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubsToApproved.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс списка мемберов">
+      <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс поддтверждения клубов" />
     <MESSAGE value="фикс перенаправления при авторизации" />
     <MESSAGE value="рафакторинг" />
     <MESSAGE value="фикс INTRA_REDIRECT_URL" />
@@ -123,6 +120,7 @@
     <MESSAGE value="фикс репорта" />
     <MESSAGE value="добавил шапку таблицам" />
     <MESSAGE value="фикс шапки" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс шапки" />
+    <MESSAGE value="фикс списка мемберов" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс списка мемберов" />
   </component>
 </project>

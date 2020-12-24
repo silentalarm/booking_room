@@ -5,8 +5,15 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
+	"sort"
 	"time"
 )
+
+type BySize []dbh.Club
+
+func (a BySize) Len() int           { return len(a) }
+func (a BySize) Less(i, j int) bool { return a[i].Size < a[j].Size }
+func (a BySize) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func Clubs(w http.ResponseWriter, r *http.Request) {
 	session, err := ses.Store.Get(r, "auth-session")
@@ -25,6 +32,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	clubs, _ := dbh.GetClubs(db, true, user.Name, user.ID)
+	sort.Sort(BySize(clubs))
 	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs.html")
