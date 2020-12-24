@@ -39,29 +39,9 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" href="/clubregistration">
-                    <i class="fas fa-plus-square pr-1"></i>
-                    Регистраци нового клуба
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" href="/clubs">
-                    <i class="fas fa-list-alt pr-1"></i>
-                    Список клубов
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link btn btn-primary btn-nav" href="/report">
                     <i class="fas fa-flag pr-1"></i>
                     Репорт
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" href="/clubstoapproved">
-                    <i class="fas fa-check-circle pr-1"></i>
-                    Модерация клубов
                 </a>
             </li>
 
@@ -71,13 +51,25 @@
                     Клуб
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/clubs">Список клубов</a>
+                    <a class="dropdown-item" href="/clubs">
+                        <i class="fas fa-list-alt pr-1"></i>
+                        Список клубов
+                    </a>
                     {{ if eq $.member true }}
-                    <a class="dropdown-item" href="/myclubs">Мои клубы</a>
+                    <a class="dropdown-item" href="/myclubs">
+                        <i class="fas fa-list-alt pr-1">
+                        Мои клубы
+                    </a>
                     {{ else }}
-                    <a class="dropdown-item disabled" href="#">Мои клубы</a>
+                    <a class="dropdown-item disabled" href="#">
+                        <i class="fas fa-list-alt pr-1">
+                        Мои клубы
+                    </a>
                     {{ end }}
-                    <a class="dropdown-item" href="/clubregistration">Регистраци нового клуба</a>
+                    <a class="dropdown-item" href="/clubregistration">
+                        <i class="fas fa-plus-square pr-1"></i>
+                        Регистраци нового клуба
+                    </a>
                     <div class="dropdown-divider"></div>
                     {{ if eq $.user.Staff false }}
                     <a class="dropdown-item" href="/clubstoapproved">
@@ -92,18 +84,7 @@
                     {{end}}
                 </div>
             </li>
-
-            {{ if eq $.member true }}
-            <li class="nav-item" id="myclubs">
-                <a class="nav-link btn btn-primary btn-nav" href="/myclubs"><i class="fas fa-list-alt pr-1"></i>Мои клубы</a>
-            </li>
-
             {{end}}
-            {{end}}
-
-            {{/*<li class="nav-item">*/}}
-             {{/*<a class="nav-link btn btn-primary btn-nav" href="/delete"><i class="fas fa-trash"></i></a>*/}}
-            {{/*</li>*/}}
         </ul>
     </div>
 </nav>
