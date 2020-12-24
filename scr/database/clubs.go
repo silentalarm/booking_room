@@ -4,6 +4,30 @@ import (
 	"database/sql"
 )
 
+type Club struct {
+	ID           int
+	About        string
+	NickOwner    string
+	IDOwner      string
+	ClubName     string
+	NickCreator  string
+	CreationDate string
+	Approved     bool
+	Size         int
+	Slack        string
+	Member       bool
+	Owner        bool
+}
+
+type ClubMember struct {
+	ID       int
+	NickName string
+	ClubName string
+	Access   int
+	JoinDate string
+	IDIntra  string
+}
+
 func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate, slack string) {
 	_, err := db.Exec(
 		"INSERT INTO clubs (clubabout, nickowner, idowner, clubname, nickcreator, creationdate, slack) values ($1, $2, $3, $4, $5, $6, $7)",

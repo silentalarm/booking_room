@@ -5,6 +5,15 @@ import (
 	"fmt"
 )
 
+type ReserveRow struct {
+	ID           int
+	NickName     string
+	ClubName     string
+	PeopleNumber int
+	ReserveTime  int
+	ReserveDate  string
+}
+
 func InsertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) error {
 	_, err := db.Exec(
 		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
