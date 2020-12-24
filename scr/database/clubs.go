@@ -22,25 +22,16 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 	clubs := []Club{}
 
 	for rows.Next() {
-		Row := Club{}
-		err := rows.Scan(
-			&Row.ID,
-			&Row.About,
-			&Row.NickOwner,
-			&Row.IDOwner,
-			&Row.ClubName,
-			&Row.NickCreator,
-			&Row.CreationDate,
-			&Row.Approved,
-			&Row.Slack)
+		row := Club{}
+		err := acceptRow(rows, &row)
 		if err != nil {
 			continue
 		}
-		clubsSize, _ := getClubSize(db, Row.ClubName)
-		Row.Member = IsUserInClub(db, nickName, idIntra, Row.ClubName)
-		Row.Size = clubsSize
-		if Row.Approved == approved {
-			clubs = append(clubs, Row)
+		clubsSize, _ := getClubSize(db, row.ClubName)
+		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Size = clubsSize
+		if row.Approved == approved {
+			clubs = append(clubs, row)
 		}
 	}
 	return clubs, nil
@@ -78,24 +69,15 @@ func GetOwnerClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) 
 	clubs := []Club{}
 
 	for rows.Next() {
-		Row := Club{}
-		err := rows.Scan(
-			&Row.ID,
-			&Row.About,
-			&Row.NickOwner,
-			&Row.IDOwner,
-			&Row.ClubName,
-			&Row.NickCreator,
-			&Row.CreationDate,
-			&Row.Approved,
-			&Row.Slack)
+		row := Club{}
+		err := acceptRow(rows, &row)
 		if err != nil {
 			continue
 		}
-		clubsSize, _ := getClubSize(db, Row.ClubName)
-		Row.Size = clubsSize
-		if Row.Approved == approved && Row.NickOwner == ownerName {
-			clubs = append(clubs, Row)
+		clubsSize, _ := getClubSize(db, row.ClubName)
+		row.Size = clubsSize
+		if row.Approved == approved && row.NickOwner == ownerName {
+			clubs = append(clubs, row)
 		}
 	}
 	return clubs, nil
@@ -111,16 +93,7 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 	club := Club{}
 
 	for row.Next() {
-		err = row.Scan(
-			&club.ID,
-			&club.About,
-			&club.NickOwner,
-			&club.IDOwner,
-			&club.ClubName,
-			&club.NickCreator,
-			&club.CreationDate,
-			&club.Approved,
-			&club.Slack)
+		err = acceptRow(row, &club)
 	}
 	clubsSize, _ := getClubSize(db, club.ClubName)
 	club.Size = clubsSize
@@ -137,27 +110,18 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 	clubs := []Club{}
 
 	for rows.Next() {
-		Row := Club{}
-		err := rows.Scan(
-			&Row.ID,
-			&Row.About,
-			&Row.NickOwner,
-			&Row.IDOwner,
-			&Row.ClubName,
-			&Row.NickCreator,
-			&Row.CreationDate,
-			&Row.Approved,
-			&Row.Slack)
+		row := Club{}
+		err := acceptRow(rows, &row)
 		if err != nil {
 			continue
 		}
 
-		clubsSize, _ := getClubSize(db, Row.ClubName)
-		userJoined := IsUserInClub(db, nickName, idIntra, Row.ClubName)
-		Row.Owner = IsUserClubOwner(db, nickName, idIntra, Row.ClubName)
-		Row.Size = clubsSize
-		if Row.Approved == approved && userJoined == true {
-			clubs = append(clubs, Row)
+		clubsSize, _ := getClubSize(db, row.ClubName)
+		userJoined := IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
+		row.Size = clubsSize
+		if row.Approved == approved && userJoined == true {
+			clubs = append(clubs, row)
 		}
 	}
 	return clubs, nil
