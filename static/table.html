@@ -27,11 +27,21 @@
             {{if eq .user.Authenticated true }}
 
 
-            <li class="nav-item navbutton">
-                <a class="navbutton btn-primary2" href="/report">
+            <li class="btn-group">
+                <a class="navbutton btn-primary2 dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-flag pr-1"></i>
                     Репорт
                 </a>
+                <div class="dropdown-menu">
+                    <a class="navsub-choice dropdown-item" href="/repregistration">
+                        <i class="fas fa-flag pr-1"></i>
+                        Сообщить о ошибке
+                    </a>
+                    <a class="navsub-choice dropdown-item" href="/report">
+                        <i class="fas fa-flag pr-1"></i>
+                        Список репортов
+                    </a>
+                </div>
             </li>
 
             <li class="btn-group">
