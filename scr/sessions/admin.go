@@ -1,9 +1,11 @@
 package sessions
 
-var adminList = []string{
-	"ctristan",
-	"hviva",
-}
+import (
+	"os"
+	"strings"
+)
+
+var adminList = strings.Split(os.Getenv("ADMINS"), ",")
 
 func IsAdmin(nickName string) bool {
 	for _, val := range adminList {
