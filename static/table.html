@@ -65,14 +65,18 @@
                 </a>
             </li>
 
-            <div class="btn-group front">
+            <div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle btn-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <i class="fas fa-list-alt pr-1"></i>
                     Клуб
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/clubs">Список клубов</a>
+                    {{ if eq $.member true }}
                     <a class="dropdown-item" href="/myclubs">Мои клубы</a>
+                    {{ else }}
+                    <a class="dropdown-item disabled" href="/myclubs">Мои клубы</a>
+                    {{ end }}
                     <a class="dropdown-item" href="/clubregistration">Регистраци нового клуба</a>
                 </div>
             </div>
