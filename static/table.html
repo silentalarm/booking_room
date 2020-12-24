@@ -40,12 +40,12 @@
                     Клуб
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/clubs">
+                    <a class="navsub-choice dropdown-item" href="/clubs">
                         <i class="fas fa-list-alt pr-1"></i>
                         Список клубов
                     </a>
                     {{ if eq $.member true }}
-                    <a class="dropdown-item" href="/myclubs">
+                    <a class="navsub-choice dropdown-item" href="/myclubs">
                         <i class="fas fa-list-alt pr-1"></i>
                         Мои клубы
                     </a>
@@ -55,13 +55,13 @@
                         Мои клубы
                     </a>
                     {{ end }}
-                    <a class="dropdown-item" href="/clubregistration">
+                    <a class="navsub-choice dropdown-item" href="/clubregistration">
                         <i class="fas fa-plus-square pr-1"></i>
                         Регистраци нового клуба
                     </a>
-                    <div class="dropdown-divider"></div>
+                    <div class="navsub-choice dropdown-divider"></div>
                     {{ if eq $.user.Staff false }}
-                    <a class="dropdown-item" href="/clubstoapproved">
+                    <a class="navsub-choice dropdown-item" href="/clubstoapproved">
                         <i class="fas fa-check-circle pr-1"></i>
                         Модерация клубов
                     </a>
@@ -90,7 +90,7 @@
                     <b>{{ .user.Name }}</b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="/logout">
+                    <a class="navsub-choice dropdown-item" href="/logout">
                         <i class="fas fa-door-open pr-1"></i>
                         Выход
                     </a>

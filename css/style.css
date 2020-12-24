@@ -216,7 +216,7 @@ td.min {
 }
 .navbar-dark{
     font-size: 14px;
-    border-bottom:1px solid #0278AF;
+    /* border-bottom:1px solid #0278AF; */
 }
 .navbar-brand{
     font-size: 15px;
@@ -501,4 +501,25 @@ button:focus{
     color: #eeeeee;
     cursor: pointer !important;
     text-decoration: none !important;
+}
+
+.dropdown-menu {
+    min-width: 5rem !important;
+}
+
+.navsub-choice {
+    color: rgb(3, 155, 229) !important
+
+}
+
+.navsub-choice:hover{
+    color: #000000;
+
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #ffffff !important;
+    background-color: rgb(3, 155, 229) !important
 }
