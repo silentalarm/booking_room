@@ -517,10 +517,12 @@ button:focus{
     background-color: rgb(3, 155, 229) !important
 }
 
+
 .navmin {
     min-width: 550px;
 }
-
-.body {
-    zoom: 70%;
+@media (max-width: 480px) {
+    .body {
+        zoom: 65%;
+    }
 }
