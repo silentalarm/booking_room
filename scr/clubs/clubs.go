@@ -12,7 +12,7 @@ import (
 type BySize []dbh.Club
 
 func (a BySize) Len() int           { return len(a) }
-func (a BySize) Less(i, j int) bool { return a[i].Size < a[j].Size }
+func (a BySize) Less(i, j int) bool { return a[i].Size > a[j].Size }
 func (a BySize) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func Clubs(w http.ResponseWriter, r *http.Request) {
