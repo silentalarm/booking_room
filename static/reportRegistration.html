@@ -14,23 +14,90 @@
 <body class="body">
 
 <!--navigation bar [start]-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow overflow-hidden">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
     <!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item navbutton">
+                <a class="navbutton btn-primary2" id="home" href="/"><i class="fas fa-home"></i></a>
+            </li>
+            {{if eq .user.Authenticated true }}
+
+
+            <li class="nav-item navbutton">
+                <a class="navbutton btn-primary2" href="/report">
+                    <i class="fas fa-flag pr-1"></i>
+                    Репорт
+                </a>
+            </li>
+
+            <li class="btn-group">
+                <a class="navbutton btn-primary2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-list-alt pr-1"></i>
+                    Клуб
+                </a>
+                <div class="dropdown-menu">
+                    <a class="navsub-choice dropdown-item" href="/clubs">
+                        <i class="fas fa-list-alt pr-1"></i>
+                        Список клубов
+                    </a>
+                    {{ if eq $.member true }}
+                    <a class="navsub-choice dropdown-item" href="/myclubs">
+                        <i class="fas fa-list-alt pr-1"></i>
+                        Мои клубы
+                    </a>
+                    {{ else }}
+                    <a class="dropdown-item disabled" href="#">
+                        <i class="fas fa-list-alt pr-1"></i>
+                        Мои клубы
+                    </a>
+                    {{ end }}
+                    <a class="navsub-choice dropdown-item" href="/clubregistration">
+                        <i class="fas fa-plus-square pr-1"></i>
+                        Регистрация нового клуба
+                    </a>
+                    <div class="navsub-choice dropdown-divider"></div>
+                    {{ if eq $.user.Staff false }}
+                    <a class="navsub-choice dropdown-item" href="/clubstoapproved">
+                        <i class="fas fa-check-circle pr-1"></i>
+                        Модерация клубов
+                    </a>
+                    {{ else }}
+                    <a class="dropdown-item disabled" href="#">
+                        <i class="fas fa-check-circle pr-1"></i>
+                        Модерация клубов
+                    </a>
+                    {{end}}
+                </div>
+            </li>
+            {{end}}
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            {{if eq .user.Authenticated false }}
             <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="home" href="/"><i class="fas fa-home"></i></a>
+                <a class="nav-link btn-primary2" id="login" href="/login">
+                    <i class="fas fa-key pr-1"></i>
+                    Авторизация
+                </a>
             </li>
-            <li class="nav-item" id="logout">
-                <a class="nav-link btn btn-primary btn-nav" href="/logout"><i class="fas fa-door-open pr-1"></i>Выход</a>
+            {{ else }}
+            <li class="btn-group">
+                <a class="navbutton btn-primary2 dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <b>{{ .user.Name }}</b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="navsub-choice dropdown-item" href="/logout">
+                        <i class="fas fa-door-open pr-1"></i>
+                        Выход
+                    </a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary btn-nav" id="nickName" href="#"><i class="fas fa-user pr-1"></i>{{ .user.Name }}</a>
-            </li>
-            <!-- тут не забудь ник в шапке как в  table-->
+            {{ end }}
         </ul>
     </div>
 </nav>
