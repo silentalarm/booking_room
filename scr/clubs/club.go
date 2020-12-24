@@ -12,7 +12,7 @@ import (
 type ByAccess []dbh.ClubMember
 
 func (a ByAccess) Len() int           { return len(a) }
-func (a ByAccess) Less(i, j int) bool { return a[i].Access < a[j].Access }
+func (a ByAccess) Less(i, j int) bool { return a[i].Access > a[j].Access }
 func (a ByAccess) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func Club(w http.ResponseWriter, r *http.Request) {
