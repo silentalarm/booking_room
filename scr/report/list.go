@@ -5,7 +5,6 @@ import (
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
 	"net/http"
-	"time"
 )
 
 func List(w http.ResponseWriter, r *http.Request) {
@@ -31,6 +30,7 @@ func List(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
+	isAdmin := ses.IsAdmin(user.Name)
 	reports, _ := dbh.GetReportList(db)
 
 	tmpl, _ := template.ParseFiles("static/reportList.html")
@@ -38,16 +38,17 @@ func List(w http.ResponseWriter, r *http.Request) {
 		dataMap := map[string]interface{}{
 			"user":    user,
 			"reports": reports,
+			"isadmin": isAdmin,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
 	}
 
-	clubName := r.FormValue("clubName")
-	clubAbout := r.FormValue("clubAbout")
-	slack := r.FormValue("slack")
-	date := time.Now().Format("02.01.2006")
-	dbh.InsertNewClub(db, clubAbout, user.Name, user.ID, clubName, user.Name, date, slack)
-	dbh.UserJoinСlub(db, user.Name, clubName, 3, date, user.ID)
-	http.Redirect(w, r, "/club?clubname="+clubName, http.StatusFound)
+	if isAdmin == false {
+		return
+	}
+
+	reportID := r.FormValue("reportID")
+	dbh.ReportReady(db, reportID)
+	http.Redirect(w, r, "/report", http.StatusFound)
 }

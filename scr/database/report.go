@@ -8,6 +8,7 @@ type Report struct {
 	IDIntra  string
 	Comment  string
 	Decided  bool
+	ReportID string
 }
 
 func InsertNewReport(db *sql.DB, nickName, idIntra, comment string) {
@@ -35,7 +36,8 @@ func GetReportList(db *sql.DB) ([]Report, error) {
 			&row.NickName,
 			&row.IDIntra,
 			&row.Comment,
-			&row.Decided)
+			&row.Decided,
+			&row.ReportID)
 
 		if err != nil {
 			continue
@@ -44,4 +46,11 @@ func GetReportList(db *sql.DB) ([]Report, error) {
 		reports = append(reports, row)
 	}
 	return reports, nil
+}
+
+func ReportReady(db *sql.DB, reportID string) {
+	_, err := db.Exec("UPDATE report SET decided=true WHERE reportid=$1", reportID)
+	if err != nil {
+		panic(err)
+	}
 }
