@@ -2,6 +2,10 @@ package clubs
 
 import (
 	"database/sql"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/silentalarm/booking_room/scr/cloud"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
@@ -15,6 +19,24 @@ type ByAccess []dbh.ClubMember
 func (a ByAccess) Len() int           { return len(a) }
 func (a ByAccess) Less(i, j int) bool { return a[i].Access > a[j].Access }
 func (a ByAccess) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+const (
+	AWS_S3_ID     = "AKIAX6P2RNC252RG7E3N"
+	AWS_S3_SECRET = "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"
+	AWS_S3_REGION = "eu-central-1"
+	AWS_S3_BUCKET = "21clubs"
+)
+
+func connect() *session.Session {
+	sess, err := session.NewSession(&aws.Config{
+		Region:      aws.String(AWS_S3_REGION),
+		Credentials: credentials.NewStaticCredentials(AWS_S3_ID, AWS_S3_SECRET, ""),
+	})
+	if err != nil {
+		panic(err)
+	}
+	return sess
+}
 
 func Club(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
@@ -85,7 +107,28 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 		redirect = save(db, r, "file", clubAbout, user.Name, user.ID, clubName)
 	case "upload":
-		redirect = upload(r, "file", clubName)
+		file, header, err := r.FormFile("file")
+		if err != nil {
+			panic(err)
+			return
+		}
+		defer file.Close()
+
+		sess := connect()
+
+		filename := header.Filename
+		uploader := s3manager.NewUploader(sess)
+
+		_, err = uploader.Upload(&s3manager.UploadInput{
+			Bucket: aws.String(AWS_S3_BUCKET),
+			Key:    aws.String(filename),
+			ACL:    aws.String("public-read"),
+			Body:   file,
+		})
+		if err != nil {
+			panic(err)
+			return
+		}
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
