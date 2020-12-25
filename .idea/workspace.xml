@@ -19,14 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс шапки на всех страницах">
-      <change afterPath="$PROJECT_DIR$/scr/uploader/upload.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/upload.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="тест загрузки файлов">
+      <change beforePath="$PROJECT_DIR$/static/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/upload.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +96,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="рафакторинг" />
     <MESSAGE value="фикс INTRA_REDIRECT_URL" />
     <MESSAGE value="фикс не больших ошибок" />
     <MESSAGE value="тест типа метода пост" />
@@ -127,6 +120,7 @@
     <MESSAGE value="фикс списка мемберов" />
     <MESSAGE value="фикс шапки" />
     <MESSAGE value="фикс шапки на всех страницах" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс шапки на всех страницах" />
+    <MESSAGE value="тест загрузки файлов" />
+    <option name="LAST_COMMIT_MESSAGE" value="тест загрузки файлов" />
   </component>
 </project>
