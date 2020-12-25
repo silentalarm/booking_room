@@ -526,3 +526,32 @@ button:focus{
         zoom: 65%;
     }
 }
+
+#profile-container {
+/*
+    object-fit: none;
+    object-position: center;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    */
+    object-fit: none !important;
+    object-position: center !important;
+    width: 150px !important;
+    height: 220px !important;
+    overflow: hidden !important;
+    /*-webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+    border-radius: 50% !important;*/
+
+
+}
+
+#profile-container img {
+    width: 150px !important;
+    height: 220px !important;
+    object-fit: cover;
+}
+
