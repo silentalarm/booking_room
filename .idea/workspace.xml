@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс дб" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс загрузки файла" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +94,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс не больших ошибок" />
     <MESSAGE value="тест типа метода пост" />
     <MESSAGE value="добавил поля ввода для какнала в слак" />
     <MESSAGE value="рефакторинг в дб" />
@@ -119,6 +118,7 @@
     <MESSAGE value="фикс шапки на всех страницах" />
     <MESSAGE value="тест загрузки файлов" />
     <MESSAGE value="фикс дб" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс дб" />
+    <MESSAGE value="фикс загрузки файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс загрузки файла" />
   </component>
 </project>
