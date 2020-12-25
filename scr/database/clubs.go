@@ -17,6 +17,7 @@ type Club struct {
 	Slack        string
 	Member       bool
 	Owner        bool
+	S3file       string
 }
 
 type ClubMember struct {
@@ -325,7 +326,8 @@ func acceptRow(rows *sql.Rows, Row *Club) error {
 		&Row.NickCreator,
 		&Row.CreationDate,
 		&Row.Approved,
-		&Row.Slack)
+		&Row.Slack,
+		&Row.S3file)
 
 	return err
 }
