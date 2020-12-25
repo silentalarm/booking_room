@@ -349,7 +349,7 @@ function onFileSelected(event) {
 
     var imgtag = document.getElementById("clubPic");
     imgtag.title = selectedFile.name;
-
+    $('#imageInputButton').prop('disabled', false);
     reader.onload = function(event) {
         imgtag.src = event.target.result;
     };
