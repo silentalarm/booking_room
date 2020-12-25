@@ -98,8 +98,6 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	sumbit := r.FormValue("sumbit")
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
-	file, header, err := r.FormFile("file")
-	defer file.Close()
 
 	switch sumbit {
 	case "Удалить клуб":
@@ -109,6 +107,12 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
 	case "upload":
+		file, header, err := r.FormFile("file")
+		if err != nil {
+			panic(err)
+			return
+		}
+		defer file.Close()
 
 		sess := connect()
 
@@ -125,8 +129,6 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 			return
 		}
-
-		return
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
