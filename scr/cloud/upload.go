@@ -19,7 +19,7 @@ func Upload(r *http.Request, key, clubName string) error {
 
 	oldName := strings.Split(handler.Filename, ".")
 
-	filename := clubName + oldName[1] //header.flname...
+	filename := clubName + "." + oldName[1] //header.flname...
 	uploader := s3manager.NewUploader(sess)
 
 	_, err = uploader.Upload(&s3manager.UploadInput{
