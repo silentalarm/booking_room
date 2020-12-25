@@ -39,11 +39,7 @@ func connect() *session.Session {
 }
 
 func Club(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseForm()
-	if err != nil {
-		panic(err)
-		return
-	}
+
 	redirect := "/"
 
 	clubName := r.URL.Query().Get("clubname")
