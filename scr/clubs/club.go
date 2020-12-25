@@ -73,6 +73,10 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if owner == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
 	sumbit := r.FormValue("sumbit")
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
