@@ -77,11 +77,14 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
+
 	sumbit := r.FormValue("sumbit")
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
 
 	switch sumbit {
+	case "upload":
+		redirect = upload(r, "file", clubName)
 	case "Удалить клуб":
 		redirect = delete(db, user.Name, user.ID, clubName)
 	case "Сохранить":
@@ -95,7 +98,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
 	}
-	redirect = upload(r, "file", clubName)
+
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
 
