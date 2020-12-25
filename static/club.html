@@ -129,7 +129,7 @@
                     <input type="file" name="file" accept=".jpg, .jpeg, .png"/>
                     <input type="submit" name="sumbit" value="upload"/>
                 </form> -->
-
+                {{ if eq .owner true }}
                 <form enctype="multipart/form-data" method="POST">
                     <div class="input-group mb-3">
                         <div class="custom-file">
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </form>
-
+                {{ end }}
                 <form method="POST">
                     <div class="form-row">
 
