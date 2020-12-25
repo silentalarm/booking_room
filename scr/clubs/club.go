@@ -106,35 +106,35 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		clubAbout := r.FormValue("clubAbout")
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
-	case "upload":
-		file, header, err := r.FormFile("file")
-		if err != nil {
-			panic(err)
-			return
-		}
-		defer file.Close()
-
-		sess := connect()
-
-		filename := header.Filename
-		uploader := s3manager.NewUploader(sess)
-
-		_, err = uploader.Upload(&s3manager.UploadInput{
-			Bucket: aws.String(AWS_S3_BUCKET),
-			Key:    aws.String(filename),
-			ACL:    aws.String("public-read"),
-			Body:   file,
-		})
-		if err != nil {
-			panic(err)
-			return
-		}
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
 		redirect = kick(db, nickName, intraID, clubName)
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
+	}
+
+	file, header, err := r.FormFile("file")
+	if err != nil {
+		panic(err)
+		return
+	}
+	defer file.Close()
+
+	sess := connect()
+
+	filename := header.Filename
+	uploader := s3manager.NewUploader(sess)
+
+	_, err = uploader.Upload(&s3manager.UploadInput{
+		Bucket: aws.String(AWS_S3_BUCKET),
+		Key:    aws.String(filename),
+		ACL:    aws.String("public-read"),
+		Body:   file,
+	})
+	if err != nil {
+		panic(err)
+		return
 	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
