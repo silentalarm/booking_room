@@ -84,6 +84,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		clubAbout := r.FormValue("clubAbout")
 
 		redirect = save(db, r, "file", clubAbout, user.Name, user.ID, clubName)
+	case "upload":
+		redirect = upload(r, "file", clubName)
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
@@ -107,7 +109,6 @@ func delete(db *sql.DB, nickName, idIntra, clubName string) string {
 func save(db *sql.DB, r *http.Request, key, newAbout, nickName, idIntra, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	cloud.Upload(r, key, clubName)
 	dbh.SetAboutClub(db, newAbout, nickName, idIntra, clubName)
 
 	return redirect
@@ -141,6 +142,14 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 	_ = dbh.SetAccess(db, nickName, clubName, 3)
 	_ = dbh.SetAccess(db, nickOwner, clubName, 0)
 	dbh.SetClubOwner(db, nickName, clubName)
+
+	return redirect
+}
+
+func upload(r *http.Request, key, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	cloud.Upload(r, key, clubName)
 
 	return redirect
 }
