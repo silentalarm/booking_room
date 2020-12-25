@@ -4,11 +4,11 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"net/http"
-	//"strings"
+	"strings"
 )
 
 func Upload(r *http.Request, key, clubName string) error {
-	file, _, err := r.FormFile(key) //file, header, err := r.FormFile(key)
+	file, handler, err := r.FormFile(key) //file, header, err := r.FormFile(key)
 	if err != nil {
 		panic(err)
 		return err
@@ -17,9 +17,9 @@ func Upload(r *http.Request, key, clubName string) error {
 
 	sess := connect()
 
-	//oldName := strings.Split(handler.Filename, ".")
+	oldName := strings.Split(handler.Filename, ".")
 
-	filename := clubName //+ oldName[1] //header.flname...
+	filename := clubName + oldName[1] //header.flname...
 	uploader := s3manager.NewUploader(sess)
 
 	_, err = uploader.Upload(&s3manager.UploadInput{
