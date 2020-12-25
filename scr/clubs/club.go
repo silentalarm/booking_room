@@ -83,8 +83,6 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	intraID := r.FormValue("intraID")
 
 	switch sumbit {
-	case "upload":
-		redirect = upload(r, "file", clubName)
 	case "Удалить клуб":
 		redirect = delete(db, user.Name, user.ID, clubName)
 	case "Сохранить":
@@ -99,6 +97,9 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		redirect = giveModerku(db, nickName, clubName)
 	}
 
+	if r.FormValue("sumbit2") == "upload" {
+		redirect = upload(r, "file", clubName)
+	}
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
 
