@@ -15,9 +15,9 @@ type Club struct {
 	Approved     bool
 	Size         int
 	Slack        string
+	S3file       string
 	Member       bool
 	Owner        bool
-	S3file       string
 }
 
 type ClubMember struct {
