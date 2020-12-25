@@ -98,6 +98,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	sumbit := r.FormValue("sumbit")
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
+	file, header, err := r.FormFile("file")
 
 	switch sumbit {
 	case "Удалить клуб":
@@ -107,7 +108,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
 	case "upload":
-		file, header, err := r.FormFile("file")
+
 		if err != nil {
 			panic(err)
 			return
