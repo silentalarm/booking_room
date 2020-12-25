@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coalition registration</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../css/awesome.css" type="text/css">
@@ -14,8 +13,12 @@
 
 </head>
 <body class="body">
-    <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.ClubName }}.png" alt="W3Schools.com" style="width:104px;height:142px;">
+  <!--  <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.ClubName }}.png" alt="W3Schools.com" style="width:104px;height:142px;"> -->
 
+  <form enctype="multipart/form-data" method="POST">
+      <input type="file" name="file" />
+      <input type="submit" name="upload" />
+  </form>
     <!--navigation bar [start]-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
         <!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
@@ -122,10 +125,6 @@
 
                 <h4 class="pb-4">Информация о клубе</h4>
 
-                <form enctype="multipart/form-data" method="POST">
-                    <input type="file" name="file" />
-                    <input type="submit" name="upload" />
-                </form>
 
                 <form method="POST">
                     <div class="form-row">

@@ -12,16 +12,16 @@ import (
 )
 
 const (
-	AWS_S3_ID     = "AKIAX6P2RNC252RG7E3N"
-	AWS_S3_SECRET = "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"
-	AWS_S3_REGION = "eu-central-1"
-	AWS_S3_BUCKET = "21clubs"
+	AWS_S3_ID1     = "AKIAX6P2RNC252RG7E3N"
+	AWS_S3_SECRET1 = "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"
+	AWS_S3_REGION1 = "eu-central-1"
+	AWS_S3_BUCKET1 = "21clubs"
 )
 
 func connect() *session.Session {
 	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String(AWS_S3_REGION),
-		Credentials: credentials.NewStaticCredentials(AWS_S3_ID, AWS_S3_SECRET, ""),
+		Region:      aws.String(AWS_S3_REGION1),
+		Credentials: credentials.NewStaticCredentials(AWS_S3_ID1, AWS_S3_SECRET1, ""),
 	})
 	if err != nil {
 		panic(err)
@@ -71,7 +71,7 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 	uploader := s3manager.NewUploader(sess)
 
 	_, err = uploader.Upload(&s3manager.UploadInput{
-		Bucket: aws.String(AWS_S3_BUCKET),
+		Bucket: aws.String(AWS_S3_BUCKET1),
 		Key:    aws.String(filename),
 		ACL:    aws.String("public-read"),
 		Body:   file,

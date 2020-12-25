@@ -99,6 +99,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
 	file, header, err := r.FormFile("file")
+	defer file.Close()
 
 	switch sumbit {
 	case "Удалить клуб":
@@ -108,12 +109,6 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
 	case "upload":
-
-		if err != nil {
-			panic(err)
-			return
-		}
-		defer file.Close()
 
 		sess := connect()
 
@@ -140,7 +135,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		redirect = giveModerku(db, nickName, clubName)
 	}
 
-	//http.Redirect(w, r, redirect, http.StatusFound)
+	http.Redirect(w, r, redirect, http.StatusFound)
 }
 
 func delete(db *sql.DB, nickName, idIntra, clubName string) string {
