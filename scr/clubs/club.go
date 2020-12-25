@@ -39,7 +39,11 @@ func connect() *session.Session {
 }
 
 func Club(w http.ResponseWriter, r *http.Request) {
-
+	err := r.ParseForm()
+	if err != nil {
+		panic(err)
+		return
+	}
 	redirect := "/"
 
 	clubName := r.URL.Query().Get("clubname")
@@ -101,7 +105,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "Сохранить":
 		clubAbout := r.FormValue("clubAbout")
 
-		redirect = save(db, r, "file", clubAbout, user.Name, user.ID, clubName)
+		redirect = save(db, clubAbout, user.Name, user.ID, clubName)
 	case "upload":
 		file, header, err := r.FormFile("file")
 		if err != nil {
@@ -125,6 +129,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 			return
 		}
+		redirect = "/club?clubname=" + clubName
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
@@ -145,7 +150,7 @@ func delete(db *sql.DB, nickName, idIntra, clubName string) string {
 	return redirect
 }
 
-func save(db *sql.DB, r *http.Request, key, newAbout, nickName, idIntra, clubName string) string {
+func save(db *sql.DB, newAbout, nickName, idIntra, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
 	dbh.SetAboutClub(db, newAbout, nickName, idIntra, clubName)

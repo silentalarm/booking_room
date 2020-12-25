@@ -120,14 +120,15 @@
             <div class="col-md-4 py-5 border">
 
                 <h4 class="pb-4">Информация о клубе</h4>
-                <form method="POST" enctype="multipart/form-data">
+                <form
+                        enctype="multipart/form-data"
+                        method="POST"
+                >
+                    <input type="file" name="file" />
+                    <input type="submit" name="upload" />
+                </form>
+                <form method="POST">
                     <div class="form-row">
-
-
-
-
-                        <input type="file" name="file" />
-                        <input type="submit" name="upload" />
 
                         <div class="form-group col-md-12">
                             Владелец: {{ .club.NickOwner }}
