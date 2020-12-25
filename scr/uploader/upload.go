@@ -80,5 +80,5 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 		return
 	}
-
+	http.Redirect(w, r, "/", http.StatusFound)
 }

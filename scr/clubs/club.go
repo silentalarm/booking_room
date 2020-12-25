@@ -139,7 +139,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		redirect = giveModerku(db, nickName, clubName)
 	}
 
-	http.Redirect(w, r, redirect, http.StatusFound)
+	//http.Redirect(w, r, redirect, http.StatusFound)
 }
 
 func delete(db *sql.DB, nickName, idIntra, clubName string) string {
