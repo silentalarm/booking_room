@@ -13,7 +13,6 @@
 
 </head>
 <body class="body">
-  <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.ClubName }}.png" alt="W3Schools.com" style="width:104px;height:142px;">
 
 
     <!--navigation bar [start]-->
@@ -121,6 +120,7 @@
             <div class="col-md-4 py-5 border">
 
                 <h4 class="pb-4">Информация о клубе</h4>
+                <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.ClubName }}.png" alt="W3Schools.com" style="width:104px;height:142px;">
 
                 <form enctype="multipart/form-data" method="POST">
                     <input type="file" name="file" />
