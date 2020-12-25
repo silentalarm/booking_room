@@ -13,6 +13,7 @@
 
 </head>
 <body class="body">
+    <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.ClubName }}.png" alt="W3Schools.com" style="width:104px;height:142px;">
 
     <!--navigation bar [start]-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
@@ -121,6 +122,14 @@
                 <h4 class="pb-4">Информация о клубе</h4>
                 <form method="POST">
                     <div class="form-row">
+
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" name="file" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                            </div>
+                        </div>
+
                         <div class="form-group col-md-12">
                             Владелец: {{ .club.NickOwner }}
                         </div>
