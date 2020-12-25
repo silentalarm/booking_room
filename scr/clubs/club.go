@@ -95,11 +95,10 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		redirect = kick(db, nickName, intraID, clubName)
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
-	}
-
-	if r.FormValue("sumbit2") == "upload" {
+	default:
 		redirect = upload(r, "file", clubName)
 	}
+
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
 

@@ -130,14 +130,14 @@
                     <input type="submit" name="sumbit" value="upload"/>
                 </form> -->
                 {{ if eq .owner true }}
-                <form enctype="multipart/form-data" method="POST">
+                <form enctype="multipart/form-data" method="POST" id="form1">
                     <div class="input-group mb-3">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" accept=".jpg, .jpeg, .png">
                             <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                         </div>
                         <div class="input-group-append">
-                            <input class="input-group-text" type="submit" name="sumbit2" value="upload"/>
+                            <input class="input-group-text" type="submit" name="sumbit" value="upload" form="form1"/>
                         </div>
                     </div>
                 </form>
