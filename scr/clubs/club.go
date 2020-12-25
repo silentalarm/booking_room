@@ -129,7 +129,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 			return
 		}
-		redirect = "/club?clubname=" + clubName
+
+		return
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
