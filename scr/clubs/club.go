@@ -84,8 +84,6 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		clubAbout := r.FormValue("clubAbout")
 
 		redirect = save(db, r, "file", clubAbout, user.Name, user.ID, clubName)
-	case "upload":
-		redirect = upload(r, "file", clubName)
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
@@ -93,7 +91,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
 	}
-
+	redirect = upload(r, "file", clubName)
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
 
