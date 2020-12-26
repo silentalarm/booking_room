@@ -166,7 +166,7 @@ func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string
 	if oldName != "default_logo.png" {
 		cloud.Delete(oldName)
 	}
-	dbh.SetImageName(db, nickName, intraID, clubName, randomName)
+
 	cloud.Upload(r, key, randomName)
 
 	return redirect
