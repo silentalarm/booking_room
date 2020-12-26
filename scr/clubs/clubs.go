@@ -36,7 +36,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	sort.Sort(BySize(clubs))
 	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
-	tmpl, _ := template.ParseFiles("static/clubs.html")
+	tmpl, _ := template.ParseFiles("static/clubs_v2.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
 			"user":   user,

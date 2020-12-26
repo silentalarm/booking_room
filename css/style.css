@@ -553,5 +553,148 @@ button:focus{
     width: 150px !important;
     height: 220px !important;
     object-fit: cover;
+
 }
 
+.square {
+    width: 200px;
+    height: 270px;
+    background-color: rgb(3, 155, 229) !important;
+    border-width: 3px !important;
+    border-color: rgb(3, 155, 229) !important;
+    border-style: solid;
+    margin: 25px 25px 25px 25px; /* Отступы */
+    /*padding: 10px 0; /* Поля сверху и снизу */
+    text-align: center; /* Выравнивание по центру */
+    overflow: hidden;
+}
+.square img {
+    object-position: center !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.square:hover img {
+    filter: brightness(0.8);/* opacity(30%);  голубой цвет*/
+}
+
+.onsquare {
+    position: relative;
+    bottom: 260px;
+    z-index:1;
+}
+
+.onsquare-btn {
+    position: relative;
+    bottom: 120px;
+    left: 60px;
+    z-index:1;
+}
+
+.onsquare-btn-leave {
+    position: relative;
+    bottom: 163px;
+    right: 60px;
+    z-index:1;
+}
+
+.onsquare-size {
+    position: relative;
+    bottom: 50px;
+    left: 70px;
+    z-index:1;
+}
+
+.onsquare-buttons {
+    position: relative;
+    bottom: 50px;
+    z-index:1;
+}
+
+.blocks-center {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.text-block {
+    font: 1em Arial, sans-serif;
+    font-size: 14pt;
+    color: #039BE5;
+   /* text-shadow: white 1px 1px 0, white -1px -1px 0,
+    white -1px 1px 0, white 1px -1px 0;*/
+}
+
+.trgt{
+
+}
+
+
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    z-index:-2;
+    width: 200px;
+    height: 270px;
+    margin-top: -3px;
+    transition: all 0.35s ease;
+    background-color:transparent !important;
+    border-width: 3px !important;
+    border-color: transparent !important;
+    border-radius: 2px;
+
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    line-break: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+
+}
+
+[data-tooltip]:hover:before {
+    display: flex;
+    position: absolute;
+    opacity: 1;
+    margin-top: -3px;
+    z-index: 3 !important;
+    border-radius: 2px;
+    width: 200px;
+    height: 270px;
+
+
+    background-color: rgb(3, 155, 229) !important;
+    border-width: 3px !important;
+    border-color: rgb(3, 155, 229) !important;
+    border-style: solid;
+
+
+
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    line-break: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+
+
+
+}
+
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
+}
+
+.left-tl:hover:before {
+    margin-left: 200px;
+}
+.right-tl:hover:before {
+    margin-left: -206px;
+}

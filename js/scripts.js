@@ -358,3 +358,41 @@ function onFileSelected(event) {
 }
 
 
+$(document).ready(function(){
+    $('.square').mouseover(function (e) {
+        child = $(this).find('.trgt')
+        child.show();
+
+        var all = $(window).width();
+        var left = $(this).offset().left + 150;
+        var width = $(this).outerWidth(true);
+        var offset = all - (left + width);
+        console.log(offset)
+        $(this).removeClass('right-tl');
+        $(this).removeClass('left-tl');
+        if (offset < 0)
+        {
+            $(this).addClass("right-tl");
+        }else{
+            $(this).addClass("left-tl");
+        }
+
+
+
+    });
+
+    $('.square').mouseout(function (e) {
+        child = $(this).find('.trgt')
+        child.hide();
+    });
+});
+
+
+
+
+$(document).ready(function(){
+    $('.square').on('click',function (e) {
+        child = $(this).find('.trgt')
+        child.show();
+    });
+});
