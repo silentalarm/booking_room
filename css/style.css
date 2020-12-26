@@ -566,6 +566,7 @@ button:focus{
     margin: 25px 25px 25px 25px; /* Отступы */
     /*padding: 10px 0; /* Поля сверху и снизу */
     text-align: center; /* Выравнивание по центру */
+    white-space: nowrap;
     overflow: hidden;
 }
 .square img {
