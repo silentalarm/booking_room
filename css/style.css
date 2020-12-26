@@ -654,9 +654,11 @@ button:focus{
     border-color: transparent !important;
     border-radius: 2px;
 
+
+
     color: white;
     text-align: center;
-    padding: 5px 0;
+    padding: 10px 10px;
     line-break: auto;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -690,7 +692,7 @@ button:focus{
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 
 }
 
