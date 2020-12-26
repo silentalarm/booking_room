@@ -566,7 +566,6 @@ button:focus{
     margin: 25px 25px 25px 25px; /* Отступы */
     /*padding: 10px 0; /* Поля сверху и снизу */
     text-align: center; /* Выравнивание по центру */
-    white-space: nowrap;
     overflow: hidden;
 }
 .square img {
@@ -630,6 +629,7 @@ button:focus{
 .text-block {
     font: 1em Arial, sans-serif;
     font-size: 14pt;
+    white-space: nowrap;
     color: #039BE5;
     text-shadow: white 1px 1px 0, white -1px -1px 0,
     white -1px 1px 0, white 1px -1px 0;
@@ -637,7 +637,8 @@ button:focus{
 
 .icons {
     color: #039BE5 !important;
-    text-shadow: none !important;
+    text-shadow: #039BE5 1px 1px 0, #039BE5 -1px -1px 0,
+    #039BE5 -1px 1px 0, #039BE5 1px -1px 0 !important;
 }
 
 .trgt{
