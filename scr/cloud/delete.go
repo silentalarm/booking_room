@@ -11,7 +11,7 @@ func Delete(fileName string) error {
 	svc := s3.New(sess)
 
 	params := &s3.DeleteObjectInput{
-		Bucket: aws.String("aws-empty-object-test"),
+		Bucket: aws.String(AWS_S3_BUCKET),
 		Key:    aws.String(fileName),
 	}
 	fmt.Println(params)
