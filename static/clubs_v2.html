@@ -125,6 +125,7 @@
 
         {{ range .clubs }}
         <form method="POST">
+            <input type="hidden" value="{{ .ClubName }}" name="clubName">
             <div class="square rounded shadow" data-toggle="tooltip" data-tooltip="{{ .About }}">
                 <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.ClubName}}.png">
                 <div class="onsquare text-block">
@@ -154,7 +155,6 @@
                         {{ end }}
                     {{ end }}
                 </div>
-
             </div>
         </form>
         {{ end }}
