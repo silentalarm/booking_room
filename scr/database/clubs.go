@@ -54,6 +54,7 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 		}
 		clubsSize, _ := getClubSize(db, row.ClubName)
 		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
 		if row.Approved == approved {
 			clubs = append(clubs, row)
