@@ -637,6 +637,7 @@ button:focus{
 
 .icons {
     color: #039BE5 !important;
+    text-shadow: none !important;
 }
 
 .trgt{
