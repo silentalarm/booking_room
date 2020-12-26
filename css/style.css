@@ -631,8 +631,8 @@ button:focus{
     font: 1em Arial, sans-serif;
     font-size: 14pt;
     color: #039BE5;
-   /* text-shadow: white 1px 1px 0, white -1px -1px 0,
-    white -1px 1px 0, white 1px -1px 0;*/
+    text-shadow: white 1px 1px 0, white -1px -1px 0,
+    white -1px 1px 0, white 1px -1px 0;
 }
 
 .trgt{
