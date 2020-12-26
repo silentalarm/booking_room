@@ -1,6 +1,7 @@
 package clubs
 
 import (
+	"database/sql"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
 	"html/template"
@@ -16,6 +17,13 @@ func (a BySize) Less(i, j int) bool { return a[i].Size > a[j].Size }
 func (a BySize) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func Clubs(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		panic(err)
+		return
+	}
+	redirect := "/"
+
 	session, err := ses.Store.Get(r, "auth-session")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -24,7 +32,7 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	user := ses.GetUser(session)
 
 	if user.Authenticated == false {
-		http.Redirect(w, r, "/", http.StatusFound)
+		http.Redirect(w, r, redirect, http.StatusFound)
 		return
 	}
 
@@ -47,13 +55,40 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if member == false { //тут внимательнее возможно не фолс а тру
-	//	http.Redirect(w, r, "/", http.StatusFound)
-	//	return
-	//}
-
 	clubName := r.FormValue("clubName")
+	sumbit := r.FormValue("sumbit")
+
+	switch sumbit {
+	case "goToClub":
+		redirect = clubPage(clubName)
+	case "joinClub":
+		redirect = join(db, user.Name, user.ID, clubName)
+	case "leaveClub":
+		redirect = leave(db, user.Name, user.ID, clubName)
+	}
+
+	http.Redirect(w, r, redirect, http.StatusFound)
+}
+
+func clubPage(clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	return redirect
+}
+
+func join(db *sql.DB, nickName, idInta, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
 	date := time.Now().Format("02.01.2006")
-	dbh.UserJoinСlub(db, user.Name, clubName, 0, date, user.ID)
-	http.Redirect(w, r, "/", http.StatusFound)
+	dbh.UserJoinСlub(db, nickName, clubName, 0, date, idInta)
+
+	return redirect
+}
+
+func leave(db *sql.DB, nickName, idInta, clubName string) string {
+	redirect := "/clubs"
+
+	dbh.UserLeaveСlub(db, nickName, idInta, clubName)
+
+	return redirect
 }
