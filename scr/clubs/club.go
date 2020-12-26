@@ -1,9 +1,7 @@
 package clubs
 
 import (
-	"crypto/rand"
 	"database/sql"
-	"encoding/hex"
 	"github.com/silentalarm/booking_room/scr/cloud"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
@@ -156,8 +154,6 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	randomName := bytesToHex(16)
-
 	oldName, err := dbh.GetNameFile(db, clubName)
 	if err != nil {
 		return "/"
@@ -167,20 +163,7 @@ func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string
 		cloud.Delete(oldName)
 	}
 
-	cloud.Upload(r, key, randomName)
+	cloud.Upload(r, key, clubName)
 
 	return redirect
-}
-
-func generateBytes(n int) []byte {
-	b := make([]byte, n)
-	_, err := rand.Read(b)
-	if err != nil {
-		panic(err)
-	}
-	return b
-}
-
-func bytesToHex(n int) string {
-	return hex.EncodeToString(generateBytes(n))
 }

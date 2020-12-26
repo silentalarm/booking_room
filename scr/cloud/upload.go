@@ -1,6 +1,8 @@
 package cloud
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	dbh "github.com/silentalarm/booking_room/scr/database"
@@ -18,9 +20,11 @@ func Upload(r *http.Request, key, clubName string) error {
 
 	sess := connect()
 
+	randomName := bytesToHex(16)
+
 	oldName := strings.Split(handler.Filename, ".")
 
-	filename := clubName + "." + oldName[1] //header.flname...
+	filename := randomName + "." + oldName[1] //header.flname...
 
 	db := dbh.OpenDB()
 	defer db.Close()
@@ -40,4 +44,17 @@ func Upload(r *http.Request, key, clubName string) error {
 		return err
 	}
 	return nil
+}
+
+func generateBytes(n int) []byte {
+	b := make([]byte, n)
+	_, err := rand.Read(b)
+	if err != nil {
+		panic(err)
+	}
+	return b
+}
+
+func bytesToHex(n int) string {
+	return hex.EncodeToString(generateBytes(n))
 }
