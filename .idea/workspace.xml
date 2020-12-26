@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="сделал добавление и удаление лого">
-      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс отображения лого">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс таблицы подверждения клубов" />
     <MESSAGE value="добавил страницу клуба" />
     <MESSAGE value="добавил список клубов на странице клуба" />
     <MESSAGE value="фикс таблицы клуба" />
@@ -127,6 +128,7 @@
     <MESSAGE value="фикс отображение кнопок" />
     <MESSAGE value="фикс всплывающего текста" />
     <MESSAGE value="сделал добавление и удаление лого" />
-    <option name="LAST_COMMIT_MESSAGE" value="сделал добавление и удаление лого" />
+    <MESSAGE value="фикс отображения лого" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс отображения лого" />
   </component>
 </project>

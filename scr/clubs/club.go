@@ -98,7 +98,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
 	default:
-		redirect = upload(db, r, "file", nickName, clubName)
+		redirect = upload(db, r, "file", user.Name, user.ID, clubName)
 	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
@@ -153,7 +153,7 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 	return redirect
 }
 
-func upload(db *sql.DB, r *http.Request, key, nickName, clubName string) string {
+func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
 	randomName := bytesToHex(16)
@@ -166,7 +166,7 @@ func upload(db *sql.DB, r *http.Request, key, nickName, clubName string) string 
 	if oldName != "default_logo.png" {
 		cloud.Delete(oldName)
 	}
-	dbh.SetImageName(db, nickName, clubName, randomName)
+	dbh.SetImageName(db, nickName, intraID, clubName, randomName)
 	cloud.Upload(r, key, randomName)
 
 	return redirect
