@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс отображение кнопок">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

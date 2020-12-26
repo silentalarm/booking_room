@@ -159,7 +159,68 @@
         </form>
         {{ end }}
 
+        <div class="square rounded shadow" data-toggle="tooltip" data-tooltip="{{ .About }}">
+            <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.ClubName}}.png">
+            <div class="onsquare text-block">
+                {{ .ClubName }}
+            </div>
 
+            <div class="onsquare-size text-block">
+                <i class="fas fa-user-alt"></i>
+                {{ .Size }}
+            </div>
+
+            <div class="onsquare-btn text-block trgt" style="display: none">
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="goToClub">
+                    <i class="fas fa-arrow-right fa-2x"></i>
+                </button>
+            </div>
+            <div class="onsquare-btn-leave text-block trgt" style="display: none">
+                {{ if eq .Owner false }}
+                {{ if eq .Member true }}
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="leaveClub">
+                    <i class="fas fa-door-open fa-lg"></i>
+                </button>
+                {{ else }}
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="joinClub">
+                    <i class="fas fa-user-check fa-lg"></i>
+                </button>
+                {{ end }}
+                {{ end }}
+            </div>
+
+        </div>
+        <div class="square rounded shadow" data-toggle="tooltip" data-tooltip="{{ .About }}">
+            <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.ClubName}}.png">
+            <div class="onsquare text-block">
+                {{ .ClubName }}
+            </div>
+
+            <div class="onsquare-size text-block">
+                <i class="fas fa-user-alt"></i>
+                {{ .Size }}
+            </div>
+
+            <div class="onsquare-btn text-block trgt" style="display: none">
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="goToClub">
+                    <i class="fas fa-arrow-right fa-2x"></i>
+                </button>
+            </div>
+            <div class="onsquare-btn-leave text-block trgt" style="display: none">
+                {{ if eq .Owner false }}
+                {{ if eq .Member true }}
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="leaveClub">
+                    <i class="fas fa-door-open fa-lg"></i>
+                </button>
+                {{ else }}
+                <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="joinClub">
+                    <i class="fas fa-user-check fa-lg"></i>
+                </button>
+                {{ end }}
+                {{ end }}
+            </div>
+
+        </div>
 
 
 
