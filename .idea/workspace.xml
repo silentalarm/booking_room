@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс нового вида клубов">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс отображение кнопок">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
@@ -103,7 +103,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="добавил поля ввода для какнала в слак" />
     <MESSAGE value="рефакторинг в дб" />
     <MESSAGE value="добавил две колонке в таблице поддверждения клуба" />
     <MESSAGE value="фикс таблицы подверждения клубов" />
@@ -128,6 +127,7 @@
     <MESSAGE value="фикс дб" />
     <MESSAGE value="фикс загрузки файла" />
     <MESSAGE value="фикс нового вида клубов" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс нового вида клубов" />
+    <MESSAGE value="фикс отображение кнопок" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс отображение кнопок" />
   </component>
 </project>
