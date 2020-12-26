@@ -238,6 +238,20 @@ func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
 	return true
 }
 
+func GetNameFile(db *sql.DB, clubName string) (string, error) {
+	var nameClub string
+	err := db.QueryRow("SELECT s3file FROM clubs WHERE clubname=$1",
+		clubName).Scan(&nameClub)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return nameClub, err
+	}
+
+	return nameClub, nil
+}
+
 func DeleteСlub(db *sql.DB, clubName string) {
 	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1", clubName)
 	if err != nil {
@@ -278,6 +292,13 @@ func SetAboutClub(db *sql.DB, newAbout, nickOwner, idOwner, clubName string) {
 func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
 	_, err := db.Exec("UPDATE clubmembers SET memberaccess=$1 WHERE nickname=$2 and clubname=$3",
 		access, nickName, clubName)
+
+	return err
+}
+
+func SetImageName(db *sql.DB, nickName, clubName, fileName string) error {
+	_, err := db.Exec("UPDATE clubs SET s3file=$1 WHERE nickowner=$2 and clubname=$3",
+		fileName, nickName, clubName)
 
 	return err
 }

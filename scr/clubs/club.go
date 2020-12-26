@@ -1,7 +1,9 @@
 package clubs
 
 import (
+	"crypto/rand"
 	"database/sql"
+	"encoding/hex"
 	"github.com/silentalarm/booking_room/scr/cloud"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
@@ -96,7 +98,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "makeModer":
 		redirect = giveModerku(db, nickName, clubName)
 	default:
-		redirect = upload(r, "file", clubName)
+		redirect = upload(db, r, "file", nickName, clubName)
 	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
@@ -151,10 +153,34 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 	return redirect
 }
 
-func upload(r *http.Request, key, clubName string) string {
+func upload(db *sql.DB, r *http.Request, key, nickName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	cloud.Upload(r, key, clubName)
+	randomName := bytesToHex(16)
+
+	oldName, err := dbh.GetNameFile(db, clubName)
+	if err != nil {
+		return "/"
+	}
+
+	if oldName != "default_logo.png" {
+		cloud.Delete(oldName)
+	}
+	dbh.SetImageName(db, nickName, clubName, randomName)
+	cloud.Upload(r, key, randomName)
 
 	return redirect
+}
+
+func generateBytes(n int) []byte {
+	b := make([]byte, n)
+	_, err := rand.Read(b)
+	if err != nil {
+		panic(err)
+	}
+	return b
+}
+
+func bytesToHex(n int) string {
+	return hex.EncodeToString(generateBytes(n))
 }
