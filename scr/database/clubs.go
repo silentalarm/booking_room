@@ -296,7 +296,7 @@ func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
 	return err
 }
 
-func SetImageName(db *sql.DB, nickName, clubName, intraId, fileName string) error {
+func SetImageName(db *sql.DB, nickName, intraId, clubName, fileName string) error {
 	_, err := db.Exec("UPDATE clubs SET s3file=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
 		fileName, nickName, intraId, clubName)
 
