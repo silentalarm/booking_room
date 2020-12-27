@@ -398,5 +398,5 @@ $(document).ready(function(){
 });
 function changeColor(value){
     document.getElementById("color").value = value;
-    document.getElementById("colorInp").value = value;
+    document.getElementById("colorInp").value = value.toString();
 }
