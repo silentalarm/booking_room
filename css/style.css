@@ -631,15 +631,11 @@ button:focus{
     font-size: 14pt;
     white-space: nowrap;
     color: #039BE5;
-    text-shadow: white 1px 1px 0, white -1px -1px 0,
-    white -1px 1px 0, white 1px -1px 0;
+    /*text-shadow: white 1px 1px 0, white -1px -1px 0,
+    white -1px 1px 0, white 1px -1px 0;*/
 }
 
-.icons {
-    color: #039BE5 !important;
-    text-shadow: #039BE5 1px 1px 0, #039BE5 -1px -1px 0,
-    #039BE5 -1px 1px 0, #039BE5 1px -1px 0 !important;
-}
+
 
 .trgt{
 
