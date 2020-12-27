@@ -117,7 +117,7 @@
         <div class="col-md-12 py-1 bg-primary text-white text-center">
             <div class=" ">
                 <div class="card-body">
-                    <h2 class="py-1">Список клубов</h2>
+                    <h2 class="py-1">Мои клубы</h2>
                     <table class="table rounded border shadow table-sm h-100"></table>
                 </div>
             </div>
@@ -156,6 +156,31 @@
                     </button>
                     {{ end }}
                     {{ end }}
+                </div>
+            </div>
+        </form>
+        {{ end }}
+
+        {{ range .onconf }}
+        <form method="POST">
+            <input type="hidden" value="{{ .ClubName }}" name="clubName">
+
+            <div class="square rounded shadow" data-toggle="tooltip" data-tooltip="{{ .About }}">
+                <!-- <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}}"> -->
+                <div class="bg-image" style="background-image: url(https://21clubs.s3.eu-central-1.amazonaws.com/moderation_logo.png)"></div>
+                <div class="onsquare-clubname text-block">
+                    {{ .ClubName }}
+                </div>
+
+                <div class="onsquare-clubsize color-lightblue">
+                    <i class="fas fa-user-alt"></i>
+                    {{ .Size }}
+                </div>
+
+                <div class="onsquare-goto trgt" style="display: none">
+                    <button type="submit" class="btn btn-card" name="sumbit" value="goToClub">
+                        <i class="fas fa-arrow-right fa-2x color-lightblue"></i>
+                    </button>
                 </div>
             </div>
         </form>

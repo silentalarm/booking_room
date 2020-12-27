@@ -75,7 +75,7 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	clubs, _ := dbh.GetUserClubs(db, true, user.Name, user.ID)
-	//onConfirmationClubs, _ := dbh.GetUserClubs(db, false, user.Name, user.ID)
+	onConfirmationClubs, _ := dbh.GetUserClubs(db, false, user.Name, user.ID)
 	sort.Sort(BySize(clubs))
 	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
@@ -85,6 +85,7 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 			"user":   user,
 			"clubs":  clubs,
 			"member": member,
+			"onconf": onConfirmationClubs,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
@@ -97,7 +98,8 @@ func MyClubs(w http.ResponseWriter, r *http.Request) {
 	case "goToClub":
 		redirect = clubPage(clubName)
 	case "leaveClub":
-		redirect = leave(db, user.Name, user.ID, clubName)
+		_ = leave(db, user.Name, user.ID, clubName)
+		redirect = "/myclubs"
 	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
