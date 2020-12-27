@@ -579,7 +579,13 @@ button:focus{
     background-repeat: no-repeat;
     background-size: cover;
 
+    -webkit-filter: grayscale(0) blur(0);
+    filter: grayscale(0) blur(0);
+    transition: .2s ease-in-out;
+
 }
+
+
 
 .bg-text {
     text-align: center;
@@ -588,10 +594,14 @@ button:focus{
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    z-index: 1;
 }
 
-.bg-image:hover .bg-image{
-    opacity: .4;
+.square:hover .bg-image{
+    -webkit-filter: grayscale(100%) blur(2px);
+    filter: grayscale(100%) blur(2px);
+    transition: .2s ease-in-out;
+
 }
 
 .square img {
@@ -629,14 +639,15 @@ button:focus{
 .onsquare-clubname {
     position: relative;
     text-align: center;
+    bottom: 270px;
     height: 0;
-    z-index:1;
+    z-index:11;
 }
 
 .onsquare-clubsize {
     position: relative;
     height: 0;
-    bottom: -240px;
+    bottom: 30px;
     padding-right: 10px;
     float: right;
     z-index:1;
@@ -646,7 +657,7 @@ button:focus{
 .onsquare-goto {
     position: relative;
     height: 0;
-    bottom: -180px;
+    bottom: 90px;
     padding-right: 5px;
     float: right;
     z-index:1;
@@ -655,7 +666,7 @@ button:focus{
 .onsquare-leave {
     position: relative;
     height: 0;
-    bottom: -180px;
+    bottom: 90px;
     padding-left: 7px;
     float: left;
     z-index:1;
@@ -671,7 +682,7 @@ button:focus{
     content: attr(data-tooltip);
     position: absolute;
     opacity: 0;
-    z-index:-2;
+    z-index:3;
     width: 200px;
     height: 270px;
     transition: all 0.35s ease;
