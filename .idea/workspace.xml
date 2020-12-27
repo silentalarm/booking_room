@@ -19,9 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="блюр на карточки">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="почистил бред">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubsToApproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubsToApproved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/myClubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/myClubs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/reportList.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/reportRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportRegistration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +110,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="добавил список клубов на странице клуба" />
     <MESSAGE value="фикс таблицы клуба" />
     <MESSAGE value="добавил новую колонку в список клубов" />
     <MESSAGE value="добавил возможность покинуть клуб" />
@@ -127,6 +134,7 @@
     <MESSAGE value="сделал добавление и удаление лого" />
     <MESSAGE value="фикс отображения лого" />
     <MESSAGE value="блюр на карточки" />
-    <option name="LAST_COMMIT_MESSAGE" value="блюр на карточки" />
+    <MESSAGE value="почистил бред" />
+    <option name="LAST_COMMIT_MESSAGE" value="почистил бред" />
   </component>
 </project>

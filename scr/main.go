@@ -7,7 +7,6 @@ import (
 	cl "github.com/silentalarm/booking_room/scr/clubs"
 	rep "github.com/silentalarm/booking_room/scr/report"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
-	up "github.com/silentalarm/booking_room/scr/uploader"
 	"golang.org/x/oauth2"
 	"net/http"
 	"os"
@@ -48,7 +47,6 @@ func main() {
 	http.HandleFunc("/clubstoapproved", cl.Moderation)
 	http.HandleFunc("/repregistration", rep.Registration)
 	http.HandleFunc("/report", rep.List)
-	http.HandleFunc("/upload", up.Upload)
 
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 
