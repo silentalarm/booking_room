@@ -144,6 +144,7 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 
 		clubsSize, _ := getClubSize(db, row.ClubName)
 		userJoined := IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
 		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
 		if row.Approved == approved && userJoined == true {
