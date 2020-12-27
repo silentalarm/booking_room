@@ -572,8 +572,7 @@ button:focus{
 }
 
 .bg-image {
-
-    background-color: rgba(0, 0, 0, 0.8);;
+    background-color: #ffffff;
     width: 200px;
     height: 270px;
     background-position: center;
@@ -591,6 +590,9 @@ button:focus{
     color: white;
 }
 
+.bg-image:hover .bg-image{
+    opacity: .4;
+}
 
 .square img {
     object-position: center !important;
