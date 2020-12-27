@@ -560,8 +560,12 @@ button:focus{
     width: 200px;
     height: 270px;
     background-color: rgb(255, 255, 255) !important;
+    /*border-width: 4px !important;
+   border-color: rgb(3, 155, 229) !important;
+   border-style: solid;
 
-    margin: 25px 25px 25px 25px; /* Отступы */
+     */
+   margin: 25px 25px 25px 25px; /* Отступы */
     /*padding: 10px 0; /* Поля сверху и снизу */
     text-align: center; /* Выравнивание по центру */
     overflow: hidden;
@@ -599,45 +603,6 @@ button:focus{
     filter: brightness(0.8);/* opacity(30%);  голубой цвет*/
 }
 
-.onsquare {
-    position: relative;
-    bottom: 260px;
-    z-index:1;
-}
-
-.onsquare-btn {
-    position: relative;
-    bottom: 120px;
-    left: 60px;
-    z-index:1;
-}
-
-.onsquare-btn-leave {
-    position: relative;
-    bottom: 163px;
-    right: 60px;
-    z-index:1;
-}
-
-.onsquare-size {
-    position: relative;
-    bottom: 50px;
-    left: 65px;
-    z-index:1;
-}
-
-.onsquare-size-i {
-    position: relative;
-    bottom: 50px;
-    left: 70px;
-    z-index:1;
-}
-
-.onsquare-buttons {
-    position: relative;
-    bottom: 50px;
-    z-index:1;
-}
 
 .blocks-center {
     display: flex;
@@ -648,13 +613,50 @@ button:focus{
 .text-block {
     font: 1em Arial, sans-serif;
     font-size: 14pt;
-    white-space: nowrap;
+
     color: #039BE5;
     /*text-shadow: white 1px 1px 0, white -1px -1px 0,
     white -1px 1px 0, white 1px -1px 0;*/
 }
 
+.color-lightblue {
+    color: #039BE5;
+}
 
+.onsquare-clubname {
+    position: relative;
+    text-align: center;
+    height: 0;
+    z-index:1;
+}
+
+.onsquare-clubsize {
+    position: relative;
+    height: 0;
+    bottom: -240px;
+    padding-right: 10px;
+    float: right;
+    z-index:1;
+}
+
+
+.onsquare-goto {
+    position: relative;
+    height: 0;
+    bottom: -180px;
+    padding-right: 5px;
+    float: right;
+    z-index:1;
+}
+
+.onsquare-leave {
+    position: relative;
+    height: 0;
+    bottom: -180px;
+    padding-left: 7px;
+    float: left;
+    z-index:1;
+}
 
 .trgt{
 
@@ -669,15 +671,8 @@ button:focus{
     z-index:-2;
     width: 200px;
     height: 270px;
-    margin-top: -4px;
     transition: all 0.35s ease;
     background-color:transparent !important;
-    border-width: 3px !important;
-    border-color: transparent !important;
-    border-radius: 2px;
-
-
-
     color: white;
     text-align: center;
     padding: 10px 10px;
@@ -686,27 +681,17 @@ button:focus{
     word-wrap: break-word;
     word-break: break-word;
     font-size: 0.7rem;
-
 }
 
 [data-tooltip]:hover:before {
     display: flex;
     position: absolute;
     opacity: 1;
-    margin-top: -4px;
     z-index: 3 !important;
     border-radius: 2px;
     width: 200px;
     height: 270px;
-
-
     background-color: rgb(3, 155, 229) !important;
-    border-width: 3px !important;
-    border-color: rgb(3, 155, 229) !important;
-    border-style: solid;
-
-
-
     color: white;
     text-align: center;
     padding: 10px 10px;
@@ -715,7 +700,6 @@ button:focus{
     word-wrap: break-word;
     word-break: break-word;
     font-size: 0.8rem;
-
 }
 
 
@@ -724,8 +708,8 @@ button:focus{
 }
 
 .left-tl:hover:before {
-    margin-left: 200px;
+    margin-left: 207px;
 }
 .right-tl:hover:before {
-    margin-left: -206px;
+    margin-left: -207px;
 }
