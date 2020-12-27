@@ -57,17 +57,6 @@
                             <i class="fas fa-list-alt pr-1"></i>
                             Список клубов
                         </a>
-                        {{ if eq $.member true }}
-                        <a class="navsub-choice dropdown-item" href="/myclubs">
-                            <i class="fas fa-list-alt pr-1"></i>
-                            Мои клубы
-                        </a>
-                        {{ else }}
-                        <a class="dropdown-item disabled" href="#">
-                            <i class="fas fa-list-alt pr-1"></i>
-                            Мои клубы
-                        </a>
-                        {{ end }}
                         <a class="navsub-choice dropdown-item" href="/clubregistration">
                             <i class="fas fa-plus pr-1"></i>
                             Регистрация нового клуба
@@ -103,6 +92,18 @@
                         <b>{{ .user.Name }}</b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
+                        {{ if eq $.member true }}
+                        <a class="navsub-choice dropdown-item" href="/myclubs">
+                            <i class="fas fa-list-alt pr-1"></i>
+                            Мои клубы
+                        </a>
+                        {{ else }}
+                        <a class="dropdown-item disabled" href="#">
+                            <i class="fas fa-list-alt pr-1"></i>
+                            Мои клубы
+                        </a>
+                        {{ end }}
+                        <div class="navsub-choice dropdown-divider"></div>
                         <a class="navsub-choice dropdown-item" href="/logout">
                             <i class="fas fa-door-open pr-1"></i>
                             Выход
