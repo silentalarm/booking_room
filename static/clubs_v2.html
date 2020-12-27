@@ -140,18 +140,18 @@
                 </div>
 
                 <div class="onsquare-goto trgt" style="display: none">
-                    <button type="submit" class="btn font-weight-normal" name="sumbit" value="goToClub">
+                    <button type="submit" class="btn btn-card" name="sumbit" value="goToClub">
                         <i class="fas fa-arrow-right fa-2x color-lightblue"></i>
                     </button>
                 </div>
                 <div class="onsquare-leave trgt" style="display: none">
                      {{ if eq .Owner false }}
                          {{ if eq .Member true }}
-                            <button type="submit" class="btn font-weight-normal " name="sumbit" value="leaveClub">
+                            <button type="submit" class="btn btn-card" name="sumbit" value="leaveClub">
                                 <i class="fas fa-sign-out-alt fa-2x color-lightblue fa-flip-horizontal"></i>
                             </button>
                         {{ else }}
-                            <button type="submit" class="btn font-weight-normal" name="sumbit" value="joinClub">
+                            <button type="submit" class="btn btn-card" name="sumbit" value="joinClub">
                               <i class="fas fa-sign-in-alt fa-2x color-lightblue"></i>
                             </button>
                         {{ end }}

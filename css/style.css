@@ -636,12 +636,20 @@ button:focus{
     color: #039BE5;
 }
 
+.btn-card {
+
+}
+
+.btn-card:hover i {
+    color: #02abff !important;
+}
 .onsquare-clubname {
     position: relative;
     text-align: center;
+    padding-top: 3px;
     bottom: 270px;
     height: 0;
-    z-index:11;
+    z-index:1;
 }
 
 .onsquare-clubsize {

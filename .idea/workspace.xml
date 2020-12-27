@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс отображения лого">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="блюр на карточки">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
@@ -103,7 +103,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="добавил страницу клуба" />
     <MESSAGE value="добавил список клубов на странице клуба" />
     <MESSAGE value="фикс таблицы клуба" />
     <MESSAGE value="добавил новую колонку в список клубов" />
@@ -128,6 +127,7 @@
     <MESSAGE value="фикс всплывающего текста" />
     <MESSAGE value="сделал добавление и удаление лого" />
     <MESSAGE value="фикс отображения лого" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс отображения лого" />
+    <MESSAGE value="блюр на карточки" />
+    <option name="LAST_COMMIT_MESSAGE" value="блюр на карточки" />
   </component>
 </project>
