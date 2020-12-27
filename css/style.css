@@ -560,14 +560,33 @@ button:focus{
     width: 200px;
     height: 270px;
     background-color: rgb(255, 255, 255) !important;
-    border-width: 4px !important;
-    border-color: rgb(3, 155, 229) !important;
-    border-style: solid;
+
     margin: 25px 25px 25px 25px; /* Отступы */
     /*padding: 10px 0; /* Поля сверху и снизу */
     text-align: center; /* Выравнивание по центру */
     overflow: hidden;
 }
+
+.bg-image {
+    background-color: #ffffff;
+    width: 200px;
+    height: 270px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.bg-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+
 .square img {
     object-position: center !important;
     width: 100%;
