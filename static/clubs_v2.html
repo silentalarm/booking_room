@@ -127,7 +127,7 @@
         <style>
 
             .bg-image {
-                background-image: url("https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}}");
+
                 background-color: #cccccc;
                 width: 200px;
                 height: 270px;
@@ -150,7 +150,8 @@
 
         <form method="POST">
             <input type="hidden" value="{{ .ClubName }}" name="clubName">
-            <div class="square rounded shadow bg-image" data-toggle="tooltip" data-tooltip="{{ .About }}">
+            <div class="square rounded shadow bg-image" data-toggle="tooltip" data-tooltip="{{ .About }}"
+            style="background-image: url(https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}})">
                 <!-- <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}}"> -->
                 <div class=" text-block">
                     {{ .ClubName }}
