@@ -2,44 +2,42 @@
     background-color: rgb(3, 155, 229);
     border-color: rgb(3, 155, 229) !important;
 }
+
 tr[class ~= "bg-select"] td{
     color: #ffffff;
     border-color: rgb(3, 155, 229);
-    /*border-right: hidden;*/
-    /*padding-right: 11px;*/
 }
 
 .bg-booked {
     background-color: #0288C7;
     cursor: default;
     border-color: #0288C7;
-    /*box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);*/
 }
+
 .bg-booked:hover {
     cursor: default;
 }
+
 tr[class ~= "bg-booked"] td{
     color: #f8f8f8;
     border-color: #0288C7;!important;
-    /*box-shadow: inset 0px 0px 3px rgba(0,0,0,0.8);*/
 }
 
 .tr_size {
     cursor: pointer;
     line-height: 33px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -khtml-user-select: none;    /* Konqueror */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;           /* Non-prefixed version, currently */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-/*tbody tr:hover{*/
-/*     cursor: pointer;*/
-/*}*/
+
 .pointer{
     cursor: pointer;
 }
+
 .inp {
     background: #fff;
     color: #525865;
@@ -59,6 +57,7 @@ tr[class ~= "bg-booked"] td{
     transition: .18s ease-out;
     width: 100%;
 }
+
 .tr_size td{
     -webkit-transition: .18s ease-out;
     -moz-transition: .18s ease-out;
@@ -66,6 +65,7 @@ tr[class ~= "bg-booked"] td{
     transition: .18s ease-out;
     color: #c3c6c8;
 }
+
 .inpDisabled {
     background: #eeeeee;
     /*color: #bfbfbf;*/
@@ -81,6 +81,7 @@ tr[class ~= "bg-booked"] td{
     transition: .18s ease-out;
     width: 100%;
 }
+
 .inp:hover {
     box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
@@ -95,34 +96,10 @@ tr[class ~= "bg-booked"] td{
     height: 32px;
 }
 
-
-/*
-tr:nth-child(even){
-    display: block;
-    border-top: 2px solid red;
-    background-color: #CC9999;
-
-}
-tr:nth-child(odd){
-    display: block;
-    border-top: 2px solid blue;
-}
-
-table.table thead tr{
-    border-collapse: collapse;
-    border: 1px solid #5a5a5a;
-}
-table.table tbody tr{
-    border-collapse: collapse;
-    border: 1px solid #5a5a5a;
-}table.table td{
-    border: 0;
-}*/
-
-
 #btn_reservation{
     font-size: 14px;
 }
+
 .btn-primary, .btn-primary:visited {
     background-color: #0288C7 !important;
     border-radius: 2px;
@@ -133,6 +110,7 @@ table.table tbody tr{
     -o-transition: .18s ease-out;
     transition: .18s ease-out;
 }
+
 .btn-primary:hover, .btn-primary:active {
     background-color: #017bb3 !important;
     color: #ffffff;
@@ -143,7 +121,6 @@ table.table tbody tr{
     transition: .18s ease-out;
 }
 
-/*navigation*/
 .btn-nav, .btn-nav:visited {
     background-color: #0288C7 !important;
     border-radius: 2px;
@@ -157,6 +134,7 @@ table.table tbody tr{
     padding-right: 15px;
     font-size: 14px;
 }
+
 .btn-nav:hover, .btn-nav:active {
     background-color: #017bb3 !important;
     color: #ffffff;
@@ -167,12 +145,14 @@ table.table tbody tr{
     transition: .18s ease-out;
     font-size: 14px;
 }
+
 .navbar-nav .nav-item .nav-link {
     color: #efefef;
     padding-left: 15px;
     padding-right: 15px;
     margin: 2px 3px 2px 3px;
 }
+
 .navbar-nav .nav-item.active .nav-link,
 .navbar-nav .nav-item:hover .nav-link {
     color: #ffffff;
@@ -180,12 +160,11 @@ table.table tbody tr{
     padding-right: 15px;
 }
 
-
 td {
-    /*width: auto;*/
     padding-left: 10px;
     font-size: 12px;
 }
+
 td.min {
     width: 1%;
     white-space: nowrap;
@@ -194,6 +173,7 @@ td.min {
     padding-left: 20px;
     padding-right: 20px;
 }
+
 .ui-widget-overlay {
     z-index: -2;
     position: fixed;
@@ -214,16 +194,18 @@ td.min {
     -o-transition: .18s ease-out;
     transition: .18s ease-out;
 }
+
 .navbar-dark{
     font-size: 14px;
-    /* border-bottom:1px solid #0278AF; */
 }
+
 .navbar-brand{
     font-size: 15px;
     box-shadow: inset 3px 3px 15px rgba(0,0,0,0.9);
     font-family: inherit;
     outline: none;
 }
+
 .form-small-txt{
     font-size: 14px;
     color: #959697;!important;
@@ -236,16 +218,12 @@ td.min {
     margin-top: 2px;
     margin-left: 3px;
 }
-.left-col-div2{
-    /*max-width: 400px;*/
-    /*min-width: 330px;*/
-}
+.left-col-div2{}
 
 .pl-1{
     padding-left: 3px;
 }
 
-/*обрезаем текст при сужении*/
 @media (max-width: 900px) {
     .overflow-ellipsis {
         display: inline-block;
@@ -256,7 +234,6 @@ td.min {
     }
 }
 
-/*userName*/
 .userName, .userName:visited {
     background-color: #0288C7 !important;
     border-radius: 2px;
@@ -271,24 +248,10 @@ td.min {
     font-size: 14px;
     cursor: crosshair;
 }
+
 .userName:hover {
     cursor: crosshair;
 }
-
-
-/*datepicker*/
-/*.datepicker {*/
-/*font-size: 0.875em;*/
-/*}*/
-
-/*.datepicker td, .datepicker th {*/
-    /*width: 3em;*/
-    /*height: 3em;*/
-/*}*/
-
-
-
-
 
 .datepicker-title{
     background-color: #0288C7;
@@ -298,21 +261,20 @@ td.min {
     padding-top: 9px;!important;
     padding-bottom: 9px;!important;
 }
-/*title*/
+
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(1) > th{
     border-radius: 0px;
 }
-/*month changing*/
+
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(2) > th{
     background-color: #0288C7;
-    /*border: 1px solid #0278AF;*/
     border-radius: 0;!important;
     color: white;
     font-weight: normal;!important;
     padding-top: 9px;!important;
     padding-bottom: 9px;!important;
 }
-/*days of week title*/
+
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(3) > th {
     font-weight: normal;!important;
     font-size: 12px;
@@ -320,42 +282,31 @@ td.min {
     padding-bottom: 5px;!important;
 }
 
-/*main border*/
 #dp > div > div.datepicker-days > table{
     outline: #0278AF solid 1px;
-    /*border:0px solid #0278AF;*/
 }
 
-.table-condensed {
+.table-condensed {}
 
-    /*border:3px solid #0278AF;*/
-}
-#dp > div > div.datepicker-days > table > tbody{
-    /*border:2px solid #0278AF;!important;*/
+#dp > div > div.datepicker-days > table > tbody{}
 
-}
 .table-condensed td{
-    /*border:1px solid #e62b32;*/
     padding: 8px 11px;
 }
-/*today*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td.today.day{
-    /*border: none;*/
     color: white;
     border-radius: 0px;
     padding: 0px;
     background: #00a827 none;
 }
-/*days*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td{
-    /*border: none;*/
     border-right: 1px solid silver;
     border-top: 1px solid silver;
     border-bottom: 1px solid silver;
-    /*пустоты между квадратами TEST*/
 }
 
-/*days hover*/
 #dp > div > div.datepicker-days > table > tbody > tr > td:hover{
     /*border: none;*/
     border-right: 1px solid silver;
@@ -366,54 +317,50 @@ td.min {
     background-color: #0288C7;
 }
 
-/*weekend hover*/
 #dp > div > div.datepicker-days > table > tbody > tr > td.highlighted:hover{
     border-radius: 0px;!important;
     background-color: #0288C7;
 }
-/*weekend 6*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(6){
     background-color: #cde1f7;
 }
-/*weekend 7*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(7){
     background-color: #cde1f7;
 }
-/*active day*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td.active.day {
     border-radius: 0px;!important;
     background: #0288C7 none;
 }
-/*календарь целиком*/
+
 #dp > div > div.datepicker-days > table {
     background-color: #0288C7;
 }
-/*названия дней недели*/
+
 #dp > div > div.datepicker-days > table > thead > tr > th{
     background-color: white;
     border-radius: 0px;
 }
-/*td дни календаря*/
+
 #dp > div > div.datepicker-days > table > tbody > tr > td{
     background-color: white;
     border-radius: 0px;
 }
 
-/*неактивные дни*/
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.day:hover{
     background-color: white;
     color: #999;
 }
-/*заглушки для старых выходных */
+
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(6):hover{
     background-color: #cde1f7;!important;
 }
-/*заглушки для старых выходных */
+
 #dp > div > div.datepicker-days > table > tbody > tr > td.disabled.highlighted:nth-child(7):hover{
     background-color: #cde1f7;!important;
 }
-
-/* delete reserve  */
 
 .unreserve {
     color: #ffffff;
@@ -428,10 +375,7 @@ td.min {
 .unreserve:hover {
     color: #ff0000;!important;
 }
-/*
-.container {
-    max-width: 700px !important;
-}*/
+
 .unresizable{
     resize: none !important;
 }
@@ -494,7 +438,6 @@ button:focus{
 .navbutton {
     color: #ffffff;
     padding: 0.75em;
-
 }
 
 .navbutton:hover{
@@ -509,14 +452,12 @@ button:focus{
 
 .navsub-choice {
     color: rgb(3, 155, 229) !important
-
 }
 
 .dropdown-item.active, .dropdown-item:active {
     color: #ffffff !important;
     background-color: rgb(3, 155, 229) !important
 }
-
 
 .navmin {
     min-width: 550px;
@@ -528,25 +469,11 @@ button:focus{
 }
 
 #profile-container {
-/*
-    object-fit: none;
-    object-position: center;
-    height: 100px;
-    width: 100px;
-    overflow: hidden;
-    */
     object-fit: none !important;
     object-position: center !important;
     width: 150px !important;
     height: 220px !important;
     overflow: hidden !important;
-    /*-webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    -ms-border-radius: 50% !important;
-    -o-border-radius: 50% !important;
-    border-radius: 50% !important;*/
-
-
 }
 
 #profile-container img {
@@ -560,15 +487,15 @@ button:focus{
     width: 200px;
     height: 270px;
     background-color: rgb(255, 255, 255) !important;
-    /*border-width: 4px !important;
-   border-color: rgb(3, 155, 229) !important;
-   border-style: solid;
-
-     */
-   margin: 25px 25px 25px 25px; /* Отступы */
-    /*padding: 10px 0; /* Поля сверху и снизу */
-    text-align: center; /* Выравнивание по центру */
+    margin: 25px 25px 25px 25px;
+    text-align: center;
     overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .bg-image {
@@ -578,14 +505,10 @@ button:focus{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     -webkit-filter: grayscale(0) blur(0);
     filter: grayscale(0) blur(0);
     transition: .2s ease-in-out;
-
 }
-
-
 
 .bg-text {
     text-align: center;
@@ -604,19 +527,6 @@ button:focus{
 
 }
 
-.square img {
-    object-position: center !important;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-}
-
-.square:hover img {
-    filter: brightness(0.8);/* opacity(30%);  голубой цвет*/
-}
-
-
 .blocks-center {
     display: flex;
     align-items: center !important;
@@ -626,23 +536,19 @@ button:focus{
 .text-block {
     font: 1em Arial, sans-serif;
     font-size: 14pt;
-
     color: #039BE5;
-    /*text-shadow: white 1px 1px 0, white -1px -1px 0,
-    white -1px 1px 0, white 1px -1px 0;*/
 }
 
 .color-lightblue {
     color: #039BE5;
 }
 
-.btn-card {
-
-}
+.btn-card {}
 
 .btn-card:hover i {
     color: #02abff !important;
 }
+
 .onsquare-clubname {
     position: relative;
     text-align: center;
@@ -680,11 +586,7 @@ button:focus{
     z-index:1;
 }
 
-.trgt{
-
-}
-
-
+.trgt{}
 
 [data-tooltip]:before {
     content: attr(data-tooltip);
@@ -724,7 +626,6 @@ button:focus{
     font-size: 0.8rem;
 }
 
-
 [data-tooltip]:not([data-tooltip-persistent]):before {
     pointer-events: none;
 }
@@ -732,6 +633,7 @@ button:focus{
 .left-tl:hover:before {
     margin-left: 207px;
 }
+
 .right-tl:hover:before {
     margin-left: -207px;
 }
