@@ -129,8 +129,11 @@
                         <div class="form-group col-md-12">
                             <input name="clubName" placeholder="Название клуба" class="form-control" type="text">
                         </div>
-                        <div class="form-group col-md-12">
-                            <input name="slack" placeholder="#Канал Slack" class="form-control" type="text">
+                        <div class="form-group col-md-12 input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">#</span>
+                            </div>
+                            <input name="slack" type="text" class="form-control" placeholder="Канал в Slack" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="form-group col-md-12">
                             <textarea name="clubAbout" placeholder="Опишите чем занимается клуб" cols="40" rows="5" class="form-control unresizable" maxlength="255"></textarea>

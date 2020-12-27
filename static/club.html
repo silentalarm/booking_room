@@ -153,7 +153,13 @@
                             Название кулба: {{ .club.ClubName }}
                         </div>
                         <div class="form-group col-md-12">
-                            Канал в слаке: {{ .club.Slack }}
+                            Канал в <i class="fab fa-slack pr-1"></i>Slack:
+                        </div>
+                        <div class="form-group col-md-12 input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">#</span>
+                            </div>
+                            <input name="slack" type="text" class="form-control" placeholder="Канал в Slack" aria-describedby="basic-addon1" value="{{ .club.Slack }}">
                         </div>
                         <div class="form-group col-md-12">
                             {{ if eq .owner true }}
@@ -175,12 +181,10 @@
                         </div>
                     </div>
                     {{ if eq .owner true }}
-                    <div class="form-row col-md-12 float-right">
+                    <div class="col-md-12 py-1 float-right">
                         <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Сохранить">
                     </div>
-                    {{ end }}
 
-                    {{ if eq .owner true }}
                     <div class="col-md-12 py-1 float-right">
                         <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
                     </div>

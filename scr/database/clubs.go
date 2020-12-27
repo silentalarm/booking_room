@@ -289,6 +289,14 @@ func SetAboutClub(db *sql.DB, newAbout, nickOwner, idOwner, clubName string) {
 	}
 }
 
+func SetSlackClub(db *sql.DB, slack, nickOwner, idOwner, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET slack=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
+		slack, nickOwner, idOwner, clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
 	_, err := db.Exec("UPDATE clubmembers SET memberaccess=$1 WHERE nickname=$2 and clubname=$3",
 		access, nickName, clubName)
