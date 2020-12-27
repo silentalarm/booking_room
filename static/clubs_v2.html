@@ -124,20 +124,44 @@
         </div>
 
         {{ range .clubs }}
+        <style>
+
+            .bg-image {
+                background-image: url("https://21clubs.s3.eu-central-1.amazonaws.com/default_logo.png");
+                background-color: #cccccc;
+                width: 200px;
+                height: 270px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+
+            .bg-text {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+            }
+
+        </style>
+
         <form method="POST">
             <input type="hidden" value="{{ .ClubName }}" name="clubName">
-            <div class="square rounded shadow" data-toggle="tooltip" data-tooltip="{{ .About }}">
-                <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}}">
-                <div class="onsquare text-block">
+            <div class="square rounded shadow bg-image" data-toggle="tooltip" data-tooltip="{{ .About }}">
+                <!-- <img src="https://21clubs.s3.eu-central-1.amazonaws.com/{{.S3file}}"> -->
+                <div class=" text-block">
                     {{ .ClubName }}
                 </div>
 
-                <div class="onsquare-size text-block">
+                <div class=" text-block">
                     <i class="fas fa-user-alt"></i>
                     {{ .Size }}
                 </div>
 
-                <div class="onsquare-btn text-block trgt" style="display: none">
+                <div class=" text-block trgt" style="display: none">
                     <button type="submit" class="btn font-weight-normal text-block" name="sumbit" value="goToClub">
                         <i class="fas fa-arrow-right fa-2x"></i>
                     </button>
