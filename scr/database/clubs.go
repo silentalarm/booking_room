@@ -18,6 +18,7 @@ type Club struct {
 	S3file       string
 	Member       bool
 	Owner        bool
+	Color        string
 }
 
 type ClubMember struct {
@@ -298,6 +299,14 @@ func SetSlackClub(db *sql.DB, slack, nickOwner, idOwner, clubName string) {
 	}
 }
 
+func SetColorClub(db *sql.DB, color, nickOwner, idOwner, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET color=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
+		color, nickOwner, idOwner, clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func SetAccess(db *sql.DB, nickName, clubName string, access int) error {
 	_, err := db.Exec("UPDATE clubmembers SET memberaccess=$1 WHERE nickname=$2 and clubname=$3",
 		access, nickName, clubName)
@@ -358,7 +367,8 @@ func acceptRow(rows *sql.Rows, Row *Club) error {
 		&Row.CreationDate,
 		&Row.Approved,
 		&Row.Slack,
-		&Row.S3file)
+		&Row.S3file,
+		&Row.Color)
 
 	return err
 }

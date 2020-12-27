@@ -149,9 +149,25 @@
                             Владелец: {{ .club.NickOwner }}
                         </div>
                         <div class="form-group col-md-12">
-
                             Название кулба: {{ .club.ClubName }}
                         </div>
+
+                        <div class="form-group col-md-12">
+                            <input name="color" value="{{ .club.Color }}" id="color" type="color" class="color-shower" disabled>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input class="btn color-gray" type="button" onclick="changeColor('#808080')">
+                            <input class="btn color-standart" type="button" onclick="changeColor('#039BE5')">
+                            <input class="btn color-pink" type="button" onclick="changeColor('#ee86ee')">
+                            <input class="btn color-red" type="button" onclick="changeColor('#ff1616')">
+                            <input class="btn color-green" type="button" onclick="changeColor('#48ff16')">
+                            <input class="btn color-yellow" type="button" onclick="changeColor('#fff316')">
+                            <input class="btn color-orange" type="button" onclick="changeColor('#ff8316')">
+                            <input class="btn color-blue" type="button" onclick="changeColor('#1269ff')">
+                            <input class="btn color-purple" type="button" onclick="changeColor('#a514ff')">
+                            <input class="btn color-cyan" type="button" onclick="changeColor('#14ffd0')">
+                        </div>
+
                         <div class="form-group col-md-12">
                             Канал в <i class="fab fa-slack pr-1"></i>Slack:
                         </div>

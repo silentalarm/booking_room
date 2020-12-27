@@ -396,3 +396,6 @@ $(document).ready(function(){
         child.show();
     });
 });
+function changeColor(value){
+    document.getElementById("color").value = value;
+}
