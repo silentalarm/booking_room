@@ -289,21 +289,16 @@ func GetClubColor(db *sql.DB, clubName string) string {
 }
 
 func ClubNameIsExist(db *sql.DB, clubName string) (bool, error) {
-	var name string
 	err := db.QueryRow("SELECT clubname FROM clubs WHERE clubname=$1",
-		clubName).Scan(&name)
+		clubName).Scan(&clubName)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
 		}
-		return true, err
+		return false, err
 	}
 
-	if name == clubName {
-		return true, nil
-	}
-
-	return false, nil
+	return true, nil
 }
 
 func GetClubApprove(db *sql.DB, clubName string) (bool, error) {
