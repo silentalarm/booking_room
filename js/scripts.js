@@ -39,12 +39,17 @@ $('#room_select').on('change', function () {
 });
 
 
+
 // переделать поля на заполненность формы
 function checkHandler() {
-    if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
-        $('#btn_reservation').prop('disabled', false);
-    } else {
-        $('#btn_reservation').prop('disabled', true);
+
+    clubName = $('#clubName').val()
+    if (clubName != null) {
+        if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
+            $('#btn_reservation').prop('disabled', false);
+        } else {
+            $('#btn_reservation').prop('disabled', true);
+        }
     }
 }
 
