@@ -76,7 +76,7 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 		tableRow.ClubName = row.ClubName
 		tableRow.PeopleNumber = row.PeopleNumber
 
-		tableRow.Color = dbh.GetClubColor(db, row.ClubName)
+		tableRow.Color = dbh.GetClubColor(db, tableRow.ClubName)
 		for _, clubName := range clubs {
 			if tableRow.ClubName == clubName {
 				tableRow.Moder = true
