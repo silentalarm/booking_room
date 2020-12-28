@@ -34,7 +34,7 @@ func main() {
 	port := os.Getenv("PORT")
 	//port := "8185"
 
-	http.HandleFunc("/", bk.Index)
+	http.HandleFunc("/", bk.Index_v2)
 	http.HandleFunc("/login", auth.Login)
 	http.HandleFunc("/callback", auth.CallbackHandler)
 	http.HandleFunc("/logout", ses.Delete)

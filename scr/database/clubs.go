@@ -251,7 +251,8 @@ func GetMemberByAccess(db *sql.DB, clubName string, access int) (string, string,
 }
 
 func DeleteСlub(db *sql.DB, clubName string) {
-	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1", clubName)
+	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1",
+		clubName)
 	if err != nil {
 		panic(err)
 	}
@@ -266,14 +267,16 @@ func DeleteClub(db *sql.DB, clubName string) {
 }
 
 func DeleteUsersFromClub(db *sql.DB, clubName string) {
-	_, err := db.Exec("DELETE FROM clubmembers WHERE clubname=$1", clubName)
+	_, err := db.Exec("DELETE FROM clubmembers WHERE clubname=$1",
+		clubName)
 	if err != nil {
 		panic(err)
 	}
 }
 
 func AppproveClub(db *sql.DB, clubName string) {
-	_, err := db.Exec("UPDATE clubs SET approved=true WHERE clubname=$1", clubName)
+	_, err := db.Exec("UPDATE clubs SET approved=true WHERE clubname=$1",
+		clubName)
 	if err != nil {
 		panic(err)
 	}
@@ -334,22 +337,38 @@ func GetClubMembers(db *sql.DB, clubName string) ([]ClubMember, error) {
 	members := []ClubMember{}
 
 	for rows.Next() {
-		Row := ClubMember{}
-		err := rows.Scan(
-			&Row.ID,
-			&Row.NickName,
-			&Row.ClubName,
-			&Row.Access,
-			&Row.JoinDate,
-			&Row.IDIntra)
+		row := ClubMember{}
+		err := acceptRowMember(rows, &row)
 
 		if err != nil {
 			continue
 		}
 
-		members = append(members, Row)
+		members = append(members, row)
 	}
 	return members, nil
+}
+
+func GetMemberClubsByAccess(db *sql.DB, nickName, intraID string, access int) ([]string, error) {
+	rows, err := db.Query("SELECT * FROM clubmembers WHERE nickname=$1 and idintra=$2 and memberaccess=$3",
+		nickName, intraID, access)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	memberClubs := []string{}
+
+	for rows.Next() {
+		row := ClubMember{}
+		err := acceptRowMember(rows, &row)
+		if err != nil {
+			continue
+		}
+
+		memberClubs = append(memberClubs, row.ClubName)
+	}
+	return memberClubs, nil
 }
 
 func acceptRow(rows *sql.Rows, Row *Club) error {
@@ -363,6 +382,18 @@ func acceptRow(rows *sql.Rows, Row *Club) error {
 		&Row.Slack,
 		&Row.S3file,
 		&Row.Color)
+
+	return err
+}
+
+func acceptRowMember(rows *sql.Rows, Row *ClubMember) error {
+	err := rows.Scan(
+		&Row.ID,
+		&Row.NickName,
+		&Row.ClubName,
+		&Row.Access,
+		&Row.JoinDate,
+		&Row.IDIntra)
 
 	return err
 }

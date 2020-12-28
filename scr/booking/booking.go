@@ -266,3 +266,43 @@ func tableIsCorrect(table string) bool {
 	}
 	return false
 }
+
+func Index_v2(w http.ResponseWriter, r *http.Request) {
+	db := dbh.OpenDB()
+	defer db.Close()
+
+	tableName := r.URL.Query().Get("table")
+	fmt.Printf(tableName)
+	tableIsExist := tableIsCorrect(tableName)
+	if tableIsExist == false {
+		tableName = "floor_2"
+	}
+	date := r.URL.Query().Get("date")
+	if date == "" {
+		date = time.Now().Format("02.01.2006")
+	}
+	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
+	data := rebuildTable(timeRes)
+	tmpl, _ := template.ParseFiles("static/table_v2.html")
+
+	session, err := ses.Store.Get(r, "auth-session")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	user := ses.GetUser(session)
+
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
+	memberClubs, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
+
+	dataMap := map[string]interface{}{
+		"data":      data,
+		"user":      user,
+		"tableName": tableName,
+		"date":      date,
+		"member":    member,
+		"clubs":     memberClubs,
+	}
+	_ = tmpl.Execute(w, dataMap)
+}
