@@ -27,6 +27,7 @@ type TData struct {
 	NickName     string
 	ClubName     string
 	PeopleNumber int
+	Moder        bool
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -310,6 +311,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	memberClubs, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
+	rebuildTableByAccess(data, memberClubs)
 
 	dataMap := map[string]interface{}{
 		"data":      data,
@@ -320,4 +322,15 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"clubs":     memberClubs,
 	}
 	_ = tmpl.Execute(w, dataMap)
+}
+
+func rebuildTableByAccess(rows *ViewData, clubs []string) {
+	for _, row := range rows.TableData {
+		for _, clubName := range clubs {
+			if row.ClubName == clubName {
+				row.Moder = true
+			}
+			row.Moder = false
+		}
+	}
 }

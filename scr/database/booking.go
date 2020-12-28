@@ -80,7 +80,7 @@ func DeleteRowByOwnerOrModer(db *sql.DB, user *ses.User, table, date, clubName, 
 	if isModer == false {
 		return
 	}
-	_, err := db.Exec("DELETE FROM " + table + " WHERE reserv_date='" + date + "' AND reserv_time=" + time + "AND clubname='" + clubName + "'")
+	_, err := db.Exec("DELETE FROM " + table + " WHERE reserv_date='" + date + "' AND reserv_time=" + time)
 	if err != nil {
 		panic(err)
 	}
