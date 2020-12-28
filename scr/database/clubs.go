@@ -288,6 +288,19 @@ func GetClubColor(db *sql.DB, clubName string) string {
 	return color
 }
 
+func GetClubApprove(db *sql.DB, clubName string) (bool, error) {
+	var approve bool
+	err := db.QueryRow("SELECT approved FROM clubs WHERE clubname=$1",
+		clubName).Scan(&approve)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false, err
+	}
+	return approve, nil
+}
+
 func GetMemberByAccess(db *sql.DB, clubName string, access int) (string, string, error) {
 	var nameClub string
 	var idIntra string
@@ -418,7 +431,10 @@ func GetMemberClubsByAccess(db *sql.DB, nickName, intraID string, access int) ([
 			continue
 		}
 
-		memberClubs = append(memberClubs, row.ClubName)
+		isApproved, _ := GetClubApprove(db, row.ClubName)
+		if isApproved == true {
+			memberClubs = append(memberClubs, row.ClubName)
+		}
 	}
 	return memberClubs, nil
 }
