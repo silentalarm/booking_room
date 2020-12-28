@@ -137,8 +137,15 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
-	lines := r.FormValue("lines")
 	clubName := r.FormValue("clubName")
+
+	clubIsExist := dbh.ClubIsExist(db, clubName)
+	if clubIsExist == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	lines := r.FormValue("lines")
 	tableName := r.FormValue("hero")
 	date := r.FormValue("showDate")
 	peopleNumber := r.FormValue("peopleNumber")

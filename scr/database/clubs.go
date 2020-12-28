@@ -223,6 +223,18 @@ func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
 	return true
 }
 
+func ClubIsExist(db *sql.DB, clubName string) bool {
+	err := db.QueryRow("SELECT clubname FROM clubs WHERE clubname=$1",
+		clubName).Scan(&clubName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
 func GetNameFile(db *sql.DB, clubName string) (string, error) {
 	var nameClub string
 	err := db.QueryRow("SELECT s3file FROM clubs WHERE clubname=$1",
