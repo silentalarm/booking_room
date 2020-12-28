@@ -190,7 +190,7 @@
                 </tr>
                 <script>
                     document.getElementById("line{{ .LineID }}").style.backgroundColor = '{{ .Color }}'
-                    document.getElementById("line{{ .LineID }}").style.borderColor = '{{ .Color }}'
+                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td").style.borderColor = '{{ .Color }}'
                 </script>
                 {{ end }}
                 {{ end }}
