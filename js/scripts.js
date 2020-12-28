@@ -406,3 +406,7 @@ function changeColor(value){
     document.getElementById("color").value = value;
     document.getElementById("colorInp").value = value;
 }
+
+function changeLineColor(id ,value){
+    document.getElementById(id).style.backgroundColor = value;
+}
