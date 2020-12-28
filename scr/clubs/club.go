@@ -116,9 +116,9 @@ func delete(db *sql.DB, nickName, idIntra, clubName string) string {
 func save(db *sql.DB, color, slack, newAbout, nickName, idIntra, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	dbh.SetAboutClub(db, newAbout, nickName, idIntra, clubName)
-	dbh.SetSlackClub(db, slack, nickName, idIntra, clubName)
-	dbh.SetColorClub(db, color, nickName, idIntra, clubName)
+	dbh.SetAboutClub(db, newAbout, clubName)
+	dbh.SetSlackClub(db, slack, clubName)
+	dbh.SetColorClub(db, color, clubName)
 	return redirect
 }
 
