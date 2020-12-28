@@ -223,6 +223,22 @@ func IsUserClubOwner(db *sql.DB, nickName, idIntra, clubName string) bool {
 	return true
 }
 
+func IsUserClubOwnerOrModer(db *sql.DB, nickName, idIntra, clubName string) bool {
+	var access int
+	err := db.QueryRow("SELECT memberaccess FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
+		nickName, idIntra, clubName).Scan(&access)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	if access == 3 || access == 2 {
+		return true
+	}
+	return false
+}
+
 func ClubIsExist(db *sql.DB, clubName string) bool {
 	err := db.QueryRow("SELECT clubname FROM clubs WHERE clubname=$1",
 		clubName).Scan(&clubName)
