@@ -179,7 +179,6 @@
                 </tr>
                 {{ else }}
                 <tr class="tr_size bg-booked " id="line{{ .LineID }}">
-                    <input type="hidden" value="{{.Color}}">
                     <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
                     <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
                     {{ if eq .Moder true }}
@@ -190,7 +189,8 @@
                 </tr>
                 <script>
                     document.getElementById("line{{ .LineID }}").style.backgroundColor = '{{ .Color }}'
-                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td").style.borderColor = '{{ .Color }}'
+                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[0].style.borderColor = '{{ .Color }}'
+                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[1].style.borderColor = '{{ .Color }}'
                 </script>
                 {{ end }}
                 {{ end }}
