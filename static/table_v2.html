@@ -139,7 +139,7 @@
            </select>
        </p>
        {{ if eq .user.Authenticated true }}
-       {{ if eq .member true }}
+       {{ if ne .clubs nil }}
        <p>
            <small class="form-small-txt">Комната</small>
            <select class='inp text-center' id = 'clubNameSelector' class='input-group'name="clubNameSelector">
