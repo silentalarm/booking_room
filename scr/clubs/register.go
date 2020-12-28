@@ -43,6 +43,13 @@ func RegisterNewClub(w http.ResponseWriter, r *http.Request) {
 	}
 
 	clubName := r.FormValue("clubName")
+
+	nameIsExist, _ := dbh.ClubNameIsExist(db, clubName)
+	if nameIsExist == true {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	clubAbout := r.FormValue("clubAbout")
 	slack := r.FormValue("slack")
 	date := time.Now().Format("02.01.2006")
