@@ -30,10 +30,10 @@ type ClubMember struct {
 	IDIntra  string
 }
 
-func InsertNewClub(db *sql.DB, clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate, slack string) {
+func InsertNewClub(db *sql.DB, clubAbout, clubName, nickCreator, creationDate, slack string) {
 	_, err := db.Exec(
-		"INSERT INTO clubs (clubabout, nickowner, idowner, clubname, nickcreator, creationdate, slack) values ($1, $2, $3, $4, $5, $6, $7)",
-		clubAbout, nickOwner, idOwner, clubName, nickCreator, creationDate, slack)
+		"INSERT INTO clubs (clubabout, clubname, nickcreator, creationdate, slack) values ($1, $2, $3, $4, $5)",
+		clubAbout, clubName, nickCreator, creationDate, slack)
 	if err != nil {
 		panic(err)
 	}
