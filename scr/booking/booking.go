@@ -73,12 +73,6 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 		tableRow.ClubName = row.ClubName
 		tableRow.PeopleNumber = row.PeopleNumber
 
-		for _, clubName := range clubs {
-			if row.ClubName == clubName {
-				tableRow.Moder = true
-			}
-			tableRow.Moder = false
-		}
 	}
 	return &data
 }
