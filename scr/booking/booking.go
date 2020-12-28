@@ -102,7 +102,7 @@ func tableInit() ViewData {
 	return data
 }
 
-func rebuildTable(rows []dbh.ReserveRow) *ViewData {
+func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 	data := tableInit()
 
 	for _, row := range rows {
@@ -111,6 +111,13 @@ func rebuildTable(rows []dbh.ReserveRow) *ViewData {
 		tableRow.NickName = row.NickName
 		tableRow.ClubName = row.ClubName
 		tableRow.PeopleNumber = row.PeopleNumber
+
+		for _, clubName := range clubs {
+			if row.ClubName == clubName {
+				tableRow.Moder = true
+			}
+			tableRow.Moder = false
+		}
 	}
 	return &data
 }
@@ -297,8 +304,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	if date == "" {
 		date = time.Now().Format("02.01.2006")
 	}
-	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
-	data := rebuildTable(timeRes)
+
 	tmpl, _ := template.ParseFiles("static/table_v2.html")
 
 	session, err := ses.Store.Get(r, "auth-session")
@@ -309,9 +315,10 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 
 	user := ses.GetUser(session)
 
-	member := dbh.IsUserClubMember(db, user.Name, user.ID)
+	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
 	memberClubs, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
-	rebuildTableByAccess(data, memberClubs)
+	data := rebuildTable(timeRes, memberClubs)
+	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	dataMap := map[string]interface{}{
 		"data":      data,
@@ -322,15 +329,4 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"clubs":     memberClubs,
 	}
 	_ = tmpl.Execute(w, dataMap)
-}
-
-func rebuildTableByAccess(rows *ViewData, clubs []string) {
-	for _, row := range rows.TableData {
-		for _, clubName := range clubs {
-			if row.ClubName == clubName {
-				row.Moder = true
-			}
-			row.Moder = false
-		}
-	}
 }
