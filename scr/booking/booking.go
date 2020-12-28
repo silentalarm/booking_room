@@ -81,7 +81,7 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 		//	if tableRow.ClubName == clubName {
 		//		tableRow.Moder = true
 		//	}
-		}
+		//}
 	}
 	return &data
 }
