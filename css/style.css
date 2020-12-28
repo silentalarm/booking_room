@@ -373,7 +373,7 @@ td.min {
 }
 
 .unreserve:hover {
-    color: #ff0000;!important;
+    color: #000000;!important;
 }
 
 .unresizable{
@@ -645,12 +645,12 @@ button:focus{
 
 .color-gray {background-color: #808080 !important;}
 .color-standart {background-color: #039BE5 !important;}
-.color-pink {background-color: #EE86EE !important;}
-.color-red {background-color: #ff3535 !important;}
-.color-green {background-color: #48ff16 !important;}
-.color-yellow {background-color: #fff316 !important;}
+.color-pink {background-color: #be68be !important;}
+.color-red {background-color: #c10000 !important;}
+.color-green {background-color: #2bcd01 !important;}
+.color-yellow {background-color: #dbd400 !important;}
 .color-orange {background-color: #ff8316 !important;}
 .color-blue {background-color: #1269ff !important;}
 .color-purple {background-color: #a514ff !important;}
-.color-cyan {background-color: #14ffd0 !important;}
+.color-cyan {background-color: #0fbe9b !important;}
 
