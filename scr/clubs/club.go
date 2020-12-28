@@ -10,6 +10,19 @@ import (
 	"sort"
 )
 
+var allowedColors = []string{
+	"#808080",
+	"#039BE5",
+	"#be68be",
+	"#c10000",
+	"#2bcd01",
+	"#dbd400",
+	"#ff8316",
+	"#1269ff",
+	"#a514ff",
+	"#0fbe9b",
+}
+
 type ByAccess []dbh.ClubMember
 
 func (a ByAccess) Len() int           { return len(a) }
@@ -84,7 +97,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 
 	switch sumbit {
 	case "Удалить клуб":
-		redirect = delete(db, user.Name, user.ID, clubName)
+		redirect = delete(db, clubName)
 	case "Сохранить":
 		clubAbout := r.FormValue("clubAbout")
 		slack := r.FormValue("slack")
@@ -104,7 +117,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
 
-func delete(db *sql.DB, nickName, idIntra, clubName string) string {
+func delete(db *sql.DB, clubName string) string {
 	redirect := "/"
 
 	dbh.DeleteClub(db, clubName)
@@ -118,7 +131,11 @@ func save(db *sql.DB, color, slack, newAbout, clubName string) string {
 
 	dbh.SetAboutClub(db, newAbout, clubName)
 	dbh.SetSlackClub(db, slack, clubName)
-	dbh.SetColorClub(db, color, clubName)
+	colorIsAllowed := allowedColor(color)
+	if colorIsAllowed == true {
+		dbh.SetColorClub(db, color, clubName)
+	}
+
 	return redirect
 }
 
@@ -169,4 +186,13 @@ func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string
 	cloud.Upload(r, key, clubName)
 
 	return redirect
+}
+
+func allowedColor(colorForCheck string) bool {
+	for _, color := range allowedColors {
+		if color == colorForCheck {
+			return true
+		}
+	}
+	return false
 }
