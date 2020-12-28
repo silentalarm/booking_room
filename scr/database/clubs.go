@@ -279,25 +279,25 @@ func AppproveClub(db *sql.DB, clubName string) {
 	}
 }
 
-func SetAboutClub(db *sql.DB, newAbout, nickOwner, idOwner, clubName string) {
-	_, err := db.Exec("UPDATE clubs SET clubabout=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
-		newAbout, nickOwner, idOwner, clubName)
+func SetAboutClub(db *sql.DB, newAbout, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET clubabout=$1 WHERE clubname=$2",
+		newAbout, clubName)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func SetSlackClub(db *sql.DB, slack, nickOwner, idOwner, clubName string) {
-	_, err := db.Exec("UPDATE clubs SET slack=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
-		slack, nickOwner, idOwner, clubName)
+func SetSlackClub(db *sql.DB, slack, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET slack=$1 WHERE clubname=$2",
+		slack, clubName)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func SetColorClub(db *sql.DB, color, nickOwner, idOwner, clubName string) {
-	_, err := db.Exec("UPDATE clubs SET color=$1 WHERE nickowner=$2 and idowner=$3 and clubname=$4",
-		color, nickOwner, idOwner, clubName)
+func SetColorClub(db *sql.DB, color, clubName string) {
+	_, err := db.Exec("UPDATE clubs SET color=$1 WHERE clubname=$2",
+		color, clubName)
 	if err != nil {
 		panic(err)
 	}
