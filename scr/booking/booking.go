@@ -28,6 +28,7 @@ type TData struct {
 	ClubName     string
 	PeopleNumber int
 	Moder        bool
+	Color        string
 }
 
 func tableInit() ViewData {
@@ -65,6 +66,8 @@ func tableInit() ViewData {
 
 func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 	data := tableInit()
+	db := dbh.OpenDB()
+	defer db.Close()
 
 	for _, row := range rows {
 		tableRow := &data.TableData[row.ReserveTime]
@@ -73,6 +76,7 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 		tableRow.ClubName = row.ClubName
 		tableRow.PeopleNumber = row.PeopleNumber
 
+		tableRow.Color = "style='background-color: " + dbh.GetClubColor(db, row.ClubName) + "';"
 		for _, clubName := range clubs {
 			if row.ClubName == clubName {
 				tableRow.Moder = true

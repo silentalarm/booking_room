@@ -264,6 +264,19 @@ func GetNameFile(db *sql.DB, clubName string) (string, error) {
 	return nameClub, nil
 }
 
+func GetClubColor(db *sql.DB, clubName string) string {
+	color := "#039BE5"
+	err := db.QueryRow("SELECT color FROM clubs WHERE clubname=$1",
+		clubName).Scan(&color)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return color
+	}
+	return color
+}
+
 func GetMemberByAccess(db *sql.DB, clubName string, access int) (string, string, error) {
 	var nameClub string
 	var idIntra string
