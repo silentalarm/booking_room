@@ -90,7 +90,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		slack := r.FormValue("slack")
 		color := r.FormValue("color")
 
-		redirect = save(db, color, slack, clubAbout, user.Name, user.ID, clubName)
+		redirect = save(db, color, slack, clubAbout, clubName)
 	case "setOwner":
 		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
 	case "kick":
@@ -107,13 +107,13 @@ func Club(w http.ResponseWriter, r *http.Request) {
 func delete(db *sql.DB, nickName, idIntra, clubName string) string {
 	redirect := "/"
 
-	dbh.DeleteClubByOwner(db, nickName, idIntra, clubName)
+	dbh.DeleteClub(db, clubName)
 	dbh.DeleteUsersFromClub(db, clubName)
 
 	return redirect
 }
 
-func save(db *sql.DB, color, slack, newAbout, nickName, idIntra, clubName string) string {
+func save(db *sql.DB, color, slack, newAbout, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
 	dbh.SetAboutClub(db, newAbout, clubName)
