@@ -186,12 +186,12 @@
                         <!-- <i class="fas fa-trash unreserve fa-sm"></i> -->
                     {{ end }}
                     </td>
+                    <script>
+                        document.getElementById("line{{ .LineID }}").style.backgroundColor = '{{ .Color }}'
+                        document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[0].style.borderColor = '{{ .Color }}'
+                        document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[1].style.borderColor = '{{ .Color }}'
+                    </script>
                 </tr>
-                <script>
-                    document.getElementById("line{{ .LineID }}").style.backgroundColor = '{{ .Color }}'
-                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[0].style.borderColor = '{{ .Color }}'
-                    document.getElementById("line{{ .LineID }}").getElementsByTagName("td")[1].style.borderColor = '{{ .Color }}'
-                </script>
                 {{ end }}
                 {{ end }}
                 <!--data from backend [end]-->
