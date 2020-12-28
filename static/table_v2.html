@@ -189,7 +189,7 @@
                     </td>
                 </tr>
                 <script>
-                    changeLineColor("line{{ .LineID }}", "{{ .Color }}")
+                    document.getElementById("line{{ .LineID }}").style.backgroundColor = '"{{ .Color }}'
                 </script>
                 {{ end }}
                 {{ end }}
