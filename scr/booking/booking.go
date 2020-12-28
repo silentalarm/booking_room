@@ -35,7 +35,7 @@ func tableInit() ViewData {
 	//http.ServeFile(w, r, "static/clubs.html")
 	data := ViewData{
 		TableData: []TData{
-			{LineID: 0, Time: "00:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: true},
+			{LineID: 0, Time: "00:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 			{LineID: 1, Time: "01:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 			{LineID: 2, Time: "02:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 			{LineID: 3, Time: "03:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
@@ -58,7 +58,7 @@ func tableInit() ViewData {
 			{LineID: 20, Time: "20:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 			{LineID: 21, Time: "21:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 			{LineID: 22, Time: "22:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
-			{LineID: 23, Time: "23:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: true},
+			{LineID: 23, Time: "23:00", NickName: "", ClubName: "", PeopleNumber: 0, Moder: false},
 		},
 	}
 	return data
@@ -78,7 +78,7 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 
 		tableRow.Color = dbh.GetClubColor(db, row.ClubName)
 		for _, clubName := range clubs {
-			if row.ClubName == clubName {
+			if tableRow.ClubName == clubName {
 				tableRow.Moder = true
 			}
 		}
