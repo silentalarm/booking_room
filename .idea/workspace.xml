@@ -19,16 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс выбора цвета">
-      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubRegistration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubsToApproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubsToApproved.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/clubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/clubs_v2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/myClubs_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/myClubs_v2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/reportList.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/reportRegistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/reportRegistration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="изменил навбар">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/booking.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +106,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="добавил возможность перейти на страницу клуба в списке клубов" />
     <MESSAGE value="фикс моих клубов" />
     <MESSAGE value="Добавил возможность менять лидера" />
     <MESSAGE value="фикс страницы клуба" />
@@ -134,6 +130,7 @@
     <MESSAGE value="новый стиль моих клубов" />
     <MESSAGE value="фикс нового стиля моих клубов" />
     <MESSAGE value="фикс выбора цвета" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс выбора цвета" />
+    <MESSAGE value="изменил навбар" />
+    <option name="LAST_COMMIT_MESSAGE" value="изменил навбар" />
   </component>
 </project>

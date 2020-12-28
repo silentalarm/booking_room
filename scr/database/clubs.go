@@ -54,6 +54,7 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 			continue
 		}
 		clubsSize, _ := getClubSize(db, row.ClubName)
+		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
 		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
 		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
@@ -79,31 +80,9 @@ func GetClubsToApprove(db *sql.DB, approved bool) ([]Club, error) {
 			continue
 		}
 		clubsSize, _ := getClubSize(db, row.ClubName)
+		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
 		row.Size = clubsSize
 		if row.Approved == approved {
-			clubs = append(clubs, row)
-		}
-	}
-	return clubs, nil
-}
-
-func GetOwnerClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
-	rows, err := getDBRows(db, "clubs")
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	clubs := []Club{}
-
-	for rows.Next() {
-		row := Club{}
-		err := acceptRow(rows, &row)
-		if err != nil {
-			continue
-		}
-		clubsSize, _ := getClubSize(db, row.ClubName)
-		row.Size = clubsSize
-		if row.Approved == approved && row.NickOwner == ownerName {
 			clubs = append(clubs, row)
 		}
 	}
@@ -123,6 +102,9 @@ func GetClub(db *sql.DB, clubName string, approved bool) (*Club, error) {
 		err = acceptRow(row, &club)
 	}
 	clubsSize, _ := getClubSize(db, club.ClubName)
+
+	club.NickOwner, club.IDOwner, _ = GetMemberByAccess(db, club.ClubName, 3)
+
 	club.Size = clubsSize
 
 	return &club, nil
@@ -145,6 +127,7 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 
 		clubsSize, _ := getClubSize(db, row.ClubName)
 		userJoined := IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
 		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
 		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
@@ -250,8 +233,21 @@ func GetNameFile(db *sql.DB, clubName string) (string, error) {
 		}
 		return nameClub, err
 	}
-
 	return nameClub, nil
+}
+
+func GetMemberByAccess(db *sql.DB, clubName string, access int) (string, string, error) {
+	var nameClub string
+	var idIntra string
+	err := db.QueryRow("SELECT nickname, idintra FROM clubmembers WHERE clubname=$1 and memberaccess=$2",
+		clubName, access).Scan(&nameClub, &idIntra)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return nameClub, idIntra, err
+	}
+	return nameClub, idIntra, nil
 }
 
 func DeleteСlub(db *sql.DB, clubName string) {
@@ -360,8 +356,6 @@ func acceptRow(rows *sql.Rows, Row *Club) error {
 	err := rows.Scan(
 		&Row.ID,
 		&Row.About,
-		&Row.NickOwner,
-		&Row.IDOwner,
 		&Row.ClubName,
 		&Row.NickCreator,
 		&Row.CreationDate,

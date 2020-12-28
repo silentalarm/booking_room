@@ -201,7 +201,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
-	dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
+	//dbh.TryDeleteRowByOwner(db, tableName, date, user.Name, deltime)
 	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 

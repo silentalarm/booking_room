@@ -67,9 +67,34 @@ func DeleteOldReserves(db *sql.DB, table []string, date string) {
 	}
 }
 
-func TryDeleteRowByOwner(db *sql.DB, table string, date string, userName string, time string) {
-	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname='" + userName + "' AND reserv_date='" + date + "' AND reserv_time=" + time)
+func TryDeleteRowByOwner(db *sql.DB, table, date, userName, clubName, time string) {
+	_, err := db.Exec("DELETE FROM " + table + " WHERE nickname=" + userName + " AND reserv_date=" + date + " AND reserv_time=" + time + "AND clubname=" + clubName)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func GetOwnerClubs(db *sql.DB, ownerName string, approved bool) ([]Club, error) {
+	rows, err := getDBRows(db, "clubs")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	clubs := []Club{}
+
+	for rows.Next() {
+		row := Club{}
+		err := acceptRow(rows, &row)
+		if err != nil {
+			continue
+		}
+
+		clubsSize, _ := getClubSize(db, row.ClubName)
+		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
+		row.Size = clubsSize
+		if row.Approved == approved && row.NickOwner == ownerName {
+			clubs = append(clubs, row)
+		}
+	}
+	return clubs, nil
 }
