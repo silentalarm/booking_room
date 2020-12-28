@@ -138,6 +138,8 @@
                <option value="floor_3">переговорная на 3 этаже</option>
            </select>
        </p>
+       {{if eq .user.Authenticated false }}
+       {{ if eq .member true }}
        <p>
            <small class="form-small-txt">Комната</small>
            <select class='inp text-center' id = 'clubNameSelector' class='input-group'name="clubNameSelector">
@@ -146,7 +148,8 @@
                {{ end }}
            </select>
        </p>
-
+       {{ end }}
+       {{ end }}
        {{/*<p><small class="form-small-txt">Имя</small><input class='inpDisabled text-center' id='nickName' name="nickName" maxlength='20' disabled value={{ .user.Name }} autocomplete="off"></p>*/}}
        <p><small class="form-small-txt">Клуб</small><input class='inp text-center' id='clubName' name="clubName" maxlength='20' autocomplete="off" oninput="checkHandler()"></p>
        <p><small class="form-small-txt">Кол-во человек</small><input class='inp num text-center' id='peopleNumber' name="peopleNumber" min='1' max='20' size="2" maxlength="2" autocomplete="off" onkeypress="return validateNumber(event)" oninput="checkHandler()"></p>
