@@ -107,8 +107,9 @@ $(document).on('click', '.unreserve', function () {
     var date = $('#dp').datepicker('getFormattedDate');
     var floor = $('#room_select').val();
     var time = $((this).parentElement.parentElement).index()
+    var club = $('#clubName').val();
 
-    window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time;
+    window.location = "/delreserve?table="+floor + "&date=" + date + "&deltime=" + time + "&clubname=" + club;
 });
 
 //при нажатии показывает описание клуба

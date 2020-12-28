@@ -208,7 +208,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
-	clubName := r.FormValue("clubName")
+	clubName := r.URL.Query().Get("clubname")
 
 	clubIsExist := dbh.ClubIsExist(db, clubName)
 	if clubIsExist == false {
