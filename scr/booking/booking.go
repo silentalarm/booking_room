@@ -30,45 +30,6 @@ type TData struct {
 	Moder        bool
 }
 
-func Index(w http.ResponseWriter, r *http.Request) {
-	db := dbh.OpenDB()
-	defer db.Close()
-
-	tableName := r.URL.Query().Get("table")
-	fmt.Printf(tableName)
-	tableIsExist := tableIsCorrect(tableName)
-	if tableIsExist == false {
-		tableName = "floor_2"
-	}
-	date := r.URL.Query().Get("date")
-	fmt.Printf(date)
-	if date == "" {
-		date = time.Now().Format("02.01.2006")
-	}
-	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
-	data := rebuildTable(timeRes)
-	tmpl, _ := template.ParseFiles("static/table.html")
-
-	session, err := ses.Store.Get(r, "auth-session")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	user := ses.GetUser(session)
-
-	member := dbh.IsUserClubMember(db, user.Name, user.ID)
-
-	dataMap := map[string]interface{}{
-		"data":      data,
-		"user":      user,
-		"tableName": tableName,
-		"date":      date,
-		"member":    member,
-	}
-	_ = tmpl.Execute(w, dataMap)
-}
-
 func tableInit() ViewData {
 	//http.ServeFile(w, r, "static/clubs.html")
 	data := ViewData{
