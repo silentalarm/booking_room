@@ -42,7 +42,6 @@ func Clubs(w http.ResponseWriter, r *http.Request) {
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	clubs, _ := dbh.GetClubs(db, true, user.Name, user.ID)
 	sort.Sort(BySize(clubs))
-	//member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	tmpl, _ := template.ParseFiles("static/clubs_v2.html")
 	if r.Method != http.MethodPost {

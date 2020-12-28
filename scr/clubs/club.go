@@ -48,8 +48,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	user := ses.GetUser(session)
 
+	user := ses.GetUser(session)
 	if user.Authenticated == false {
 		http.Redirect(w, r, redirect, http.StatusFound)
 		return
@@ -58,18 +58,14 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	db := dbh.OpenDB()
 	defer db.Close()
 
-	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
-
-	//if owner == false {
-	//	http.Redirect(w, r, "/", http.StatusFound)
-	//	return
-	//}
-
-	club, _ := dbh.GetClub(db, clubName, true)
-	if club.Approved == false {
+	isApproved, _ := dbh.GetClubApprove(db, clubName)
+	if isApproved == false {
 		http.Redirect(w, r, redirect, http.StatusFound)
 		return
 	}
+
+	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
+	club, _ := dbh.GetClub(db, clubName, true)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	sort.Sort(ByAccess(members))

@@ -290,7 +290,7 @@ func GetClubColor(db *sql.DB, clubName string) string {
 
 func ClubNameIsExist(db *sql.DB, clubName string) (bool, error) {
 	var name string
-	err := db.QueryRow("SELECT color FROM clubs WHERE clubname=$1",
+	err := db.QueryRow("SELECT clubname FROM clubs WHERE clubname=$1",
 		clubName).Scan(&name)
 	if err != nil {
 		if err != sql.ErrNoRows {
