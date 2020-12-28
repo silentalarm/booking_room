@@ -168,6 +168,17 @@ func UserLeaveСlub(db *sql.DB, nickName, idIntra, clubName string) {
 	}
 }
 
+func DeleteAllClubReserves(db *sql.DB, clubName string) {
+	_, err := db.Exec("DELETE FROM floor_2 WHERE clubname=$1", clubName)
+	if err != nil {
+		panic(err)
+	}
+	_, err = db.Exec("DELETE FROM floor_3 WHERE clubname=$1", clubName)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func getClubSize(db *sql.DB, clubName string) (int, error) {
 	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname=$1", clubName)
 	if err != nil {

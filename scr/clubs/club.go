@@ -122,7 +122,7 @@ func delete(db *sql.DB, clubName string) string {
 
 	dbh.DeleteClub(db, clubName)
 	dbh.DeleteUsersFromClub(db, clubName)
-
+	dbh.DeleteAllClubReserves(db, clubName)
 	return redirect
 }
 
