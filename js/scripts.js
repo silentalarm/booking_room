@@ -55,58 +55,71 @@ function checkHandler() {
 
 
 $(document).on('click', '.tr_size', function () {
-    if ($(this).hasClass('bg-select')) {
-        $('.tr').text($(this).index());
-        lineSet.delete($(this).index());
-        $(this).removeClass('bg-select');
-    } else {
-        if ($(this).hasClass('bg-booked')) {
-            return // не учитываем забронированные
-        }
-        $('.tr').text($(this).index());
-        lineSet.add($(this).index());
-        $(this).addClass('bg-select');
-    }
-    // пишем в input lines наши одиночно выделенные строки (то есть часы)
-    $('#lines').val(Array.from(lineSet));
-    checkHandler();
-});
+    clubName = $('#clubName').val()
 
-// мультивыделение
-$(document).on('mousedown', '.tr_size', function () {
-    if ($(this).hasClass('bg-select')) {
-        $('.tr_size').hover(function () {
+    if (clubName != null) {
+        if ($(this).hasClass('bg-select')) {
             $('.tr').text($(this).index());
             lineSet.delete($(this).index());
             $(this).removeClass('bg-select');
-        });
-    } else {
-        $('.tr_size').hover(function () {
+        } else {
             if ($(this).hasClass('bg-booked')) {
                 return // не учитываем забронированные
             }
             $('.tr').text($(this).index());
             lineSet.add($(this).index());
             $(this).addClass('bg-select');
-        });
+        }
+        // пишем в input lines наши одиночно выделенные строки (то есть часы)
+        $('#lines').val(Array.from(lineSet));
+        checkHandler();
+    }
+});
+
+// мультивыделение
+$(document).on('mousedown', '.tr_size', function () {
+    clubName = $('#clubName').val()
+
+    if (clubName != null) {
+        if ($(this).hasClass('bg-select')) {
+            $('.tr_size').hover(function () {
+                $('.tr').text($(this).index());
+                lineSet.delete($(this).index());
+                $(this).removeClass('bg-select');
+            });
+        } else {
+            $('.tr_size').hover(function () {
+                if ($(this).hasClass('bg-booked')) {
+                    return // не учитываем забронированные
+                }
+                $('.tr').text($(this).index());
+                lineSet.add($(this).index());
+                $(this).addClass('bg-select');
+            });
+        }
     }
 });
 
 $('.tr_size').mouseup(function () {
-    // пишем в input lines наши мультивыделенные строки (то есть часы)
-    checkHandler();
-    $('#lines').val(Array.from(lineSet));
-    $('.tr_size').off('mouseenter mouseleave');
+    clubName = $('#clubName').val()
+
+    if (clubName != null) {
+        // пишем в input lines наши мультивыделенные строки (то есть часы)
+        checkHandler();
+        $('#lines').val(Array.from(lineSet));
+        $('.tr_size').off('mouseenter mouseleave');
+    }
 });
+clubName = $('#clubName').val()
 
-$(".tr_size").on("mousedown", function (e) {
-    e.preventDefault();
-    $(this).addClass("pointer");
-}).on("mouseup", function () {
-    $(this).removeClass("pointer");
-});
-
-
+if (clubName != null) {
+    $(".tr_size").on("mousedown", function (e) {
+        e.preventDefault();
+        $(this).addClass("pointer");
+    }).on("mouseup", function () {
+        $(this).removeClass("pointer");
+    });
+}
 //удаление резерва
 $(document).on('click', '.unreserve', function () {
     var date = $('#dp').datepicker('getFormattedDate');
