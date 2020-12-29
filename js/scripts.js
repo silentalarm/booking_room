@@ -51,8 +51,6 @@ if (clubName != null) {
             $('#btn_reservation').prop('disabled', true);
         }
     }
-
-
     $(document).on('click', '.tr_size', function () {
         if ($(this).hasClass('bg-select')) {
             $('.tr').text($(this).index());
@@ -131,27 +129,10 @@ $(".row_club").on("click",
         }
 });
 
-
-
-
 $(function () {
     $('#cp2').colorpicker();
 });
-//$('[data-toggle="datepicker"]').datepicker({
-//    format: 'dd.mm.yyyy',
-//    weekStart: 1,
-//    startDate: date,
-//    autoPick: true,
-//    autoShow: true,
-//    inline: true,
-//    container: '.datepicker-inline',
-//    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-//    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
-//    days: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
-//    daysShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
-//    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-//});
-//
+
 $(document).ready(function () {
 
     $('.notes').on('click',function (e){
@@ -172,110 +153,17 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-
-
-
- // заполнение select
- //$("select option[value=" + val + "]").attr('selected', 'true').text(text);
-
  $('#room_select').val($('#selectedFloor').val())
 
-// tooltip
     $('[data-toggle="tooltip"]').tooltip();
-/*
-    //login logout
-    var status = $('#statusAuth').val()
-    console.log("Authentication is " + status)
-    if (status == "false") {
-        $('#logout').attr("hidden", true)
-        $('#login').attr("hidden", false)
-    } else {
-        $('#login').attr("hidden", true)
-        $('#logout').attr("hidden", false)
-    }
-*/
-    /* Локализация datepicker */
-//$.datepicker.regional['ru'] = {
-//    closeText: 'Закрыть',
-//    prevText: 'Предыдущий',
-//    nextText: 'Следующий',
-//    currentText: 'Сегодня',
-//    monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-//    monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
-//    dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
-//    dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
-//    dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-//    weekHeader: 'Не',
-//    dateFormat: 'dd.mm.yy',
-//    firstDay: 1,
-//    isRTL: false,
-//    showMonthAfterYear: false,
-//    yearSuffix: ''
-//};
-//$.datepicker.setDefaults($.datepicker.regional['ru']);
 
-//('#datepicker').datepicker([options])
-//$.fn.datepicker.noConflict();
-
-
-//$(function(){
-//    $("#datepicker").datepicker({
-//        onSelect: function(date){
-//            $('#datepicker_value').val(date)
-//        }
-//    });
-//    $("#datepicker").datepicker("setDate", $('#datepicker_value').val());
-//
-//});
-
-
-////liveTime
-//     setInterval(function () {
-//         // Just move your date creation inside the interval function
-//         var today = new Date();
-//         var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
-//         var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
-//         var dateTime = date + " " + time; // Add the time to the date string
-//
-//         document.getElementById('clock').innerHTML = dateTime;
-//     }, 1000);
-
-    // пишем в input дату
     setInterval(function () {
-        // Just move your date creation inside the interval function
         var today = new Date();
         var date = setZero(today.getDate()) + '.' + (setZero(today.getMonth() + 1)) + '.' + today.getFullYear();
-        //var time = setZero(today.getHours()) + ":" + setZero(today.getMinutes());// + ":" + today.getSeconds();
-        var dateTime = date; // Add the time to the date string
+        var dateTime = date;
 
         $('#date').val(dateTime);
     }, 1000);
-
-//
-//$('#datepicker').datepicker({
-//inline: true,
-//container: '.datepicker-inline',
-//    format: "dd.mm.yyyy",
-//    language: "ru",
-//    weekStart: 1,
-//    daysOfWeekHighlighted: "0,6",
-//    todayHighlight: true,
-//    //autoclose: true,
-//});
-//$('#datepicker').datepicker("setDate", new Date());
-//
-   // $('#sandbox-container div').datepicker({
-   // });
-//
-   // $('#datepicker').datepicker({
-   //     weekStart: 1,
-   //     daysOfWeekHighlighted: "6,0",
-   //     autoclose: true,
-   //     todayHighlight: true,
-   // });
-   // $('#datepicker').datepicker("setDate", new Date());
-//
-//
 
     date1 = new Date(2011, 1, 28)
 
@@ -298,21 +186,13 @@ $(document).ready(function () {
         setDate: date1 ,
     }).on('changeDate', showTestDate).datepicker("update", $('#selectedDate').val());
 
-    //$('#datepicker').datepicker("setDate", new Date());
-
     function showTestDate(){
         var date = $('#dp').datepicker('getFormattedDate');
+        var floor = $('#room_select').val();
+
         $("#showDate").val(date);
         $('#dp').datepicker('select', $('#selectedDate').val());
-        //alert($('#selectedDate').val())
-
-        //$('#dp').datepicker("update", date1);
-        //alert($('#selectedDate').val())
-
-
-        var floor = $('#room_select').val();//этаж
         window.location = "?table="+floor + "&date=" + date;
-
     }
 
 $('.datepicker-switch').setAttribute('disabled', true);
@@ -325,28 +205,6 @@ $('input[type="file"]').change(function(e){
     $('.custom-file-label').html(fileName);
     onFileSelected(e)
 });
-
-/*
-document.getElementById('file').onchange = function (evt) {
-    var tgt = evt.target || window.event.srcElement,
-        files = tgt.files;
-
-    // FileReader support
-    if (FileReader && files && files.length) {
-        var fr = new FileReader();
-        fr.onload = function () {
-            document.getElementById("clubPic").src = fr.result;
-        }
-        fr.readAsDataURL(files[0]);
-    }
-
-    // Not supported
-    else {
-        // fallback -- perhaps submit the input to an iframe and temporarily store
-        // them on the server until the user's session ends.
-    }
-}
-*/
 
 function onFileSelected(event) {
     var selectedFile = event.target.files[0];
@@ -361,7 +219,6 @@ function onFileSelected(event) {
 
     reader.readAsDataURL(selectedFile);
 }
-
 
 $(document).ready(function(){
     $('.square').mouseover(function (e) {
@@ -381,9 +238,6 @@ $(document).ready(function(){
         }else{
             $(this).addClass("left-tl");
         }
-
-
-
     });
 
     $('.square').mouseout(function (e) {
@@ -391,9 +245,6 @@ $(document).ready(function(){
         child.hide();
     });
 });
-
-
-
 
 $(document).ready(function(){
     $('.square').on('click',function (e) {
