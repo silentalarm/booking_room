@@ -41,23 +41,19 @@ $('#room_select').on('change', function () {
 
 
 // переделать поля на заполненность формы
-function checkHandler() {
+clubName = $('#clubName').val()
 
-    clubName = $('#clubName').val()
-    if (clubName != null) {
+if (clubName != null) {
+    function checkHandler() {
         if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
             $('#btn_reservation').prop('disabled', false);
         } else {
             $('#btn_reservation').prop('disabled', true);
         }
     }
-}
 
 
-$(document).on('click', '.tr_size', function () {
-    clubName = $('#clubName').val()
-
-    if (clubName != null) {
+    $(document).on('click', '.tr_size', function () {
         if ($(this).hasClass('bg-select')) {
             $('.tr').text($(this).index());
             lineSet.delete($(this).index());
@@ -73,14 +69,10 @@ $(document).on('click', '.tr_size', function () {
         // пишем в input lines наши одиночно выделенные строки (то есть часы)
         $('#lines').val(Array.from(lineSet));
         checkHandler();
-    }
-});
+    });
 
 // мультивыделение
-$(document).on('mousedown', '.tr_size', function () {
-    clubName = $('#clubName').val()
-
-    if (clubName != null) {
+    $(document).on('mousedown', '.tr_size', function () {
         if ($(this).hasClass('bg-select')) {
             $('.tr_size').hover(function () {
                 $('.tr').text($(this).index());
@@ -97,22 +89,15 @@ $(document).on('mousedown', '.tr_size', function () {
                 $(this).addClass('bg-select');
             });
         }
-    }
-});
+    });
 
-$('.tr_size').mouseup(function () {
-    clubName = $('#clubName').val()
-
-    if (clubName != null) {
+    $('.tr_size').mouseup(function () {
         // пишем в input lines наши мультивыделенные строки (то есть часы)
         checkHandler();
         $('#lines').val(Array.from(lineSet));
         $('.tr_size').off('mouseenter mouseleave');
-    }
-});
-clubName = $('#clubName').val()
+    });
 
-if (clubName != null) {
     $(".tr_size").on("mousedown", function (e) {
         e.preventDefault();
         $(this).addClass("pointer");
@@ -120,6 +105,7 @@ if (clubName != null) {
         $(this).removeClass("pointer");
     });
 }
+
 //удаление резерва
 $(document).on('click', '.unreserve', function () {
     var date = $('#dp').datepicker('getFormattedDate');
