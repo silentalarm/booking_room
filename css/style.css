@@ -267,7 +267,7 @@ td.min {
 }
 
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(2) > th{
-    background-color: #0288C7;
+    background-color: rgb(3, 155, 229) !important
     border-radius: 0;!important;
     color: white;
     font-weight: normal;!important;
@@ -283,7 +283,7 @@ td.min {
 }
 
 #dp > div > div.datepicker-days > table{
-    outline: #0278AF solid 1px;
+    outline: rgb(3, 155, 229) solid 1px;
 }
 
 .table-condensed {}
@@ -314,12 +314,12 @@ td.min {
     border-bottom: 1px solid silver;
     color: white;
     border-radius: 0px;
-    background-color: #0288C7;
+    background-color: rgb(3, 155, 229) !important
 }
 
 #dp > div > div.datepicker-days > table > tbody > tr > td.highlighted:hover{
     border-radius: 0px;!important;
-    background-color: #0288C7;
+    background-color: rgb(3, 155, 229) !important
 }
 
 #dp > div > div.datepicker-days > table > tbody > tr > td:nth-child(6){
@@ -332,7 +332,7 @@ td.min {
 
 #dp > div > div.datepicker-days > table > tbody > tr > td.active.day {
     border-radius: 0px;!important;
-    background: #0288C7 none;
+    background: rgb(3, 155, 229) none;
 }
 
 #dp > div > div.datepicker-days > table {
