@@ -267,7 +267,7 @@ td.min {
 }
 
 #dp > div > div.datepicker-days > table > thead > tr:nth-child(2) > th{
-    background-color: rgb(3, 155, 229) !important
+    background-color: rgb(3, 155, 229) !important;
     border-radius: 0;!important;
     color: white;
     font-weight: normal;!important;
