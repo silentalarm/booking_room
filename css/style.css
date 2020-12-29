@@ -336,7 +336,7 @@ td.min {
 }
 
 #dp > div > div.datepicker-days > table {
-    background-color: #0288C7;
+    background-color: rgb(3, 155, 229) !important;
 }
 
 #dp > div > div.datepicker-days > table > thead > tr > th{
