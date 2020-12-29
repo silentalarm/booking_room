@@ -148,7 +148,7 @@
                         <div class="form-group col-md-12">
                             <input value="{{ .club.Color }}" id="color" type="color" class="color-shower" disabled>
                         </div>
-                        {{ if eq .owner true }}
+
                         <div class="form-group col-md-12 colors-list">
                             <input class="btn color-gray" type="button" onclick="changeColor('#808080')">
                             <input class="btn color-standart" type="button" onclick="changeColor('#039BE5')">
@@ -161,7 +161,7 @@
                             <input class="btn color-purple" type="button" onclick="changeColor('#a514ff')">
                             <input class="btn color-cyan" type="button" onclick="changeColor('#0fbe9b')">
                         </div>
-                        {{ end }}
+
                         <div class="form-group col-md-12">
                             Канал в <i class="fab fa-slack pr-1"></i>Slack:
                         </div>
