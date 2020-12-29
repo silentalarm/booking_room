@@ -250,6 +250,20 @@ func IsUserClubOwnerOrModer(db *sql.DB, nickName, idIntra, clubName string) bool
 	return false
 }
 
+func GetMemberAccess(db *sql.DB, nickName, clubName string) int {
+	var access int
+	err := db.QueryRow("SELECT memberaccess FROM clubmembers WHERE nickname=$1 and clubname=$2",
+		nickName, clubName).Scan(&access)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return -1
+	}
+
+	return access
+}
+
 func ClubIsExist(db *sql.DB, clubName string) bool {
 	err := db.QueryRow("SELECT clubname FROM clubs WHERE clubname=$1",
 		clubName).Scan(&clubName)

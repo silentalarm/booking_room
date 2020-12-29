@@ -250,15 +250,15 @@
                                             <td scope="col" class="h-td font-weight-normal pl-3">
                                                 {{ if ne $.user.Name .NickName}}
                                                 {{ if eq .Access 2 }}
-                                                <button type="submit" class="btn font-weight-normal" name="sumbit" value="setOwner">
+                                                <button type="submit" class="btn font-weight-normal" title="Сменить владельца" name="sumbit" value="setOwner">
                                                     <i class="fas fa-crown large_icon"></i>
                                                 </button>
                                                 {{ else }}
-                                                <button type="submit" class="btn font-weight-normal" name="sumbit" value="makeModer">
+                                                <button type="submit" class="btn font-weight-normal" title="Сделать модератором" name="sumbit" value="makeModer">
                                                     <i class="fas fa-user-check large_icon"></i>
                                                 </button>
                                                 {{ end }}
-                                                <button type="submit" class="btn font-weight-normal" name="sumbit" value="kick">
+                                                <button type="submit" class="btn font-weight-normal" title="Выгнать" name="sumbit" value="kick">
                                                     <i class="fas fa-user-slash large_icon"></i>
                                                 </button>
                                                 {{ end }}

@@ -151,6 +151,17 @@ func giveModerku(db *sql.DB, nickName, clubName string) string {
 	return redirect
 }
 
+//fixme
+func upRank(db *sql.DB, nickName, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	access := dbh.GetMemberAccess(db, nickName, clubName)
+	if access == 0 {
+		_ = dbh.SetAccess(db, nickName, clubName, access+1)
+	}
+	return redirect
+}
+
 func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
