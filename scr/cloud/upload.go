@@ -7,8 +7,14 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	"net/http"
-	"strings"
+	"path/filepath"
 )
+
+var allowedExtension = []string{
+	".jpg",
+	".png",
+	".jpeg",
+}
 
 func Upload(r *http.Request, key, clubName string) error {
 	file, handler, err := r.FormFile(key) //file, header, err := r.FormFile(key)
@@ -18,16 +24,20 @@ func Upload(r *http.Request, key, clubName string) error {
 	}
 	defer file.Close()
 
-	sess := connect()
+	fileExtension := filepath.Ext(handler.Filename)
+	isAllowed := getExtension(fileExtension)
 
-	randomName := bytesToHex(16)
-
-	oldName := strings.Split(handler.Filename, ".")
-
-	filename := randomName + "." + oldName[1] //header.flname...
+	if isAllowed == false {
+		panic(fileExtension)
+		return nil
+	}
 
 	db := dbh.OpenDB()
 	defer db.Close()
+
+	sess := connect()
+	randomName := bytesToHex(16)
+	filename := randomName + fileExtension //header.flname...
 
 	dbh.SetImageName(db, clubName, filename)
 
@@ -44,6 +54,15 @@ func Upload(r *http.Request, key, clubName string) error {
 		return err
 	}
 	return nil
+}
+
+func getExtension(extension string) bool {
+	for _, ext := range allowedExtension {
+		if ext == extension {
+			return true
+		}
+	}
+	return false
 }
 
 func generateBytes(n int) []byte {
