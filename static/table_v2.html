@@ -12,7 +12,6 @@
 </head>
 <body class="body">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
-        <!--    <a class="navbar-brand logo border border-dark rounded py-2 px-3 bg-dark" href="/">Резерв комнат</a>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,8 +22,6 @@
                     <a class="navbutton btn-primary2" id="home" href="/"><i class="fas fa-home"></i></a>
                 </li>
                 {{if eq .user.Authenticated true }}
-
-
                 <li class="btn-group">
                     <a class="navbutton btn-primary2 dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <i class="fas fa-flag pr-1"></i>
@@ -142,7 +139,6 @@
                            </select>
                        </p>
 
-
                        <p><small class="form-small-txt">Кол-во человек</small><input class='inp num text-center' id='peopleNumber' name="peopleNumber" min='1' max='20' size="2" maxlength="2" autocomplete="off" onkeypress="return validateNumber(event)" oninput="checkHandler()"></p>
                        <input type="hidden" class='inpDisabled text-center' id='date' name="date" autocomplete="off"></p>
                        <input class='inpDisabled text-center' id='lines' name="lines" type="hidden" autocomplete="off"></p>
@@ -160,18 +156,17 @@
                     <!--data from backend [start]-->
                     {{ range .data.TableData }}
                     {{ if eq .NickName "" }}
-                    <tr class="tr_size" id="line{{ .LineID }}">
+                    <tr class="tr_size">
                         <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="far fa-clock pl-1"></i></td>
                         <td scope="col" class="h-td font-weight-normal pl-3">
                         </td>
                     </tr>
                     {{ else }}
-                    <tr class="tr_size bg-booked " id="line{{ .LineID }}">
+                    <tr class="tr_size bg-booked">
                         <td scope="col" class="h-td font-weight-normal min">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
                         <td scope="col" class="h-td font-weight-normal pl-3"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> на <b>{{ .PeopleNumber }}</b> чел.</span>
                         {{ if eq .Moder true }}
                             <span class="unreserve" >&times;</span>
-                            <!-- <i class="fas fa-trash unreserve fa-sm"></i> -->
                         {{ end }}
                         </td>
                         <script>
