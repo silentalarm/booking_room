@@ -133,6 +133,8 @@ $(function () {
     $('#cp2').colorpicker();
 });
 
+
+
 $(document).ready(function () {
 
     $('.notes').on('click',function (e){

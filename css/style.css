@@ -286,6 +286,7 @@ td.min {
     outline: rgb(3, 155, 229) solid 1px;
 }
 
+
 .table-condensed {}
 
 #dp > div > div.datepicker-days > table > tbody{}
@@ -293,6 +294,7 @@ td.min {
 .table-condensed td{
     padding: 8px 11px;
 }
+
 
 #dp > div > div.datepicker-days > table > tbody > tr > td.today.day{
     color: white;
