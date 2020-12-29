@@ -28,7 +28,7 @@ func Upload(r *http.Request, key, clubName string) error {
 
 	isAllowed := getExtension(fileExtension)
 	if isAllowed == false {
-		panic(fileExtension)
+		//panic(fileExtension)
 		return nil
 	}
 
