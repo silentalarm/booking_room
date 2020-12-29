@@ -206,11 +206,11 @@ func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, p
 			continue
 		}
 
-		for _, i := range lines {
-			empty := dbh.ReserveIsExist(db, table, date_, i)
-			strHour := strconv.Itoa(i)
-			if empty == false {
-				_ = dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, i, date_)
+		for _, line := range lines {
+			empty := dbh.ReserveIsExist(db, table, date_, line)
+			strHour := strconv.Itoa(line)
+			if empty == false && (line >= 0 && line <= 23) {
+				_ = dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, line, date_)
 				successfullyLines = append(successfullyLines, strHour)
 			} else {
 				unSuccessfullyLines = append(unSuccessfullyLines, strHour)
