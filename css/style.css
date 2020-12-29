@@ -298,7 +298,7 @@ td.min {
     color: white;
     border-radius: 0px;
     padding: 0px;
-    background: #00a827 none;
+    background: rgb(0, 101, 153) none;
 }
 
 #dp > div > div.datepicker-days > table > tbody > tr > td{

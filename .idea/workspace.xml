@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс резервов" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс цвета календаря">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table_v2.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +103,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс репорта" />
     <MESSAGE value="добавил шапку таблицам" />
     <MESSAGE value="фикс списка мемберов" />
     <MESSAGE value="фикс шапки" />
@@ -124,6 +127,7 @@
     <MESSAGE value="добавил обработку формата файла" />
     <MESSAGE value="фикс обработки файлов" />
     <MESSAGE value="фикс резервов" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс резервов" />
+    <MESSAGE value="фикс цвета календаря" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс цвета календаря" />
   </component>
 </project>
