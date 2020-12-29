@@ -502,6 +502,17 @@ button:focus{
     font-weight: bold;!important;
 }
 
+.club-creator {
+    margin-bottom: 15px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 10px;
+    color: #aeaeae;
+    font-weight: bold;!important;
+}
+
 .square {
     width: 200px;
     height: 270px;
@@ -661,6 +672,7 @@ button:focus{
     width: 100%;
     height: 30px;
 }
+
 .colors-list input{
     margin-bottom: 5px;
     margin-left: auto;

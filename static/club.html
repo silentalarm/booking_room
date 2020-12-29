@@ -128,6 +128,10 @@
                     <img id="clubPic" src="https://21clubs.s3.eu-central-1.amazonaws.com/{{ .club.S3file }}">
                 </div>
 
+                <div class="form-row col-md-12 club-creator">
+                    Основан: {{ .club.CreationDate }}, {{ .club.NickCreator }}
+                </div>
+
                 {{ if eq .owner true }}
                 <form enctype="multipart/form-data" method="POST" id="form1">
                     <div class="input-group mb-3">
@@ -148,7 +152,7 @@
                         <div class="form-group col-md-12">
                             <input value="{{ .club.Color }}" id="color" type="color" class="color-shower" disabled>
                         </div>
-
+                        {{ if eq .owner true }}
                         <div class="form-group col-md-12 colors-list">
                             <input class="btn color-gray" type="button" onclick="changeColor('#808080')">
                             <input class="btn color-standart" type="button" onclick="changeColor('#039BE5')">
@@ -161,7 +165,7 @@
                             <input class="btn color-purple" type="button" onclick="changeColor('#a514ff')">
                             <input class="btn color-cyan" type="button" onclick="changeColor('#0fbe9b')">
                         </div>
-
+                        {{ end }}
                         <div class="form-group col-md-12">
                             Канал в <i class="fab fa-slack pr-1"></i>Slack:
                         </div>
@@ -200,15 +204,6 @@
                     </div>
                     {{ end }}
                 </form>
-
-                <div class="form-row">
-                    <div class="col-md-12 form-group">
-                        Дата создания: {{ .club.CreationDate }}
-                    </div>
-                    <div class="col-md-12 form-group">
-                        Ник создателя: {{ .club.NickCreator }}
-                    </div>
-                </div>
             </div>
 
             <div class="col-md-8 py-1 bg-primary text-white text-center">
