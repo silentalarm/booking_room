@@ -175,7 +175,11 @@ func upload(db *sql.DB, r *http.Request, key, nickName, intraID, clubName string
 		return "/"
 	}
 
-	cloud.Upload(r, key, clubName)
+	success, err := cloud.Upload(r, key, clubName)
+	if err != nil || success == false {
+		return "/"
+	}
+
 	if oldName != "default_logo.png" {
 		cloud.Delete(oldName)
 	}

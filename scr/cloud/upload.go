@@ -16,11 +16,11 @@ var allowedExtension = []string{
 	".jpeg",
 }
 
-func Upload(r *http.Request, key, clubName string) error {
+func Upload(r *http.Request, key, clubName string) (bool, error) {
 	file, handler, err := r.FormFile(key) //file, header, err := r.FormFile(key)
 	if err != nil {
 		panic(err)
-		return err
+		return false, err
 	}
 	defer file.Close()
 
@@ -28,8 +28,7 @@ func Upload(r *http.Request, key, clubName string) error {
 
 	isAllowed := getExtension(fileExtension)
 	if isAllowed == false {
-		//panic(fileExtension)
-		return nil
+		return false, nil
 	}
 
 	db := dbh.OpenDB()
@@ -50,9 +49,9 @@ func Upload(r *http.Request, key, clubName string) error {
 	})
 	if err != nil {
 		panic(err)
-		return err
+		return false, err
 	}
-	return nil
+	return true, nil
 }
 
 func getExtension(extension string) bool {
