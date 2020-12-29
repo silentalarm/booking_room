@@ -700,3 +700,7 @@ button:focus{
 .color-purple {background-color: #a514ff !important;}
 .color-cyan {background-color: #0fbe9b !important;}
 
+#membersTable  td{
+    text-align: center;
+    vertical-align: middle;
+}
