@@ -25,8 +25,8 @@ func Upload(r *http.Request, key, clubName string) error {
 	defer file.Close()
 
 	fileExtension := filepath.Ext(handler.Filename)
-	isAllowed := getExtension(fileExtension)
 
+	isAllowed := getExtension(fileExtension)
 	if isAllowed == false {
 		panic(fileExtension)
 		return nil
@@ -42,7 +42,6 @@ func Upload(r *http.Request, key, clubName string) error {
 	dbh.SetImageName(db, clubName, filename)
 
 	uploader := s3manager.NewUploader(sess)
-
 	_, err = uploader.Upload(&s3manager.UploadInput{
 		Bucket: aws.String(AWS_S3_BUCKET),
 		Key:    aws.String(filename),

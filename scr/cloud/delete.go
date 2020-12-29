@@ -1,7 +1,6 @@
 package cloud
 
 import (
-	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
 )
@@ -14,7 +13,7 @@ func Delete(fileName string) error {
 		Bucket: aws.String(AWS_S3_BUCKET),
 		Key:    aws.String(fileName),
 	}
-	fmt.Println(params)
+
 	_, err := svc.DeleteObject(params)
 	if err != nil {
 		panic(err)

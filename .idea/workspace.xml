@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="добавил удаление всех резервов при удалении клуба">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="добавил обработку формата файла">
       <change beforePath="$PROJECT_DIR$/scr/cloud/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/cloud/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс страницы клуба" />
     <MESSAGE value="фикс поля ввода" />
     <MESSAGE value="добавил баг репорт" />
     <MESSAGE value="фикс репорта" />
@@ -127,6 +126,7 @@
     <MESSAGE value="рефакторинг" />
     <MESSAGE value="фиксы" />
     <MESSAGE value="добавил удаление всех резервов при удалении клуба" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавил удаление всех резервов при удалении клуба" />
+    <MESSAGE value="добавил обработку формата файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил обработку формата файла" />
   </component>
 </project>
