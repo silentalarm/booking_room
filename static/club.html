@@ -210,22 +210,24 @@
                 <div class=" ">
                     <div class="card-body">
                         <h2 class="py-1">Члены клуба</h2>
+
+                        {{ $groups_ := .groups }}
+                        {{ $members_ := .members }}
+
+                        {{ range $group := $groups_ }}
+                            {{ $group.Name }}
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">
-                                <tr class="row_club text-center">
-                                    <th>Ник</th>
-                                    <th>Ранг</th>
-                                    <th>Дата вступления</th>
-                                    {{ if eq .owner true }}
+                                    <tr class="row_club text-center">
+                                        <th>Ник</th>
+                                        <th>Ранг</th>
+                                        <th>Дата вступления</th>
+                                        {{ if eq .owner true }}
                                         <th>Действия</th>
-                                    {{end}}
-                                </tr>
-                                {{ $groups_ := .groups }}
-                                {{ $members_ := .members }}
-
-                                {{ range $group := $groups_ }}
+                                        {{end}}
+                                    </tr>
                                     {{ range $member := $members_ }}
-                                        {{ if ne $member.Group $group.Name }}
+                                        {{ if eq $member.Group $group.Name }}
                                         <form method="POST">
                                         <input type="hidden" value="{{$member.NickName}}" name="nickName">
                                         <input type="hidden" value="{{$member.IDIntra}}" name="intraID">
@@ -273,9 +275,9 @@
                                         </form>
                                         {{ end }}
                                     {{ end }}
-                                {{ end }}
                                 </tbody>
                             </table>
+                        {{ end }}
                     </div>
                 </div>
             </div>
