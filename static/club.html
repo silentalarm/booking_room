@@ -214,19 +214,18 @@
                         {{ $groups_ := .groups }}
                         {{ $members_ := .members }}
 
-
-
                         {{ range $group := $groups_ }}
-                        {{ if eq $.member true }}
-                            {{ if ne $.userGroup $group.Name }}
-                                <form method="POST">
-                                    <input type="hidden" value="{{$group.Name}}" name="groupName">
-                                    <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
-                                        <i class="fas fa-vote-yea large_icon"></i>
-                                    </button>
-                                </form>
+
+                            {{ if eq $.thisMember true }}
+                                {{ if ne $.userGroup $group.Name }}
+                                    <form method="POST">
+                                        <input type="hidden" value="{{$group.Name}}" name="groupName">
+                                        <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
+                                            <i class="fas fa-vote-yea large_icon"></i>
+                                        </button>
+                                    </form>
+                                {{ end }}
                             {{ end }}
-                        {{ end }}
                             {{ $group.Name }}
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">

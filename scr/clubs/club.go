@@ -61,6 +61,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
 	club, _ := dbh.GetClub(db, clubName, true)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
+	thisClubMember := dbh.IsUserInClub(db, user.Name, user.ID, clubName)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	groups, _ := dbh.GetClubGroups(db, clubName)
 	userGroup, _ := dbh.GetUserGroup(db, user.Name, clubName)
@@ -69,13 +70,14 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":      user,
-			"club":      club,
-			"members":   members,
-			"owner":     owner,
-			"member":    member,
-			"groups":    groups,
-			"userGroup": userGroup,
+			"user":       user,
+			"club":       club,
+			"members":    members,
+			"owner":      owner,
+			"member":     member,
+			"groups":     groups,
+			"userGroup":  userGroup,
+			"thisMember": thisClubMember,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
