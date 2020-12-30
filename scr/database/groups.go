@@ -22,7 +22,7 @@ func (a ByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func InsertGroup(db *sql.DB, groupName, clubName, ownerName string, groupID int) error {
 	_, err := db.Exec(
 		"INSERT INTO clubgroups (groupname, clubname, owner, groupid) values ($1, $2, $3, $4)",
-		clubName, groupName, ownerName, groupID)
+		groupName, clubName, ownerName, groupID)
 	if err != nil {
 		return err
 	}
