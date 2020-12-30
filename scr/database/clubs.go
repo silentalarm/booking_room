@@ -159,7 +159,7 @@ func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, join
 	}
 
 	_, err := db.Exec(
-		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra, groupname) values ($1, $2, $3, $4, $5)",
+		"INSERT INTO clubmembers (nickname, clubname, memberaccess, joindate, idintra, groupname) values ($1, $2, $3, $4, $5, $6)",
 		nickName, clubName, memberAccess, joinDate, idIntra, "main")
 	if err != nil {
 		panic(err)
