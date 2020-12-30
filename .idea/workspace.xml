@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="написал функционал создание и работы с группами клуба">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/groups.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/groups.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/groups/createGroup.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
-    </list>
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="изменил отображение по группам на странице клуба" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +100,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс шапки" />
     <MESSAGE value="фикс шапки на всех страницах" />
     <MESSAGE value="тест загрузки файлов" />
     <MESSAGE value="фикс дб" />
@@ -134,6 +124,7 @@
     <MESSAGE value="фикс цвета календаря" />
     <MESSAGE value="фикс таблицы" />
     <MESSAGE value="написал функционал создание и работы с группами клуба" />
-    <option name="LAST_COMMIT_MESSAGE" value="написал функционал создание и работы с группами клуба" />
+    <MESSAGE value="изменил отображение по группам на странице клуба" />
+    <option name="LAST_COMMIT_MESSAGE" value="изменил отображение по группам на странице клуба" />
   </component>
 </project>
