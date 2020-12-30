@@ -6304,10 +6304,10 @@
   var CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
   var CLASS_NAME_ACTIVE$2 = 'active';
   var SELECTOR_DATA_SPY = '[data-spy="scroll"]';
-  var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+  var SELECTOR_NAV_LIST_GROUP = '.nav, .list-groups';
   var SELECTOR_NAV_LINKS = '.nav-link';
   var SELECTOR_NAV_ITEMS = '.nav-item';
-  var SELECTOR_LIST_ITEMS = '.list-group-item';
+  var SELECTOR_LIST_ITEMS = '.list-groups-item';
   var SELECTOR_DROPDOWN = '.dropdown';
   var SELECTOR_DROPDOWN_ITEMS = '.dropdown-item';
   var SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
@@ -6591,7 +6591,7 @@
   var CLASS_NAME_FADE$4 = 'fade';
   var CLASS_NAME_SHOW$6 = 'show';
   var SELECTOR_DROPDOWN$1 = '.dropdown';
-  var SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
+  var SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-groups';
   var SELECTOR_ACTIVE$2 = '.active';
   var SELECTOR_ACTIVE_UL = '> li > .active';
   var SELECTOR_DATA_TOGGLE$4 = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]';

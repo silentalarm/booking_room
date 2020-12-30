@@ -105,7 +105,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	case "kick":
 		redirect = kick(db, nickName, intraID, clubName)
 	case "makeModer":
-		redirect = giveModerku(db, nickName, clubName)
+		redirect = makeModerator(db, nickName, clubName)
 	default:
 		redirect = upload(db, r, "file", user.Name, user.ID, clubName)
 	}
@@ -143,7 +143,7 @@ func kick(db *sql.DB, nickName, idIntra, clubName string) string {
 	return redirect
 }
 
-func giveModerku(db *sql.DB, nickName, clubName string) string {
+func makeModerator(db *sql.DB, nickName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
 	_ = dbh.SetAccess(db, nickName, clubName, 2)
