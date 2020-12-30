@@ -15,7 +15,7 @@ type Group struct {
 type ByID []Group
 
 func (a ByID) Len() int           { return len(a) }
-func (a ByID) Less(i, j int) bool { return a[i].GroupID > a[j].GroupID }
+func (a ByID) Less(i, j int) bool { return a[i].GroupID < a[j].GroupID }
 func (a ByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func CreateGroup(db *sql.DB, groupName, clubName, ownerName string) error {
