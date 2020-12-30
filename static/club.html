@@ -224,16 +224,16 @@
                                     {{ $group.Name }}
                                 {{ end }}
                                 {{ range $index, $group := .groups }}
-                                    {{ range $key, $val := .members }}
+                                    {{ range .members }}
 
-                                        {{ if eq $val.Group $group.Name }}
+                                        {{ if eq .Group $group.Name }}
                                         <form method="POST">
                                         <input type="hidden" value="{{.NickName}}" name="nickName">
                                         <input type="hidden" value="{{.IDIntra}}" name="intraID">
 
                                             <tr id="membersTable" class="row_club td-align">
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ $val.NickName }}
+                                                    {{ .NickName }}
                                                 </td>
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
                                                     {{ if eq .Access 3 }}
