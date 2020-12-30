@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс таблицы клуба">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bc676159-dd1f-4a16-95ea-9118cb4ab8a1/storage_v2/_src_/database/deq58l9o8oe3et.Q9_XAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/database/groups.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/groups.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/clubs/myclubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/myclubs.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
