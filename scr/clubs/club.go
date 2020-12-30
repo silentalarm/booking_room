@@ -81,14 +81,13 @@ func Club(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if owner == false {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
-
 	sumbit := r.FormValue("sumbit")
 
-	redirect = stateHandler(r, db, user, sumbit, clubName)
+	if owner == false {
+		redirect = stateHandlerUser(r, db, user, sumbit, clubName)
+	} else {
+		redirect = stateHandlerOwner(r, db, user, sumbit, clubName)
+	}
 
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
@@ -199,7 +198,7 @@ func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
 	return redirect
 }
 
-func stateHandler(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
+func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
 	var redirect string
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
@@ -227,4 +226,22 @@ func stateHandler(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName 
 		redirect = upload(db, r, "file", user.Name, user.ID, clubName)
 	}
 	return redirect
+}
+
+func stateHandlerUser(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
+	var redirect string
+
+	isMember := dbh.IsUserInClub(db, user.Name, user.ID, clubName)
+	if isMember == false {
+		return redirect
+	}
+
+	switch sumbit {
+	case "joinGroup":
+		groupName := r.FormValue("groupName")
+
+		redirect = userChangeGroup(db, groupName, user.Name, clubName)
+	}
+	return redirect
+
 }
