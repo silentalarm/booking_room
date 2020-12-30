@@ -213,9 +213,9 @@
 
                         {{ $groups_ := .groups }}
                         {{ $members_ := .members }}
-
+                        {{ $member_ := .member }}
                         {{ range $group := $groups_ }}
-                        {{ if eq $.member true }}
+                        {{ if eq $member_ true }}
                             {{ if ne $.userGroup $group.Name }}
                                 <form method="POST">
                                     <input type="hidden" value="{{$group.Name}}" name="groupName">
