@@ -79,7 +79,7 @@ func SetGroupOwner(db *sql.DB, ownerName, clubName, groupName string) error {
 }
 
 func SetUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
-	isExist := GroupIsExist(db, groupName)
+	isExist := GroupIsExist(db, groupName, clubName)
 	if isExist == false {
 		return errors.New("groupName: group does not exist")
 	}
@@ -100,9 +100,9 @@ func UserLeaveGroup(db *sql.DB, nickName, clubName string) error {
 	return nil
 }
 
-func GroupIsExist(db *sql.DB, groupName string) bool {
-	err := db.QueryRow("SELECT groupname FROM clubgroups WHERE groupname=$1",
-		groupName).Scan(&groupName)
+func GroupIsExist(db *sql.DB, groupName, clubName string) bool {
+	err := db.QueryRow("SELECT groupname FROM clubgroups WHERE groupname=$1 and clubname=$2",
+		groupName, clubName).Scan(&groupName)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
