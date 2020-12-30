@@ -63,17 +63,19 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	groups, _ := dbh.GetClubGroups(db, clubName)
+	userGroup, _ := dbh.GetUserGroup(db, clubName, user.ID)
 	sort.Sort(dbh.ByAccess(members))
 	sort.Sort(dbh.ByID(groups))
 	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
-			"user":    user,
-			"club":    club,
-			"members": members,
-			"owner":   owner,
-			"member":  member,
-			"groups":  groups,
+			"user":      user,
+			"club":      club,
+			"members":   members,
+			"owner":     owner,
+			"member":    member,
+			"groups":    groups,
+			"userGroup": userGroup,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
@@ -85,10 +87,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	}
 
 	sumbit := r.FormValue("sumbit")
-	nickName := r.FormValue("nickName")
-	intraID := r.FormValue("intraID")
 
-	redirect = stateHandler(r, db, user, sumbit, nickName, clubName, intraID)
+	redirect = stateHandler(r, db, user, sumbit, clubName)
 
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
@@ -187,10 +187,27 @@ func allowedColor(colorForCheck string) bool {
 	return false
 }
 
-func stateHandler(r *http.Request, db *sql.DB, user *ses.User, sumbit, nickName, clubName, intraID string) string {
+func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	err := dbh.SetUserGroup(db, groupName, nickName, clubName)
+	if err != nil {
+		return "/"
+	}
+
+	return redirect
+}
+
+func stateHandler(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
 	var redirect string
+	nickName := r.FormValue("nickName")
+	intraID := r.FormValue("intraID")
 
 	switch sumbit {
+	case "joinGroup":
+		groupName := r.FormValue("groupName")
+
+		redirect = userChangeGroup(db, groupName, user.Name, clubName)
 	case "Удалить клуб":
 		redirect = delete(db, clubName)
 	case "Сохранить":

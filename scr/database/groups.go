@@ -2,6 +2,7 @@ package database
 
 import (
 	"database/sql"
+	"errors"
 )
 
 type Group struct {
@@ -18,10 +19,49 @@ func (a ByID) Len() int           { return len(a) }
 func (a ByID) Less(i, j int) bool { return a[i].GroupID < a[j].GroupID }
 func (a ByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
-func CreateGroup(db *sql.DB, groupName, clubName, ownerName string) error {
+func InsertGroup(db *sql.DB, groupName, clubName, ownerName string, groupID int) error {
 	_, err := db.Exec(
-		"INSERT INTO clubgroups (groupname, clubname, owner) values ($1, $2, $3)",
-		clubName, groupName, ownerName)
+		"INSERT INTO clubgroups (groupname, clubname, owner, groupid) values ($1, $2, $3, $4)",
+		clubName, groupName, ownerName, groupID)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func CreateGroup(db *sql.DB, clubName, ownerName string) error {
+	err := InsertGroup(db, "main", clubName, ownerName, 0)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func AddGroup(db *sql.DB, groupName, clubName, ownerName string) error {
+	newGroupID, err := GetLastGroupID(db, groupName)
+	if err != nil {
+		return err
+	}
+
+	err = InsertGroup(db, groupName, clubName, ownerName, newGroupID)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeleteGroup(db *sql.DB, groupName, clubName string) error {
+	_, err := db.Exec("DELETE FROM clubgroups WHERE groupname=$1 and clubname=$2",
+		groupName, clubName)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeleteAllClubGroups(db *sql.DB, clubName string) error {
+	_, err := db.Exec("DELETE FROM clubgroups WHERE clubname=$1",
+		clubName)
 	if err != nil {
 		return err
 	}
@@ -36,6 +76,53 @@ func SetGroupOwner(db *sql.DB, ownerName, clubName, groupName string) error {
 		return err
 	}
 	return nil
+}
+
+func SetUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
+	isExist := GroupIsExist(db, groupName)
+	if isExist == false {
+		return errors.New("groupName: group does not exist")
+	}
+
+	_, err := db.Exec("UPDATE clubmember SET groupname=$1 WHERE nickname=$2 and clubname=$3",
+		groupName, nickName, clubName)
+	if err != nil {
+		panic(err)
+	}
+	return nil
+}
+
+func UserLeaveGroup(db *sql.DB, nickName, clubName string) error {
+	err := SetUserGroup(db, "main", nickName, clubName)
+	if err != nil {
+		panic(err)
+	}
+	return nil
+}
+
+func GroupIsExist(db *sql.DB, groupName string) bool {
+	err := db.QueryRow("SELECT groupname FROM clubgroups WHERE groupname=$1",
+		groupName).Scan(&groupName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
+func GetLastGroupID(db *sql.DB, groupName string) (int, error) {
+	var groupID int
+	err := db.QueryRow("SELECT MAX(groupid) FROM clubgroups WHERE clubname=$1",
+		groupName).Scan(&groupID)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return -1, err
+	}
+	return groupID, nil
 }
 
 func IsUserGroupOwner(db *sql.DB, nickName, clubName, groupName string) bool {
@@ -61,6 +148,19 @@ func GetUserGroupOwner(db *sql.DB, clubName, groupName string) string {
 		return nick
 	}
 	return nick
+}
+
+func GetUserGroup(db *sql.DB, clubName, nickName string) (string, error) {
+	var name string
+	err := db.QueryRow("SELECT groupname FROM clubmembers WHERE clubname=$1 and nickname=$2",
+		clubName, nickName).Scan(&name)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return name, err
+	}
+	return name, nil
 }
 
 func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
