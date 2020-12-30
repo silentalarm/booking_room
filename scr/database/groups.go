@@ -1,10 +1,22 @@
 package database
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
 type Group struct {
-	Name string
+	ID      int
+	Club    string
+	Name    string
+	Owner   string
+	GroupID int
 }
+
+type ByID []Group
+
+func (a ByID) Len() int           { return len(a) }
+func (a ByID) Less(i, j int) bool { return a[i].GroupID > a[j].GroupID }
+func (a ByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func CreateGroup(db *sql.DB, groupName, clubName, ownerName string) error {
 	_, err := db.Exec(
@@ -52,7 +64,7 @@ func GetUserGroupOwner(db *sql.DB, clubName, groupName string) string {
 }
 
 func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
-	rows, err := db.Query("SELECT groupname FROM clubgroups WHERE clubname=$1",
+	rows, err := db.Query("SELECT * FROM clubgroups WHERE clubname=$1",
 		clubName)
 	if err != nil {
 		return nil, err
@@ -62,14 +74,25 @@ func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
 	groups := []Group{}
 
 	for rows.Next() {
-		groupname := Group{}
+		row := Group{}
 
-		err := rows.Scan(&groupname.Name)
+		err := acceptGoupRows(rows, &row)
 		if err != nil {
 			return nil, err
 		}
 
-		groups = append(groups, groupname)
+		groups = append(groups, row)
 	}
 	return groups, nil
+}
+
+func acceptGoupRows(rows *sql.Rows, row *Group) error {
+	err := rows.Scan(
+		&row.ID,
+		&row.Name,
+		&row.Club,
+		&row.Owner,
+		&row.GroupID)
+
+	return err
 }

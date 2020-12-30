@@ -31,6 +31,18 @@ type ClubMember struct {
 	Group    string
 }
 
+type ByAccess []ClubMember
+
+func (a ByAccess) Len() int           { return len(a) }
+func (a ByAccess) Less(i, j int) bool { return a[i].Access > a[j].Access }
+func (a ByAccess) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+type BySize []Club
+
+func (a BySize) Len() int           { return len(a) }
+func (a BySize) Less(i, j int) bool { return a[i].Size > a[j].Size }
+func (a BySize) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
 func InsertNewClub(db *sql.DB, clubAbout, clubName, nickCreator, creationDate, slack string) {
 	_, err := db.Exec(
 		"INSERT INTO clubs (clubabout, clubname, nickcreator, creationdate, slack) values ($1, $2, $3, $4, $5)",

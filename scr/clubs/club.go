@@ -23,12 +23,6 @@ var allowedColors = []string{
 	"#0fbe9b",
 }
 
-type ByAccess []dbh.ClubMember
-
-func (a ByAccess) Len() int           { return len(a) }
-func (a ByAccess) Less(i, j int) bool { return a[i].Access > a[j].Access }
-func (a ByAccess) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-
 func Club(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
@@ -69,7 +63,8 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	groups, _ := dbh.GetClubGroups(db, clubName)
-	sort.Sort(ByAccess(members))
+	sort.Sort(dbh.ByAccess(members))
+	sort.Sort(dbh.ByID(groups))
 	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
 		dataMap := map[string]interface{}{
