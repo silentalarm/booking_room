@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="изменил отображение по группам на странице клуба">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс таблицы клуба">
       <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +102,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="фикс шапки на всех страницах" />
     <MESSAGE value="тест загрузки файлов" />
     <MESSAGE value="фикс дб" />
     <MESSAGE value="фикс загрузки файла" />
@@ -127,6 +126,7 @@
     <MESSAGE value="фикс таблицы" />
     <MESSAGE value="написал функционал создание и работы с группами клуба" />
     <MESSAGE value="изменил отображение по группам на странице клуба" />
-    <option name="LAST_COMMIT_MESSAGE" value="изменил отображение по группам на странице клуба" />
+    <MESSAGE value="фикс таблицы клуба" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс таблицы клуба" />
   </component>
 </project>

@@ -221,7 +221,7 @@
                                     {{end}}
                                 </tr>
                                 {{ range $index, $group := .groups }}
-                                    {{ range $val := .members }}
+                                    {{ range $key, $val := .members }}
 
                                         {{ if eq $val.Group $group.Name }}
                                         <form method="POST">
@@ -230,7 +230,7 @@
 
                                             <tr id="membersTable" class="row_club td-align">
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ .NickName }}
+                                                    {{ $val.NickName }}
                                                 </td>
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
                                                     {{ if eq .Access 3 }}
