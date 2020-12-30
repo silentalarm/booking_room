@@ -221,6 +221,9 @@
                                     {{end}}
                                 </tr>
                                 {{ range $index, $group := .groups }}
+                                    {{ $group.Name }}
+                                {{ end }}
+                                {{ range $index, $group := .groups }}
                                     {{ range $key, $val := .members }}
 
                                         {{ if eq $val.Group $group.Name }}
