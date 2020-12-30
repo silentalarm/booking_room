@@ -226,7 +226,7 @@
                                 {{ range $index, $group := .groups }}
                                     {{ range .members }}
 
-                                        {{ if eq .Group $group.Name }}
+                                        {{ if eq .Group group.Name }}
                                         <form method="POST">
                                         <input type="hidden" value="{{.NickName}}" name="nickName">
                                         <input type="hidden" value="{{.IDIntra}}" name="intraID">
