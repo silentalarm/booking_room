@@ -2,6 +2,10 @@ package database
 
 import "database/sql"
 
+type Group struct {
+	Name string
+}
+
 func CreateGroup(db *sql.DB, groupName, clubName, ownerName string) error {
 	_, err := db.Exec(
 		"INSERT INTO clubgroups (groupname, clubname, owner) values ($1, $2, $3)",
@@ -45,4 +49,27 @@ func GetUserGroupOwner(db *sql.DB, clubName, groupName string) string {
 		return nick
 	}
 	return nick
+}
+
+func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
+	rows, err := db.Query("SELECT groupname FROM clubgroups WHERE clubname=$1",
+		clubName)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	groups := []Group{}
+
+	for rows.Next() {
+		groupname := Group{}
+
+		err := rows.Scan(&groupname.Name)
+		if err != nil {
+			return nil, err
+		}
+
+		groups = append(groups, groupname)
+	}
+	return groups, nil
 }

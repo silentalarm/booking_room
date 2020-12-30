@@ -28,6 +28,7 @@ type ClubMember struct {
 	Access   int
 	JoinDate string
 	IDIntra  string
+	Group    string
 }
 
 func InsertNewClub(db *sql.DB, clubAbout, clubName, nickCreator, creationDate, slack string) {
@@ -260,7 +261,6 @@ func GetMemberAccess(db *sql.DB, nickName, clubName string) int {
 		}
 		return -1
 	}
-
 	return access
 }
 
@@ -488,7 +488,8 @@ func acceptRowMember(rows *sql.Rows, Row *ClubMember) error {
 		&Row.ClubName,
 		&Row.Access,
 		&Row.JoinDate,
-		&Row.IDIntra)
+		&Row.IDIntra,
+		&Row.Group)
 
 	return err
 }

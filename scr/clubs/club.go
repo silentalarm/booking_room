@@ -68,6 +68,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	club, _ := dbh.GetClub(db, clubName, true)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 	members, _ := dbh.GetClubMembers(db, clubName)
+	groups, _ := dbh.GetClubGroups(db, clubName)
 	sort.Sort(ByAccess(members))
 	tmpl, _ := template.ParseFiles("static/club.html")
 	if r.Method != http.MethodPost {
@@ -77,6 +78,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			"members": members,
 			"owner":   owner,
 			"member":  member,
+			"groups":  groups,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return
@@ -91,24 +93,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	nickName := r.FormValue("nickName")
 	intraID := r.FormValue("intraID")
 
-	switch sumbit {
-	case "Удалить клуб":
-		redirect = delete(db, clubName)
-	case "Сохранить":
-		clubAbout := r.FormValue("clubAbout")
-		slack := r.FormValue("slack")
-		color := r.FormValue("color")
-
-		redirect = save(db, color, slack, clubAbout, clubName)
-	case "setOwner":
-		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
-	case "kick":
-		redirect = kick(db, nickName, intraID, clubName)
-	case "makeModer":
-		redirect = makeModerator(db, nickName, clubName)
-	default:
-		redirect = upload(db, r, "file", user.Name, user.ID, clubName)
-	}
+	redirect = stateHandler(r, db, user, sumbit, nickName, clubName, intraID)
 
 	http.Redirect(w, r, redirect, http.StatusFound)
 }
@@ -205,4 +190,28 @@ func allowedColor(colorForCheck string) bool {
 		}
 	}
 	return false
+}
+
+func stateHandler(r *http.Request, db *sql.DB, user *ses.User, sumbit, nickName, clubName, intraID string) string {
+	var redirect string
+
+	switch sumbit {
+	case "Удалить клуб":
+		redirect = delete(db, clubName)
+	case "Сохранить":
+		clubAbout := r.FormValue("clubAbout")
+		slack := r.FormValue("slack")
+		color := r.FormValue("color")
+
+		redirect = save(db, color, slack, clubAbout, clubName)
+	case "setOwner":
+		redirect = setOwner(db, nickName, user.Name, intraID, clubName)
+	case "kick":
+		redirect = kick(db, nickName, intraID, clubName)
+	case "makeModer":
+		redirect = makeModerator(db, nickName, clubName)
+	default:
+		redirect = upload(db, r, "file", user.Name, user.ID, clubName)
+	}
+	return redirect
 }
