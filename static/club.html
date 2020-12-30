@@ -226,7 +226,7 @@
                                 {{ range $index, $group := .groups }}
                                     {{ range .members }}
 
-                                        {{ if ne .Group $group.Name }}
+                                        {{ if ne $.Group $group.Name }}
                                             1
                                         {{ end }}
                                         {{ if ne .Group $group.Name }}
