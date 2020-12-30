@@ -215,6 +215,7 @@
                         {{ $members_ := .members }}
 
                         {{ range $group := $groups_ }}
+                        {{ if eq $.member true }}
                             {{ if ne $.userGroup $group.Name }}
                                 <form method="POST">
                                     <input type="hidden" value="{{$group.Name}}" name="groupName">
@@ -223,6 +224,7 @@
                                     </button>
                                 </form>
                             {{ end }}
+                        {{ end }}
                             {{ $group.Name }}
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">
@@ -234,22 +236,22 @@
                                         <th>Действия</th>
                                         {{end}}
                                     </tr>
-                                    {{ range $member := $members_ }}
+                                    {{ range $mem := $members_ }}
                                         {{ if eq $member.Group $group.Name }}
                                         <form method="POST">
                                             {{ if eq $.owner true }}
-                                                <input type="hidden" value="{{$member.NickName}}" name="nickName">
-                                                <input type="hidden" value="{{$member.IDIntra}}" name="intraID">
+                                                <input type="hidden" value="{{$mem.NickName}}" name="nickName">
+                                                <input type="hidden" value="{{$mem.IDIntra}}" name="intraID">
                                             {{end}}
                                             <tr id="membersTable" class="row_club td-align">
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ $member.NickName }}
+                                                    {{ $mem.NickName }}
                                                 </td>
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ if eq $member.Access 3 }}
+                                                    {{ if eq $mem.Access 3 }}
                                                         Владелец
                                                     {{ end }}
-                                                    {{ if eq $member.Access 2 }}
+                                                    {{ if eq $mem.Access 2 }}
                                                         Модератор
                                                     {{ end }}
                                                     {{ if eq $member.Access 1 }}
@@ -260,12 +262,12 @@
                                                     {{ end }}
                                                 </td>
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ $member.JoinDate }}
+                                                    {{ $mem.JoinDate }}
                                                 </td>
                                                 {{ if eq $.owner true }}
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ if ne $.user.Name $member.NickName}}
-                                                    {{ if eq $member.Access 2 }}
+                                                    {{ if ne $.user.Name $mem.NickName}}
+                                                    {{ if eq $mem.Access 2 }}
                                                     <button type="submit" class="btn font-weight-normal" title="Сменить владельца" name="sumbit" value="setOwner">
                                                         <i class="fas fa-crown large_icon"></i>
                                                     </button>
