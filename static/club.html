@@ -214,6 +214,8 @@
                         {{ $groups_ := .groups }}
                         {{ $members_ := .members }}
 
+
+
                         {{ range $group := $groups_ }}
                         {{ if eq $.member true }}
                             {{ if ne $.userGroup $group.Name }}
@@ -237,7 +239,7 @@
                                         {{end}}
                                     </tr>
                                     {{ range $mem := $members_ }}
-                                        {{ if eq $member.Group $group.Name }}
+                                        {{ if eq $mem.Group $group.Name }}
                                         <form method="POST">
                                             {{ if eq $.owner true }}
                                                 <input type="hidden" value="{{$mem.NickName}}" name="nickName">
@@ -254,10 +256,10 @@
                                                     {{ if eq $mem.Access 2 }}
                                                         Модератор
                                                     {{ end }}
-                                                    {{ if eq $member.Access 1 }}
+                                                    {{ if eq $mem.Access 1 }}
                                                         Участник++
                                                     {{ end }}
-                                                    {{ if eq $member.Access 0 }}
+                                                    {{ if eq $mem.Access 0 }}
                                                         Участник
                                                     {{ end }}
                                                 </td>
