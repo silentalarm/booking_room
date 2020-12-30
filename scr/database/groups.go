@@ -84,7 +84,7 @@ func SetUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
 		return errors.New("groupName: group does not exist")
 	}
 
-	_, err := db.Exec("UPDATE clubmember SET groupname=$1 WHERE nickname=$2 and clubname=$3",
+	_, err := db.Exec("UPDATE clubmembers SET groupname=$1 WHERE nickname=$2 and clubname=$3",
 		groupName, nickName, clubName)
 	if err != nil {
 		panic(err)
@@ -150,10 +150,10 @@ func GetUserGroupOwner(db *sql.DB, clubName, groupName string) string {
 	return nick
 }
 
-func GetUserGroup(db *sql.DB, clubName, nickName string) (string, error) {
+func GetUserGroup(db *sql.DB, nickName, clubName string) (string, error) {
 	var name string
-	err := db.QueryRow("SELECT groupname FROM clubmembers WHERE clubname=$1 and nickname=$2",
-		clubName, nickName).Scan(&name)
+	err := db.QueryRow("SELECT groupname FROM clubmembers WHERE nickname=$1 and clubname=$2",
+		nickName, clubName).Scan(&name)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)

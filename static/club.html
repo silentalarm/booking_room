@@ -263,7 +263,7 @@
                                                 </td>
                                                 {{ if eq $.owner true }}
                                                 <td scope="col" class="h-td font-weight-normal pl-3">
-                                                    {{ if ne $.user.Name .NickName}}
+                                                    {{ if ne $.user.Name $member.NickName}}
                                                     {{ if eq $member.Access 2 }}
                                                     <button type="submit" class="btn font-weight-normal" title="Сменить владельца" name="sumbit" value="setOwner">
                                                         <i class="fas fa-crown large_icon"></i>
