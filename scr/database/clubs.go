@@ -354,14 +354,6 @@ func GetMemberByAccess(db *sql.DB, clubName string, access int) (string, string,
 	return nameClub, idIntra, nil
 }
 
-func DeleteСlub(db *sql.DB, clubName string) {
-	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1",
-		clubName)
-	if err != nil {
-		panic(err)
-	}
-}
-
 func DeleteClub(db *sql.DB, clubName string) {
 	_, err := db.Exec("DELETE FROM clubs WHERE clubname=$1",
 		clubName)

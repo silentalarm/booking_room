@@ -215,7 +215,7 @@
                         {{ $members_ := .members }}
 
                         {{ range $group := $groups_ }}
-                            {{ if ne $userGroup $group.Name }}
+                            {{ if ne $.userGroup $group.Name }}
                                 <form method="POST">
                                     <input type="hidden" value="{{$group.Name}}" name="groupName">
                                     <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
