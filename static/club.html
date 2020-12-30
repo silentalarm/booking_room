@@ -227,6 +227,9 @@
                                     {{ range .members }}
 
                                         {{ if ne .Group $group.Name }}
+                                            1
+                                        {{ end }}
+                                        {{ if ne .Group $group.Name }}
                                         <form method="POST">
                                         <input type="hidden" value="{{.NickName}}" name="nickName">
                                         <input type="hidden" value="{{.IDIntra}}" name="intraID">
