@@ -203,6 +203,12 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 	}
 
 	dbh.CreateNewGroup(db, groupName, clubName, memberName)
+	err := dbh.SetUserGroup(db, groupName, memberName, clubName)
+	if err != nil {
+		panic(err)
+		return "/"
+	}
+
 	return redirect
 }
 
@@ -220,7 +226,7 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 		newGroupName := r.FormValue("newGroupName")
 		memberName := r.FormValue("memberName")
 
-		addGroup(db, newGroupName, memberName, clubName)
+		redirect = addGroup(db, newGroupName, memberName, clubName)
 	case "Удалить клуб":
 		redirect = delete(db, clubName)
 	case "Сохранить":
