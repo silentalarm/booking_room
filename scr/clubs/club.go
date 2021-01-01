@@ -65,6 +65,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	members, _ := dbh.GetClubMembers(db, clubName)
 	groups, _ := dbh.GetClubGroups(db, clubName)
 	userGroup, _ := dbh.GetUserGroup(db, user.Name, clubName)
+	groupOwner := dbh.IsUserGroupsOwner(db, user.Name, clubName)
 	sort.Sort(dbh.ByAccess(members))
 	sort.Sort(dbh.ByID(groups))
 	tmpl, _ := template.ParseFiles("static/club.html")
@@ -78,6 +79,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 			"groups":     groups,
 			"userGroup":  userGroup,
 			"thisMember": thisClubMember,
+			"groupOwner": groupOwner,
 		}
 		_ = tmpl.Execute(w, dataMap)
 		return

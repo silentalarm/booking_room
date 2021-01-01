@@ -241,6 +241,7 @@
                         {{ range $group := $groups_ }}
 
                             {{ if eq $.thisMember true }}
+                                {{ if eq $.groupOwner false }}
                                 {{ if ne $.userGroup $group.Name }}
                                     <form method="POST">
                                         <input type="hidden" value="{{$group.Name}}" name="groupName">
@@ -249,8 +250,13 @@
                                         </button>
                                     </form>
                                 {{ end }}
+                                {{ end }}
                             {{ end }}
-                            {{ $group.Name }}
+                            <div>
+                                {{ if ne $group.Name "main" }}
+                                    {{ $group.Name }}
+                                {{ end }}
+                            </div>
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">
                                     <tr class="row_club text-center">
