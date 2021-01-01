@@ -258,6 +258,7 @@ func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
 
 	err := dbh.ChangeUserGroup(db, groupName, nickName, clubName)
 	if err != nil {
+		panic(err)
 		return "/"
 	}
 

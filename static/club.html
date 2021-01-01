@@ -211,10 +211,9 @@
                     <div class="card-body">
                         <h2 class="py-1">Члены клуба</h2>
 
-                        Добавить группу
-
                         {{ $members_ := .members }}
                         {{ if eq $.owner true }}
+                            Добавить группу
                             <form method="POST">
                                 <div class="">
                                     <div class="add-group">
