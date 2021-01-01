@@ -250,7 +250,7 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	err := dbh.SetUserGroup(db, groupName, nickName, clubName)
+	err := dbh.ChangeUserGroup(db, groupName, nickName, clubName)
 	if err != nil {
 		return "/"
 	}
