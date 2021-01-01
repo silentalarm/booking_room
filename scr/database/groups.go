@@ -43,7 +43,13 @@ func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName string) error {
 		return errors.New("groupName: group is exist")
 	}
 
-	err := InsertGroup(db, groupName, clubName, ownerName, 0)
+	lasId, err := GetLastGroupID(db, clubName)
+	if err != nil {
+		return err
+	}
+	lasId = +1
+
+	err = InsertGroup(db, groupName, clubName, ownerName, lasId)
 	if err != nil {
 		return err
 	}
@@ -146,10 +152,10 @@ func GroupIsExist(db *sql.DB, groupName, clubName string) bool {
 	return true
 }
 
-func GetLastGroupID(db *sql.DB, groupName string) (int, error) {
+func GetLastGroupID(db *sql.DB, clubName string) (int, error) {
 	var groupID int
 	err := db.QueryRow("SELECT MAX(groupid) FROM clubgroups WHERE clubname=$1",
-		groupName).Scan(&groupID)
+		clubName).Scan(&groupID)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
