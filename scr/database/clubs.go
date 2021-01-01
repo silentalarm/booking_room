@@ -22,13 +22,14 @@ type Club struct {
 }
 
 type ClubMember struct {
-	ID       int
-	NickName string
-	ClubName string
-	Access   int
-	JoinDate string
-	IDIntra  string
-	Group    string
+	ID         int
+	NickName   string
+	ClubName   string
+	Access     int
+	JoinDate   string
+	IDIntra    string
+	Group      string
+	GroupOwner bool
 }
 
 type ByAccess []ClubMember
@@ -439,7 +440,7 @@ func GetClubMembers(db *sql.DB, clubName string) ([]ClubMember, error) {
 		if err != nil {
 			continue
 		}
-
+		row.GroupOwner = IsUserGroupsOwner(db, row.NickName, clubName)
 		members = append(members, row)
 	}
 	return members, nil

@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс добавление группы">
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс таблицы клуба">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scr/clubs/club.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/clubs/club.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/database/clubs.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/database/clubs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,11 +124,11 @@
     <MESSAGE value="фикс таблицы" />
     <MESSAGE value="написал функционал создание и работы с группами клуба" />
     <MESSAGE value="изменил отображение по группам на странице клуба" />
-    <MESSAGE value="фикс таблицы клуба" />
     <MESSAGE value="добавил возможность вступать в клубы" />
     <MESSAGE value="фикс групп" />
     <MESSAGE value="Добавил возможность добавление группы овнеру" />
     <MESSAGE value="фикс добавление группы" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс добавление группы" />
+    <MESSAGE value="фикс таблицы клуба" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс таблицы клуба" />
   </component>
 </project>
