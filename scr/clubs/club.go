@@ -202,8 +202,12 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 		return "/"
 	}
 
-	dbh.CreateNewGroup(db, groupName, clubName, memberName)
-	err := dbh.SetUserGroup(db, groupName, memberName, clubName)
+	err := dbh.CreateNewGroup(db, groupName, clubName, memberName)
+	if err != nil {
+		return "/"
+	}
+
+	err = dbh.SetUserGroup(db, groupName, memberName, clubName)
 	if err != nil {
 		panic(err)
 		return "/"
