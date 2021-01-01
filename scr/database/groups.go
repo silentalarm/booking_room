@@ -47,7 +47,7 @@ func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName string) error {
 	if err != nil {
 		return err
 	}
-	lasId = +1
+	lasId += 1
 
 	err = InsertGroup(db, groupName, clubName, ownerName, lasId)
 	if err != nil {
