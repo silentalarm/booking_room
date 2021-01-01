@@ -166,14 +166,19 @@ func GetLastGroupID(db *sql.DB, clubName string) (int, error) {
 }
 
 func IsUserGroupOwner(db *sql.DB, nickName, clubName, groupName string) bool {
+	var owner string
 	err := db.QueryRow("SELECT owner FROM clubgroups WHERE clubname=$1 and groupname=$2",
-		clubName, groupName).Scan(&nickName)
+		clubName, groupName).Scan(&owner)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
 		}
 		return false
 	}
+	if owner != nickName {
+		return false
+	}
+
 	return true
 }
 
