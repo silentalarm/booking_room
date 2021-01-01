@@ -151,6 +151,18 @@ func IsUserGroupOwner(db *sql.DB, nickName, clubName, groupName string) bool {
 	return true
 }
 
+func IsUserGroupsOwner(db *sql.DB, nickName, clubName string) bool {
+	err := db.QueryRow("SELECT owner FROM clubgroups WHERE clubname=$1",
+		clubName).Scan(&nickName)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
 func GetUserGroupOwner(db *sql.DB, clubName, groupName string) string {
 	var nick string
 	err := db.QueryRow("SELECT owner FROM clubgroups WHERE clubname=$1 and groupname=$2",

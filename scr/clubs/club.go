@@ -192,6 +192,11 @@ func allowedColor(colorForCheck string) bool {
 func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
+	isAlreadyowner := dbh.IsUserGroupsOwner(db, memberName, clubName)
+	if isAlreadyowner == true {
+		return "/"
+	}
+
 	inClub := dbh.IsUserInClub(db, memberName, clubName)
 	if inClub == false {
 		return "/"
