@@ -39,11 +39,12 @@ tr[class ~= "bg-booked"] td{
 }
 
 .inp {
+    height: 38px;
     background: #fff;
     color: #525865;
     border-radius: 4px;
     border: 1px solid #d1d1d1;
-    box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+    /*box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07); */
     font-family: inherit;
     font-size: 1em;
     line-height: 1.45;
@@ -703,4 +704,35 @@ button:focus{
 #membersTable  td{
     text-align: center;
     vertical-align: middle;
+}
+
+.add-group {
+    display: inline-block !important;
+    float: left;
+    margin-left: 0px !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    margin-bottom: auto;
+    width: 45%;
+}
+
+.add-groupb {
+    float: left;
+    display: inline-block !important;
+    margin-left: 30px !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    margin-bottom: 3px;
+    width: 44%;
+    align-items: baseline;
+}
+
+.add-group2 {
+    display: inline-block !important;
+    margin: 0 auto !important ;
+    width: 1%;
+    float: left;
+}
+.custom-select {
+
 }

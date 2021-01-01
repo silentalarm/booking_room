@@ -211,8 +211,30 @@
                     <div class="card-body">
                         <h2 class="py-1">Члены клуба</h2>
 
-                        {{ $groups_ := .groups }}
+                        Добавить группу
+
                         {{ $members_ := .members }}
+
+                        <div class="">
+                            <div class="add-group">
+                                <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
+                            </div>
+
+                            <select class="custom-select add-groupb" id="memberName" name="memberName">
+                                {{ range $mem := $members_ }}
+                                <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                {{ end }}
+                            </select>
+                            <div class="add-group2">
+                                <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
+                                    <i class="fas fa-plus large_icon"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        {{ $groups_ := .groups }}
+
 
                         {{ range $group := $groups_ }}
 

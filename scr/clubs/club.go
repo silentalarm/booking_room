@@ -61,7 +61,7 @@ func Club(w http.ResponseWriter, r *http.Request) {
 	owner := dbh.IsUserClubOwner(db, user.Name, user.ID, clubName)
 	club, _ := dbh.GetClub(db, clubName, true)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
-	thisClubMember := dbh.IsUserInClub(db, user.Name, user.ID, clubName)
+	thisClubMember := dbh.IsUserInClub(db, user.Name, clubName)
 	members, _ := dbh.GetClubMembers(db, clubName)
 	groups, _ := dbh.GetClubGroups(db, clubName)
 	userGroup, _ := dbh.GetUserGroup(db, user.Name, clubName)
@@ -147,7 +147,7 @@ func upRank(db *sql.DB, nickName, clubName string) string {
 func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	member := dbh.IsUserInClub(db, nickName, intraID, clubName)
+	member := dbh.IsUserInClub(db, nickName, clubName)
 	if member == false {
 		redirect = "/lol?ss=" + intraID
 		return redirect
@@ -189,14 +189,15 @@ func allowedColor(colorForCheck string) bool {
 	return false
 }
 
-func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
+func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	err := dbh.SetUserGroup(db, groupName, nickName, clubName)
-	if err != nil {
+	inClub := dbh.IsUserInClub(db, memberName, clubName)
+	if inClub == false {
 		return "/"
 	}
 
+	dbh.CreateNewGroup(db, groupName, clubName, memberName)
 	return redirect
 }
 
@@ -210,6 +211,11 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 		groupName := r.FormValue("groupName")
 
 		redirect = userChangeGroup(db, groupName, user.Name, clubName)
+	case "addGroup":
+		newGroupName := r.FormValue("newGroupName")
+		memberName := r.FormValue("memberName")
+
+		addGroup(db, newGroupName, memberName, clubName)
 	case "Удалить клуб":
 		redirect = delete(db, clubName)
 	case "Сохранить":
@@ -230,10 +236,21 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 	return redirect
 }
 
+func userChangeGroup(db *sql.DB, groupName, nickName, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	err := dbh.SetUserGroup(db, groupName, nickName, clubName)
+	if err != nil {
+		return "/"
+	}
+
+	return redirect
+}
+
 func stateHandlerUser(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
 	var redirect string
 
-	isMember := dbh.IsUserInClub(db, user.Name, user.ID, clubName)
+	isMember := dbh.IsUserInClub(db, user.Name, clubName)
 	if isMember == false {
 		return redirect
 	}

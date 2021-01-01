@@ -29,8 +29,21 @@ func InsertGroup(db *sql.DB, groupName, clubName, ownerName string, groupID int)
 	return nil
 }
 
-func CreateGroup(db *sql.DB, clubName, ownerName string) error {
+func CreateMainGroup(db *sql.DB, clubName, ownerName string) error {
 	err := InsertGroup(db, "main", clubName, ownerName, 0)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName string) error {
+	isExist := GroupIsExist(db, groupName, clubName)
+	if isExist == true {
+		return errors.New("groupName: group is exist")
+	}
+
+	err := InsertGroup(db, groupName, clubName, ownerName, 0)
 	if err != nil {
 		return err
 	}
@@ -88,6 +101,7 @@ func SetUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
 		groupName, nickName, clubName)
 	if err != nil {
 		panic(err)
+		return err
 	}
 	return nil
 }

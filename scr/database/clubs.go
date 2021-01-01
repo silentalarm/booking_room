@@ -68,7 +68,7 @@ func GetClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, erro
 		}
 		clubsSize, _ := getClubSize(db, row.ClubName)
 		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
-		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Member = IsUserInClub(db, nickName, row.ClubName)
 		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
 		if row.Approved == approved {
@@ -139,9 +139,9 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 		}
 
 		clubsSize, _ := getClubSize(db, row.ClubName)
-		userJoined := IsUserInClub(db, nickName, idIntra, row.ClubName)
+		userJoined := IsUserInClub(db, nickName, row.ClubName)
 		row.NickOwner, row.IDOwner, _ = GetMemberByAccess(db, row.ClubName, 3)
-		row.Member = IsUserInClub(db, nickName, idIntra, row.ClubName)
+		row.Member = IsUserInClub(db, nickName, row.ClubName)
 		row.Owner = IsUserClubOwner(db, nickName, idIntra, row.ClubName)
 		row.Size = clubsSize
 		if row.Approved == approved && userJoined == true {
@@ -152,7 +152,7 @@ func GetUserClubs(db *sql.DB, approved bool, nickName, idIntra string) ([]Club, 
 }
 
 func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, joinDate, idIntra string) {
-	clubMember := IsUserInClub(db, nickName, idIntra, clubName)
+	clubMember := IsUserInClub(db, nickName, clubName)
 
 	if clubMember == true {
 		return
@@ -167,7 +167,7 @@ func UserJoinСlub(db *sql.DB, nickName, clubName string, memberAccess int, join
 }
 
 func UserLeaveСlub(db *sql.DB, nickName, idIntra, clubName string) {
-	clubMember := IsUserInClub(db, nickName, idIntra, clubName)
+	clubMember := IsUserInClub(db, nickName, clubName)
 
 	if clubMember == false {
 		return
@@ -219,9 +219,9 @@ func IsUserClubMember(db *sql.DB, nickName, idIntra string) bool {
 	return true
 }
 
-func IsUserInClub(db *sql.DB, nickName, idIntra, clubName string) bool {
-	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and idintra=$2 and clubname=$3",
-		nickName, idIntra, clubName).Scan(&nickName)
+func IsUserInClub(db *sql.DB, nickName, clubName string) bool {
+	err := db.QueryRow("SELECT nickname FROM clubmembers WHERE nickname=$1 and clubname=$2",
+		nickName, clubName).Scan(&nickName)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			panic(err)
