@@ -130,7 +130,10 @@ func kick(db *sql.DB, nickName, idIntra, clubName string) string {
 func makeModerator(db *sql.DB, nickName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	_ = dbh.SetAccess(db, nickName, clubName, 2)
+	err := dbh.SetAccess(db, nickName, clubName, 2)
+	if err != nil {
+		return "/"
+	}
 
 	return redirect
 }
@@ -212,6 +215,11 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 	err = dbh.SetUserGroup(db, groupName, memberName, clubName)
 	if err != nil {
 		panic(err)
+		return "/"
+	}
+
+	err = dbh.SetAccess(db, memberName, clubName, 2)
+	if err != nil {
 		return "/"
 	}
 
