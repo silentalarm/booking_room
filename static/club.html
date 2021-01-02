@@ -212,35 +212,10 @@
                         <h2 class="py-1">Члены клуба</h2>
 
                         {{ $members_ := .members }}
-                        {{ if eq $.owner true }}
-                            Добавить группу
-                            <form method="POST">
-                                <div class="">
-                                    <div class="add-group">
-                                        <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
-                                    </div>
-
-                                    <select class="custom-select add-groupb" id="memberName" name="memberName">
-                                        {{ range $mem := $members_ }}
-                                            {{ if eq $mem.GroupOwner false }}
-                                                <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
-                                            {{ end }}
-                                        {{ end }}
-                                    </select>
-                                    <div class="add-group2">
-                                        <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
-                                            <i class="fas fa-plus large_icon"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        {{ end }}
-
                         {{ $groups_ := .groups }}
 
 
                         {{ range $group := $groups_ }}
-
                             {{ if eq $.thisMember true }}
                                 {{ if eq $.groupOwner false }}
                                 {{ if ne $.userGroup $group.Name }}
@@ -332,6 +307,30 @@
                                     {{ end }}
                                 </tbody>
                             </table>
+                        {{ end }}
+
+                        {{ if eq $.owner true }}
+                        Добавить группу
+                        <form method="POST">
+                            <div class="">
+                                <div class="add-group">
+                                    <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
+                                </div>
+
+                                <select class="custom-select add-groupb" id="memberName" name="memberName">
+                                    {{ range $mem := $members_ }}
+                                    {{ if eq $mem.GroupOwner false }}
+                                    <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                    {{ end }}
+                                    {{ end }}
+                                </select>
+                                <div class="add-group2">
+                                    <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
+                                        <i class="fas fa-plus large_icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                         {{ end }}
                     </div>
                 </div>
