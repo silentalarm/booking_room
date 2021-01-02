@@ -256,7 +256,8 @@
 
                             {{ if ne $group.Name "main" }}
                                 <div>
-                                     {{ $group.Name }}
+                                    {{ $group.Name }}
+                                    {{ if eq $.owner true }}
                                     <div id="deleteGroupButton">
                                         <form method="POST">
                                             <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
@@ -265,6 +266,7 @@
                                             </button>
                                         </form>
                                     </div>
+                                    {{ end }}
                                 </div>
                             {{ end }}
 
