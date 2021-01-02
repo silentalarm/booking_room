@@ -254,20 +254,19 @@
                                 {{ end }}
                             {{ end }}
 
-                            <div>
-                                {{ if ne $group.Name "main" }}
-                                    {{ $group.Name }}
-                                {{ end }}
-
-                                <div id="deleteGroupButton">
-                                    <form method="POST">
-                                        <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
-                                        <button  type="submit" class="btn font-weight-normal" title="Удалить группу" name="sumbit" value="deleteGroup">
-                                            <i class="fas fa-trash-alt large_icon"></i>
-                                        </button>
-                                    </form>
+                            {{ if ne $group.Name "main" }}
+                                <div>
+                                     {{ $group.Name }}
+                                    <div id="deleteGroupButton">
+                                        <form method="POST">
+                                            <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
+                                            <button  type="submit" class="btn font-weight-normal" title="Удалить группу" name="sumbit" value="deleteGroup">
+                                                <i class="fas fa-trash-alt large_icon"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+                            {{ end }}
 
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">

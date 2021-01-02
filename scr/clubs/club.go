@@ -229,6 +229,10 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 func deleteGroup(db *sql.DB, groupName, clubName string) string {
 	redirect := "/club?clubname=" + clubName
 
+	if groupName == "main" {
+		return "/"
+	}
+
 	err := dbh.DeleteGroup(db, groupName, clubName)
 	if err != nil {
 		panic(err)
