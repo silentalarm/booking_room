@@ -226,6 +226,24 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 	return redirect
 }
 
+func deleteGroup(db *sql.DB, groupName, clubName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	err := dbh.DeleteGroup(db, groupName, clubName)
+	if err != nil {
+		panic(err)
+		return "/"
+	}
+
+	err = dbh.SetUsersGroup(db, groupName, "main", clubName)
+	if err != nil {
+		panic(err)
+		return "/"
+	}
+
+	return redirect
+}
+
 func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
 	var redirect string
 	nickName := r.FormValue("nickName")
@@ -236,6 +254,10 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 		groupName := r.FormValue("groupName")
 
 		redirect = userChangeGroup(db, groupName, user.Name, clubName)
+	case "deleteGroup":
+		deleteGroupName := r.FormValue("deleteGroupName")
+
+		redirect = deleteGroup(db, deleteGroupName, clubName)
 	case "addGroup":
 		newGroupName := r.FormValue("newGroupName")
 		memberName := r.FormValue("memberName")

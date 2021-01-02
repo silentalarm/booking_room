@@ -736,3 +736,9 @@ button:focus{
 .custom-select {
 
 }
+
+#deleteGroupButton {
+    display: inline-block !important;
+    margin: 0 auto !important ;
+    width: 1%;
+}

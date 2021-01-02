@@ -112,6 +112,21 @@ func SetUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
 	return nil
 }
 
+func SetUsersGroup(db *sql.DB, oldGroupName, newGroupName, clubName string) error {
+	isExist := GroupIsExist(db, newGroupName, clubName)
+	if isExist == false {
+		return errors.New("groupName: group does not exist")
+	}
+
+	_, err := db.Exec("UPDATE clubmembers SET groupname=$1 WHERE groupname=$2 and clubname=$3",
+		newGroupName, oldGroupName, clubName)
+	if err != nil {
+		panic(err)
+		return err
+	}
+	return nil
+}
+
 func ChangeUserGroup(db *sql.DB, groupName, nickName, clubName string) error {
 	isExist := GroupIsExist(db, groupName, clubName)
 	if isExist == false {

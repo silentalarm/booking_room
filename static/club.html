@@ -258,13 +258,17 @@
                                 {{ if ne $group.Name "main" }}
                                     {{ $group.Name }}
                                 {{ end }}
+
+                                <div id="deleteGroupButton">
+                                    <form method="POST">
+                                        <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
+                                        <button  type="submit" class="btn font-weight-normal" title="Удалить группу" name="sumbit" value="deleteGroup">
+                                            <i class="fas fa-trash-alt large_icon"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                                <form method="POST">
-                                    <input type="hidden" value="{{$group.Name}}" name="groupName">
-                                    <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
-                                        <i class="fas fa-vote-yea large_icon"></i>
-                                    </button>
-                                </form>
+
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                 <tbody class="font-weight-normal table-bordered">
                                     <tr class="row_club text-center">
