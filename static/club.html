@@ -230,10 +230,8 @@
                             {{ end }}
 
                             {{ if ne $group.Name "main" }}
-                                <div>
-                                    <div id="groupid{{$group.Name}}" >
-                                        {{ $group.Name }}
-                                    </div>
+                                <div id="groupid{{$group.Name}}">
+                                    {{ $group.Name }}
                                     {{ if eq $.owner true }}
                                     <div id="deleteGroupButton">
                                         <form method="POST">
