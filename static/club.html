@@ -230,7 +230,7 @@
                             {{ end }}
 
                             {{ if ne $group.Name "main" }}
-                                <div id="groupid{{$group.Name}}" style="background-color: {{$group.Color}};">
+                                <div id="groupid{{$group.Name}}" style="color: {{$group.Color}};">
                                     {{ $group.Name }}
                                     {{ if eq $.owner true }}
                                     <div id="deleteGroupButton">
