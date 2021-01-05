@@ -6,5 +6,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="svg.js" level="application" />
+    <orderEntry type="library" name="perlin-noise-simplex" level="application" />
   </component>
 </module>

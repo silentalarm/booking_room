@@ -262,3 +262,8 @@ function changeColor(value){
 function changeLineColor(id ,value){
     document.getElementById(id).style.backgroundColor = value;
 }
+
+$("#colorGroup").change(function(){
+    var color = document.getElementById("colorGroup").value;
+    document.getElementById("colorGroup").style.backgroundColor = color;
+});

@@ -11,6 +11,7 @@ type Group struct {
 	Name    string
 	Owner   string
 	GroupID int
+	Color   string
 }
 
 type ByID []Group
@@ -19,10 +20,10 @@ func (a ByID) Len() int           { return len(a) }
 func (a ByID) Less(i, j int) bool { return a[i].GroupID < a[j].GroupID }
 func (a ByID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
-func InsertGroup(db *sql.DB, groupName, clubName, ownerName string, groupID int) error {
+func InsertGroup(db *sql.DB, groupName, clubName, ownerName, colorGroup string, groupID int) error {
 	_, err := db.Exec(
-		"INSERT INTO clubgroups (groupname, clubname, owner, groupid) values ($1, $2, $3, $4)",
-		groupName, clubName, ownerName, groupID)
+		"INSERT INTO clubgroups (groupname, clubname, owner, groupid, color) values ($1, $2, $3, $4, $5)",
+		groupName, clubName, ownerName, groupID, colorGroup)
 	if err != nil {
 		return err
 	}
@@ -30,14 +31,14 @@ func InsertGroup(db *sql.DB, groupName, clubName, ownerName string, groupID int)
 }
 
 func CreateMainGroup(db *sql.DB, clubName, ownerName string) error {
-	err := InsertGroup(db, "main", clubName, ownerName, 0)
+	err := InsertGroup(db, "main", clubName, ownerName, "#ffffff", 0)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName string) error {
+func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName, colorGroup string) error {
 	isExist := GroupIsExist(db, groupName, clubName)
 	if isExist == true {
 		return errors.New("groupName: group is exist")
@@ -49,20 +50,20 @@ func CreateNewGroup(db *sql.DB, groupName, clubName, ownerName string) error {
 	}
 	lasId += 1
 
-	err = InsertGroup(db, groupName, clubName, ownerName, lasId)
+	err = InsertGroup(db, groupName, clubName, ownerName, colorGroup, lasId)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func AddGroup(db *sql.DB, groupName, clubName, ownerName string) error {
+func AddGroup(db *sql.DB, groupName, clubName, ownerName, colorGroup string) error {
 	newGroupID, err := GetLastGroupID(db, groupName)
 	if err != nil {
 		return err
 	}
 
-	err = InsertGroup(db, groupName, clubName, ownerName, newGroupID)
+	err = InsertGroup(db, groupName, clubName, ownerName, colorGroup, newGroupID)
 	if err != nil {
 		return err
 	}
@@ -264,7 +265,8 @@ func acceptGoupRows(rows *sql.Rows, row *Group) error {
 		&row.Name,
 		&row.Club,
 		&row.Owner,
-		&row.GroupID)
+		&row.GroupID,
+		&row.Color)
 
 	return err
 }

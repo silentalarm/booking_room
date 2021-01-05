@@ -194,7 +194,7 @@ func allowedColor(colorForCheck string) bool {
 	return false
 }
 
-func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
+func addGroup(db *sql.DB, groupName, memberName, clubName, colorGroup string) string {
 	redirect := "/club?clubname=" + clubName
 
 	isAlreadyowner := dbh.IsUserGroupsOwner(db, memberName, clubName)
@@ -207,7 +207,7 @@ func addGroup(db *sql.DB, groupName, memberName, clubName string) string {
 		return "/"
 	}
 
-	err := dbh.CreateNewGroup(db, groupName, clubName, memberName)
+	err := dbh.CreateNewGroup(db, groupName, clubName, memberName, colorGroup)
 	if err != nil {
 		return "/"
 	}
@@ -265,8 +265,9 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 	case "addGroup":
 		newGroupName := r.FormValue("newGroupName")
 		memberName := r.FormValue("memberName")
+		colorGroup := r.FormValue("colorGroup")
 
-		redirect = addGroup(db, newGroupName, memberName, clubName)
+		redirect = addGroup(db, newGroupName, memberName, clubName, colorGroup)
 	case "Удалить клуб":
 		redirect = delete(db, clubName)
 	case "Сохранить":

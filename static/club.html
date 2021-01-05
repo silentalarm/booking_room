@@ -231,7 +231,9 @@
 
                             {{ if ne $group.Name "main" }}
                                 <div>
-                                    {{ $group.Name }}
+                                    <div id="groupid{{$group.Name}}" >
+                                        {{ $group.Name }}
+                                    </div>
                                     {{ if eq $.owner true }}
                                     <div id="deleteGroupButton">
                                         <form method="POST">
@@ -243,6 +245,10 @@
                                     </div>
                                     {{ end }}
                                 </div>
+
+                                <script>
+                                    document.getElementById("groupid{{$group.Name}}").style.color = '{{$group.Color}}'
+                                </script>
                             {{ end }}
 
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
@@ -324,6 +330,16 @@
                                     {{ end }}
                                     {{ end }}
                                 </select>
+
+                                <select id="colorGroup" name="colorGroup" class="custom-select add-groupc">
+                                    <option value="#ffffff">Белый</option>
+                                    <option value="#ba90ff">Фиолетовый</option>
+                                    <option value="#97ff90">Зеленый</option>
+                                    <option value="#72d7ff">Синий</option>
+                                    <option value="#ff8181">Красный</option>
+                                    <option value="#000000">Черный</option>
+                                </select>
+
                                 <div class="add-group2">
                                     <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
                                         <i class="fas fa-plus large_icon"></i>
