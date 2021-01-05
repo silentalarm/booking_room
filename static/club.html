@@ -230,7 +230,7 @@
                             {{ end }}
 
                             {{ if ne $group.Name "main" }}
-                                <div id="groupid{{$group.Name}}">
+                                <div id="groupid{{$group.Name}}" style="background-color: {{$group.Color}};">
                                     {{ $group.Name }}
                                     {{ if eq $.owner true }}
                                     <div id="deleteGroupButton">
@@ -243,10 +243,11 @@
                                     </div>
                                     {{ end }}
                                 </div>
-
+                            <!--
                                 <script>
                                     document.getElementById("groupid{{$group.Name}}").style.color = '{{$group.Color}}'
                                 </script>
+                                -->
                             {{ end }}
 
                             <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
