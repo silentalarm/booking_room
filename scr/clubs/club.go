@@ -257,6 +257,12 @@ func setGroupOwner(db *sql.DB, nickName, clubName, groupName string) string {
 		return "/"
 	}
 
+	err = dbh.ChangeUserGroup(db, groupName, nickName, clubName)
+	if err != nil {
+		panic(err)
+		return "/"
+	}
+
 	return redirect
 }
 
