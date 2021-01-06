@@ -251,13 +251,13 @@ func deleteGroup(db *sql.DB, groupName, clubName string) string {
 func setGroupOwner(db *sql.DB, nickName, clubName, groupName string) string {
 	redirect := "/club?clubname=" + clubName
 
-	err := dbh.SetGroupOwner(db, nickName, clubName, groupName)
+	err := dbh.ChangeUserGroup(db, groupName, nickName, clubName)
 	if err != nil {
 		panic(err)
 		return "/"
 	}
 
-	err = dbh.ChangeUserGroup(db, groupName, nickName, clubName)
+	err = dbh.SetGroupOwner(db, nickName, clubName, groupName)
 	if err != nil {
 		panic(err)
 		return "/"
