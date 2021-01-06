@@ -154,12 +154,12 @@ func setOwner(db *sql.DB, nickName, nickOwner, intraID, clubName string) string 
 
 	member := dbh.IsUserInClub(db, nickName, clubName)
 	if member == false {
-		redirect = "/lol?ss=" + intraID
-		return redirect
+		return "/"
 	}
 
 	_ = dbh.SetAccess(db, nickName, clubName, 3)
 	_ = dbh.SetAccess(db, nickOwner, clubName, 0)
+	dbh.SetGroupOwner(db, nickName, clubName, "main")
 	dbh.SetClubOwner(db, nickName, clubName)
 
 	return redirect
@@ -248,6 +248,18 @@ func deleteGroup(db *sql.DB, groupName, clubName string) string {
 	return redirect
 }
 
+func setGroupOwner(db *sql.DB, nickName, clubName, groupName string) string {
+	redirect := "/club?clubname=" + clubName
+
+	err := dbh.SetGroupOwner(db, nickName, clubName, groupName)
+	if err != nil {
+		panic(err)
+		return "/"
+	}
+
+	return redirect
+}
+
 func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubName string) string {
 	var redirect string
 	nickName := r.FormValue("nickName")
@@ -262,6 +274,11 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 		deleteGroupName := r.FormValue("deleteGroupName")
 
 		redirect = deleteGroup(db, deleteGroupName, clubName)
+	case "setGroupOwner":
+		memberName := r.FormValue("memberName")
+		groupName := r.FormValue("groupName")
+
+		redirect = setGroupOwner(db, memberName, clubName, groupName)
 	case "addGroup":
 		newGroupName := r.FormValue("newGroupName")
 		memberName := r.FormValue("memberName")

@@ -341,6 +341,31 @@
                                 </div>
                             </div>
                         </form>
+
+                        Сделать лидером группы
+                        <form method="POST">
+                            <div class="">
+                                <select class="custom-select add-group" id="memberName" name="groupName">
+                                    {{ range $group := $groups_ }}
+                                    <option value="{{  $group.Name }}">{{ $group.Name }}</option>
+                                    {{ end }}
+                                </select>
+
+                                <select class="custom-select add-groupb" id="memberName" name="memberName">
+                                    {{ range $mem := $members_ }}
+                                        <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                    {{ end }}
+                                </select>
+
+
+
+                                <div class="add-group2">
+                                    <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="setGroupOwner">
+                                        <i class="fas fa-check large_icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                         {{ end }}
                     </div>
                 </div>
