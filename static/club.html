@@ -245,7 +245,7 @@
                                 </div>
                             {{ end }}
 
-                            {{ if .members }}
+                            {{ if ne $group.Size 0 }}
                                 <table id="clubtable" class="table rounded border shadow table-sm h-100 sortable">
                                     <tbody class="font-weight-normal table-bordered">
                                         <tr class="row_club text-center">

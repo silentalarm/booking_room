@@ -193,6 +193,7 @@ func DeleteAllClubReserves(db *sql.DB, clubName string) {
 	}
 }
 
+//fixme GetGroupSize
 func getClubSize(db *sql.DB, clubName string) (int, error) {
 	rows, err := db.Query("SELECT * FROM clubmembers WHERE clubname=$1", clubName)
 	if err != nil {

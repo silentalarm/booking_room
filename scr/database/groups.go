@@ -12,6 +12,7 @@ type Group struct {
 	Owner   string
 	GroupID int
 	Color   string
+	Size    int
 }
 
 type ByID []Group
@@ -236,6 +237,20 @@ func GetUserGroup(db *sql.DB, nickName, clubName string) (string, error) {
 	return name, nil
 }
 
+func GetGroupSize(db *sql.DB, clubName, groupName string) (int, error) {
+	var size int
+	err := db.QueryRow("SELECT COUNT(*) FROM clubmembers WHERE clubname=$1 and groupname=$2",
+		clubName, groupName).Scan(&size)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return size, err
+	}
+
+	return size, nil
+}
+
 func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
 	rows, err := db.Query("SELECT * FROM clubgroups WHERE clubname=$1",
 		clubName)
@@ -250,6 +265,11 @@ func GetClubGroups(db *sql.DB, clubName string) ([]Group, error) {
 		row := Group{}
 
 		err := acceptGoupRows(rows, &row)
+		if err != nil {
+			return nil, err
+		}
+
+		row.Size, err = GetGroupSize(db, clubName, row.Name)
 		if err != nil {
 			return nil, err
 		}
