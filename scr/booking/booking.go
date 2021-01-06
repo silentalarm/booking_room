@@ -100,7 +100,6 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 	}
 
 	user := ses.GetUser(session)
-
 	if user.Authenticated == false {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
@@ -192,7 +191,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 
-func tryInsertLines(user *ses.User, db *sql.DB, table string, clubName string, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
+func tryInsertLines(user *ses.User, db *sql.DB, table, clubName, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
@@ -280,8 +279,10 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	user := ses.GetUser(session)
 
 	timeRes, _ := dbh.GetDateReserves(db, tableName, date)
-	memberClubs, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
-	data := rebuildTable(timeRes, memberClubs)
+	memberClubsOwner, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
+	memberClubsModer, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 2)
+	memberClubsOwner = append(memberClubsOwner, memberClubsModer...)
+	data := rebuildTable(timeRes, memberClubsOwner)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
 	dataMap := map[string]interface{}{
@@ -290,7 +291,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"tableName": tableName,
 		"date":      date,
 		"member":    member,
-		"clubs":     memberClubs,
+		"clubs":     memberClubsOwner,
 	}
 	_ = tmpl.Execute(w, dataMap)
 }

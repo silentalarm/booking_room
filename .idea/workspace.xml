@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс страницы клуба">
-      <change beforePath="$PROJECT_DIR$/static/club.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/club.html" afterDir="false" />
+    <list default="true" id="9e2c9ec9-8035-4203-904b-e0c5c5db339b" name="Default Changelist" comment="фикс страницы резервов">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scr/booking/booking.go" beforeDir="false" afterPath="$PROJECT_DIR$/scr/booking/booking.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/table.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/table_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/table_v2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +110,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="блюр на карточки" />
     <MESSAGE value="почистил бред" />
     <MESSAGE value="новый стиль моих клубов" />
     <MESSAGE value="фикс нового стиля моих клубов" />
@@ -133,6 +134,7 @@
     <MESSAGE value="добавил удаление группы" />
     <MESSAGE value="фикс удаления группы" />
     <MESSAGE value="фикс страницы клуба" />
-    <option name="LAST_COMMIT_MESSAGE" value="фикс страницы клуба" />
+    <MESSAGE value="фикс страницы резервов" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс страницы резервов" />
   </component>
 </project>
