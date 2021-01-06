@@ -349,11 +349,11 @@
 
                                 <select class="custom-select add-groupb" id="memberName" name="setMemberName">
                                     {{ range $mem := $members_ }}
-                                        <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                        {{ if eq $mem.GroupOwner false }}
+                                            <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                        {{ end }}
                                     {{ end }}
                                 </select>
-
-
 
                                 <div class="add-group2">
                                     <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="setGroupOwner">
