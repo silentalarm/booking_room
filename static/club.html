@@ -321,14 +321,6 @@
                                     <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
                                 </div>
 
-                                <select class="custom-select add-groupb" id="memberName" name="memberName">
-                                    {{ range $mem := $members_ }}
-                                    {{ if eq $mem.GroupOwner false }}
-                                    <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
-                                    {{ end }}
-                                    {{ end }}
-                                </select>
-
                                 <select id="colorGroup" name="colorGroup" class="custom-select add-groupc">
                                     <option value="#ffffff">Белый</option>
                                     <option value="#ba90ff">Фиолетовый</option>
