@@ -345,13 +345,13 @@
                         Сделать лидером группы
                         <form method="POST">
                             <div class="">
-                                <select class="custom-select add-group" id="memberName" name="groupName">
+                                <select class="custom-select add-group" id="memberName" name="setGroupName">
                                     {{ range $group := $groups_ }}
                                     <option value="{{  $group.Name }}">{{ $group.Name }}</option>
                                     {{ end }}
                                 </select>
 
-                                <select class="custom-select add-groupb" id="memberName" name="memberName">
+                                <select class="custom-select add-groupb" id="memberName" name="setMemberName">
                                     {{ range $mem := $members_ }}
                                         <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
                                     {{ end }}

@@ -281,8 +281,8 @@ func stateHandlerOwner(r *http.Request, db *sql.DB, user *ses.User, sumbit, club
 
 		redirect = deleteGroup(db, deleteGroupName, clubName)
 	case "setGroupOwner":
-		memberName := r.FormValue("memberName")
-		groupName := r.FormValue("groupName")
+		memberName := r.FormValue("setMemberName")
+		groupName := r.FormValue("setGroupName")
 
 		redirect = setGroupOwner(db, memberName, clubName, groupName)
 	case "addGroup":
