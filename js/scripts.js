@@ -281,17 +281,14 @@ $('#clubName').on('change', function () {
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
         success: function(r) {
-            var myDiv = document.getElementById("myDiv");
+            var myDiv = document.getElementById("groupName");
             var array = r.List;
-
-            var selectList = document.createElement("select");
-            selectList.id = "mySelect";
-            myDiv.appendChild(selectList);
+;
             for (var i = 0; i < array.length; i++) {
                 var option = document.createElement("option");
                 option.value = array[i];
                 option.text = array[i];
-                selectList.appendChild(option);
+                myDiv.appendChild(option);
             }
         }
     });
