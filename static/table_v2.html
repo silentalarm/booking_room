@@ -172,7 +172,7 @@
                     {{ else }}
                     <tr class="tr_size bg-booked" id="line{{ .LineID }}" style="background-color: {{ .Color }}">
                         <td scope="col" class="h-td font-weight-normal min" style="border-color: {{ .Color }}">{{ .Time }}<i class="fas fa-clock pl-1"></i></td>
-                        <td scope="col" class="h-td font-weight-normal pl-3" style="border-color: {{ .Color }}"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> для группы <b><div style="color: {{ .GroupColor }}">{{ .GroupName }}</b></div></span>
+                        <td scope="col" class="h-td font-weight-normal pl-3" style="border-color: {{ .Color }}"><span class="overflow-ellipsis"><b class="text-uppercase">{{ .NickName }}</b> зарезервировал(а) это время для клуба <b class="text-uppercase">{{ .ClubName }}</b> для группы <b style="color: {{ .GroupColor }}">{{ .GroupName }}</b></span>
                         {{ if eq .Moder true }}
                             <span class="unreserve" >&times;</span>
                         {{ end }}
