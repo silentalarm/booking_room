@@ -306,7 +306,7 @@ func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-
+	fmt.Println(d.Name)
 	// create json response from struct
 	a, err := json.Marshal(d)
 	if err != nil {
