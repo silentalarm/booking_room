@@ -273,7 +273,6 @@ $('#clubName').on('change', function () {
     var clubName = $(this).val();
     console.log(clubName)
 
-
     $.ajax({
         url: "/getgroups",
         method: "POST",
@@ -281,14 +280,14 @@ $('#clubName').on('change', function () {
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
         success: function(r) {
-            var myDiv = document.getElementById("groupName");
+            var selectList = document.getElementById("groupName");
             var array = r.List;
-;
+
             for (var i = 0; i < array.length; i++) {
                 var option = document.createElement("option");
                 option.value = array[i];
                 option.text = array[i];
-                myDiv.appendChild(option);
+                selectList.appendChild(option);
             }
         }
     });
