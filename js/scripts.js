@@ -299,6 +299,10 @@ $("#colorGroup").change(function(){
 });
 
 
-$('#clubName').on('change', fillSelect());
+$('#clubName').on('change', function(){
+    fillSelect()
+});
 
-$(document).ready(fillSelect());
+$(document).ready( function(){
+    fillSelect()
+});
