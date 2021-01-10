@@ -277,7 +277,8 @@ $('#clubName').on('change', function () {
     $.ajax({
         url: "/getgroups",
         method: "GET",
-        data: {Name: clubName},
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
         success: function(data) {
             alert(data);
