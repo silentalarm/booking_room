@@ -271,6 +271,8 @@ $("#colorGroup").change(function(){
 
 $('#clubName').on('change', function () {
     var clubName = $(this).val();
+    console.log(clubName)
+
 
     $.ajax({
         url: "/getgroups",
