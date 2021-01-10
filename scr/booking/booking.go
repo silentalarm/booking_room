@@ -14,7 +14,7 @@ import (
 )
 
 type AClub struct {
-	Name string `json:"club"`
+	Name string
 }
 
 var tableWhiteList = []string{
