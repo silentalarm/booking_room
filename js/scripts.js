@@ -263,8 +263,13 @@ function changeLineColor(id ,value){
     document.getElementById(id).style.backgroundColor = value;
 }
 
-function fillSelect() {
+$("#colorGroup").change(function(){
+    var color = document.getElementById("colorGroup").value;
+    document.getElementById("colorGroup").style.backgroundColor = color;
+});
 
+
+$('#clubName').on('change', function () {
     var clubName = $(this).val();
     console.log(clubName)
 
@@ -290,19 +295,32 @@ function fillSelect() {
             }
         }
     });
-}
-
-
-$("#colorGroup").change(function(){
-    var color = document.getElementById("colorGroup").value;
-    document.getElementById("colorGroup").style.backgroundColor = color;
 });
 
+$(document).ready(function(){
+    var clubName = $(this).val();
+    console.log(clubName)
 
-$('#clubName').on('change', function(){
-    fillSelect()
-});
+    $.ajax({
+        url: "/getgroups",
+        method: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify({ Name: clubName}),
+        dataType: 'json',
+        success: function(r) {
+            var selectList = document.getElementById("groupSelect");
+            var array = r.List;
 
-$(document).ready( function(){
-    fillSelect()
+            while (selectList.hasChildNodes()) {
+                selectList.removeChild(selectList.lastChild);
+            }
+
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("option");
+                option.value = array[i];
+                option.text = array[i];
+                selectList.appendChild(option);
+            }
+        }
+    });
 });
