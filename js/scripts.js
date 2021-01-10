@@ -45,7 +45,7 @@ clubName = $('#clubName').val()
 
 if (clubName != null) {
     function checkHandler() {
-        if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0 && isMoreThenZero($('#peopleNumber').val().trim())) {
+        if ($('#statusAuth').val() == "true" && $('#clubName').val().trim().length > 0 && lineSet.size > 0) {
             $('#btn_reservation').prop('disabled', false);
         } else {
             $('#btn_reservation').prop('disabled', true);
