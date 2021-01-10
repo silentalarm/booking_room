@@ -282,7 +282,7 @@ $('#clubName').on('change', function () {
         dataType: 'json',
         success: function(r) {
             var myDiv = document.getElementById("myDiv");
-            var array = r.Names;
+            var array = r.List;
 
             var selectList = document.createElement("select");
             selectList.id = "mySelect";

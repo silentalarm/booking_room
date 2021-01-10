@@ -18,7 +18,7 @@ type AClub struct {
 }
 
 type Groups struct {
-	Names []string
+	List []string
 }
 
 var tableWhiteList = []string{
@@ -305,39 +305,39 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	_ = tmpl.Execute(w, dataMap)
 }
 func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
-	db := dbh.OpenDB()
-	defer db.Close()
-
 	var club AClub
 	err := json.NewDecoder(r.Body).Decode(&club)
 	if err != nil {
 		panic(err)
 	}
 
-	groups, err := dbh.GetClubGroups(db, club.Name)
-	if err != nil {
-		panic(err)
-	}
-
-	groupList, _ := getGroupList(groups)
+	groupList, _ := getGroupList(club.Name)
 	fmt.Printf("%s\n", groupList)
-	groups_ := Groups{
-		Names: groupList,
-	}
-	// create json response from struct
-	a, err := json.Marshal(groups_)
+
+	a, err := json.Marshal(groupList)
 	if err != nil {
 		panic(err)
 	}
 	w.Write(a)
 }
 
-func getGroupList(groups []dbh.Group) ([]string, error) {
-	groupList := []string{}
+func getGroupList(clubName string) (Groups, error) {
+	db := dbh.OpenDB()
+	defer db.Close()
 
-	for _, group := range groups {
+	clubGroups, err := dbh.GetClubGroups(db, clubName)
+	if err != nil {
+		panic(err)
+	}
+
+	groupList := []string{}
+	for _, group := range clubGroups {
 		groupList = append(groupList, group.Name)
 	}
 
-	return groupList, nil
+	groups := Groups{
+		List: groupList,
+	}
+
+	return groups, nil
 }
