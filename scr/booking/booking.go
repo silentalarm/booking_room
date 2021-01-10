@@ -118,9 +118,15 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	clubName := r.FormValue("clubName")
-
 	clubIsExist := dbh.ClubIsExist(db, clubName)
 	if clubIsExist == false {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	groupName := r.FormValue("groupSelect")
+	groupIsExis := dbh.GroupIsExist(db, groupName, clubName)
+	if groupIsExis == false {
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -138,6 +144,7 @@ func SaveReserve(w http.ResponseWriter, r *http.Request) {
 		tableName,
 		clubName,
 		peopleNumber,
+		groupName,
 		[]string{
 			date,
 		},
@@ -200,7 +207,7 @@ func DeleteReserveFromUser(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "?table="+tableName+"&date="+date, http.StatusFound)
 }
 
-func tryInsertLines(user *ses.User, db *sql.DB, table, clubName, peopleNumber string, date []string, lines []int) (interface{}, interface{}) {
+func tryInsertLines(user *ses.User, db *sql.DB, table, clubName, peopleNumber, groupName string, date []string, lines []int) (interface{}, interface{}) {
 	successfullyAdded := make(map[string][]string)
 	unSuccessfullyAdded := make(map[string][]string)
 	intPeopleNumber, _ := strconv.Atoi(peopleNumber)
@@ -218,7 +225,7 @@ func tryInsertLines(user *ses.User, db *sql.DB, table, clubName, peopleNumber st
 			empty := dbh.ReserveIsExist(db, table, date_, line)
 			strHour := strconv.Itoa(line)
 			if empty == false && (line >= 0 && line <= 23) {
-				_ = dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, line, date_)
+				_ = dbh.InsertReserve(db, table, user.Name, clubName, intPeopleNumber, line, date_, groupName)
 				successfullyLines = append(successfullyLines, strHour)
 			} else {
 				unSuccessfullyLines = append(unSuccessfullyLines, strHour)

@@ -13,12 +13,13 @@ type ReserveRow struct {
 	PeopleNumber int
 	ReserveTime  int
 	ReserveDate  string
+	GroupName    string
 }
 
-func InsertReserve(db *sql.DB, table string, nickname string, clubname string, people_number int, reserv_time int, reserv_date string) error {
+func InsertReserve(db *sql.DB, table, nickname, clubname string, people_number int, reserv_time int, reserv_date, groupname string) error {
 	_, err := db.Exec(
-		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date) values ($1, $2, $3, $4, $5)",
-		nickname, clubname, people_number, reserv_time, reserv_date)
+		"INSERT INTO "+table+" (nickname, clubname, people_number, reserv_time, reserv_date, groupname) values ($1, $2, $3, $4, $5, $6)",
+		nickname, clubname, people_number, reserv_time, reserv_date, groupname)
 	if err != nil {
 		panic(err)
 		return err
@@ -36,7 +37,7 @@ func GetDateReserves(db *sql.DB, table string, targetDate string) ([]ReserveRow,
 
 	for rows.Next() {
 		Row := ReserveRow{}
-		err := rows.Scan(&Row.ID, &Row.NickName, &Row.ClubName, &Row.PeopleNumber, &Row.ReserveTime, &Row.ReserveDate)
+		err := rows.Scan(&Row.ID, &Row.NickName, &Row.ClubName, &Row.PeopleNumber, &Row.ReserveTime, &Row.ReserveDate, &Row.GroupName)
 		if err != nil {
 			fmt.Println(err)
 			continue
