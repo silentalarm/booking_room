@@ -305,6 +305,11 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	data := rebuildTable(timeRes, memberClubsOwner)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
+	var groupList Groups
+	if user.Authenticated == true {
+		groupList, _ = getGroupList(memberClubsOwner[0])
+	}
+
 	dataMap := map[string]interface{}{
 		"data":      data,
 		"user":      user,
@@ -312,6 +317,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"date":      date,
 		"member":    member,
 		"clubs":     memberClubsOwner,
+		"groupList": groupList,
 	}
 	_ = tmpl.Execute(w, dataMap)
 }
