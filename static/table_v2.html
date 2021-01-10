@@ -134,13 +134,17 @@
                                    <small class="form-small-txt">Клуб</small>
                                    <select class='inp text-center' id='clubName' class='input-group'name="clubName">
                                        {{ range .clubs }}
-                                       <option value="{{ . }}">{{ . }}</option>
+                                            <option value="{{ . }}">{{ . }}</option>
                                        {{ end }}
                                    </select>
                                 </p>
                                 <p>
                                     <small class="form-small-txt">Группа</small>
-                                    <select class='inp text-center' id='groupSelect' class='input-group'name="groupSelect"></select>
+                                    <select class='inp text-center' id='groupSelect' class='input-group'name="groupSelect">
+                                        {{ range .groupList }}
+                                            <option value="{{ . }}">{{ . }}</option>
+                                        {{ end }}
+                                    </select>
                                 </p>
 
                                 <!--

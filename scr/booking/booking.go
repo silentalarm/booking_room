@@ -302,6 +302,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	memberClubsOwner, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
 	memberClubsModer, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 2)
 	memberClubsOwner = append(memberClubsOwner, memberClubsModer...)
+	groupList, _ := getGroupList(memberClubsOwner[0])
 	data := rebuildTable(timeRes, memberClubsOwner)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
 
@@ -312,6 +313,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"date":      date,
 		"member":    member,
 		"clubs":     memberClubsOwner,
+		"groupList": groupList,
 	}
 	_ = tmpl.Execute(w, dataMap)
 }
