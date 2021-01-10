@@ -17,6 +17,10 @@ type AClub struct {
 	Name string
 }
 
+type Groups struct {
+	Names []string
+}
+
 var tableWhiteList = []string{
 	"floor_2",
 	"floor_3",
@@ -317,9 +321,11 @@ func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
 
 	groupList, _ := getGroupList(groups)
 	fmt.Printf("%s\n", groupList)
-
+	groups_ := Groups{
+		Names: groupList,
+	}
 	// create json response from struct
-	a, err := json.Marshal(groupList)
+	a, err := json.Marshal(groups_)
 	if err != nil {
 		panic(err)
 	}

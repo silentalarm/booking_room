@@ -281,8 +281,7 @@ $('#clubName').on('change', function () {
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
         success: function(r) {
-            $('#ajaxResp').append(r.Name);
-            var myParent = document.body;
+            var myDiv = document.getElementById("myDiv");
             var array = r.Name;
 
             var selectList = document.createElement("select");
