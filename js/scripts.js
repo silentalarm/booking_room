@@ -276,7 +276,7 @@ $('#clubName').on('change', function () {
 
     $.ajax({
         url: "/getgroups",
-        method: "GET",
+        method: "POST",
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
