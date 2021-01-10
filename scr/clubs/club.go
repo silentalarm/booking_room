@@ -242,6 +242,11 @@ func setGroupOwner(db *sql.DB, nickName, clubName, groupName string) string {
 		return "/"
 	}
 
+	err = dbh.SetAccess(db, nickName, clubName, 2)
+	if err != nil {
+		return "/"
+	}
+
 	return redirect
 }
 
@@ -315,6 +320,6 @@ func stateHandlerUser(r *http.Request, db *sql.DB, user *ses.User, sumbit, clubN
 
 		redirect = userChangeGroup(db, groupName, user.Name, clubName)
 	}
-	return redirect
 
+	return redirect
 }

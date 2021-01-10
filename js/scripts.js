@@ -267,3 +267,22 @@ $("#colorGroup").change(function(){
     var color = document.getElementById("colorGroup").value;
     document.getElementById("colorGroup").style.backgroundColor = color;
 });
+
+
+$('#clubName').on('change', function () {
+    var clubName = $(this).val();
+
+    $.ajax({
+        url: "/getgroups",
+        method: "GET",
+        data: {club: clubName},
+        dataType: 'json',
+        success: function(data) {
+            alert(data);
+        },
+    });
+});
+
+$(document).ready(function(){
+
+});

@@ -47,6 +47,7 @@ func main() {
 	http.HandleFunc("/clubstoapproved", cl.Moderation)
 	http.HandleFunc("/repregistration", rep.Registration)
 	http.HandleFunc("/report", rep.List)
+	http.HandleFunc("/getgroups", bk.ExecuteGroupsByClub)
 
 	//http.HandleFunc("/saveclub", pg.InsertNewClub)
 

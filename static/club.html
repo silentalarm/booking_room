@@ -133,17 +133,17 @@
                 </div>
 
                 {{ if eq .owner true }}
-                <form enctype="multipart/form-data" method="POST" id="form1">
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" accept=".jpg, .jpeg, .png">
-                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                    <form enctype="multipart/form-data" method="POST" id="form1">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" accept=".jpg, .jpeg, .png">
+                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <input id="imageInputButton" class="input-group-text" type="submit" name="sumbit" value="Upload" form="form1" disabled/>
+                            </div>
                         </div>
-                        <div class="input-group-append">
-                            <input id="imageInputButton" class="input-group-text" type="submit" name="sumbit" value="Upload" form="form1" disabled/>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 {{ end }}
                 <form method="POST">
                     <div class="form-row">
@@ -153,18 +153,18 @@
                             <input value="{{ .club.Color }}" id="color" type="color" class="color-shower" disabled>
                         </div>
                         {{ if eq .owner true }}
-                        <div class="form-group col-md-12 colors-list">
-                            <input class="btn color-gray" type="button" onclick="changeColor('#808080')">
-                            <input class="btn color-standart" type="button" onclick="changeColor('#039BE5')">
-                            <input class="btn color-pink" type="button" onclick="changeColor('#be68be')">
-                            <input class="btn color-red" type="button" onclick="changeColor('#c10000')">
-                            <input class="btn color-green" type="button" onclick="changeColor('#2bcd01')">
-                            <input class="btn color-yellow" type="button" onclick="changeColor('#dbd400')">
-                            <input class="btn color-orange" type="button" onclick="changeColor('#ff8316')">
-                            <input class="btn color-blue" type="button" onclick="changeColor('#1269ff')">
-                            <input class="btn color-purple" type="button" onclick="changeColor('#a514ff')">
-                            <input class="btn color-cyan" type="button" onclick="changeColor('#0fbe9b')">
-                        </div>
+                            <div class="form-group col-md-12 colors-list">
+                                <input class="btn color-gray" type="button" onclick="changeColor('#808080')">
+                                <input class="btn color-standart" type="button" onclick="changeColor('#039BE5')">
+                                <input class="btn color-pink" type="button" onclick="changeColor('#be68be')">
+                                <input class="btn color-red" type="button" onclick="changeColor('#c10000')">
+                                <input class="btn color-green" type="button" onclick="changeColor('#2bcd01')">
+                                <input class="btn color-yellow" type="button" onclick="changeColor('#dbd400')">
+                                <input class="btn color-orange" type="button" onclick="changeColor('#ff8316')">
+                                <input class="btn color-blue" type="button" onclick="changeColor('#1269ff')">
+                                <input class="btn color-purple" type="button" onclick="changeColor('#a514ff')">
+                                <input class="btn color-cyan" type="button" onclick="changeColor('#0fbe9b')">
+                            </div>
                         {{ end }}
                         <div class="form-group col-md-12">
                             Канал в <i class="fab fa-slack pr-1"></i>Slack:
@@ -177,31 +177,31 @@
                         </div>
                         <div class="form-group col-md-12">
                             {{ if eq .owner true }}
-                            <textarea name="clubAbout"
-                                      placeholder="Опишите чем занимается клуб"
-                                      cols="40"
-                                      rows="5"
-                                      class="form-control unresizable"
-                                      maxlength="255">{{ .club.About }}</textarea>
+                                <textarea name="clubAbout"
+                                          placeholder="Опишите чем занимается клуб"
+                                          cols="40"
+                                          rows="5"
+                                          class="form-control unresizable"
+                                          maxlength="255">{{ .club.About }}</textarea>
                             {{ else }}
-                            <textarea name="clubAbout"
-                                      placeholder="Опишите чем занимается клуб"
-                                      cols="40"
-                                      rows="5"
-                                      class="form-control unresizable"
-                                      maxlength="255"
-                                      disabled>{{ .club.About }}</textarea>
+                                <textarea name="clubAbout"
+                                          placeholder="Опишите чем занимается клуб"
+                                          cols="40"
+                                          rows="5"
+                                          class="form-control unresizable"
+                                          maxlength="255"
+                                          disabled>{{ .club.About }}</textarea>
                             {{ end }}
                         </div>
                     </div>
                     {{ if eq .owner true }}
-                    <div class="col-md-12 py-1 float-right">
-                        <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Сохранить">
-                    </div>
+                        <div class="col-md-12 py-1 float-right">
+                            <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Сохранить">
+                        </div>
 
-                    <div class="col-md-12 py-1 float-right">
-                        <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
-                    </div>
+                        <div class="col-md-12 py-1 float-right">
+                            <input type="submit" class="btn btn-primary btn-nav" name="sumbit" value="Удалить клуб">
+                        </div>
                     {{ end }}
                 </form>
             </div>
@@ -218,14 +218,14 @@
                         {{ range $group := $groups_ }}
                             {{ if eq $.thisMember true }}
                                 {{ if eq $.groupOwner false }}
-                                {{ if ne $.userGroup $group.Name }}
-                                    <form method="POST">
-                                        <input type="hidden" value="{{$group.Name}}" name="groupName">
-                                        <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
-                                            <i class="fas fa-vote-yea large_icon"></i>
-                                        </button>
-                                    </form>
-                                {{ end }}
+                                    {{ if ne $.userGroup $group.Name }}
+                                        <form method="POST">
+                                            <input type="hidden" value="{{$group.Name}}" name="groupName">
+                                            <button type="submit" class="btn font-weight-normal" title="Вступить" name="sumbit" value="joinGroup">
+                                                <i class="fas fa-vote-yea large_icon"></i>
+                                            </button>
+                                        </form>
+                                    {{ end }}
                                 {{ end }}
                             {{ end }}
 
@@ -233,14 +233,14 @@
                                 <div id="groupid{{$group.Name}}" style="color: {{$group.Color}};">
                                     {{ $group.Name }}
                                     {{ if eq $.owner true }}
-                                    <div id="deleteGroupButton">
-                                        <form method="POST">
-                                            <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
-                                            <button  type="submit" class="btn font-weight-normal" title="Удалить группу" name="sumbit" value="deleteGroup">
-                                                <i class="fas fa-trash-alt large_icon"></i>
-                                            </button>
-                                        </form>
-                                    </div>
+                                        <div id="deleteGroupButton">
+                                            <form method="POST">
+                                                <input type="hidden" value="{{$group.Name}}" name="deleteGroupName">
+                                                <button  type="submit" class="btn font-weight-normal" title="Удалить группу" name="sumbit" value="deleteGroup">
+                                                    <i class="fas fa-trash-alt large_icon"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     {{ end }}
                                 </div>
                             {{ end }}
@@ -258,52 +258,52 @@
                                         </tr>
                                         {{ range $mem := $members_ }}
                                             {{ if eq $mem.Group $group.Name }}
-                                            <form method="POST">
-                                                {{ if eq $.owner true }}
-                                                    <input type="hidden" value="{{$mem.NickName}}" name="nickName">
-                                                    <input type="hidden" value="{{$mem.IDIntra}}" name="intraID">
-                                                {{end}}
-                                                <tr id="membersTable" class="row_club td-align">
-                                                    <td scope="col" class="h-td font-weight-normal pl-3">
-                                                        {{ $mem.NickName }}
-                                                    </td>
-                                                    <td scope="col" class="h-td font-weight-normal pl-3">
-                                                        {{ if eq $mem.Access 3 }}
-                                                            Владелец
-                                                        {{ end }}
-                                                        {{ if eq $mem.Access 2 }}
-                                                            Модератор
-                                                        {{ end }}
-                                                        {{ if eq $mem.Access 1 }}
-                                                            Участник++
-                                                        {{ end }}
-                                                        {{ if eq $mem.Access 0 }}
-                                                            Участник
-                                                        {{ end }}
-                                                    </td>
-                                                    <td scope="col" class="h-td font-weight-normal pl-3">
-                                                        {{ $mem.JoinDate }}
-                                                    </td>
+                                                <form method="POST">
                                                     {{ if eq $.owner true }}
-                                                    <td scope="col" class="h-td font-weight-normal pl-3">
-                                                        {{ if ne $.user.Name $mem.NickName}}
-                                                        {{ if eq $mem.Access 2 }}
-                                                        <button type="submit" class="btn font-weight-normal" title="Сменить владельца" name="sumbit" value="setOwner">
-                                                            <i class="fas fa-crown large_icon"></i>
-                                                        </button>
-                                                        {{ else }}
-                                                        <button type="submit" class="btn font-weight-normal" title="Сделать модератором" name="sumbit" value="makeModer">
-                                                            <i class="fas fa-user-check large_icon"></i>
-                                                        </button>
+                                                        <input type="hidden" value="{{$mem.NickName}}" name="nickName">
+                                                        <input type="hidden" value="{{$mem.IDIntra}}" name="intraID">
+                                                    {{end}}
+                                                    <tr id="membersTable" class="row_club td-align">
+                                                        <td scope="col" class="h-td font-weight-normal pl-3">
+                                                            {{ $mem.NickName }}
+                                                        </td>
+                                                        <td scope="col" class="h-td font-weight-normal pl-3">
+                                                            {{ if eq $mem.Access 3 }}
+                                                                Владелец
+                                                            {{ end }}
+                                                            {{ if eq $mem.Access 2 }}
+                                                                Модератор
+                                                            {{ end }}
+                                                            {{ if eq $mem.Access 1 }}
+                                                                Участник++
+                                                            {{ end }}
+                                                            {{ if eq $mem.Access 0 }}
+                                                                Участник
+                                                            {{ end }}
+                                                        </td>
+                                                        <td scope="col" class="h-td font-weight-normal pl-3">
+                                                            {{ $mem.JoinDate }}
+                                                        </td>
+                                                        {{ if eq $.owner true }}
+                                                        <td scope="col" class="h-td font-weight-normal pl-3">
+                                                            {{ if ne $.user.Name $mem.NickName}}
+                                                            {{ if eq $mem.Access 2 }}
+                                                            <button type="submit" class="btn font-weight-normal" title="Сменить владельца" name="sumbit" value="setOwner">
+                                                                <i class="fas fa-crown large_icon"></i>
+                                                            </button>
+                                                            {{ else }}
+                                                            <button type="submit" class="btn font-weight-normal" title="Сделать модератором" name="sumbit" value="makeModer">
+                                                                <i class="fas fa-user-check large_icon"></i>
+                                                            </button>
+                                                            {{ end }}
+                                                            <button type="submit" class="btn font-weight-normal" title="Выгнать" name="sumbit" value="kick">
+                                                                <i class="fas fa-user-slash large_icon"></i>
+                                                            </button>
+                                                            {{ end }}
+                                                        </td>
                                                         {{ end }}
-                                                        <button type="submit" class="btn font-weight-normal" title="Выгнать" name="sumbit" value="kick">
-                                                            <i class="fas fa-user-slash large_icon"></i>
-                                                        </button>
-                                                        {{ end }}
-                                                    </td>
-                                                    {{ end }}
-                                                </tr>
-                                            </form>
+                                                    </tr>
+                                                </form>
                                             {{ end }}
                                         {{ end }}
                                     </tbody>
@@ -314,54 +314,54 @@
                         {{ end }}
 
                         {{ if eq $.owner true }}
-                        Добавить группу
-                        <form method="POST">
-                            <div class="">
-                                <div class="add-group">
-                                    <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
+                            Добавить группу
+                            <form method="POST">
+                                <div class="">
+                                    <div class="add-group">
+                                        <input name="newGroupName" placeholder="Название новой группы" class="form-control" type="text">
+                                    </div>
+
+                                    <select id="colorGroup" name="colorGroup" class="custom-select add-groupc">
+                                        <option value="#ffffff">Белый</option>
+                                        <option value="#ba90ff">Фиолетовый</option>
+                                        <option value="#97ff90">Зеленый</option>
+                                        <option value="#72d7ff">Синий</option>
+                                        <option value="#ff8181">Красный</option>
+                                        <option value="#000000">Черный</option>
+                                    </select>
+
+                                    <div class="add-group2">
+                                        <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
+                                            <i class="fas fa-plus large_icon"></i>
+                                        </button>
+                                    </div>
                                 </div>
+                            </form>
 
-                                <select id="colorGroup" name="colorGroup" class="custom-select add-groupc">
-                                    <option value="#ffffff">Белый</option>
-                                    <option value="#ba90ff">Фиолетовый</option>
-                                    <option value="#97ff90">Зеленый</option>
-                                    <option value="#72d7ff">Синий</option>
-                                    <option value="#ff8181">Красный</option>
-                                    <option value="#000000">Черный</option>
-                                </select>
-
-                                <div class="add-group2">
-                                    <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="addGroup">
-                                        <i class="fas fa-plus large_icon"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
-                        Сделать лидером группы
-                        <form method="POST">
-                            <div class="">
-                                <select class="custom-select add-group" id="memberName" name="setGroupName">
-                                    {{ range $group := $groups_ }}
-                                    <option value="{{  $group.Name }}">{{ $group.Name }}</option>
-                                    {{ end }}
-                                </select>
-
-                                <select class="custom-select add-groupb" id="memberName" name="setMemberName">
-                                    {{ range $mem := $members_ }}
-                                        {{ if eq $mem.GroupOwner false }}
-                                            <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                            Сделать лидером группы
+                            <form method="POST">
+                                <div class="">
+                                    <select class="custom-select add-group" id="memberName" name="setGroupName">
+                                        {{ range $group := $groups_ }}
+                                        <option value="{{  $group.Name }}">{{ $group.Name }}</option>
                                         {{ end }}
-                                    {{ end }}
-                                </select>
+                                    </select>
 
-                                <div class="add-group2">
-                                    <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="setGroupOwner">
-                                        <i class="fas fa-check large_icon"></i>
-                                    </button>
+                                    <select class="custom-select add-groupb" id="memberName" name="setMemberName">
+                                        {{ range $mem := $members_ }}
+                                            {{ if eq $mem.GroupOwner false }}
+                                                <option value="{{  $mem.NickName }}">{{ $mem.NickName }}</option>
+                                            {{ end }}
+                                        {{ end }}
+                                    </select>
+
+                                    <div class="add-group2">
+                                        <button type="submit" class="btn font-weight-normal" title="Создать" name="sumbit" value="setGroupOwner">
+                                            <i class="fas fa-check large_icon"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                         {{ end }}
                     </div>
                 </div>

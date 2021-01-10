@@ -2,6 +2,7 @@ package booking
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	dbh "github.com/silentalarm/booking_room/scr/database"
 	ses "github.com/silentalarm/booking_room/scr/sessions"
@@ -11,6 +12,10 @@ import (
 	"strings"
 	"time"
 )
+
+type AClub struct {
+	Name string `json:"club"`
+}
 
 var tableWhiteList = []string{
 	"floor_2",
@@ -294,4 +299,18 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 		"clubs":     memberClubsOwner,
 	}
 	_ = tmpl.Execute(w, dataMap)
+}
+func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
+	var d AClub
+	err := json.NewDecoder(r.Body).Decode(&d)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	// create json response from struct
+	a, err := json.Marshal(d)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	w.Write(a)
 }

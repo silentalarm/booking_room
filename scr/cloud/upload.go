@@ -51,6 +51,7 @@ func Upload(r *http.Request, key, clubName string) (bool, error) {
 		panic(err)
 		return false, err
 	}
+
 	return true, nil
 }
 
