@@ -237,6 +237,19 @@ func GetUserGroup(db *sql.DB, nickName, clubName string) (string, error) {
 	return name, nil
 }
 
+func GetGroupColor(db *sql.DB, clubName, groupName string) string {
+	color := "#ffffff"
+	err := db.QueryRow("SELECT color FROM clubgroups WHERE clubname=$1 and groupname=$2",
+		clubName, groupName).Scan(&color)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			panic(err)
+		}
+		return color
+	}
+	return color
+}
+
 func GetGroupSize(db *sql.DB, clubName, groupName string) (int, error) {
 	var size int
 	err := db.QueryRow("SELECT COUNT(*) FROM clubmembers WHERE clubname=$1 and groupname=$2",
