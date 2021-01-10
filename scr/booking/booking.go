@@ -302,7 +302,7 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 }
 func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
 	var d AClub
-	b, err := json.MarshalIndent(&d, "", "  ")
+	b, err := json.MarshalIndent(d, "", "  ")
 	if err != nil {
 		panic(err)
 	}
