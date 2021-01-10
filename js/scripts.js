@@ -263,13 +263,8 @@ function changeLineColor(id ,value){
     document.getElementById(id).style.backgroundColor = value;
 }
 
-$("#colorGroup").change(function(){
-    var color = document.getElementById("colorGroup").value;
-    document.getElementById("colorGroup").style.backgroundColor = color;
-});
+function fillSelect() {
 
-
-$('#clubName').on('change', function () {
     var clubName = $(this).val();
     console.log(clubName)
 
@@ -295,8 +290,15 @@ $('#clubName').on('change', function () {
             }
         }
     });
+}
+
+
+$("#colorGroup").change(function(){
+    var color = document.getElementById("colorGroup").value;
+    document.getElementById("colorGroup").style.backgroundColor = color;
 });
 
-$(document).ready(function(){
 
-});
+$('#clubName').on('change', fillSelect());
+
+$(document).ready(fillSelect());
