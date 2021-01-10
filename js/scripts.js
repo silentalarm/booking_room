@@ -280,7 +280,7 @@ $('#clubName').on('change', function () {
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
         success: function(r) {
-            var selectList = document.getElementById("groupName");
+            var selectList = document.getElementById("groupSelect");
             var array = r.List;
 
             for (var i = 0; i < array.length; i++) {
