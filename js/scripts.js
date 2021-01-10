@@ -286,7 +286,7 @@ $('#clubName').on('change', function () {
 
             var selectList = document.createElement("select");
             selectList.id = "mySelect";
-            myParent.appendChild(selectList);
+            myDiv.appendChild(selectList);
             for (var i = 0; i < array.length; i++) {
                 var option = document.createElement("option");
                 option.value = array[i];
