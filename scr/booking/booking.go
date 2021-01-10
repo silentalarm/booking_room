@@ -302,11 +302,15 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 }
 func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
 	var d AClub
-	b, err := json.MarshalIndent(d, "", "  ")
+	err := json.NewDecoder(r.Body).Decode(&d)
 	if err != nil {
-		panic(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-	fmt.Printf("%s\n", b)
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(b)
+	fmt.Printf("%s\n", d.Name)
+	// create json response from struct
+	a, err := json.Marshal(d)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	w.Write(a)
 }
