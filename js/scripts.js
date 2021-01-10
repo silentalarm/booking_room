@@ -280,8 +280,8 @@ $('#clubName').on('change', function () {
         success: function(data) {
             alert(data);
         },
-        error: function(e){
-            alert(e);
+        error: function(data){
+            alert(data);
         }
     });
 });
