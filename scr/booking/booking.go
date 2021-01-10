@@ -301,17 +301,37 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	_ = tmpl.Execute(w, dataMap)
 }
 func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
-	var d AClub
-	err := json.NewDecoder(r.Body).Decode(&d)
+	db := dbh.OpenDB()
+	defer db.Close()
+
+	var club AClub
+	err := json.NewDecoder(r.Body).Decode(&club)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%s\n", d.Name)
-	d.Name = "lol"
+
+	groups, err := dbh.GetClubGroups(db, club.Name)
+	if err != nil {
+		panic(err)
+	}
+
+	groupList, _ := getGroupList(groups)
+	fmt.Printf("%s\n", groupList)
+
 	// create json response from struct
-	a, err := json.Marshal(d)
+	a, err := json.Marshal(groupList)
 	if err != nil {
 		panic(err)
 	}
 	w.Write(a)
+}
+
+func getGroupList(groups []dbh.Group) ([]string, error) {
+	groupList := []string{}
+
+	for _, group := range groups {
+		groupList = append(groupList, group.Name)
+	}
+
+	return groupList, nil
 }

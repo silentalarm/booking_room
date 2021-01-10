@@ -282,6 +282,18 @@ $('#clubName').on('change', function () {
         dataType: 'json',
         success: function(r) {
             $('#ajaxResp').append(r.Name);
+            var myParent = document.body;
+            var array = r.Name;
+
+            var selectList = document.createElement("select");
+            selectList.id = "mySelect";
+            myParent.appendChild(selectList);
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("option");
+                option.value = array[i];
+                option.text = array[i];
+                selectList.appendChild(option);
+            }
         }
     });
 });
