@@ -283,6 +283,10 @@ $('#clubName').on('change', function () {
             var selectList = document.getElementById("groupSelect");
             var array = r.List;
 
+            while (selectList.hasChildNodes()) {
+                selectList.removeChild(selectList.lastChild);
+            }
+
             for (var i = 0; i < array.length; i++) {
                 var option = document.createElement("option");
                 option.value = array[i];
