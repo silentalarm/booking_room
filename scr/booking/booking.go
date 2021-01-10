@@ -38,6 +38,7 @@ type TData struct {
 	PeopleNumber int
 	Moder        bool
 	Color        string
+	GroupName    string
 }
 
 func tableInit() ViewData {
@@ -84,6 +85,7 @@ func rebuildTable(rows []dbh.ReserveRow, clubs []string) *ViewData {
 		tableRow.NickName = row.NickName
 		tableRow.ClubName = row.ClubName
 		tableRow.PeopleNumber = row.PeopleNumber
+		tableRow.GroupName = row.GroupName
 
 		tableRow.Color = dbh.GetClubColor(db, tableRow.ClubName)
 		for _, clubName := range clubs {
