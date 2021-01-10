@@ -280,11 +280,8 @@ $('#clubName').on('change', function () {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({ Name: clubName}),
         dataType: 'json',
-        success: function(data) {
-            alert(data);
-        },
-        error: function(data){
-            alert(data);
+        success: function(r) {
+            $('#ajaxResp').append(r.Name);
         }
     });
 });

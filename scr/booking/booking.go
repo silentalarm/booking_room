@@ -307,6 +307,7 @@ func ExecuteGroupsByClub(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	fmt.Printf("%s\n", d.Name)
+	d.Name = "lol"
 	// create json response from struct
 	a, err := json.Marshal(d)
 	if err != nil {
