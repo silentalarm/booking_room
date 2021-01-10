@@ -302,9 +302,13 @@ func Index_v2(w http.ResponseWriter, r *http.Request) {
 	memberClubsOwner, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 3)
 	memberClubsModer, _ := dbh.GetMemberClubsByAccess(db, user.Name, user.ID, 2)
 	memberClubsOwner = append(memberClubsOwner, memberClubsModer...)
-	groupList, _ := getGroupList(memberClubsOwner[0])
 	data := rebuildTable(timeRes, memberClubsOwner)
 	member := dbh.IsUserClubMember(db, user.Name, user.ID)
+
+	var groupList Groups
+	if user.Authenticated == true {
+		groupList, _ = getGroupList(memberClubsOwner[0])
+	}
 
 	dataMap := map[string]interface{}{
 		"data":      data,
